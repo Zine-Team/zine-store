@@ -42,9 +42,11 @@ function App(view) {
     };
 
     const render_zines_show = () => {
+        const zine = params.get("zine");
+
         const root = document.querySelector("[data-template='root']");
         render_template("zines/show", root, {
-            coverUrl: "congo/pages/page_cover.jpg"
+            coverUrl: `${zine}/pages/page_cover.jpg`
         });
         console.log(root)
     }
