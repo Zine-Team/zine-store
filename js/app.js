@@ -3,29 +3,38 @@ function App(view) {
 
     const select = document.querySelectorAll;
 
+    var pathPrefix = null;
+
     const route = () => {
         const routes = {
-            "index": render_index,
-            "zines/show": render_zines_show
+            "index": {
+                render: render_index,
+                pathPrefix: "."
+            },
+            "zines/show": {
+                render: render_zines_show,
+                pathPrefix: ".."
+            }
         }
 
         if (routes[view]) {
-            routes[view].call();
+            pathPrefix = routes[view].pathPrefix;
+            routes[view].render.call(routes[view]);
         }
     };
 
     async function get_text_file(path) {
-        const response = await fetch(path);
+        const response = await fetch(pathPrefix+path);
         return await response.text();
     }
 
     async function get_json(path) {
-        const response = await fetch(path);
+        const response = await fetch(pathPrefix+path);
         return await response.json();
     }
 
     async function compile_template(template_name, params) {
-        const template_text = await get_text_file("../templates/"+template_name+".hbs");
+        const template_text = await get_text_file(`/templates/${template_name}.hbs`);
         const template = Handlebars.compile(template_text)
         return template(params);
     }
@@ -47,7 +56,7 @@ function App(view) {
     const render_index = () => {
         const root = document.querySelector("[data-template='root']");
 
-        get_json("../zines/meta.json").then((meta) => {
+        get_json("/zines/meta.json").then((meta) => {
             render_template("index", root, {
                 zines: meta.zines
             });
