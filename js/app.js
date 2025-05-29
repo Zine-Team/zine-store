@@ -14,21 +14,21 @@ function App(view) {
         }
     };
 
-    async function compile_template(template_name, params) {
-        const response = await fetch("../templates/"+template_name+".html_");
-        const template_text = await response.text();
-        const template = Handlebars.compile(template_text)
+    async function get_text_file(path) {
+        const response = await fetch(path);
+        return await response.text();
+    }
 
+    async function get_json(path) {
+        const response = await fetch(path);
+        return await response.json();
+    }
+
+    async function compile_template(template_name, params) {
+        const template_text = await get_text_file("../templates/"+template_name+".hbs");
+        const template = Handlebars.compile(template_text)
         return template(params);
     }
-
-    async function get_directory(path) {
-        const response = await fetch(path);
-        const template_text = await response.text();
-        return template_text;
-    }
-
-    get_directory("http://127.0.0.1:8080/zines").then(console.log)
 
     const render_template = (template_name, target_node, params) => {
         compile_template(template_name, params).then((template) => {
@@ -37,8 +37,21 @@ function App(view) {
         })
     }
 
-    const render_index = () => {
+    const appendTemplate = (template_name, target_node, params) => {
+        compile_template(template_name, params).then((template) => {
+            target_node.innerHTML += template;
+            return target_node;
+        })
+    }
 
+    const render_index = () => {
+        const root = document.querySelector("[data-template='root']");
+
+        get_json("../zines/meta.json").then((meta) => {
+            render_template("index", root, {
+                zines: meta.zines
+            });
+        })
     };
 
     const render_zines_show = () => {
@@ -48,10 +61,8 @@ function App(view) {
         render_template("zines/show", root, {
             coverUrl: `${zine}/pages/page_cover.jpg`
         });
-        console.log(root)
     }
 
-    document.onread
     route();
 }
 

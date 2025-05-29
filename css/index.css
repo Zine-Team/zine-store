@@ -1,0 +1,26 @@
+body {
+    text-align: center;
+    background-image: url(../img/white-background.jpg);
+}
+
+.zine-gallery {
+    padding:20px 150px;
+    width: 100%;
+    margin: auto 0px;
+}
+.zine img {
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px lightgrey;
+    margin: 10px;
+    padding: 0px;
+    transition: box-shadow .5s, margin .5s;
+}
+
+.zine img:hover {
+    box-shadow: 1px 1px 3px grey;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    transition: box-shadow .25s, margin .25s;
+}

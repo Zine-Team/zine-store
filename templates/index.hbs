@@ -1,0 +1,11 @@
+<div class="zine-gallery">
+    <div class="flex five">
+        {{#each zines}}
+            <div class="zine">
+                <a href="../zines/show.html?zine={{this.id}}">
+                    <img src="../zines/{{this.id}}/pages/page_cover.jpg"></img>
+                </a>
+            </div>
+        {{/each}}
+    </div>
+</div>
