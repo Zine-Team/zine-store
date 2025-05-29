@@ -1,11 +1,62 @@
 body {
-    text-align: center;
-}
-
-.zine {
+    background-image: url(../../img/white-background.jpg);
     height: 100vh;
+        display: flex;
+    align-items: center;
 }
 
-.zine img {
-    height: 100%;
+.container {
+    width: 100%;
+
+}
+
+.zine-outer {
+    padding: 0px;
+    margin: 0px;
+}
+
+.zine-inner {
+    border: 1px solid grey;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px lightgrey;
+    margin: 0px;
+    width: 80%;
+    min-height: 200px;
+    justify-self: center;
+}
+
+.cover-view .zine-inner {
+    width: 40%;
+}
+
+.left-page,
+.right-page,
+.cover-page {
+    padding: 0px;
+}
+
+.previous,
+.next {
+    align-self: center;
+}
+
+/* @media only screen and (max-width: 1001px) {
+    .previous,
+    .next {
+       display: none;
+    }
+} */
+
+.previous {
+    text-align: right;
+}
+
+.zine-inner .right-page {
+    box-shadow: -1px 1px 3px lightgrey;
+}
+
+.zine-page img {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
 }

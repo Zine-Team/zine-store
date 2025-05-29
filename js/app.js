@@ -39,11 +39,13 @@ function App(view) {
         return template(params);
     }
 
-    const render_template = (template_name, target_node, params) => {
-        compile_template(template_name, params).then((template) => {
-            target_node.innerHTML = template;
-            return target_node;
-        })
+    const render_template = (template_name, target_node, params, callback) => {
+        return new Promise((resolve, reject) => {
+            compile_template(template_name, params).then((template) => {
+                target_node.innerHTML = template;
+            })
+            resolve(target_node);
+        });
     }
 
     const appendTemplate = (template_name, target_node, params) => {
@@ -66,10 +68,46 @@ function App(view) {
     const render_zines_show = () => {
         const zine = params.get("zine");
 
-        const root = document.querySelector("[data-template='root']");
-        render_template("zines/show", root, {
-            coverUrl: `${zine}/pages/page_cover.jpg`
+        const zineDom = document.querySelector("[data-template='zine']");
+
+        const next = document.querySelector("[data-action='next']");
+        const prev = document.querySelector("[data-action='prev']");
+
+        let currentPage = 0;
+
+        const render_zine = () => {
+            if (currentPage == 0) {
+                render_template("zines/show/zine_cover", zineDom, {
+                    coverUrl: `${zine}/pages/page_cover.jpg`
+                })
+            } else if (currentPage == 8) {                
+                render_template("zines/show/zine_cover", zineDom, {
+                    coverUrl: `${zine}/pages/page_back.jpg`
+                })
+            } else {    
+                render_template("zines/show/zine_open", zineDom, {
+                    leftPageUrl: `${zine}/pages/page_${currentPage-1}.jpg`,
+                    rightPageUrl: `${zine}/pages/page_${currentPage}.jpg`
+
+                });
+            };
+        }
+
+        next.addEventListener("click", (e) => {
+            if (currentPage < 8) {
+                currentPage += 2;
+            }
+            render_zine();
         });
+
+        prev.addEventListener("click", (e) => {
+            if(currentPage > 0) {
+                currentPage -= 2;
+            }
+            render_zine();
+        });
+
+        render_zine();
     }
 
     route();
