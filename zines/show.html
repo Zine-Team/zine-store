@@ -8,11 +8,14 @@
     <body>
         <div class="container">
             <div class="flex three">
-                <div class="previous fifth">
+                <div class="prev-button fifth">
                     <button data-action="prev">&lt</button>
                 </div>
-                <div data-template="zine" class="zine-root one three-fifth"></div>
-                <div class="next fifth">
+                <div class="zine-root one three-fifth">
+                    <div class="zine-outer" data-template="zine-pages">
+                    </div>
+                </div>
+                <div class="next-button fifth">
                     <button data-action="next">&gt</button>
                 </div>
             </div>

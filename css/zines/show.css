@@ -7,36 +7,164 @@ body {
 
 .container {
     width: 100%;
-
 }
 
 .zine-outer {
     padding: 0px;
     margin: 0px;
+    transition: width 2s;
 }
 
 .zine-inner {
-    border: 1px solid grey;
+    /* border: 1px solid grey;
     border-radius: 2px;
-    box-shadow: 1px 1px 2px lightgrey;
+    box-shadow: 2px 2px 5px lightgrey; */
     margin: 0px;
-    width: 80%;
-    min-height: 200px;
     justify-self: center;
+    overflow: visible;
+    position: relative;
+
+    height: 400px;
+
+    transition: width .5s ease-out;
+    transition-delay: .25s;
+
+    width: 600px;
 }
 
 .cover-view .zine-inner {
-    width: 40%;
+    width: 300px;
+    transition: width .5s ease-out;
+    transition-delay: 0s;
+    transition-delay: 0s;
 }
 
-.left-page,
-.right-page,
-.cover-page {
-    padding: 0px;
+.zine-page {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    transition: width .25s ease-in-out, left .25s ease-in-out;
 }
 
-.previous,
-.next {
+.zine-page .page-side-left.page-depth-0 {
+    z-index: 2;
+}
+
+.zine-page .page-side-left.page-depth-1 {
+    z-index: 3;
+}
+
+.zine-page .page-side-left.page-depth-2 {
+    z-index: 4;
+}
+
+.zine-page .page-side-left.page-depth-3 {
+    z-index: 5;
+}
+
+.zine-page .page-side-left.page-depth-4 {
+    z-index: 6;
+}
+
+.zine-page .page-side-right.page-depth-0 {
+    z-index: 6;
+}
+
+.zine-page .page-side-right.page-depth-1 {
+    z-index: 5;
+}
+
+.zine-page .page-side-right.page-depth-2 {
+    z-index: 4;
+}
+
+.zine-page .page-side-right.page-depth-3 {
+    z-index: 3;
+}
+
+.zine-page .page-side-right.page-depth-4 {
+    z-index: 2;
+}
+
+.zine-outer.cover-view .zine-page .page-side-left {
+    left:0px;
+    width: 0px;
+    transition-delay: .0s;
+}
+
+.zine-outer.cover-view .zine-page .page-side-right {
+    left:0px;
+    transition-delay: 0s;
+}
+
+.zine-outer.cover-view .zine-page .page-side-right.open {
+    transition-delay: 0s;
+}
+
+.zine-outer.cover-view .zine-page .page-cover.open {
+    transition-delay: .5s;
+}
+
+.zine-page .page-cover.page-side-right {
+    left:0px;
+}
+
+/* .zine-outer.cover-view .zine-page .page-side-right.open {
+    transition-delay: 0s;
+} */
+
+/* Default state, closed */
+.zine-page .page-side-left {
+    position: absolute;
+    left:0px;
+    width:300px;
+    top: 0px;
+    bottom: 0px;
+
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+
+    box-shadow: -1px 0px 3px lightgray;
+
+    transition: width .5s ease-out, left .5s ease-out;
+    transition-delay: .5s;
+}
+
+.zine-page .page-side-left.open {
+    left: 50%;
+    width: 0px;
+    
+    transition: width .5s ease-in, left .5s ease-in;
+}
+
+.zine-page .page-side-right {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left:50%;
+    width: 0px;
+
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+
+
+    box-shadow: -1px 0px 3px lightgray;
+    
+    transition: width .5s ease-in, left .5s ease-in;
+}
+
+.zine-page .page-side-right.open
+ {
+    left:50%;
+    width:300px;
+    transition: width .5s ease-out, left .5s ease-out;
+    transition-delay: .5s;
+}
+
+.prev-button,
+.next-button {
     align-self: center;
 }
 
@@ -47,7 +175,7 @@ body {
     }
 } */
 
-.previous {
+.prev-button {
     text-align: right;
 }
 
@@ -57,6 +185,6 @@ body {
 
 .zine-page img {
     width: 100%;
+    height: 100%;
     margin: 0px;
-    padding: 0px;
 }

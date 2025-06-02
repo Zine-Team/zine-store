@@ -1,0 +1,20 @@
+<div class="zine-inner">
+    {{#each pages}}
+        <div class="zine-page">
+            <div class="page-{{this.left.id}} page-side-left page-depth-{{@index}}">
+                {{#if this.left.empty}}
+                    <div class="empty-placeholder"></div>
+                {{else}}
+                    <img src="{{this.left.pageUrl}}"></img>
+                {{/if}}
+            </div>
+            <div class="page-{{this.right.id}} page-side-right page-depth-{{@index}}">
+                {{#if this.right.empty}}
+                    <div class="empty-placeholder"></div>
+                {{else}}
+                    <img src="{{this.right.pageUrl}}"></img>
+                {{/if}}
+            </div>
+        </div>
+    {{/each}}
+</div>
