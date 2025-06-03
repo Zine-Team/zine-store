@@ -1,25 +1,24 @@
 <html>
-    <head>
-        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
-        <script src="../js/app.js"></script>
-        <link rel="stylesheet" href="../css/zines/show.css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="flex three">
-                <div class="prev-button fifth">
-                    <button data-action="prev">&lt</button>
-                </div>
-                <div class="zine-root one three-fifth">
-                    <div class="zine-outer" data-template="zine-pages">
-                    </div>
-                </div>
-                <div class="next-button fifth">
-                    <button data-action="next">&gt</button>
-                </div>
-            </div>
-        </div>
-    </body>
-    <script>new App("zines/show")</script>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic"> -->
+    <script src="../js/app.js"></script>
+    <link rel="stylesheet" href="../css/zines/show.css" />
+  </head>
+  <body>
+    <div class="container navbar">
+      <a href="/">Home</a>
+      <span>./zines/show.html?zine=congo</span>
+    </div>
+    <div class="container zine-navigator">
+      <button class="prev-page navigation-button" data-action="prev">&lt</button>
+      <div class="zine-root one three-fifth">
+        <div class="zine-outer" data-template="zine-pages"></div>
+      </div>
+      <button class="next-page navigation-button" data-action="next">&gt</button>
+    </div>
+  </body>
+  <script>
+    new App("zines/show");
+  </script>
 </html>
