@@ -2,17 +2,33 @@
     <!-- todo: make component? Used on multiple pages -->
     <span></span>
     <span>/index/</span>
+    <span><a href="/">Submit a zine</a></span>
 </nav>
 <main>
     <section class="container hero-section">
         <h1>Zine Store (Free)</h1>
-        <p class="body-lg">A free store of zines for viewing and download</p>
+        <p class="body-xl">A free store of zines for viewing and download</p>
     </section>
-    <section class="container zine-gallery">
-        {{#each zines}}
-            <a class="zine" href="./zines/show.html?zine={{this.id}}">
-                <img src="./zines/{{this.id}}/pages/page_cover.jpg"></img>
-            </a>
-        {{/each}}
+    <section class="container titled-section">
+        <h2>Most recent zines</h2>
+        <div class="zine-grid">
+            {{#each zines}}
+                <a class="zine" href="./zines/show.html?zine={{this.id}}">
+                    <img src="./zines/{{this.id}}/pages/page_cover.jpg"></img>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+    <section class="container titled-section">
+        <h2>All zines (A-Z)</h2>
+        <ul class="zine-list">
+            {{#each zines}}
+            <li class="zine">
+                <a class="zine-link body-lg" href="./zines/show.html?zine={{this.id}}">
+                    {{this.title}}
+                </a>
+            </li>
+            {{/each}}
+        </ul>
     </section>
 </main>

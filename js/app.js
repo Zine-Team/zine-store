@@ -79,7 +79,7 @@ function App(view) {
     const zineTemplate = compile_template("zines/show/zine_pages");
 
     const numPages = 8;
-    const pages = [
+    let pages = [
       {
         left: {
           id: "empty",
@@ -142,6 +142,9 @@ function App(view) {
       },
     ];
 
+    pages = [`${zine}/pages/page_cover.jpg`, `${zine}/pages/page_1.jpg`, `${zine}/pages/page_2.jpg`, `${zine}/pages/page_3.jpg`, `${zine}/pages/page_4.jpg`, `${zine}/pages/page_5.jpg`, `${zine}/pages/page_6.jpg`, `${zine}/pages/page_back.jpg`];
+    const zineLength = pages.length;
+
     let currentPage = 0;
     let lastPage = 0;
 
@@ -149,54 +152,96 @@ function App(view) {
       pages: pages,
     }).then((templateRoot) => {
       const onPageChange = (direction) => {
-        for (let pageNum = 0; pageNum <= 8; pageNum++) {
-          let id = pageNum;
-
-          if (pageNum == 0) {
-            id = "cover";
-          } else if (pageNum == 8) {
-            id = "back";
-          } else if (pageNum == 7) {
-            continue;
-          }
-
-          const page = templateRoot.querySelector(`.zine-spread .page-${id}`);
-
-          if (currentPage == 0 || currentPage == 8) {
-            templateRoot.classList.add("cover-view");
-          } else {
-            templateRoot.classList.remove("cover-view");
-          }
-
-          page.classList.remove("open", "prev", "next");
-          if (page.classList.contains("page-side-left") && pageNum >= currentPage) {
-            page.classList.add("open");
-          } else if (page.classList.contains("page-side-right") && pageNum >= currentPage) {
-            page.classList.add("open");
-          }
+        if (direction === "next") {
+          currentSpread = currentSpread + 1;
+        } else if (direction === "prev") {
+          currentSpread = currentSpread - 1;
         }
+
+        zineRootDom.style.setProperty("--current-spread", currentSpread);
+
+        // for (let pageNum = 0; pageNum <= 8; pageNum++) {
+        //   let id = pageNum;
+
+        //   if (pageNum == 0) {
+        //     id = "cover";
+        //   } else if (pageNum == 8) {
+        //     id = "back";
+        //   } else if (pageNum == 7) {
+        //     continue;
+        //   }
+
+        //   const page = templateRoot.querySelector(`.zine-spread .page-${id}`);
+
+        //   if (currentPage == 0 || currentPage == 8) {
+        //     templateRoot.classList.add("cover-view");
+        //   } else {
+        //     templateRoot.classList.remove("cover-view");
+        //   }
+
+        //   page.classList.remove("open", "prev", "next");
+        //   if (page.classList.contains("page-side-left") && pageNum >= currentPage) {
+        //     page.classList.add("open");
+        //   } else if (page.classList.contains("page-side-right") && pageNum >= currentPage) {
+        //     page.classList.add("open");
+        //   }
+        // }
 
         lastPage = currentPage;
       };
 
+      let currentSpread = 0;
+      const totalSpreads = 4;
+      const DOMZine = document.querySelector(".zine-inner");
+      const DOMPages = document.querySelectorAll(".zine-page");
+
+      function spreadChange(direction) {
+        // change the currentSpread number
+        currentSpread = currentSpread + 1 * direction;
+
+        // show the current pages
+        showPages(currentSpread);
+      }
+
+      function showPages(spread) {
+        // hide previous pages
+        DOMPages.forEach((page) => {
+          page.classList.remove("visible");
+        });
+
+        // show right page
+        if (DOMPages[spread * 2]) {
+          DOMPages[spread * 2].classList.add("visible");
+        }
+
+        // show left page
+        if (DOMPages[spread * 2 - 1]) {
+          DOMPages[spread * 2 - 1].classList.add("visible");
+        }
+
+        // center align (or not) the shown pages
+        if (currentSpread === 0 || currentSpread === totalSpreads) {
+          DOMZine.classList.add("closed");
+        } else {
+          DOMZine.classList.remove("closed");
+        }
+      }
+
       nextButton.addEventListener("click", (e) => {
         e.preventDefault();
-        if (currentPage < 8) {
-          currentPage += 2;
+        if (currentSpread < totalSpreads) {
+          spreadChange(1);
         }
-        onPageChange("next");
       });
 
       prevButton.addEventListener("click", (e) => {
         e.preventDefault();
-
-        if (currentPage > 0) {
-          currentPage -= 2;
+        if (currentSpread > 0) {
+          spreadChange(-1);
         }
-        onPageChange("prev");
       });
 
-      onPageChange("none");
+      showPages(0);
     });
   };
 

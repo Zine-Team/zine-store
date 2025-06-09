@@ -14,6 +14,10 @@
   gap: 64px;
 }
 
+.zine-root {
+  width: 100%;
+}
+
 .navigation-button {
   font-size: 20px;
   line-height: 1;
@@ -29,26 +33,58 @@
 }
 
 .zine-inner {
-  /* border: 1px solid grey;
-    border-radius: 2px;
-    box-shadow: 2px 2px 5px lightgrey; */
-  margin: 0px;
   justify-self: center;
   overflow: visible;
   position: relative;
-
-  height: 550px;
-
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
+  display: flex;
   transition: width 0.5s ease-out;
   transition-delay: 0.25s;
+  aspect-ratio: 5.5 / 4.25;
+  width: 100%;
+  max-width: 780px;
 
-  /* width: 600px; */
-  aspect-ratio: 1.290909091/1;
+  &.closed {
+    justify-content: center;
+  }
 }
 
-.cover-view .zine-inner {
-  /* width: 300px; */
-  /* aspect-ratio: 0.6454545455/1; */
+.zine-spread {
+  grid-row: 1;
+  grid-column: 1;
+  aspect-ratio: 1.290909091/1;
+  max-height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.zine-page {
+  position: relative;
+  display: none;
+  box-shadow: var(--page-shadow), var(--zine-shadow);
+
+  &.visible {
+    display: block;
+  }
+}
+
+.zine-page:nth-child(odd)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 5%;
+  background-image: linear-gradient(to right, black, transparent 75%);
+}
+
+.page-empty {
+  background-color: white;
+}
+
+/* .cover-view .zine-inner {
+  width: 300px;
+  aspect-ratio: 0.6454545455/1;
   transition: width 0.5s ease-out;
   transition-delay: 0s;
   transition-delay: 0s;
@@ -126,11 +162,10 @@
   left: 0px;
 }
 
-/* .zine-outer.cover-view .zine-spread .page-side-right.open {
-    transition-delay: 0s;
+.zine-outer.cover-view .zine-spread .page-side-right.open {
+  transition-delay: 0s;
 }
 
-/* Default state, closed */
 .zine-spread .page-side-left {
   position: absolute;
   left: 0px;
@@ -175,20 +210,10 @@
   transition: width 0.5s ease-out, left 0.5s ease-out;
   transition-delay: 0.5s;
 }
-*/ .prev-button,
+
+.prev-button,
 .next-button {
   align-self: center;
-}
-
-/* @media only screen and (max-width: 1001px) {
-    .previous,
-    .next {
-       display: none;
-    }
-} */
-
-.prev-button {
-  text-align: right;
 }
 
 .zine-inner .right-page {
@@ -199,4 +224,4 @@
   width: 100%;
   height: 100%;
   margin: 0px;
-}
+} */
