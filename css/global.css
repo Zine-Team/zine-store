@@ -40,6 +40,7 @@ main {
   max-width: 1400px;
   padding-inline-start: max(1.5rem, 3vw);
   padding-inline-end: max(1.5rem, 3vw);
+  overflow: hidden;
 }
 
 .navbar {

@@ -73,80 +73,15 @@ function App(view) {
 
     const zineRootDom = document.querySelector("[data-template='zine-pages']");
 
-    const nextButton = document.querySelector("[data-action='next']");
-    const prevButton = document.querySelector("[data-action='prev']");
+    const nextButtonWide = document.querySelector("[data-action='next-wide']");
+    const prevButtonWide = document.querySelector("[data-action='prev-wide']");
+
+    const nextButtonNarrow = document.querySelector("[data-action='next-narrow']");
+    const prevButtonNarrow = document.querySelector("[data-action='prev-narrow']");
 
     const zineTemplate = compile_template("zines/show/zine_pages");
 
-    const numPages = 8;
-    let pages = [
-      {
-        left: {
-          id: "empty",
-          side: "left",
-          empty: true,
-        },
-        right: {
-          id: "cover",
-          pageUrl: `${zine}/pages/page_cover.jpg`,
-          side: "center",
-        },
-      },
-      {
-        left: {
-          id: "1",
-          pageUrl: `${zine}/pages/page_1.jpg`,
-          side: "left",
-        },
-        right: {
-          id: "2",
-          pageUrl: `${zine}/pages/page_2.jpg`,
-          side: "right",
-        },
-      },
-      {
-        left: {
-          id: "3",
-          pageUrl: `${zine}/pages/page_3.jpg`,
-          side: "left",
-        },
-        right: {
-          id: "4",
-          pageUrl: `${zine}/pages/page_4.jpg`,
-          side: "right",
-        },
-      },
-      {
-        left: {
-          id: "5",
-          pageUrl: `${zine}/pages/page_5.jpg`,
-          side: "left",
-        },
-        right: {
-          id: "6",
-          pageUrl: `${zine}/pages/page_6.jpg`,
-          side: "right",
-        },
-      },
-      {
-        left: {
-          id: "empty",
-          side: "left",
-          empty: true,
-        },
-        right: {
-          id: "back",
-          pageUrl: `${zine}/pages/page_back.jpg`,
-          side: "center",
-        },
-      },
-    ];
-
-    pages = [`${zine}/pages/page_cover.jpg`, `${zine}/pages/page_1.jpg`, `${zine}/pages/page_2.jpg`, `${zine}/pages/page_3.jpg`, `${zine}/pages/page_4.jpg`, `${zine}/pages/page_5.jpg`, `${zine}/pages/page_6.jpg`, `${zine}/pages/page_back.jpg`];
-    const zineLength = pages.length;
-
-    let currentPage = 0;
-    let lastPage = 0;
+    const pages = [`${zine}/pages/page_cover.jpg`, `${zine}/pages/page_1.jpg`, `${zine}/pages/page_2.jpg`, `${zine}/pages/page_3.jpg`, `${zine}/pages/page_4.jpg`, `${zine}/pages/page_5.jpg`, `${zine}/pages/page_6.jpg`, `${zine}/pages/page_back.jpg`];
 
     render_template(zineTemplate, zineRootDom, {
       pages: pages,
@@ -159,39 +94,13 @@ function App(view) {
         }
 
         zineRootDom.style.setProperty("--current-spread", currentSpread);
-
-        // for (let pageNum = 0; pageNum <= 8; pageNum++) {
-        //   let id = pageNum;
-
-        //   if (pageNum == 0) {
-        //     id = "cover";
-        //   } else if (pageNum == 8) {
-        //     id = "back";
-        //   } else if (pageNum == 7) {
-        //     continue;
-        //   }
-
-        //   const page = templateRoot.querySelector(`.zine-spread .page-${id}`);
-
-        //   if (currentPage == 0 || currentPage == 8) {
-        //     templateRoot.classList.add("cover-view");
-        //   } else {
-        //     templateRoot.classList.remove("cover-view");
-        //   }
-
-        //   page.classList.remove("open", "prev", "next");
-        //   if (page.classList.contains("page-side-left") && pageNum >= currentPage) {
-        //     page.classList.add("open");
-        //   } else if (page.classList.contains("page-side-right") && pageNum >= currentPage) {
-        //     page.classList.add("open");
-        //   }
-        // }
-
         lastPage = currentPage;
       };
 
       let currentSpread = 0;
-      const totalSpreads = 4;
+      let currentPage = 0;
+      const totalSpreads = pages.length / 2;
+      const totalPages = pages.length;
       const DOMZine = document.querySelector(".zine-inner");
       const DOMPages = document.querySelectorAll(".zine-page");
 
@@ -200,10 +109,10 @@ function App(view) {
         currentSpread = currentSpread + 1 * direction;
 
         // show the current pages
-        showPages(currentSpread);
+        showSpread(currentSpread);
       }
 
-      function showPages(spread) {
+      function showSpread(spread) {
         // hide previous pages
         DOMPages.forEach((page) => {
           page.classList.remove("visible");
@@ -227,21 +136,62 @@ function App(view) {
         }
       }
 
-      nextButton.addEventListener("click", (e) => {
+      function pageChange(direction) {
+        // increment the current page by 1
+        currentPage = currentPage + 1 * direction;
+        console.log(currentPage);
+        // when the second page in a spread is focused and incremented again, increase the spread.
+        if (direction === 1 && (currentPage % 2 === 1 || currentPage === 0)) {
+          currentSpread = currentSpread + 1;
+          showSpread(currentSpread);
+          //   or, when the first page in a spread is focused and decremented again, decrease the spread
+        } else if (direction === -1 && currentPage % 2 === 0) {
+          currentSpread = currentSpread - 1;
+          showSpread(currentSpread);
+        }
+
+        showPages(currentPage);
+      }
+
+      function showPages(page) {
+        if (page % 2 === 0) {
+          DOMZine.classList.add("right");
+        } else {
+          DOMZine.classList.remove("right");
+        }
+      }
+
+      //   wide screens navigation events
+      nextButtonWide.addEventListener("click", (e) => {
         e.preventDefault();
         if (currentSpread < totalSpreads) {
           spreadChange(1);
         }
       });
 
-      prevButton.addEventListener("click", (e) => {
+      prevButtonWide.addEventListener("click", (e) => {
         e.preventDefault();
         if (currentSpread > 0) {
           spreadChange(-1);
         }
       });
 
-      showPages(0);
+      //   narrow screens navigation events
+      nextButtonNarrow.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (currentSpread < totalSpreads) {
+          pageChange(1);
+        }
+      });
+
+      prevButtonNarrow.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (currentSpread > 0) {
+          pageChange(-1);
+        }
+      });
+
+      showSpread(0);
     });
   };
 
