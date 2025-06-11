@@ -1,207 +1,217 @@
 function App(view) {
-    const params = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(window.location.search);
 
-    const select = document.querySelectorAll;
+  const select = document.querySelectorAll;
 
-    var pathPrefix = null;
+  var pathPrefix = null;
 
-    const route = () => {
-        const routes = {
-            "index": {
-                render: render_index,
-                pathPrefix: "."
-            },
-            "zines/show": {
-                render: render_zines_show,
-                pathPrefix: ".."
-            }
-        }
-
-        if (routes[view]) {
-            pathPrefix = routes[view].pathPrefix;
-            routes[view].render.call(routes[view]);
-        }
+  const route = () => {
+    const routes = {
+      index: {
+        render: render_index,
+        pathPrefix: ".",
+      },
+      "zines/show": {
+        render: render_zines_show,
+        pathPrefix: "..",
+      },
     };
 
-    async function get_text_file(path) {
-        const response = await fetch(pathPrefix+path);
-        return await response.text();
+    if (routes[view]) {
+      pathPrefix = routes[view].pathPrefix;
+      routes[view].render.call(routes[view]);
     }
+  };
 
-    async function get_json(path) {
-        const response = await fetch(pathPrefix+path);
-        return await response.json();
-    }
+  async function get_text_file(path) {
+    const response = await fetch(pathPrefix + path);
+    return await response.text();
+  }
 
-    async function compile_template(template_name) {
-        const template_text = await get_text_file(`/templates/${template_name}.hbs`);
-        return Handlebars.compile(template_text)
-    }
+  async function get_json(path) {
+    const response = await fetch(pathPrefix + path);
+    return await response.json();
+  }
 
-    const render_template = (compiled_template, target_node, params, callback) => {
-        return new Promise((resolve, reject) => {
-            compiled_template.then((template) => {
-                const renderedHtml = template(params);
-                target_node.innerHTML = renderedHtml;
+  async function compile_template(template_name) {
+    const template_text = await get_text_file(`/templates/${template_name}.hbs`);
+    return Handlebars.compile(template_text);
+  }
 
-                resolve(target_node);
-            })
+  const render_template = (compiled_template, target_node, params, callback) => {
+    return new Promise((resolve, reject) => {
+      compiled_template.then((template) => {
+        const renderedHtml = template(params);
+        target_node.innerHTML = renderedHtml;
+
+        resolve(target_node);
+      });
+    });
+  };
+
+  const appendTemplate = (template_name, target_node, params) => {
+    compile_template(template_name, params).then((template) => {
+      target_node.innerHTML += template;
+      return target_node;
+    });
+  };
+
+  const render_index = () => {
+    const root = document.querySelector("[data-template='root']");
+
+    const zineListTemplate = compile_template("index");
+
+    get_json("/zines/meta.json").then((meta) => {
+      render_template(zineListTemplate, root, {
+        zines: meta.zines,
+      });
+    });
+  };
+
+  const render_zines_show = () => {
+    const zine = params.get("zine");
+
+    const zineRootDom = document.querySelector("[data-template='zine-pages']");
+
+    const nextButtonWide = document.querySelector("[data-action='next-wide']");
+    const prevButtonWide = document.querySelector("[data-action='prev-wide']");
+
+    const nextButtonNarrow = document.querySelector("[data-action='next-narrow']");
+    const prevButtonNarrow = document.querySelector("[data-action='prev-narrow']");
+
+    const zineTemplate = compile_template("zines/show/zine_pages");
+
+    const pages = [`${zine}/pages/page_cover.jpg`, `${zine}/pages/page_1.jpg`, `${zine}/pages/page_2.jpg`, `${zine}/pages/page_3.jpg`, `${zine}/pages/page_4.jpg`, `${zine}/pages/page_5.jpg`, `${zine}/pages/page_6.jpg`, `${zine}/pages/page_back.jpg`];
+
+    render_template(zineTemplate, zineRootDom, {
+      pages: pages,
+    }).then((templateRoot) => {
+      const onPageChange = (direction) => {
+        if (direction === "next") {
+          currentSpread = currentSpread + 1;
+        } else if (direction === "prev") {
+          currentSpread = currentSpread - 1;
+        }
+
+        zineRootDom.style.setProperty("--current-spread", currentSpread);
+        lastPage = currentPage;
+      };
+
+      let currentSpread = 0;
+      let currentPage = 0;
+      const totalSpreads = pages.length / 2;
+      const totalPages = pages.length;
+      const DOMZine = document.querySelector(".zine-inner");
+      const DOMPages = document.querySelectorAll(".zine-page");
+
+      function spreadChange(direction) {
+        // change the currentSpread number
+        currentSpread = currentSpread + 1 * direction;
+
+        // show the current pages
+        showSpread(currentSpread, direction);
+      }
+
+      function showSpread(spread, direction) {
+        const leftPage = DOMPages[spread * 2 - 1];
+        const rightPage = DOMPages[spread * 2];
+
+        // set data attribute for direction
+        if (direction === -1) {
+          DOMZine.dataset.direction = "decrement";
+        } else {
+          DOMZine.dataset.direction = "increment";
+        }
+
+        // hide previous pages
+        DOMPages.forEach((page) => {
+          page.classList.remove("animatingOut", "animatingIn");
+          if (page.classList.contains("visible")) {
+            page.classList.remove("visible");
+            page.classList.add("animatingOut");
+          }
         });
-    }
 
-    const appendTemplate = (template_name, target_node, params) => {
-        compile_template(template_name, params).then((template) => {
-            target_node.innerHTML += template;
-            return target_node;
-        })
-    }
+        // show right page
+        if (rightPage) {
+          rightPage.classList.add("visible");
+          rightPage.classList.add("animatingIn");
+        }
 
-    const render_index = () => {
-        const root = document.querySelector("[data-template='root']");
+        // show left page
+        if (leftPage) {
+          leftPage.classList.add("visible");
+          leftPage.classList.add("animatingIn");
+        }
 
-        const zineListTemplate = compile_template("index");
+        // center align (or not) the shown pages
+        if (currentSpread === 0) {
+          DOMZine.classList.add("front-cover");
+        } else if (currentSpread === totalSpreads) {
+          DOMZine.classList.add("back-cover");
+        } else {
+          DOMZine.classList.remove("front-cover", "back-cover");
+        }
+      }
 
+      function pageChange(direction) {
+        // increment the current page by 1
+        currentPage = currentPage + 1 * direction;
+        console.log(currentPage);
+        // when the second page in a spread is focused and incremented again, increase the spread.
+        if (direction === 1 && (currentPage % 2 === 1 || currentPage === 0)) {
+          currentSpread = currentSpread + 1;
+          showSpread(currentSpread, direction);
+          //   or, when the first page in a spread is focused and decremented again, decrease the spread
+        } else if (direction === -1 && currentPage % 2 === 0) {
+          currentSpread = currentSpread - 1;
+          showSpread(currentSpread, direction);
+        }
 
-        get_json("/zines/meta.json").then((meta) => {
-            render_template(zineListTemplate, root, {
-                zines: meta.zines
-            });
-        })
-    };
+        showPages(currentPage);
+      }
 
-    const render_zines_show = () => {
-        const zine = params.get("zine");
+      function showPages(page) {
+        if (page % 2 === 0) {
+          DOMZine.classList.add("right");
+        } else {
+          DOMZine.classList.remove("right");
+        }
+      }
 
-        const zineRootDom = document.querySelector("[data-template='zine-pages']");
+      //   wide screens navigation events
+      nextButtonWide.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (currentSpread < totalSpreads) {
+          spreadChange(1);
+        }
+      });
 
-        const nextButton = document.querySelector("[data-action='next']");
-        const prevButton = document.querySelector("[data-action='prev']");
+      prevButtonWide.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (currentSpread > 0) {
+          spreadChange(-1);
+        }
+      });
 
-        const zineTemplate = compile_template("zines/show/zine_pages");
+      //   narrow screens navigation events
+      nextButtonNarrow.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (currentSpread < totalSpreads) {
+          pageChange(1);
+        }
+      });
 
-        const numPages = 8;
-        const pages = [
-            {
-                left: {
-                    id: "empty",
-                    side: "left",
-                    empty: true
-                },
-                right: {
-                    id:"cover",
-                    pageUrl: `${zine}/pages/page_cover.jpg`,
-                    side: "center"
-                }
-            },
-            {
-                left: {
-                    id:"1",
-                    pageUrl: `${zine}/pages/page_1.jpg`,
-                    side: "left"
-                },
-                right: {
-                    id:"2",
-                    pageUrl: `${zine}/pages/page_2.jpg`,
-                    side: "right"
-                }
-            },
-            {
-                left: {
-                    id:"3",
-                    pageUrl: `${zine}/pages/page_3.jpg`,
-                    side: "left"
-                },
-                right: {
-                    id:"4",
-                    pageUrl: `${zine}/pages/page_4.jpg`,
-                    side: "right"
-                }
-            },
-            {
-                left: {
-                    id:"5",
-                    pageUrl: `${zine}/pages/page_5.jpg`,
-                    side: "left"
-                },
-                right: {
-                    id:"6",
-                    pageUrl: `${zine}/pages/page_6.jpg`,
-                    side: "right"
-                }
-            },
-            {
-                left: {
-                    id:"empty",
-                    side: "left",
-                    empty: true
-                },
-                right: 
-                {
-                    id:"back",
-                    pageUrl: `${zine}/pages/page_back.jpg`,
-                    side: "center"
-                },
-            }
-        ]
+      prevButtonNarrow.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (currentSpread > 0) {
+          pageChange(-1);
+        }
+      });
 
-        let currentPage = 0;
-        let lastPage = 0;
+      showSpread(0);
+    });
+  };
 
-        render_template(zineTemplate, zineRootDom, {
-            pages: pages
-        }).then((templateRoot) => {
-            const onPageChange = (direction) => {
-                for(let pageNum = 0; pageNum <= 8; pageNum++) {
-                    let id = pageNum;
-
-                    if (pageNum == 0){
-                        id = "cover";
-                    } else if (pageNum == 8) {
-                        id = "back";
-                    } else if (pageNum == 7) {
-                        continue;
-                    }
-
-                    const page = templateRoot.querySelector(`.zine-page .page-${id}`);
-
-                    if (currentPage == 0 || currentPage == 8) {
-                        templateRoot.classList.add("cover-view");
-                    } else {
-                        templateRoot.classList.remove("cover-view");
-                    }
-                    
-                    page.classList.remove("open", "prev", "next");
-                    if (page.classList.contains("page-side-left") && (pageNum >= currentPage)) {
-                        page.classList.add("open");
-                    } else if (page.classList.contains("page-side-right") && (pageNum >= currentPage)){
-                        page.classList.add("open");
-                    }
-                }
-                
-                lastPage = currentPage;
-            };
-
-            nextButton.addEventListener("click", (e) => {
-                e.preventDefault();
-                if (currentPage < 8) {
-                    currentPage += 2;
-                }
-                onPageChange("next");
-            });
-
-            prevButton.addEventListener("click", (e) => {
-                e.preventDefault();
-
-                if(currentPage > 0) {
-                    currentPage -= 2;
-                }
-                onPageChange("prev");
-            });
-
-            onPageChange("none");
-        });
-    }
-
-    route();
+  route();
 }
-

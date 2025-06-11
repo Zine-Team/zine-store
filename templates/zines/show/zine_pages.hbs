@@ -1,6 +1,6 @@
-<div class="zine-inner">
+{{!-- <div class="zine-inner">
     {{#each pages}}
-        <div class="zine-page">
+        <div class="zine-spread">
             <div class="page-{{this.left.id}} page-side-left page-depth-{{@index}}">
                 {{#if this.left.empty}}
                     <div class="empty-placeholder"></div>
@@ -17,4 +17,12 @@
             </div>
         </div>
     {{/each}}
+</div> --}}
+
+<div class="zine-inner">
+  {{#each pages}}
+    <div class="zine-page">
+      <img class="" src="{{this}}" />
+    </div>
+  {{/each}}
 </div>
