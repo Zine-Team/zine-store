@@ -29,46 +29,158 @@
 }
 
 .zine-outer {
-  padding: 0px;
-  margin: 0px;
-  transition: width 2s;
+  padding-block: 1rem;
 }
 
 .zine-inner {
-  justify-self: center;
-  overflow: visible;
+  --page-flip-duration: 1000ms;
+  --page-flip-easing: cubic-bezier(0, 0, 0.2, 1);
   position: relative;
   display: flex;
-  transition: transform 0.25s cubic-bezier(0, 0, 0.2, 1);
+  justify-self: center;
   aspect-ratio: 5.5 / 4.25;
   width: 100%;
   max-width: 780px;
 
-  &.closed {
-    justify-content: center;
-  }
-}
+  pointer-events: none;
+  perspective: 2000px;
+  transition: transform calc(var(--page-flip-duration) * 0.75) var(--page-flip-easing);
 
-.zine-spread {
-  grid-row: 1;
-  grid-column: 1;
-  aspect-ratio: 1.290909091/1;
-  max-height: 100%;
-  overflow: hidden;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
+
+  /* places all pages on top of one another */
+  & > * {
+    grid-row: 1;
+
+    &:nth-child(even) {
+      grid-column: 1;
+    }
+    &:nth-child(odd) {
+      grid-column: 2;
+    }
+  }
+
+  &.front-cover {
+    transform: translateX(-25%);
+  }
+
+  &.back-cover {
+    transform: translateX(25%);
+  }
 }
 
 .zine-page {
   position: relative;
   display: none;
   box-shadow: var(--page-shadow), var(--zine-shadow);
+  backface-visibility: hidden;
+
+  /* left pages */
+  &:nth-child(even) {
+    transform-origin: right;
+  }
+
+  /* right pages */
+  &:nth-child(odd) {
+    transform-origin: left;
+  }
 
   &.visible {
     display: block;
   }
 }
 
+/* when navigating forward through the zine */
+.zine-inner[data-direction="increment"] .zine-page {
+  /* left pages */
+  &:nth-child(even) {
+    &.animatingIn {
+      animation: leftPageFlipLeft var(--page-flip-duration) var(--page-flip-easing);
+    }
+
+    &.animatingOut {
+      animation: leftPageGetCovered var(--page-flip-duration) var(--page-flip-easing);
+    }
+  }
+  /* right pages */
+  &:nth-child(odd) {
+    &.animatingOut {
+      animation: rightPageFlipLeft var(--page-flip-duration) var(--page-flip-easing);
+    }
+  }
+}
+
+/* when navigating backward through the zine */
+.zine-inner[data-direction="decrement"] .zine-page {
+  /* left pages */
+  &:nth-child(even) {
+    &.animatingOut {
+      animation: leftPageFlipRight var(--page-flip-duration) var(--page-flip-easing);
+    }
+  }
+
+  /* right pages */
+  &:nth-child(odd) {
+    &.animatingIn {
+      animation: rightPageFlipRight var(--page-flip-duration) var(--page-flip-easing);
+    }
+
+    &.animatingOut {
+      animation: rightPageGetCovered var(--page-flip-duration) var(--page-flip-easing);
+    }
+  }
+}
+
+@keyframes rightPageFlipLeft {
+  from {
+    display: block;
+    z-index: 1;
+  }
+  to {
+    transform: rotateY(-180deg);
+  }
+}
+
+@keyframes rightPageFlipRight {
+  from {
+    transform: rotateY(-180deg);
+  }
+  to {
+    display: block;
+    z-index: 1;
+  }
+}
+
+@keyframes rightPageGetCovered {
+  from {
+    display: block;
+  }
+}
+
+@keyframes leftPageFlipLeft {
+  from {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes leftPageFlipRight {
+  from {
+    display: block;
+    z-index: 1;
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes leftPageGetCovered {
+  from {
+    display: block;
+  }
+}
+
+/* gradient overlay on right pages */
 .zine-page:nth-child(odd)::after {
   content: "";
   position: absolute;
@@ -113,14 +225,17 @@
     width: var(--narrow-width);
     justify-self: start;
 
-    &.right:not(.closed) {
+    &.right:not(.front-cover) {
       /* justify-self: end; */
       transform: translateX(calc(-1 * var(--narrow-width) / 4));
     }
 
-    &.closed {
-      justify-self: center;
-      justify-content: center;
+    &.front-cover {
+      transform: translateX(calc((-1 * var(--narrow-width) / 4) - (200% - var(--narrow-width)) / 8));
+    }
+
+    &.back-cover {
+      transform: translateX(calc((200% - var(--narrow-width)) / 8));
     }
   }
 }

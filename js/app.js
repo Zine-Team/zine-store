@@ -109,30 +109,48 @@ function App(view) {
         currentSpread = currentSpread + 1 * direction;
 
         // show the current pages
-        showSpread(currentSpread);
+        showSpread(currentSpread, direction);
       }
 
-      function showSpread(spread) {
+      function showSpread(spread, direction) {
+        const leftPage = DOMPages[spread * 2 - 1];
+        const rightPage = DOMPages[spread * 2];
+
+        // set data attribute for direction
+        if (direction === -1) {
+          DOMZine.dataset.direction = "decrement";
+        } else {
+          DOMZine.dataset.direction = "increment";
+        }
+
         // hide previous pages
         DOMPages.forEach((page) => {
-          page.classList.remove("visible");
+          page.classList.remove("animatingOut", "animatingIn");
+          if (page.classList.contains("visible")) {
+            page.classList.remove("visible");
+            page.classList.add("animatingOut");
+          }
         });
 
         // show right page
-        if (DOMPages[spread * 2]) {
-          DOMPages[spread * 2].classList.add("visible");
+        if (rightPage) {
+          rightPage.classList.add("visible");
+          rightPage.classList.add("animatingIn");
         }
 
         // show left page
-        if (DOMPages[spread * 2 - 1]) {
-          DOMPages[spread * 2 - 1].classList.add("visible");
+        if (leftPage) {
+          leftPage.classList.add("visible");
+          leftPage.classList.add("animatingIn");
         }
 
         // center align (or not) the shown pages
-        if (currentSpread === 0 || currentSpread === totalSpreads) {
-          DOMZine.classList.add("closed");
+        if (currentSpread === 0) {
+          DOMZine.classList.add("front-cover");
+        } else if (currentSpread === totalSpreads) {
+          DOMZine.classList.add("back-cover");
         } else {
-          DOMZine.classList.remove("closed");
+          DOMZine.classList.remove("front-cover", "back-cover");
         }
       }
 
@@ -143,11 +161,11 @@ function App(view) {
         // when the second page in a spread is focused and incremented again, increase the spread.
         if (direction === 1 && (currentPage % 2 === 1 || currentPage === 0)) {
           currentSpread = currentSpread + 1;
-          showSpread(currentSpread);
+          showSpread(currentSpread, direction);
           //   or, when the first page in a spread is focused and decremented again, decrease the spread
         } else if (direction === -1 && currentPage % 2 === 0) {
           currentSpread = currentSpread - 1;
-          showSpread(currentSpread);
+          showSpread(currentSpread, direction);
         }
 
         showPages(currentPage);
