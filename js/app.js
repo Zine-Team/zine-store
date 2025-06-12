@@ -71,7 +71,7 @@ function App(view) {
   const render_zines_show = () => {
     const zine = params.get("zine");
 
-    const zineRootDom = document.querySelector("[data-template='zine-pages']");
+    const DOMZineOuter = document.querySelector("[data-template='zine-pages']");
 
     const nextButtonWide = document.querySelector("[data-action='next-wide']");
     const prevButtonWide = document.querySelector("[data-action='prev-wide']");
@@ -83,20 +83,9 @@ function App(view) {
 
     const pages = [`${zine}/pages/page_cover.jpg`, `${zine}/pages/page_1.jpg`, `${zine}/pages/page_2.jpg`, `${zine}/pages/page_3.jpg`, `${zine}/pages/page_4.jpg`, `${zine}/pages/page_5.jpg`, `${zine}/pages/page_6.jpg`, `${zine}/pages/page_back.jpg`];
 
-    render_template(zineTemplate, zineRootDom, {
+    render_template(zineTemplate, DOMZineOuter, {
       pages: pages,
     }).then((templateRoot) => {
-      const onPageChange = (direction) => {
-        if (direction === "next") {
-          currentSpread = currentSpread + 1;
-        } else if (direction === "prev") {
-          currentSpread = currentSpread - 1;
-        }
-
-        zineRootDom.style.setProperty("--current-spread", currentSpread);
-        lastPage = currentPage;
-      };
-
       let currentSpread = 0;
       let currentPage = 0;
       const totalSpreads = pages.length / 2;
@@ -104,7 +93,7 @@ function App(view) {
       const DOMZine = document.querySelector(".zine-inner");
       const DOMPages = document.querySelectorAll(".zine-page");
 
-      function spreadChange(direction) {
+      function changeSpread(direction) {
         // change the currentSpread number
         currentSpread = currentSpread + 1 * direction;
 
@@ -154,7 +143,7 @@ function App(view) {
         }
       }
 
-      function pageChange(direction) {
+      function changePage(direction) {
         // increment the current page by 1
         currentPage = currentPage + 1 * direction;
         console.log(currentPage);
@@ -183,14 +172,14 @@ function App(view) {
       nextButtonWide.addEventListener("click", (e) => {
         e.preventDefault();
         if (currentSpread < totalSpreads) {
-          spreadChange(1);
+          changeSpread(1);
         }
       });
 
       prevButtonWide.addEventListener("click", (e) => {
         e.preventDefault();
         if (currentSpread > 0) {
-          spreadChange(-1);
+          changeSpread(-1);
         }
       });
 
@@ -198,19 +187,30 @@ function App(view) {
       nextButtonNarrow.addEventListener("click", (e) => {
         e.preventDefault();
         if (currentSpread < totalSpreads) {
-          pageChange(1);
+          changePage(1);
         }
       });
 
       prevButtonNarrow.addEventListener("click", (e) => {
         e.preventDefault();
         if (currentSpread > 0) {
-          pageChange(-1);
+          changePage(-1);
         }
       });
 
       showSpread(0);
     });
+
+    const mq = window.matchMedia("(prefers-reduced-motion: no-preference)");
+
+    if (mq.matches) {
+      document.addEventListener("mousemove", function (event) {
+        const aimX = (event.pageX - window.innerWidth / 2) / 100;
+        const aimY = (event.pageY - window.innerHeight / 2) / -100;
+        DOMZineOuter.style.setProperty("--aimX", `${aimX}`);
+        DOMZineOuter.style.setProperty("--aimY", `${aimY}`);
+      });
+    }
   };
 
   route();
