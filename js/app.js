@@ -206,9 +206,9 @@ function App(view) {
     if (mq.matches) {
       document.addEventListener("mousemove", function (event) {
         const aimX = (event.pageX - window.innerWidth / 2) / 100;
-        const aimY = (event.pageY - window.innerWidth / 2) / -100;
-        DOMZineOuter.style.setProperty("--aimX", `${aimX}deg`);
-        DOMZineOuter.style.setProperty("--aimY", `${aimY}deg`);
+        const aimY = (event.pageY - window.innerHeight / 2) / -100;
+        DOMZineOuter.style.setProperty("--aimX", `${aimX}`);
+        DOMZineOuter.style.setProperty("--aimY", `${aimY}`);
       });
     }
   };
