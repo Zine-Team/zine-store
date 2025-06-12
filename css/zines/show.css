@@ -1,13 +1,3 @@
-.download-footer {
-  padding-block: 2rem;
-  display: flex;
-  justify-content: center;
-  position: sticky;
-  bottom: 0;
-  z-index: 1;
-  background: var(--color-site-background);
-}
-
 .zine-container {
   display: flex;
   flex-direction: column;
@@ -44,44 +34,46 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  perspective: 2000px;
+  perspective: var(--perspective);
+  --perspective: 2000px;
   --page-flip-duration: 1000ms;
   --page-flip-easing: cubic-bezier(0, 0, 0.2, 1);
   --aimY: 0;
   --aimX: 0;
 }
 
+/* the element with the perspective effect */
 .zine-outer {
   flex-grow: 1;
   display: flex;
   align-items: center;
   transform: rotateX(calc(1deg * var(--aimY))) rotateY(calc(1deg * var(--aimX)));
-  /* transition: transform calc(var(--page-flip-duration) * 0.25) var(--page-flip-easing); */
 }
 
-.zine-shadow {
-  background-color: black;
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-}
-
+/* the actual "zine". The parent element of all the pages */
 .zine-inner {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-self: center;
   aspect-ratio: 5.5 / 4.25;
   width: 100%;
   max-width: 780px;
 
   pointer-events: none;
-  perspective: 2000px;
+  perspective: var(--perspective);
   transition: transform calc(var(--page-flip-duration) * 0.75) var(--page-flip-easing);
 
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* these lines position the zine centered when it's closed */
+  &.front-cover {
+    transform: translateX(-25%);
+  }
 
-  /* places all pages on top of one another */
+  &.back-cover {
+    transform: translateX(25%);
+  }
+
+  /* these lines place all pages on top of one another */
   & > * {
     grid-row: 1;
 
@@ -92,17 +84,9 @@
       grid-column: 2;
     }
   }
-
-  &.front-cover {
-    transform: translateX(-25%);
-  }
-
-  &.back-cover {
-    transform: translateX(25%);
-  }
 }
 
-/* perspective shadow */
+/* this is zine shadow that moves with the perspective effect */
 .zine-inner::before {
   content: "";
   position: absolute;
@@ -112,24 +96,24 @@
   background: black;
   filter: blur(20px);
   opacity: 0.2;
+  --duration-multiplier: 0.3;
   --rotateX: rotateX(calc(2deg * var(--aimY)));
   --rotateY: rotateY(calc(2deg * var(--aimX)));
   --scaleX: scaleX(calc((0.5% * max(var(--aimX), -1 * var(--aimX)) + 100%)));
   --scaleY: scaleY(calc((0.5% * max(var(--aimY), -1 * var(--aimY)) + 100%)));
-  --duration-multiplier: 0.3;
   will-change: width;
   transform: var(--rotateX) var(--rotateY) var(--scaleX) var(--scaleY);
   transition: width calc(var(--page-flip-duration) * var(--duration-multiplier)) var(--page-flip-easing);
 }
 
-/* shadow delay when going from the front cover to the first spread */
+/* shadow delay when aninmating from the front cover to the first spread */
 .zine-inner:not(.back-cover)[data-direction="increment"]::before {
   right: 0;
   --duration-multiplier: 0.75;
   transition-delay: calc(var(--page-flip-duration) * 0.175);
 }
 
-/* shadow delay when going from the back cover to the final spread */
+/* shadow delay when aninmating from the back cover to the final spread */
 .zine-inner:not(.front-cover)[data-direction="decrement"]::before {
   --duration-multiplier: 0.75;
   transition-delay: calc(var(--page-flip-duration) * 0.175);
@@ -168,7 +152,7 @@
   }
 }
 
-/* when navigating forward through the zine */
+/* when navigating forward through the zine... */
 .zine-inner[data-direction="increment"] .zine-page {
   /* left pages */
   &:nth-child(even) {
@@ -180,6 +164,7 @@
       animation: leftPageGetCovered var(--page-flip-duration) var(--page-flip-easing);
     }
   }
+
   /* right pages */
   &:nth-child(odd) {
     &.animatingOut {
@@ -188,7 +173,7 @@
   }
 }
 
-/* when navigating backward through the zine */
+/* when navigating backward through the zine... */
 .zine-inner[data-direction="decrement"] .zine-page {
   /* left pages */
   &:nth-child(even) {
@@ -209,54 +194,6 @@
   }
 }
 
-@keyframes rightPageFlipLeft {
-  from {
-    display: block;
-    z-index: 1;
-  }
-  to {
-    transform: rotateY(-180deg);
-  }
-}
-
-@keyframes rightPageFlipRight {
-  from {
-    transform: rotateY(-180deg);
-  }
-  to {
-    display: block;
-    z-index: 1;
-  }
-}
-
-@keyframes rightPageGetCovered {
-  from {
-    display: block;
-  }
-}
-
-@keyframes leftPageFlipLeft {
-  from {
-    transform: rotateY(180deg);
-  }
-}
-
-@keyframes leftPageFlipRight {
-  from {
-    display: block;
-    z-index: 1;
-  }
-  to {
-    transform: rotateY(180deg);
-  }
-}
-
-@keyframes leftPageGetCovered {
-  from {
-    display: block;
-  }
-}
-
 /* gradient overlay on right pages */
 .zine-page:nth-child(odd)::after {
   content: "";
@@ -266,6 +203,7 @@
   background-image: linear-gradient(to right, black, transparent 75%);
 }
 
+/* middle screen size */
 @media screen and (max-width: 950px) {
   .zine-navigator {
     gap: 1rem;
@@ -287,6 +225,7 @@
   }
 }
 
+/* narrow screen size */
 @media screen and (max-width: 550px) {
   .navigation-button[data-action="prev-wide"],
   .navigation-button[data-action="next-wide"] {
@@ -320,5 +259,54 @@
     &.back-cover {
       transform: translateX(calc((200% - var(--narrow-width)) / 8));
     }
+  }
+}
+
+/* keyframes */
+@keyframes rightPageFlipLeft {
+  from {
+    display: block;
+    z-index: 2;
+  }
+  to {
+    transform: rotateY(-180deg);
+  }
+}
+
+@keyframes rightPageFlipRight {
+  from {
+    transform: rotateY(-180deg);
+  }
+  to {
+    display: block;
+    z-index: 2;
+  }
+}
+
+@keyframes rightPageGetCovered {
+  from {
+    display: block;
+  }
+}
+
+@keyframes leftPageFlipLeft {
+  from {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes leftPageFlipRight {
+  from {
+    display: block;
+    z-index: 2;
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes leftPageGetCovered {
+  from {
+    display: block;
   }
 }
