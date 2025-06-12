@@ -1,17 +1,29 @@
+.download-footer {
+  padding-block: 2rem;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  background: var(--color-site-background);
+}
+
 .zine-container {
   display: flex;
   flex-direction: column;
-  gap: 56px;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  gap: 1rem;
   flex-grow: 1;
 }
 
 .zine-navigator {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: 4rem;
+  flex-grow: 1;
+  padding-block: 3rem;
 }
 
 .navigation-button {
@@ -28,13 +40,34 @@
   }
 }
 
+.zine-root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  perspective: 2000px;
+  --page-flip-duration: 1000ms;
+  --page-flip-easing: cubic-bezier(0, 0, 0.2, 1);
+  --aimY: 0;
+  --aimX: 0;
+}
+
 .zine-outer {
-  padding-block: 1rem;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  transform: rotateX(var(--aimY)) rotateY(var(--aimX));
+  /* transition: transform calc(var(--page-flip-duration) * 0.25) var(--page-flip-easing); */
+}
+
+.zine-shadow {
+  background-color: black;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
 }
 
 .zine-inner {
-  --page-flip-duration: 1000ms;
-  --page-flip-easing: cubic-bezier(0, 0, 0.2, 1);
   position: relative;
   display: flex;
   justify-self: center;
@@ -68,6 +101,48 @@
   &.back-cover {
     transform: translateX(25%);
   }
+}
+
+.zine-inner::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background: black;
+  filter: blur(20px);
+  opacity: 0.2;
+  --rotateX: rotateX(var(--aimY));
+  --rotateY: rotateY(var(--aimX));
+  --duration-multiplier: 0.4;
+  will-change: width;
+  transform: var(--rotateX) var(--rotateY);
+  transition: width calc(var(--page-flip-duration) * var(--duration-multiplier)) var(--page-flip-easing);
+}
+
+/* shadow delay when going from the front cover to the first spread */
+.zine-inner:not(.back-cover)[data-direction="increment"]::before {
+  right: 0;
+  --duration-multiplier: 0.75;
+  transition-delay: calc(var(--page-flip-duration) * 0.175);
+}
+
+/* shadow delay when going from the back cover to the final spread */
+.zine-inner:not(.front-cover)[data-direction="decrement"]::before {
+  --duration-multiplier: 0.75;
+  transition-delay: calc(var(--page-flip-duration) * 0.175);
+}
+
+/* shadow positioning when on the front cover */
+.zine-inner.front-cover::before {
+  width: 50%;
+  right: 0;
+}
+
+/* shadow positioning when on the back cover */
+.zine-inner.back-cover::before {
+  width: 50%;
+  left: 0;
 }
 
 .zine-page {
@@ -220,13 +295,18 @@
     display: block;
   }
 
+  .zine-outer {
+    transform: none;
+  }
+
   .zine-inner {
     --narrow-width: 185%;
     width: var(--narrow-width);
     justify-self: start;
+    flex-shrink: 0;
+    transform: none;
 
     &.right:not(.front-cover) {
-      /* justify-self: end; */
       transform: translateX(calc(-1 * var(--narrow-width) / 4));
     }
 
