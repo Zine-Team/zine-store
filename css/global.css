@@ -51,6 +51,9 @@ main {
   z-index: 1;
   background: var(--color-site-background);
 
+  & > :first-child {
+    justify-self: start;
+  }
   & > :last-child {
     justify-self: end;
   }
@@ -98,4 +101,14 @@ h2 {
 
   /* colors */
   --color-site-background: gainsboro;
+}
+
+@media screen and (max-width: 950px) {
+  .navbar {
+    grid-template-columns: 1fr 1fr;
+
+    & > :nth-child(2) {
+      display: none;
+    }
+  }
 }
