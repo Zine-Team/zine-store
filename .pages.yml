@@ -4,6 +4,7 @@ content:
     label: Site data
     type: file
     path: _data/global.json
+    fields:
       - name: siteDomain
         label: Site domain
         type: string
