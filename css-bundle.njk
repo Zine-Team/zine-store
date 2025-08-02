@@ -1,0 +1,11 @@
+---
+permalink: bundle.css
+---
+
+{% set styles %}
+{% include "styles/global.css" %}
+{% include "styles/index.css" %}
+{% include "styles/zine.css" %}
+{% endset %}
+
+{{styles | safe}}

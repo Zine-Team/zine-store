@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ pageTitle }}</title>
+        <meta property="og:title" content="{{ pageTitle }}"/>
+        <meta name="description" content="{{ pageDescription }}">
+        <meta property="og:description" content="{{ pageDescription }}"/>
+        <meta property="og:url" content="{{ global.siteDomain }}{{ page.url }}"/>
+        <meta property="og:image" content="{{ global.siteDomain }}{% if metadata.seoImage %}{{ metadata.seoImage }}{% else %}{{ global.siteImage }}{% endif %}"/>
+        <meta property="og:type" content="{% if ogType %}{{ ogType }}{% else %}website{% endif %}"/>
+        <meta name="generator" content="{{ eleventy.generator }}">
+        <link rel="icon" type="image/x-icon" href="{{ global.favicon }}">
+        <link rel="stylesheet" href="/bundle.css">
+    </head>
+    <body>
+        {{ content | safe }}
+    </body>
+</html>
