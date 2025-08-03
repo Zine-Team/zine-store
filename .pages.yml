@@ -34,22 +34,4 @@ content:
         type: image
         options:
           multiple: true
-      - name: metadata
-        component: metadata
-components:
-  metadata:
-    label: SEO metadata
-    type: object
-    fields:
-      - name: seoTitle
-        label: SEO page title
-        type: string
-        description: The title of the page that shows when you share the link
-      - name: seoDescription
-        label: SEO description
-        type: string
-        description: The description of the page used for SEO purposes
-      - name: seoImage
-        label: Share image
-        type: image
-        description: The image that shows when you share the link. Ideally should be 1200 x 630 pixels.
+          media: images/uploads/{primary}
