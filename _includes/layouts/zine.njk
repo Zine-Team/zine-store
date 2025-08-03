@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+<section class="container zine-container">
+    <div class="zine-navigator">
+        <button class="navigation-button" data-action="prev-wide">&lt</button>
+        <button class="navigation-button" data-action="prev-narrow">&lt</button>
+        <div class="zine-root">
+            <!-- where the zine template is injected -->
+            <div class="zine-outer" data-template="zine-pages">
+                <div class="zine-inner front-cover">
+                    {% for page in pages %}
+                        <div class="zine-page">
+                            <img src="{{ page }}" alt="">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <button class="navigation-button" data-action="next-wide">&gt</button>
+        <button class="navigation-button" data-action="next-narrow">&gt</button>
+    </div>
+</section>
+
+{# <a download href="{{ pdf }}">Download</a> #}
+<script defer src="/bundle.js" type="module"></script>

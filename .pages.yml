@@ -1,0 +1,41 @@
+media: images/uploads
+content:
+  - name: global
+    label: Site data
+    type: file
+    path: _data/global.json
+    fields:
+      - name: siteDomain
+        label: Site domain
+        type: string
+        description: Should be formatted like "https://domain.com". Be sure to leave off the trailing "/"
+      - name: siteTitle
+        label: Site title
+        type: string
+      - name: siteDescription
+        label: Site description
+        description: The fallback page description that shows when you share a link to a page without its own page description set.
+      - name: siteImage
+        label: Site share image
+        type: image
+        description: The fallback image that shows when you share a link to a page without its own share image set. Ideally should be 1200 x 630 pixels.
+  - name: zine
+    label: Zines
+    type: collection
+    path: zine
+    view:
+      fields: [title]
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: pages
+        label: Pages
+        type: image
+        options:
+          multiple: true
+      - name: pdf
+        label: PDF
+        type: file
+        options:
+          extensions: [pdf]

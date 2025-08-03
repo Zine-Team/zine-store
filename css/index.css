@@ -30,6 +30,13 @@
   }
 }
 
+@media screen and (max-width: 950px) {
+  .zine-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
 .zine-list {
   display: flex;
   flex-direction: column;
