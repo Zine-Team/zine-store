@@ -30,10 +30,18 @@
     </head>
     <body>
         <nav class="container navbar">
-            <span></span>
-            <span>/index/</span>
             <span>
-                <a href="/">Submit a zine</a>
+                {% if page.url !== "/" %}
+                    <a href="/">Home</a>
+                {% endif %}
+            </span>
+            <span>{{page.outputPath}}</span>
+            <span>
+                {% if page.url === "/" %}
+                    {# <a href="/">Submit a zine</a> #}
+                {% else %}
+                    <a href="{{ pdf }}" download>Download zine</a>
+                {% endif %}
             </span>
         </nav>
         {{ content | safe }}
