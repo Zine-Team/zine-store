@@ -1,5 +1,6 @@
 ---
 title: How the Green Energy Transition is Relying on Forced Labor in the Congo
+date: 2024-08-01
 pages:
   - /images/uploads/congo/page_cover.jpg
   - /images/uploads/congo/page_1.jpg

@@ -9,7 +9,7 @@ layout: default
     <section class="container titled-section">
         <h2>Most recent zines</h2>
         <div class="zine-grid">
-            {% for zine in collections.zine %}
+            {% for zine in collections.zine | reverse %}
                 <a href="{{ zine.url }}">
                     <img src="{{ zine.data.pages[0] }}" alt="{{ zine.data.title }}"></a>
             {% endfor %}
