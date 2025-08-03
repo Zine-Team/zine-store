@@ -34,4 +34,4 @@ content:
         type: image
         options:
           multiple: true
-          media: images/uploads/{primary}
+          media: images/uploads/
