@@ -1,5 +1,0 @@
----
-title: Racial Capitalism
----
-
-Content!
