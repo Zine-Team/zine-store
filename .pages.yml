@@ -34,4 +34,3 @@ content:
         type: image
         options:
           multiple: true
-          media: images/uploads/
