@@ -34,3 +34,8 @@ content:
         type: image
         options:
           multiple: true
+      - name: pdf
+        label: PDF
+        type: file
+        options:
+          extensions: [pdf]
