@@ -9,7 +9,7 @@ layout: default
         <div class="zine-root">
             <!-- where the zine template is injected -->
             <div class="zine-outer" data-template="zine-pages">
-                <div class="zine-inner">
+                <div class="zine-inner front-cover">
                     {% for page in pages %}
                         <div class="zine-page">
                             <img src="{{ page }}" alt="">
@@ -22,3 +22,5 @@ layout: default
         <button class="navigation-button" data-action="next-narrow">&gt</button>
     </div>
 </section>
+
+<script defer src="/bundle.js" type="module"></script>

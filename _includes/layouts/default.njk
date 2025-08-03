@@ -1,3 +1,16 @@
+{% set pageTitle %}
+{%- if metatdata.seoTitle -%}
+    {{ metadata.seoTitle }} –{% elseif title %}{{ title }} –
+{% endif %}
+{{- global.siteTitle -}}
+{% endset %}
+
+{% set pageDescription %}
+{%- if metadata.seoDescription -%}{{- metadata.seoDescription -}}
+{% else %}{{- global.siteDescription -}}
+{%- endif -%}
+{% endset %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,10 +26,16 @@
         <meta name="generator" content="{{ eleventy.generator }}">
         <link rel="icon" type="image/x-icon" href="{{ global.favicon }}">
         <link rel="stylesheet" href="/bundle.css">
-        <script defer src="/bundle.js" type="module"></script>
 
     </head>
     <body>
+        <nav class="container navbar">
+            <span></span>
+            <span>/index/</span>
+            <span>
+                <a href="/">Submit a zine</a>
+            </span>
+        </nav>
         {{ content | safe }}
     </body>
 </html>

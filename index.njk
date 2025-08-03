@@ -1,31 +1,18 @@
 ---
 layout: default
 ---
-
-<nav class="container navbar">
-    <!-- todo: make component? Used on multiple pages -->
-    <span></span>
-    <span>/index/</span>
-    <span>
-        <a href="/">Submit a zine</a>
-    </span>
-</nav>
 <main>
     <section class="container hero-section">
-        <h1>Zine Store (Free)</h1>
-        <p class="body-xl">A free store of zines for viewing and download</p>
+        <h1>{{ global.siteTitle }}</h1>
+        <p class="body-xl">{{ global.siteDescription }}</p>
     </section>
     <section class="container titled-section">
         <h2>Most recent zines</h2>
         <div class="zine-grid">
             {% for zine in collections.zine %}
-                <a href="{{ zine.url }}">{{ zine.data.title }}</a>
+                <a href="{{ zine.url }}">
+                    <img src="{{ zine.data.pages[0] }}" alt="{{ zine.data.title }}"></a>
             {% endfor %}
-            {# {{#each zines}}
-                <a class="zine" href="./zines/show.html?zine={{this.id}}">
-                    <img src="./zines/{{this.id}}/pages/page_cover.jpg"></img>
-                </a>
-            {{/each}} #}
         </div>
     </section>
     <section class="container titled-section">
