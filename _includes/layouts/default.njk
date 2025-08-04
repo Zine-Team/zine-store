@@ -35,7 +35,7 @@
                     <a href="/">Home</a>
                 {% endif %}
             </span>
-            <span>{{page.outputPath}}</span>
+            <span>{{page.outputPath | replace("./_site", "") }}</span>
             <span>
                 {% if page.url === "/" %}
                     {# <a href="/">Submit a zine</a> #}

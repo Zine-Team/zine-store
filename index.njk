@@ -18,7 +18,7 @@ layout: default
     <section class="container titled-section">
         <h2>All zines (A-Z)</h2>
         <ul class="zine-list">
-            {% for zine in collections.zine | reverse %}
+            {% for zine in collections.zine | sort(false, false, "data.title") %}
                 <a class="body-lg" href="{{ zine.url }}">{{ zine.data.title }}</a>
             {% endfor %}
         </ul>
