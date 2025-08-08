@@ -1,5 +1,3 @@
-const DOMZineOuter = document.querySelector("[data-template='zine-pages']");
-
 const nextButtonWide = document.querySelector("[data-action='next-wide']");
 const prevButtonWide = document.querySelector("[data-action='prev-wide']");
 
@@ -8,11 +6,11 @@ const prevButtonNarrow = document.querySelector("[data-action='prev-narrow']");
 
 let currentSpread = 0;
 let currentPage = 0;
-const pages = document.querySelectorAll(".zine-page");
-const totalSpreads = pages.length / 2;
-const totalPages = pages.length;
-const DOMZine = document.querySelector(".zine-inner");
-const DOMPages = document.querySelectorAll(".zine-page");
+const DOMZineOuter = document.querySelector("[data-zine-part='outer']");
+const DOMZine = document.querySelector("[data-zine-part='spread']");
+const DOMPages = document.querySelectorAll("[data-zine-part='page']");
+const totalSpreads = DOMPages.length / 2;
+const totalPages = DOMPages.length;
 
 function changeSpread(direction) {
   // change the currentSpread number

@@ -10,5 +10,5 @@ pages:
   - /images/uploads/racial-capitalism/racial-capitalism_05.jpg
   - /images/uploads/racial-capitalism/racial-capitalism_06.jpg
   - /images/uploads/racial-capitalism/racial-capitalism_BC.jpg
-pdf: /images/uploads/racial-capitlism.pdf
+pdf: /images/uploads/racial-capitalism/racial-capitalism.pdf
 ---

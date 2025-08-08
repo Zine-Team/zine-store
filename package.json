@@ -4,15 +4,20 @@
   "description": "It's a way to store zines, get it?",
   "main": "index.js",
   "scripts": {
-    "start": "eleventy --serve",
-    "build": "eleventy",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm-run-all -p dev:*",
+    "build": "run-s build:*",
+    "dev:11ty": "eleventy --serve",
+    "dev:css": "npx @tailwindcss/cli -i ./index.css -o ./_site/index.css --watch",
+    "build:11ty": "eleventy",
+    "build:css": "npx @tailwindcss/cli -i ./index.css -o ./_site/index.css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@11ty/eleventy": "^3.1.2"
+    "@11ty/eleventy": "^3.1.2",
+    "@tailwindcss/cli": "^4.1.11",
+    "tailwindcss": "^4.1.11"
   }
 }

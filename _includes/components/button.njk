@@ -1,0 +1,36 @@
+{% set typeClasses = {
+    default: "text-xl leading-none py-5 px-6 bg-white-smoke hover:bg-ghost-white border border-dark-grey font-bold shrink-0 rounded-xs shadow-2xs",
+    link: "text-lg text-link visited:text-link-visited underline hover:no-underline"
+}%}
+
+{%- macro button(
+    label=None,
+    href=None,
+    class,
+    newTab,
+    disabled=false,
+    attrs= {},
+    type="default"
+) -%}
+
+    <{% if href %}a href="{{href}}"{% else %}button{% endif %}
+
+        {% if newTab %} target="_blank" {% endif %}
+        {% if disabled %}disabled{% endif %}
+
+        class="disabled:opacity-60 {{ class }} {% if page.url == href + '/' %} selected {% endif %} {% if disabled %}pointer-events-none{% endif %} {{ typeClasses[type] }}"
+
+        {% for key, value in attrs %}
+            {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
+        {% endfor %}
+    >
+
+        {%- if label -%}
+            {{label}}
+        {%- else -%}
+            {{ caller() | safe }}
+        {%- endif -%}
+
+    </{% if href %}a{% else %}button{% endif %}>
+
+{%- endmacro -%}

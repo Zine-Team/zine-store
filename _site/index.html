@@ -2,6 +2,8 @@
 
 
 
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,50 +18,91 @@
         <meta property="og:type" content="website"/>
         <meta name="generator" content="Eleventy v3.1.2">
         <link rel="icon" type="image/x-icon" href="">
-        <link rel="stylesheet" href="/bundle.css">
+        
+        <link rel="stylesheet" href="/index.css">
 
     </head>
-    <body>
-        <nav class="container navbar">
-            <span>
+    <body class="font-sans text-base antialiased h-dvh overflow-auto flex flex-col items-center bg-gainsboro">
+        <nav class="zine-store-container shrink-0 grid grid-cols-2 lg:grid-cols-[1fr_auto_1fr] py-4 md:py-8 sticky top-0 z-10 bg-gainsboro">
+            <span class="justify-self-start">
                 
             </span>
-            <span>/index.html</span>
-            <span>
+            <span class="text-lg hidden lg:block">/index.html</span>
+            <span class="justify-self-end">
                 
-                    
+                    <a href="/submit"
+
+        
+        
+
+        class="disabled:opacity-60    text-lg text-link visited:text-link-visited underline hover:no-underline"
+
+        
+    >Submit a zine</a>
                 
             </span>
         </nav>
-        <main>
-    <section class="container hero-section">
-        <h1>Zine Store (Free)</h1>
-        <p class="body-xl">A free store of zines for viewing and download</p>
+        
+
+<main class="flex flex-col items-center gap-20 pb-20 grow w-full">
+    <section class="zine-store-container flex flex-col gap-4">
+        <h1 class="text-3xl">Zine Store (Free)</h1>
+        <p class="text-xl">A free store of zines for viewing and download</p>
     </section>
-    <section class="container titled-section">
-        <h2>Most recent zines</h2>
-        <div class="zine-grid">
+    <section class="zine-store-container flex flex-col gap-6">
+        <h2 class="text-2xl">Most recent zines</h2>
+        <div class="zine-grid grow-1 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-8">
             
-                <a href="/zine/racial-capitalism/">
-                    <img src="/images/uploads/racial-capitalism/racial-capitalism_FC.jpg" alt="Understanding Racial Capitalism (Why It’s So Hard to “Eat the Rich”)"></a>
+                <a class="shadow-zine" href="/zine/racial-capitalism/">
+                    <img class="w-full shadow-page" src="/images/uploads/racial-capitalism/racial-capitalism_FC.jpg" alt="Understanding Racial Capitalism (Why It’s So Hard to “Eat the Rich”)"></a>
             
-                <a href="/zine/abductions/">
-                    <img src="/images/uploads/abductions/abductions-page_cover.jpg" alt="Why the U.S. Government Keeps Disappearing its International Students"></a>
+                <a class="shadow-zine" href="/zine/abductions/">
+                    <img class="w-full shadow-page" src="/images/uploads/abductions/abductions-page_cover.jpg" alt="Why the U.S. Government Keeps Disappearing its International Students"></a>
             
-                <a href="/zine/congo/">
-                    <img src="/images/uploads/congo/page_cover.jpg" alt="How the Green Energy Transition is Relying on Forced Labor in the Congo"></a>
+                <a class="shadow-zine" href="/zine/congo/">
+                    <img class="w-full shadow-page" src="/images/uploads/congo/page_cover.jpg" alt="How the Green Energy Transition is Relying on Forced Labor in the Congo"></a>
             
         </div>
     </section>
-    <section class="container titled-section">
-        <h2>All zines (A-Z)</h2>
-        <ul class="zine-list">
+    <section class="zine-store-container titled-section flex flex-col gap-6">
+        <h2 class="text-2xl">All zines (A-Z)</h2>
+        <ul class="flex flex-col gap-8">
             
-                <a class="body-lg" href="/zine/congo/">How the Green Energy Transition is Relying on Forced Labor in the Congo</a>
+                <li>
+                    <a href="/zine/congo/"
+
+        
+        
+
+        class="disabled:opacity-60    text-lg text-link visited:text-link-visited underline hover:no-underline"
+
+        
+    >How the Green Energy Transition is Relying on Forced Labor in the Congo</a>
+                </li>
             
-                <a class="body-lg" href="/zine/racial-capitalism/">Understanding Racial Capitalism (Why It’s So Hard to “Eat the Rich”)</a>
+                <li>
+                    <a href="/zine/racial-capitalism/"
+
+        
+        
+
+        class="disabled:opacity-60    text-lg text-link visited:text-link-visited underline hover:no-underline"
+
+        
+    >Understanding Racial Capitalism (Why It’s So Hard to “Eat the Rich”)</a>
+                </li>
             
-                <a class="body-lg" href="/zine/abductions/">Why the U.S. Government Keeps Disappearing its International Students</a>
+                <li>
+                    <a href="/zine/abductions/"
+
+        
+        
+
+        class="disabled:opacity-60    text-lg text-link visited:text-link-visited underline hover:no-underline"
+
+        
+    >Why the U.S. Government Keeps Disappearing its International Students</a>
+                </li>
             
         </ul>
     </section>

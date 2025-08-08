@@ -2,6 +2,8 @@
 
 
 
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,73 +20,134 @@ Zine Store (Free)"/>
         <meta property="og:type" content="article"/>
         <meta name="generator" content="Eleventy v3.1.2">
         <link rel="icon" type="image/x-icon" href="">
-        <link rel="stylesheet" href="/bundle.css">
+        
+        <link rel="stylesheet" href="/index.css">
 
     </head>
-    <body>
-        <nav class="container navbar">
-            <span>
+    <body class="font-sans text-base antialiased h-dvh overflow-auto flex flex-col items-center bg-gainsboro">
+        <nav class="zine-store-container shrink-0 grid grid-cols-2 lg:grid-cols-[1fr_auto_1fr] py-4 md:py-8 sticky top-0 z-10 bg-gainsboro">
+            <span class="justify-self-start">
                 
-                    <a href="/">Home</a>
+                    <a href="/"
+
+        
+        
+
+        class="disabled:opacity-60    text-lg text-link visited:text-link-visited underline hover:no-underline"
+
+        
+    >Home</a>
                 
             </span>
-            <span>/zine/abductions/index.html</span>
-            <span>
+            <span class="text-lg hidden lg:block">/zine/abductions/index.html</span>
+            <span class="justify-self-end">
                 
-                    <a href="/images/uploads/abductions.pdf" download>Download zine</a>
+                    <a href="/images/uploads/abductions/abductions.pdf"
+
+        
+        
+
+        class="disabled:opacity-60    text-lg text-link visited:text-link-visited underline hover:no-underline"
+
+        
+            download=""
+        
+    >Download zine</a>
                 
             </span>
         </nav>
         
-<section class="container zine-container">
-    <div class="zine-navigator">
-        <button class="navigation-button" data-action="prev-wide">&lt</button>
-        <button class="navigation-button" data-action="prev-narrow">&lt</button>
-        <div class="zine-root">
+
+<main class="overflow-hidden flex flex-col items-center gap-4 grow relative">
+    <div data-zine-part="navigator" class="zine-store-container flex overflow-y-auto overflow-x-hidden flex-col md:flex-row md:justify-center items-center md:gap-16 grow">
+        <button
+
+        
+        
+
+        class="disabled:opacity-60 h-[max(25dvh,_72px)] hidden md:block   text-xl leading-none py-5 px-6 bg-white-smoke hover:bg-ghost-white border border-dark-grey font-bold shrink-0 rounded-xs shadow-2xs"
+
+        
+            data-action="prev-wide"
+        
+    >&lt;</button>
+        <div data-zine-part="root" class="zine-root grow flex flex-col items-center perspective-zine col-start-1 col-end-3 md:col-auto">
             <!-- where the zine template is injected -->
-            <div class="zine-outer" data-template="zine-pages">
-                <div class="zine-inner front-cover">
+            <div data-zine-part="outer" class="grow py-1 flex items-center" data-template="zine-pages">
+                <div data-zine-part="spread" class="relative grid grid-cols-2 justify-self-start shrink-0 md:justify-self-center aspect-zine md:w-full max-w-3xl pointer-events-none perspective-zine front-cover">
                     
-                        <div class="zine-page">
+                        <div data-zine-part="page" class="relative backface-hidden row-start-1 row-end-2 even:col-end-1 even:col-start-1 odd:col-end-2 odd:col-start-2 even:origin-right odd:origin-left">
                             <img src="/images/uploads/abductions/abductions-page_cover.jpg" alt="">
                         </div>
                     
-                        <div class="zine-page">
+                        <div data-zine-part="page" class="relative backface-hidden row-start-1 row-end-2 even:col-end-1 even:col-start-1 odd:col-end-2 odd:col-start-2 even:origin-right odd:origin-left">
                             <img src="/images/uploads/abductions/abductions-page_1.jpg" alt="">
                         </div>
                     
-                        <div class="zine-page">
+                        <div data-zine-part="page" class="relative backface-hidden row-start-1 row-end-2 even:col-end-1 even:col-start-1 odd:col-end-2 odd:col-start-2 even:origin-right odd:origin-left">
                             <img src="/images/uploads/abductions/abductions-page_2.jpg" alt="">
                         </div>
                     
-                        <div class="zine-page">
+                        <div data-zine-part="page" class="relative backface-hidden row-start-1 row-end-2 even:col-end-1 even:col-start-1 odd:col-end-2 odd:col-start-2 even:origin-right odd:origin-left">
                             <img src="/images/uploads/abductions/abductions-page_3.jpg" alt="">
                         </div>
                     
-                        <div class="zine-page">
+                        <div data-zine-part="page" class="relative backface-hidden row-start-1 row-end-2 even:col-end-1 even:col-start-1 odd:col-end-2 odd:col-start-2 even:origin-right odd:origin-left">
                             <img src="/images/uploads/abductions/abductions-page_4.jpg" alt="">
                         </div>
                     
-                        <div class="zine-page">
+                        <div data-zine-part="page" class="relative backface-hidden row-start-1 row-end-2 even:col-end-1 even:col-start-1 odd:col-end-2 odd:col-start-2 even:origin-right odd:origin-left">
                             <img src="/images/uploads/abductions/abductions-page_5.jpg" alt="">
                         </div>
                     
-                        <div class="zine-page">
+                        <div data-zine-part="page" class="relative backface-hidden row-start-1 row-end-2 even:col-end-1 even:col-start-1 odd:col-end-2 odd:col-start-2 even:origin-right odd:origin-left">
                             <img src="/images/uploads/abductions/abductions-page_6.jpg" alt="">
                         </div>
                     
-                        <div class="zine-page">
+                        <div data-zine-part="page" class="relative backface-hidden row-start-1 row-end-2 even:col-end-1 even:col-start-1 odd:col-end-2 odd:col-start-2 even:origin-right odd:origin-left">
                             <img src="/images/uploads/abductions/abductions-page_back.jpg" alt="">
                         </div>
                     
                 </div>
             </div>
         </div>
-        <button class="navigation-button" data-action="next-wide">&gt</button>
-        <button class="navigation-button" data-action="next-narrow">&gt</button>
-    </div>
-</section>
+        <button
 
+        
+        
+
+        class="disabled:opacity-60 h-[max(25dvh,_72px)] hidden md:block   text-xl leading-none py-5 px-6 bg-white-smoke hover:bg-ghost-white border border-dark-grey font-bold shrink-0 rounded-xs shadow-2xs"
+
+        
+            data-action="next-wide"
+        
+    >&gt;</button>
+        <div class="flex md:hidden gap-4 w-[calc(100%+2*var(--spacing-site-padding))] py-6 px-4 bg-gainsboro sticky bottom-0">
+            <button
+
+        
+        
+
+        class="disabled:opacity-60 grow md:hidden row-start-2   text-xl leading-none py-5 px-6 bg-white-smoke hover:bg-ghost-white border border-dark-grey font-bold shrink-0 rounded-xs shadow-2xs"
+
+        
+            data-action="prev-narrow"
+        
+    >&lt;</button>
+            <button
+
+        
+        
+
+        class="disabled:opacity-60 grow md:hidden row-start-2   text-xl leading-none py-5 px-6 bg-white-smoke hover:bg-ghost-white border border-dark-grey font-bold shrink-0 rounded-xs shadow-2xs"
+
+        
+            data-action="next-narrow"
+        
+    >&gt;</button>
+        </div>
+    </div>
+</main>
 
 <script defer src="/bundle.js" type="module"></script>
 

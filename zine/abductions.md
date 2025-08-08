@@ -10,5 +10,5 @@ pages:
   - /images/uploads/abductions/abductions-page_5.jpg
   - /images/uploads/abductions/abductions-page_6.jpg
   - /images/uploads/abductions/abductions-page_back.jpg
-pdf: /images/uploads/abductions.pdf
+pdf: /images/uploads/abductions/abductions.pdf
 ---
