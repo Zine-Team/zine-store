@@ -1,5 +1,5 @@
-const nextButtonWide = document.querySelector("[data-action='next-wide']");
-const prevButtonWide = document.querySelector("[data-action='prev-wide']");
+const nextButtonsWide = document.querySelectorAll("[data-action='next-wide']");
+const prevButtonsWide = document.querySelectorAll("[data-action='prev-wide']");
 
 const nextButtonNarrow = document.querySelector("[data-action='next-narrow']");
 const prevButtonNarrow = document.querySelector("[data-action='prev-narrow']");
@@ -88,18 +88,22 @@ function showPages(page) {
 }
 
 //   wide screens navigation events
-nextButtonWide.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (currentSpread < totalSpreads) {
-    changeSpread(1);
-  }
+nextButtonsWide.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (currentSpread < totalSpreads) {
+      changeSpread(1);
+    }
+  });
 });
 
-prevButtonWide.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (currentSpread > 0) {
-    changeSpread(-1);
-  }
+prevButtonsWide.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (currentSpread > 0) {
+      changeSpread(-1);
+    }
+  });
 });
 
 //   narrow screens navigation events

@@ -3,25 +3,27 @@ layout: default
 ---
 {% from "components/button.njk" import button %}
 
-<main class="overflow-hidden flex flex-col items-center gap-4 grow relative">
-    <div data-zine-part="navigator" class="zine-store-container flex overflow-y-auto overflow-x-hidden flex-col md:flex-row md:justify-center items-center md:gap-16 grow">
-        {{ button(label="<", class="h-[max(25dvh,_72px)] hidden md:block", attrs={"data-action": "prev-wide"}) }}
-        <div data-zine-part="root" class="zine-root grow flex flex-col items-center perspective-zine col-start-1 col-end-3 md:col-auto">
+<main class="overflow-hidden w-full flex flex-col items-center gap-4 grow relative">
+    <div data-zine-part="navigator" class="zine-store-container flex overflow-y-auto overflow-x-hidden flex-col lg:flex-row lg:justify-center items-center lg:gap-16 grow">
+        {{ button(label="<", class="h-[max(25dvh,_72px)] hidden lg:block", attrs={"data-action": "prev-wide"}) }}
+        <div data-zine-part="root" class="zine-root w-full grow flex flex-col items-center perspective-zine col-start-1 col-end-3 lg:col-auto">
             <!-- where the zine template is injected -->
-            <div data-zine-part="outer" class="grow py-1 flex items-center" data-template="zine-pages">
-                <div data-zine-part="spread" class="relative grid grid-cols-2 justify-self-start shrink-0 md:justify-self-center aspect-zine md:w-full max-w-3xl pointer-events-none perspective-zine front-cover">
+            <div data-zine-part="outer" class="grow w-full md:justify-center py-1 flex items-center" data-template="zine-pages">
+                <div data-zine-part="spread" class="relative grid grid-cols-2 justify-self-start shrink-0 lg:justify-self-center aspect-zine md:w-full max-w-3xl pointer-events-none perspective-zine front-cover">
                     {% for page in pages %}
-                        <div data-zine-part="page" class="relative backface-hidden row-start-1 row-end-2 even:col-end-1 even:col-start-1 odd:col-end-2 odd:col-start-2 even:origin-right odd:origin-left">
+                        <div data-zine-part="page" class="relative backface-hidden row-start-1 row-end-2 even:col-start-1 odd:col-start-2 even:origin-right odd:origin-left">
                             <img src="{{ page }}" alt="">
                         </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
-        {{ button(label=">", class="h-[max(25dvh,_72px)] hidden md:block", attrs={"data-action": "next-wide"}) }}
-        <div class="flex md:hidden gap-4 w-[calc(100%+2*var(--spacing-site-padding))] py-6 px-4 bg-gainsboro sticky bottom-0">
-            {{ button(label="<", class="grow md:hidden row-start-2", attrs={"data-action": "prev-narrow"}) }}
-            {{ button(label=">", class="grow md:hidden row-start-2", attrs={"data-action": "next-narrow"}) }}
+        {{ button(label=">", class="h-[max(25dvh,_72px)] hidden lg:block", attrs={"data-action": "next-wide"}) }}
+        <div class="flex lg:hidden gap-4 w-[calc(100%+2*var(--spacing-site-padding))] py-6 px-4 bg-gainsboro sticky bottom-0">
+            {{ button(label="<", class="grow hidden md:block", attrs={"data-action": "prev-wide"}) }}
+            {{ button(label=">", class="grow hidden md:block", attrs={"data-action": "next-wide"}) }}
+            {{ button(label="<", class="grow md:hidden", attrs={"data-action": "prev-narrow"}) }}
+            {{ button(label=">", class="grow md:hidden", attrs={"data-action": "next-narrow"}) }}
         </div>
     </div>
 </main>

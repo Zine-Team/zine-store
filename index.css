@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 @theme {
+  --breakpoint-sm: 36rem; /* 576px */
+  --breakpoint-md: 44rem; /* 704px */
+  --breakpoint-lg: 60rem; /* 960px */
+
   --shadow-zine: 0.5px 0.5px 1px lch(0% 0 0 / 0.1), 1px 1px 12px -4px lch(0% 0 0 / 0.2);
   --shadow-page: 0.33px 0.33px 1px lch(0% 0 0 / 0.1), 0.75px 0.75px 0.75px lch(0% 0 0 / 0.1);
 
@@ -54,18 +58,52 @@
   [data-zine-part="outer"] {
     transform: rotateX(calc(1deg * var(--aimY))) rotateY(calc(1deg * var(--aimX)));
   }
+  /* narrow screen size */
+  @media screen and (max-width: 704px) {
+    [data-zine-part="outer"] {
+      transform: none !important;
+      container-type: inline-size;
+    }
+  }
 
   /* the actual "zine". The parent element of all the pages */
   [data-zine-part="spread"] {
     transition: transform calc(var(--duration-zine) * 0.75) var(--ease-zine);
+    --translation-amount: 0%;
+    --translation-offset: 0%;
+    transform: translateX(calc(var(--translation-amount) + var(--translation-offset)));
 
     /* these lines position the zine centered when it's closed */
     &.front-cover {
-      transform: translateX(-25%);
+      --translation-amount: -25%;
     }
 
     &.back-cover {
-      transform: translateX(25%);
+      --translation-amount: 25%;
+    }
+  }
+  /* narrow screen size */
+  @media screen and (max-width: 704px) {
+    [data-zine-part="outer"] {
+      transform: none !important;
+      container-type: inline-size;
+    }
+
+    [data-zine-part="spread"] {
+      --narrow-width: min(768px, 200%);
+      width: var(--narrow-width);
+
+      /* translate left 0% or 50% of the zine width, and then right half of the difference between the page width and the container width */
+      --translation-amount: 0%;
+      --translation-offset: ((100cqi - 50%) / 2);
+
+      &.back-cover {
+        --translation-amount: 0%;
+      }
+      &.front-cover,
+      &.right:not(.front-cover) {
+        --translation-amount: -50%;
+      }
     }
   }
 
@@ -172,65 +210,6 @@
     inset: 0;
     opacity: 5%;
     background-image: linear-gradient(to right, black, transparent 75%);
-  }
-
-  /* middle screen size */
-  @media screen and (max-width: 950px) {
-    .zine-navigator {
-      gap: 1rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      justify-items: center;
-
-      & .zine-root {
-        grid-column: 1 / 3;
-      }
-      & .navigation-button {
-        grid-row: 2;
-      }
-    }
-
-    .navigation-button {
-      width: max(50%, 125px);
-      max-width: 100%;
-    }
-  }
-
-  /* narrow screen size */
-  @media screen and (max-width: 768px) {
-    /* .navigation-button[data-action="prev-wide"],
-    .navigation-button[data-action="next-wide"] {
-      display: none;
-    }
-
-    .navigation-button[data-action="prev-narrow"],
-    .navigation-button[data-action="next-narrow"] {
-      display: block;
-    } */
-
-    /* [data-zine-part="outer"] {
-      transform: none;
-    } */
-
-    [data-zine-part="spread"] {
-      --narrow-width: 185%;
-      width: var(--narrow-width);
-      /* justify-self: start; */
-      /* flex-shrink: 0; */
-      transform: none;
-
-      &.right:not(.front-cover) {
-        transform: translateX(calc(-1 * var(--narrow-width) / 4));
-      }
-
-      &.front-cover {
-        transform: translateX(calc((-1 * var(--narrow-width) / 4) - (200% - var(--narrow-width)) / 8));
-      }
-
-      &.back-cover {
-        transform: translateX(calc((200% - var(--narrow-width)) / 8));
-      }
-    }
   }
 
   /* keyframes */
