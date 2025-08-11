@@ -3,13 +3,21 @@ title:
 eleventyExcludeFromCollections: true # remove when publishing
 date:
 pages:
-  - /images/uploads/
-  - /images/uploads/
-  - /images/uploads/
-  - /images/uploads/
-  - /images/uploads/
-  - /images/uploads/
-  - /images/uploads/
-  - /images/uploads/
+  - image: /images/uploads/
+    altText: ""
+  - image: /images/uploads/
+    altText: ""
+  - image: /images/uploads/
+    altText: ""
+  - image: /images/uploads/
+    altText: ""
+  - image: /images/uploads/
+    altText: ""
+  - image: /images/uploads/
+    altText: ""
+  - image: /images/uploads/
+    altText: ""
+  - image: /images/uploads/
+    altText: ""
 pdf: /images/uploads/
 ---

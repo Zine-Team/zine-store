@@ -2,13 +2,21 @@
 title: Why the U.S. Government Keeps Disappearing its International Students
 date: 2025-06-01
 pages:
-  - /images/uploads/abductions/abductions-page_cover.jpg
-  - /images/uploads/abductions/abductions-page_1.jpg
-  - /images/uploads/abductions/abductions-page_2.jpg
-  - /images/uploads/abductions/abductions-page_3.jpg
-  - /images/uploads/abductions/abductions-page_4.jpg
-  - /images/uploads/abductions/abductions-page_5.jpg
-  - /images/uploads/abductions/abductions-page_6.jpg
-  - /images/uploads/abductions/abductions-page_back.jpg
+  - image: /images/uploads/abductions/abductions-page_cover.jpg
+    altText: "Why the U.S. Government Keeps Disappearing its International Students. A photo of Rumeysa Ozturk, a Turkish doctoral student, being swarmed by plainclothes DHS agents on March 25th, 2025."
+  - image: /images/uploads/abductions/abductions-page_1.jpg
+    altText: "Dissent is now deportable in “The Land of the Free” Yunseo Chung, Badar Khan Suri, Leqaa Kordia, Ranjani Srinivasan—these are the names of some of the international students and scholars the U.S. government has kidnapped and attempted to deport since Donald Trump took office in early 2025. Their crimes? Simply expressing the opinion that the U.S. should not be giving billions of dollars to Israel to commit genocide in Palestine. These arrests are damning and blatant attacks on the right to free speech that our country claims to value so much. By making an example out of these students, the state hopes to instill fear and discourage others from taking a stand in the fight for liberation. It’s rightfully terrifying, but also just the latest in our nation’s long history of violating people’s rights to silence dissent."
+  - image: /images/uploads/abductions/abductions-page_2.jpg
+    altText: "A photo of Mahmoud Khalil. “My unjust detention is indicative of theanti-Palestinian racism that both theBiden and Trump administrations have demonstrated over the past 16 months as the U.S. has continued to supply Israel with weapons to kill Palestinians and prevent international intervention.” –Mahmoud Khalil, a Columbia University graduate abducted on March 8th for his involvement in on-campus protests"
+  - image: /images/uploads/abductions/abductions-page_3.jpg
+    altText: "Abusing governmental power to silence criticism of U.S. policies is not new; it’s normal. History shows us that if the state sees your existence, your ideas, your movements as a threat, it will fabricate justification for your criminalization and remove you from the public. Below is but a sampling of times U.S. state leaders used this tactic to maintain their grip on power."
+  - image: /images/uploads/abductions/abductions-page_4.jpg
+    altText: "1917-1920: The Red Scare cracked down on the alleged spread of leftist ideas in the labor movement. Several hundred “suspected radicals” were deported. 1942-1946: Japanese Internment incarcerated over 100,000 people of Japanese descent in concentration camps during World War II. 1946-1960: The Second Red Scare spread fear of communist and Soviet influence on the U.S., targeting mostly federal employees and suspected “sexual perverts” (gay people). 1960-1971: The FBI’s Counter Intelligence Program infiltrated many Black, Indigenous, anti-war, Palestinian, and labor organizing spaces to undermine and discredit their movements. 2002-onward: “The War on Terror at Home” Following the 9/11 attacks, the U.S. took a bi-partisan turn toward surveillance, racial profiling, and immigration policies rooted in fear. More than five million innocent refugees and migrants have been deported."
+  - image: /images/uploads/abductions/abductions-page_5.jpg
+    altText: "“Homegrowns are next”—an attack on one of us is a threat to all of us. The story is evolving quickly. By the time you read this zine, who is being targeted and the reason we’re given for it may be different, but the fact will remain: the state is ruining people’s lives in order to silence their voices and frighten the rest of us into compliance. They want us to feel alone, to focus only on our own survival and comfort, but we’re all sliding down the slippery slope of authoritarianism together. Only through solidarity—recognizing and acting upon our interconnectedness—do we have a chance to resist its pull. Authoritarianism: A political system characterized by the use of strong central power and reductions in democracy, separation of powers, civil liberties, and the rule of law."
+  - image: /images/uploads/abductions/abductions-page_6.jpg
+    altText: "Don’t give in—get organized! We can combat isolation and fear by doing the opposite: connecting with others and realizing our collective power. Link up with your friends, your neighbors, a local group, a formal organization, (just start somewhere!) to continue learning and making sense of today’s context. Another world is possible, but we must imagine it and create it for ourselves. Free Palestine!"
+  - image: /images/uploads/abductions/abductions-page_back.jpg
+    altText: "Continue learning: Why is the U.S. still so unyielding in its support of Israel? The two countries’ shared history as settler colonial states and the U.S.’ interests in the Middle East keep the nations tightly allied. Recommended readings: Why the fight for Palestine is the fight against U.S. imperialism in the region • mondoweiss.net. The 100 Years' War on Palestine • Rashid Khalidi"
 pdf: /images/uploads/abductions/abductions.pdf
 ---

@@ -2,13 +2,21 @@
 title: How the Green Energy Transition is Relying on Forced Labor in the Congo
 date: 2024-08-01
 pages:
-  - /images/uploads/congo/page_cover.jpg
-  - /images/uploads/congo/page_1.jpg
-  - /images/uploads/congo/page_2.jpg
-  - /images/uploads/congo/page_3.jpg
-  - /images/uploads/congo/page_4.jpg
-  - /images/uploads/congo/page_5.jpg
-  - /images/uploads/congo/page_6.jpg
-  - /images/uploads/congo/page_back.jpg
+  - image: /images/uploads/congo/page_cover.jpg
+    altText: How the Green Energy Transition is Relying on Forced Labor in the Congo. Dela wa Monga, an “artisanal miner,” holding up a chunk of cobalt stone mined near Kolwezi, DRC
+  - image: /images/uploads/congo/page_1.jpg
+    altText: "Rechargeable batteries are tainted with the blood of Congolese people. Tin, tungsten, tantalum, gold, and cobalt: many of the metals vital to the productionof green technology are extracted primarilyin the Democratic Republic of Congo. To meet the Global North’s fervent demand for these minerals, sprawling mines have been built across the DRC. Within them, human rights abuses and child labor abound. The mines generate toxic dust that poisons the air and water, and millions of people have been killed or displaced by their expansion. An ongoing history of racism and colonialism has created the conditions for the world to ignore the violence the Global North enacts upon the Congo and across the Global South. A “better future” promised by green capitalism will never be just as long as this exploitation is allowed to continue."
+  - image: /images/uploads/congo/page_2.jpg
+    altText: "“You have to imagine walking around some of these mining areas and dialing back our clock centuries. People are working in subhuman, grinding, degrading conditions. They use pickaxes, shovels, stretches of rebar to hack and scrounge at the earth in trenches and pits and tunnels to gather cobalt and feed it up the formal supply chain.” —Siddharth Kara, author of Cobalt Red: How the Blood of the Congo Powers Our Lives"
+  - image: /images/uploads/congo/page_3.jpg
+    altText: "The Congo has a long history of being exploited by the Global North. Whether for slave labor, rubber, ivory, or rare earth metals, the Congo has seen its land and people violently looted by colonial powers for the last 400+ years. When one era of colonization ends, it leaves instability in its wake, creating the opportunity for another force to seize upon the DRC’s bountiful resources. (And the one time the country had the chance to democratically elect a leader, the C.I.A. promptly had him assassinated.)"
+  - image: /images/uploads/congo/page_4.jpg
+    altText: "Before 1500: Pre-colonial era; powerful economic and political structures exist in Africa. 1500-1800: ~4 million humans stolen by Portugal for its slave-powered economy in Brazil. 1800-1960: Looted for ivory and rubber by Kingdom of Belgium. 1960-1965: Ravaged by civil war; Cold War proxy battleground between U.S. and Russia. 1965-1996: Ruled by a brutal dictator propped up by U.S. and Israel. 2002 onward: Exploited for mining."
+  - image: /images/uploads/congo/page_5.jpg
+    altText: "The energy transition promisesa better future, but who is that future for, and at whose cost? We’re told that green technology will be humanity’s salvation from the climate crisis, but how can that be when the very start of its supply chain is causing the destruction of the land and lives of millions of people today? The drastic damage these mines cause to the environment should make it clear: we’re not solving any problems, just focusing the tragedy of them onto the people of the Congo."
+  - image: /images/uploads/congo/page_6.jpg
+    altText: "We all deserve better than this. Those of us being sold the new technologies and those of us whose lives are being sold to produce them: we all live on this planet together, and we all deserve better than the racist values of greenwashed capitalism. As capitalism’s environmental crisis worsens and the cracks in its systems grow, it will become ever more imperative for us in the Global North to think critically about what we will accept for ourselves, others, and the planet, especially when a company is trying to sell us a comforting idea. Greenwashing: Making misleading statements about your environmental impact to maintain a favorable public image."
+  - image: /images/uploads/congo/page_back.jpg
+    altText: "Stop buying new tech! Purchasing devices that use newly-mined minerals endorses the violence being inflicted upon the Congolese. Do you really need a new phone/tablet/electric car? Keep your existing tech as long as possible, and try to get your aging devices repaired before making a new purchase. When you do need something different, first look for used or refurbished devices in your local marketplace or on backmarket.com. Support the movement for a Free Congo! Donate to Friends of the Congo, an advocacy group working to unify the global movement in support of the Congo. https:/friendsofthecongo.org/get-involved/"
 pdf: /images/uploads/congo/congo.pdf
 ---

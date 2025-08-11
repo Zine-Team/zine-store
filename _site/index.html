@@ -5,113 +5,139 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-dvh overflow-hidden">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Zine Store (Free)</title>
         <meta property="og:title" content="Zine Store (Free)"/>
-        <meta name="description" content="A free store of zines for viewing and download">
-        <meta property="og:description" content="A free store of zines for viewing and download"/>
+        <meta name="description" content="A free place to read zines and store your own online">
+        <meta property="og:description" content="A free place to read zines and store your own online"/>
         <meta property="og:url" content="https://zinestorefree.com/"/>
-        <meta property="og:image" content="https://zinestorefree.com"/>
+        <meta property="og:image" content="https://zinestorefree.comimages/uploads/og-image.jpg"/>
         <meta property="og:type" content="website"/>
         <meta name="generator" content="Eleventy v3.1.2">
-        <link rel="icon" type="image/x-icon" href="">
-        
+        <link rel="icon" type="image/x-icon" href="images/uploads/favicon.png">
         <link rel="stylesheet" href="/index.css">
+        <script defer src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script>
+        <script defer src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
 
     </head>
-    <body class="font-sans text-base antialiased h-dvh overflow-auto flex flex-col items-center bg-gainsboro">
-        <div class="fixed z-20">
-            <span class="sm:hidden block">Less than small</span>
-            <span class="hidden sm:max-md:block">Small</span>
-            <span class="hidden md:max-lg:block">Medium</span>
-            <span class="hidden lg:block">Large</span>
-        </div>
-        <nav class="zine-store-container shrink-0 grid grid-cols-2 lg:grid-cols-[1fr_auto_1fr] py-4 lg:py-8 sticky top-0 z-10 bg-gainsboro">
-            <span class="justify-self-start">
-                
-            </span>
-            <span class="text-lg hidden lg:block">/index.html</span>
-            <span class="justify-self-end">
-                
-                    <a href="/submit"
+    <body class="font-sans text-base antialiased h-full  overflow-auto flex flex-col items-center bg-gainsboro">
+        
+
+        
+
+<main class="flex flex-col items-center grow w-full">
+    <header class="zine-store-container flex py-16 lg:py-30 flex-col gap-4">
+        <h1 class="text-3xl">Zine Store (Free)</h1>
+        <p class="text-xl">A free place to read zines and store your own online</p>
+        
+
+<div x-data>
+    <button
 
         
         
 
-        class="disabled:opacity-60    text-lg text-link visited:text-link-visited underline hover:no-underline"
+        class="block disabled:opacity-60 active:scale-[.98] mt-4   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-lg font-semibold py-4 px-5"
+
+        
+            @click="$refs.dialog.showModal()"
+        
+    >Submit a zine</button>
+
+    <dialog closedby="any" x-ref="dialog" class="flex open:visible invisible flex-col items-center bg-gainsboro p-0 mt-[15dvh] mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site-padding))] max-w-3xl">
+        <header class="px-4 w-full pt-4 flex justify-end items-center">
+            <button
+
+        
+        
+
+        class="block disabled:opacity-60 active:scale-[.98]    leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
+
+        
+            @click="$refs.dialog.close()"
+        
+    >×</button>
+        </header>
+        <main class="px-8 pb-16 grow flex flex-col justify-center gap-4 max-w-2xl">
+            <h2 class="text-2xl w-full">Contribute to the zine store</h2>
+            <p class="text-lg w-full">Eventually we'll have a submission form, but for now, please just email a print-ready PDF of your zine to <a class="text-link underline hover:no-underline" href="mailto:honeybody@protonmail.com?subject=Zine%20Store%20submission&amp;body=(Attach%20a%20print-ready%20PDF%20of%20your%20zine.%20If%20you&#39;d%20like%20to%20be%20extra%20awesome%2C%20please%20also%20include%20any%20alt-text%20you&#39;d%20like%20to%20have%20for%20each%20page%20of%20the%20zine.%20Thank%20you!)">honeybody@protonmail.com</a>, and we'll get it added as soon as we can! ❤️</p>
+            <a href="mailto:honeybody@protonmail.com?subject=Zine%20Store%20submission&amp;body=(Attach%20a%20print-ready%20PDF%20of%20your%20zine.%20If%20you&#39;d%20like%20to%20be%20extra%20awesome%2C%20please%20also%20include%20any%20alt-text%20you&#39;d%20like%20to%20have%20for%20each%20page%20of%20the%20zine.%20Thank%20you!)"
+
+        
+        
+
+        class="block disabled:opacity-60 active:scale-[.98] self-start mt-12   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-lg font-semibold py-4 px-5"
 
         
     >Submit a zine</a>
+        </main>
+    </dialog>
+</div>
+
+    </header>
+    <div class="flex flex-col items-center gap-16 pb-16 lg:gap-20 lg:pb-20 grow w-full">
+        <section class="zine-store-container flex flex-col gap-6">
+            <h2 class="text-2xl">Most recent zines</h2>
+            <div class="zine-grid grow-1 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-8">
                 
-            </span>
-        </nav>
-        
-
-<main class="flex flex-col items-center gap-20 pb-20 grow w-full">
-    <section class="zine-store-container flex flex-col gap-4">
-        <h1 class="text-3xl">Zine Store (Free)</h1>
-        <p class="text-xl">A free store of zines for viewing and download</p>
-    </section>
-    <section class="zine-store-container flex flex-col gap-6">
-        <h2 class="text-2xl">Most recent zines</h2>
-        <div class="zine-grid grow-1 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-8">
-            
-                <a class="shadow-zine" href="/zine/racial-capitalism/">
-                    <img class="w-full shadow-page" src="/images/uploads/racial-capitalism/racial-capitalism_FC.jpg" alt="Understanding Racial Capitalism (Why It’s So Hard to “Eat the Rich”)"></a>
-            
-                <a class="shadow-zine" href="/zine/abductions/">
-                    <img class="w-full shadow-page" src="/images/uploads/abductions/abductions-page_cover.jpg" alt="Why the U.S. Government Keeps Disappearing its International Students"></a>
-            
-                <a class="shadow-zine" href="/zine/congo/">
-                    <img class="w-full shadow-page" src="/images/uploads/congo/page_cover.jpg" alt="How the Green Energy Transition is Relying on Forced Labor in the Congo"></a>
-            
-        </div>
-    </section>
-    <section class="zine-store-container titled-section flex flex-col gap-6">
-        <h2 class="text-2xl">All zines (A-Z)</h2>
-        <ul class="flex flex-col gap-8">
-            
-                <li>
-                    <a href="/zine/congo/"
+                    <a class="shadow-zine" href="/zine/racial-capitalism/">
+                        <img class="w-full shadow-page" src="/images/uploads/racial-capitalism/racial-capitalism_FC.jpg" alt="Understanding Racial Capitalism (Why It’s So Hard to “Eat the Rich”)"></a>
+                
+                    <a class="shadow-zine" href="/zine/abductions/">
+                        <img class="w-full shadow-page" src="/images/uploads/abductions/abductions-page_cover.jpg" alt="Why the U.S. Government Keeps Disappearing its International Students"></a>
+                
+                    <a class="shadow-zine" href="/zine/congo/">
+                        <img class="w-full shadow-page" src="/images/uploads/congo/page_cover.jpg" alt="How the Green Energy Transition is Relying on Forced Labor in the Congo"></a>
+                
+            </div>
+        </section>
+        <section class="zine-store-container titled-section flex flex-col gap-6">
+            <h2 class="text-2xl">All zines (A-Z)</h2>
+            <ul class="flex flex-col gap-8">
+                
+                    <li>
+                        <a href="/zine/congo/"
 
         
         
 
-        class="disabled:opacity-60    text-lg text-link visited:text-link-visited underline hover:no-underline"
+        class="block disabled:opacity-60 active:scale-[.98]    text-lg text-link visited:text-link-visited underline hover:no-underline underline-offset-2 "
 
         
     >How the Green Energy Transition is Relying on Forced Labor in the Congo</a>
-                </li>
-            
-                <li>
-                    <a href="/zine/racial-capitalism/"
+                    </li>
+                
+                    <li>
+                        <a href="/zine/racial-capitalism/"
 
         
         
 
-        class="disabled:opacity-60    text-lg text-link visited:text-link-visited underline hover:no-underline"
+        class="block disabled:opacity-60 active:scale-[.98]    text-lg text-link visited:text-link-visited underline hover:no-underline underline-offset-2 "
 
         
     >Understanding Racial Capitalism (Why It’s So Hard to “Eat the Rich”)</a>
-                </li>
-            
-                <li>
-                    <a href="/zine/abductions/"
+                    </li>
+                
+                    <li>
+                        <a href="/zine/abductions/"
 
         
         
 
-        class="disabled:opacity-60    text-lg text-link visited:text-link-visited underline hover:no-underline"
+        class="block disabled:opacity-60 active:scale-[.98]    text-lg text-link visited:text-link-visited underline hover:no-underline underline-offset-2 "
 
         
     >Why the U.S. Government Keeps Disappearing its International Students</a>
-                </li>
-            
-        </ul>
-    </section>
+                    </li>
+                
+            </ul>
+        </section>
+    </div>
+
 </main>
 
     </body>

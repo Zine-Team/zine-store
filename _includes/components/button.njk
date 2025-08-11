@@ -1,6 +1,11 @@
 {% set typeClasses = {
-    default: "text-xl leading-none py-5 px-6 bg-white-smoke hover:bg-ghost-white border border-dark-grey font-bold shrink-0 rounded-xs shadow-2xs",
-    link: "text-lg text-link visited:text-link-visited underline hover:no-underline"
+    button: "leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs",
+    link: "text-lg text-link visited:text-link-visited underline hover:no-underline underline-offset-2"
+}%}
+
+{% set sizeClasses = {
+    base: "text-lg font-semibold py-4 px-5",
+    lg: "text-xl font-bold py-5 px-6"
 }%}
 
 {%- macro button(
@@ -10,7 +15,8 @@
     newTab,
     disabled=false,
     attrs= {},
-    type="default"
+    type="button",
+    size=None
 ) -%}
 
     <{% if href %}a href="{{href}}"{% else %}button{% endif %}
@@ -18,7 +24,7 @@
         {% if newTab %} target="_blank" {% endif %}
         {% if disabled %}disabled{% endif %}
 
-        class="disabled:opacity-60 {{ class }} {% if page.url == href + '/' %} selected {% endif %} {% if disabled %}pointer-events-none{% endif %} {{ typeClasses[type] }}"
+        class="block disabled:opacity-60 active:scale-[.98] {{ class }} {% if page.url == href + '/' %} selected {% endif %} {% if disabled %}pointer-events-none{% endif %} {{ typeClasses[type] }} {{ sizeClasses[size] }}"
 
         {% for key, value in attrs %}
             {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}

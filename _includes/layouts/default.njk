@@ -14,7 +14,7 @@
 {% from "components/button.njk" import button %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-dvh overflow-hidden">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,32 +27,19 @@
         <meta property="og:type" content="{% if ogType %}{{ ogType }}{% else %}website{% endif %}"/>
         <meta name="generator" content="{{ eleventy.generator }}">
         <link rel="icon" type="image/x-icon" href="{{ global.favicon }}">
-        {# <link rel="stylesheet" href="/bundle.css"> #}
         <link rel="stylesheet" href="/index.css">
+        <script defer src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script>
+        <script defer src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
 
     </head>
-    <body class="font-sans text-base antialiased h-dvh overflow-auto flex flex-col items-center bg-gainsboro">
-        <div class="fixed z-20">
+    <body class="font-sans text-base antialiased h-full  overflow-auto flex flex-col items-center bg-gainsboro">
+        {# <div class="fixed z-20">
             <span class="sm:hidden block">Less than small</span>
             <span class="hidden sm:max-md:block">Small</span>
             <span class="hidden md:max-lg:block">Medium</span>
             <span class="hidden lg:block">Large</span>
-        </div>
-        <nav class="zine-store-container shrink-0 grid grid-cols-2 lg:grid-cols-[1fr_auto_1fr] py-4 lg:py-8 sticky top-0 z-10 bg-gainsboro">
-            <span class="justify-self-start">
-                {% if page.url !== "/" %}
-                    {{button(label="Home", href="/", type="link")}}
-                {% endif %}
-            </span>
-            <span class="text-lg hidden lg:block">{{page.outputPath | replace("./_site", "") }}</span>
-            <span class="justify-self-end">
-                {% if page.url === "/" %}
-                    {{button(label="Submit a zine", href="/submit", type="link")}}
-                {% else %}
-                    {{button(label="Download zine", href=pdf, type="link", attrs={download: null})}}
-                {% endif %}
-            </span>
-        </nav>
+        </div> #}
+
         {{ content | safe }}
     </body>
 </html>

@@ -24,11 +24,11 @@
 
   --radius-xs: 3px;
 
-  --text-base: 18px;
+  --text-3xl: 44px;
+  --text-2xl: 28px;
+  --text-xl: 24px;
   --text-lg: 20px;
-  --text-xl: 22px;
-  --text-2xl: 26px;
-  --text-3xl: 40px;
+  --text-base: 18px;
 }
 
 @layer components {

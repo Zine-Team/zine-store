@@ -5,71 +5,64 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-dvh overflow-hidden">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Zine Store (Free)</title>
         <meta property="og:title" content="Zine Store (Free)"/>
-        <meta name="description" content="A free store of zines for viewing and download">
-        <meta property="og:description" content="A free store of zines for viewing and download"/>
+        <meta name="description" content="A free place to read zines and store your own online">
+        <meta property="og:description" content="A free place to read zines and store your own online"/>
         <meta property="og:url" content="https://zinestorefree.com/zine/zine-template/"/>
-        <meta property="og:image" content="https://zinestorefree.com"/>
+        <meta property="og:image" content="https://zinestorefree.comimages/uploads/og-image.jpg"/>
         <meta property="og:type" content="article"/>
         <meta name="generator" content="Eleventy v3.1.2">
-        <link rel="icon" type="image/x-icon" href="">
-        
+        <link rel="icon" type="image/x-icon" href="images/uploads/favicon.png">
         <link rel="stylesheet" href="/index.css">
+        <script defer src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script>
+        <script defer src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
 
     </head>
-    <body class="font-sans text-base antialiased h-dvh overflow-auto flex flex-col items-center bg-gainsboro">
-        <div class="fixed z-20">
-            <span class="sm:hidden block">Less than small</span>
-            <span class="hidden sm:max-md:block">Small</span>
-            <span class="hidden md:max-lg:block">Medium</span>
-            <span class="hidden lg:block">Large</span>
-        </div>
-        <nav class="zine-store-container shrink-0 grid grid-cols-2 lg:grid-cols-[1fr_auto_1fr] py-4 lg:py-8 sticky top-0 z-10 bg-gainsboro">
-            <span class="justify-self-start">
-                
-                    <a href="/"
+    <body class="font-sans text-base antialiased h-full  overflow-auto flex flex-col items-center bg-gainsboro">
+        
+
+        
+
+<nav class="zine-store-container shrink-0 grid grid-cols-2 items-center py-4 lg:py-6 sticky top-0 z-10 bg-gainsboro">
+    <span class="flex justify-self-start">
+        <a href="/"
 
         
         
 
-        class="disabled:opacity-60    text-lg text-link visited:text-link-visited underline hover:no-underline"
+        class="block disabled:opacity-60 active:scale-[.98]    text-lg text-link visited:text-link-visited underline hover:no-underline underline-offset-2 "
 
         
-    >Home</a>
-                
-            </span>
-            <span class="text-lg hidden lg:block">/zine/zine-template/index.html</span>
-            <span class="justify-self-end">
-                
-                    <a href="/images/uploads/"
+    >&lt; Home</a>
+    </span>
+    <span class="flex justify-self-end">
+        <a href="/images/uploads/"
 
         
         
 
-        class="disabled:opacity-60    text-lg text-link visited:text-link-visited underline hover:no-underline"
+        class="block disabled:opacity-60 active:scale-[.98]    leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-lg font-semibold py-4 px-5"
 
         
             download=""
         
     >Download zine</a>
-                
-            </span>
-        </nav>
-        
+    </span>
+</nav>
 
 <main class="overflow-hidden w-full flex flex-col items-center gap-4 grow relative">
-    <div data-zine-part="navigator" class="zine-store-container flex overflow-y-auto overflow-x-hidden flex-col lg:flex-row lg:justify-center items-center lg:gap-16 grow">
+    <div data-zine-part="navigator" class="zine-store-container flex overflow-y-auto overflow-x-hidden flex-col lg:flex-row lg:justify-center lg:gap-16 grow">
         <button
 
         
         
 
-        class="disabled:opacity-60 h-[max(25dvh,_72px)] hidden lg:block   text-xl leading-none py-5 px-6 bg-white-smoke hover:bg-ghost-white border border-dark-grey font-bold shrink-0 rounded-xs shadow-2xs"
+        class="block disabled:opacity-60 active:scale-[.98] h-[max(25dvh,_72px)] hidden lg:block self-center   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
 
         
             data-action="prev-wide"
@@ -77,7 +70,7 @@
     >&lt;</button>
         <div data-zine-part="root" class="zine-root w-full grow flex flex-col items-center perspective-zine col-start-1 col-end-3 lg:col-auto">
             <!-- where the zine template is injected -->
-            <div data-zine-part="outer" class="grow w-full md:justify-center py-1 flex items-center" data-template="zine-pages">
+            <div data-zine-part="outer" class="grow w-full md:justify-center py-2 flex items-center" data-template="zine-pages">
                 <div data-zine-part="spread" class="relative grid grid-cols-2 justify-self-start shrink-0 lg:justify-self-center aspect-zine md:w-full max-w-3xl pointer-events-none perspective-zine front-cover">
                     
                         <div data-zine-part="page" class="relative backface-hidden row-start-1 row-end-2 even:col-start-1 odd:col-start-2 even:origin-right odd:origin-left">
@@ -120,19 +113,19 @@
         
         
 
-        class="disabled:opacity-60 h-[max(25dvh,_72px)] hidden lg:block   text-xl leading-none py-5 px-6 bg-white-smoke hover:bg-ghost-white border border-dark-grey font-bold shrink-0 rounded-xs shadow-2xs"
+        class="block disabled:opacity-60 active:scale-[.98] h-[max(25dvh,_72px)] hidden lg:block self-center   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
 
         
             data-action="next-wide"
         
     >&gt;</button>
-        <div class="flex lg:hidden gap-4 w-[calc(100%+2*var(--spacing-site-padding))] py-6 px-4 bg-gainsboro sticky bottom-0">
+        <div class="flex lg:hidden gap-4 py-4 px-site-padding w-[100vw] bg-gainsboro sticky -translate-x-site-padding bottom-0">
             <button
 
         
         
 
-        class="disabled:opacity-60 grow hidden md:block   text-xl leading-none py-5 px-6 bg-white-smoke hover:bg-ghost-white border border-dark-grey font-bold shrink-0 rounded-xs shadow-2xs"
+        class="block disabled:opacity-60 active:scale-[.98] grow hidden md:block   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
 
         
             data-action="prev-wide"
@@ -143,7 +136,7 @@
         
         
 
-        class="disabled:opacity-60 grow hidden md:block   text-xl leading-none py-5 px-6 bg-white-smoke hover:bg-ghost-white border border-dark-grey font-bold shrink-0 rounded-xs shadow-2xs"
+        class="block disabled:opacity-60 active:scale-[.98] grow hidden md:block   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
 
         
             data-action="next-wide"
@@ -154,7 +147,7 @@
         
         
 
-        class="disabled:opacity-60 grow md:hidden   text-xl leading-none py-5 px-6 bg-white-smoke hover:bg-ghost-white border border-dark-grey font-bold shrink-0 rounded-xs shadow-2xs"
+        class="block disabled:opacity-60 active:scale-[.98] grow md:hidden   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
 
         
             data-action="prev-narrow"
@@ -165,7 +158,7 @@
         
         
 
-        class="disabled:opacity-60 grow md:hidden   text-xl leading-none py-5 px-6 bg-white-smoke hover:bg-ghost-white border border-dark-grey font-bold shrink-0 rounded-xs shadow-2xs"
+        class="block disabled:opacity-60 active:scale-[.98] grow md:hidden   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
 
         
             data-action="next-narrow"
