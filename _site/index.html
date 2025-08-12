@@ -41,10 +41,32 @@
         
     >Home</a>
             
+                <a href="#recentZines"
+
+        
+        
+
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]  hidden lg:flex   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! text-xl font-bold py-[18px] px-5 underline-offset-3 decoration-from-font"
+
+        
+    >Most recent zines</a>
+                <a href="#allZines"
+
+        
+        
+
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]  hidden lg:flex   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! text-xl font-bold py-[18px] px-5 underline-offset-3 decoration-from-font"
+
+        
+    >All zines</a>
+            
         </span>
         <span class="flex justify-self-end">
             
-                <button
+                
+
+<div x-data>
+    <button
 
         
         
@@ -52,9 +74,45 @@
         class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]     leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey shrink-0 shadow-2xs text-xl font-bold py-[18px] px-5 underline-offset-3 decoration-from-font"
 
         
-            download=""
+            @click="$refs.dialog.showModal()"
         
-    >Download zine</button>
+    >Submit a zine</button>
+
+    <dialog
+        closedby="any"
+        x-ref="dialog"
+        class="flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-gainsboro p-0 mt-[15dvh] mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site))] max-w-3xl border border-grey">
+        <header class="p-nav sticky lg:-mb-4 bg-gainsboro top-0 w-full flex justify-end items-center">
+            <button
+
+        
+        
+
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]     leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey shrink-0 shadow-2xs text-xl font-bold py-[18px] px-5 underline-offset-3 decoration-from-font"
+
+        
+            @click="$refs.dialog.close()"
+        
+    >X</button>
+        </header>
+        <main class="px-dialog-inline py-dialog-block text-center grow flex flex-col justify-center gap-dialog-block max-w-3xl">
+            <div class="flex flex-col gap-6">
+                <h2 class="text-2xl w-full">Contribute to the zine store</h2>
+                <p class="w-full">Eventually we'll have a submission form, but for now, please just email a print-ready PDF of your zine to zinestorefree@proton.me, and we'll get it added as soon as we can! ❤️</p>
+            </div>
+            <a href="mailto:zinestorefree@proton.me?subject=Zine%20Store%20submission&amp;body=(Attach%20a%20print-ready%20PDF%20of%20your%20zine.%20If%20you&#39;d%20like%20to%20be%20extra%20awesome%2C%20please%20also%20include%20any%20alt-text%20you&#39;d%20like%20to%20have%20for%20each%20page%20of%20the%20zine.%20Thank%20you!)"
+
+        
+        
+
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]     leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey shrink-0 shadow-2xs text-xl font-bold py-[18px] px-5 underline-offset-3 decoration-from-font"
+
+        
+    >Submit a zine</a>
+        </main>
+    </dialog>
+</div>
+
             
         </span>
     </nav>
@@ -64,7 +122,6 @@
     <header class="zine-store-container text-pretty flex py-section flex-col gap-8">
         <h1 class="text-3xl">Zine Store (Free)</h1>
         <p class="text-xl">A place to store, share, and read zines online</p>
-        
     </header>
     <div class="flex flex-col items-center gap-section pb-section grow w-full">
         <section id="recentZines" class="zine-store-container flex flex-col gap-section-title">

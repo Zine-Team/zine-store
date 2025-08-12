@@ -4,7 +4,7 @@ recentZines: Most recent zines
 allZines: All zines (A-Z)
 ---
 {% from "components/button.njk" import button %}
-{% from "components/siteNav.njk" import siteNav %}
+{% from "components/siteNav.njk" import siteNav with context %}
 
 {{ siteNav(sticky=true) }}
 
@@ -12,7 +12,6 @@ allZines: All zines (A-Z)
     <header class="zine-store-container text-pretty flex py-section flex-col gap-8">
         <h1 class="text-3xl">{{ global.siteTitle }}</h1>
         <p class="text-xl">{{ global.siteDescription }}</p>
-        {# {% include "components/submissionDialog.njk" %} #}
     </header>
     <div class="flex flex-col items-center gap-section pb-section grow w-full">
         <section id="recentZines" class="zine-store-container flex flex-col gap-section-title">
