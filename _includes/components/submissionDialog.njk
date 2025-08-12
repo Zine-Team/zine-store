@@ -1,21 +1,21 @@
 {% set mailtoHref = "mailto:zinestorefree@proton.me?subject=Zine%20Store%20submission&body=(Attach%20a%20print-ready%20PDF%20of%20your%20zine.%20If%20you'd%20like%20to%20be%20extra%20awesome%2C%20please%20also%20include%20any%20alt-text%20you'd%20like%20to%20have%20for%20each%20page%20of%20the%20zine.%20Thank%20you!)" %}
 {% set buttonText = "Submit a zine" %}
 <div x-data>
-    {{button(label=buttonText, size="base", class="mt-4", attrs={"@click" : "$refs.dialog.showModal()"})}}
+    {{button(label=buttonText, size="lg", attrs={"@click" : "$refs.dialog.showModal()"})}}
 
     <dialog
         closedby="any"
         x-ref="dialog"
         class="flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-gainsboro p-0 mt-[15dvh] mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site-padding))] max-w-3xl border border-grey">
         <header class="p-2 sticky bg-gainsboro top-0 w-full flex justify-end items-center">
-            {{button(label="×", size="lg", attrs={"@click" : "$refs.dialog.close()"})}}
+            {{button(label="X", size="lg", attrs={"@click" : "$refs.dialog.close()"})}}
         </header>
-        <main class="px-8 text-center pb-16 pt-8 grow flex flex-col justify-center gap-16 max-w-2xl">
-            <div class="flex flex-col gap-4">
+        <main class="px-8 text-center pb-14 pt-8 grow flex flex-col justify-center gap-14 max-w-2xl">
+            <div class="flex flex-col gap-6">
                 <h2 class="text-2xl w-full">Contribute to the zine store</h2>
                 <p class="w-full">Eventually we'll have a submission form, but for now, please just email a print-ready PDF of your zine to <a class="text-link underline hover:no-underline" href="{{ mailtoHref }}">zinestorefree@proton.me</a>, and we'll get it added as soon as we can! ❤️</p>
             </div>
-            {{button(label=buttonText, size="base", href=mailtoHref)}}
+            {{button(label=buttonText, size="lg", href=mailtoHref)}}
         </main>
     </dialog>
 </div>
