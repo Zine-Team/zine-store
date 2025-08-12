@@ -25,8 +25,14 @@ Zine Store (Free)"/>
         <script defer src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
 
     </head>
-    <body class="font-sans text-base antialiased h-full  overflow-auto flex flex-col items-center bg-gainsboro">
-        
+    <body class="font-sans text-lg antialiased h-full overflow-auto flex flex-col items-center bg-gainsboro">
+        <div class="fixed z-20 text-base pt-1">
+            <span class="sm:hidden block">Less than small</span>
+            <span class="hidden sm:max-md:block">Small</span>
+            <span class="hidden md:max-lg:block">Medium</span>
+            <span class="hidden lg:max-xl:block">Large</span>
+            <span class="hidden xl:block">Extra large</span>
+        </div>
 
         
 
@@ -37,7 +43,7 @@ Zine Store (Free)"/>
         
         
 
-        class="block disabled:opacity-60 active:scale-[.98]    text-lg text-link visited:text-link-visited underline hover:no-underline underline-offset-2 "
+        class="flex justify-center disabled:opacity-60 active:scale-[.98]    text-link visited:text-link-visited underline hover:no-underline underline-offset-2 "
 
         
     >&lt; Home</a>
@@ -48,7 +54,7 @@ Zine Store (Free)"/>
         
         
 
-        class="block disabled:opacity-60 active:scale-[.98]    leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-lg font-semibold py-4 px-5"
+        class="flex justify-center disabled:opacity-60 active:scale-[.98]    leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-base font-semibold py-4 px-5"
 
         
             download=""
@@ -58,22 +64,22 @@ Zine Store (Free)"/>
 </nav>
 
 <main class="overflow-hidden w-full flex flex-col items-center gap-4 grow relative">
-    <div data-zine-part="navigator" class="zine-store-container flex overflow-y-auto overflow-x-hidden flex-col lg:flex-row lg:justify-center lg:gap-16 grow">
+    <div data-zine-part="navigator" class="zine-store-container flex overflow-y-auto overflow-x-hidden flex-col lg:flex-row lg:justify-center lg:gap-10 xl:gap-20 grow">
         <button
 
         
         
 
-        class="block disabled:opacity-60 active:scale-[.98] h-[max(25dvh,_72px)] hidden lg:block self-center   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
+        class="flex justify-center disabled:opacity-60 active:scale-[.98] h-[max(25dvh,_72px)] hidden lg:block self-center   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
 
         
             data-action="prev-wide"
         
     >&lt;</button>
-        <div data-zine-part="root" class="zine-root w-full grow flex flex-col items-center perspective-zine col-start-1 col-end-3 lg:col-auto">
+        <div data-zine-part="root" class="grow lg:grow-0 flex flex-col justify-center items-center perspective-zine col-start-1 col-end-3 lg:col-auto">
             <!-- where the zine template is injected -->
-            <div data-zine-part="outer" class="grow w-full md:justify-center py-2 flex items-center" data-template="zine-pages">
-                <div data-zine-part="spread" class="relative grid grid-cols-2 justify-self-start shrink-0 lg:justify-self-center aspect-zine md:w-full max-w-3xl pointer-events-none perspective-zine front-cover">
+            <div data-zine-part="outer" class="w-full md:justify-center py-2 flex items-center" data-template="zine-pages">
+                <div data-zine-part="spread" class="relative grid grid-cols-2 justify-self-start shrink-0 lg:justify-self-center aspect-zine md:w-full max-w-4xl pointer-events-none perspective-zine front-cover">
                     
                         <div data-zine-part="page" class="relative backface-hidden row-start-1 row-end-2 even:col-start-1 odd:col-start-2 even:origin-right odd:origin-left">
                             <img src="/images/uploads/congo/page_cover.jpg" alt="How the Green Energy Transition is Relying on Forced Labor in the Congo. Dela wa Monga, an “artisanal miner,” holding up a chunk of cobalt stone mined near Kolwezi, DRC">
@@ -115,7 +121,7 @@ Zine Store (Free)"/>
         
         
 
-        class="block disabled:opacity-60 active:scale-[.98] h-[max(25dvh,_72px)] hidden lg:block self-center   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
+        class="flex justify-center disabled:opacity-60 active:scale-[.98] h-[max(25dvh,_72px)] hidden lg:block self-center   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
 
         
             data-action="next-wide"
@@ -127,7 +133,7 @@ Zine Store (Free)"/>
         
         
 
-        class="block disabled:opacity-60 active:scale-[.98] grow hidden md:block   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
+        class="flex justify-center disabled:opacity-60 active:scale-[.98] grow hidden md:block   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
 
         
             data-action="prev-wide"
@@ -138,7 +144,7 @@ Zine Store (Free)"/>
         
         
 
-        class="block disabled:opacity-60 active:scale-[.98] grow hidden md:block   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
+        class="flex justify-center disabled:opacity-60 active:scale-[.98] grow hidden md:block   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
 
         
             data-action="next-wide"
@@ -149,7 +155,7 @@ Zine Store (Free)"/>
         
         
 
-        class="block disabled:opacity-60 active:scale-[.98] grow md:hidden   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
+        class="flex justify-center disabled:opacity-60 active:scale-[.98] grow md:hidden   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
 
         
             data-action="prev-narrow"
@@ -160,7 +166,7 @@ Zine Store (Free)"/>
         
         
 
-        class="block disabled:opacity-60 active:scale-[.98] grow md:hidden   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
+        class="flex justify-center disabled:opacity-60 active:scale-[.98] grow md:hidden   leading-none bg-white-smoke hover:bg-ghost-white border border-dark-grey shrink-0 rounded-xs shadow-2xs text-xl font-bold py-5 px-6"
 
         
             data-action="next-narrow"

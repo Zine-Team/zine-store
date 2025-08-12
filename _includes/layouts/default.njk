@@ -32,13 +32,14 @@
         <script defer src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
 
     </head>
-    <body class="font-sans text-base antialiased h-full  overflow-auto flex flex-col items-center bg-gainsboro">
-        {# <div class="fixed z-20">
+    <body class="font-sans text-lg antialiased h-full overflow-auto flex flex-col items-center bg-gainsboro">
+        <div class="fixed z-20 text-base pt-1">
             <span class="sm:hidden block">Less than small</span>
             <span class="hidden sm:max-md:block">Small</span>
             <span class="hidden md:max-lg:block">Medium</span>
-            <span class="hidden lg:block">Large</span>
-        </div> #}
+            <span class="hidden lg:max-xl:block">Large</span>
+            <span class="hidden xl:block">Extra large</span>
+        </div>
 
         {{ content | safe }}
     </body>

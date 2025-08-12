@@ -1,9 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --breakpoint-sm: 36rem; /* 576px */
+  --breakpoint-sm: 40rem; /* 640px */
   --breakpoint-md: 44rem; /* 704px */
   --breakpoint-lg: 60rem; /* 960px */
+  --breakpoint-xl: 70rem; /* 1120px */
+
+  --container-4xl: 52rem;
 
   --shadow-zine: 0.5px 0.5px 1px lch(0% 0 0 / 0.1), 1px 1px 12px -4px lch(0% 0 0 / 0.2);
   --shadow-page: 0.33px 0.33px 1px lch(0% 0 0 / 0.1), 0.75px 0.75px 0.75px lch(0% 0 0 / 0.1);
@@ -12,6 +15,7 @@
   --color-link: #0000ee;
   --color-link-visited: #551a8b;
   --color-dark-grey: DarkGray;
+  --color-grey: gray;
   --color-ghost-white: GhostWhite;
   --color-white-smoke: WhiteSmoke;
 
@@ -28,7 +32,7 @@
   --text-2xl: 28px;
   --text-xl: 24px;
   --text-lg: 20px;
-  --text-base: 18px;
+  --text-base: 19px;
 }
 
 @layer components {
@@ -217,19 +221,21 @@
     from {
       display: block;
       z-index: 2;
+      transform: rotate3d(0, 1, 0, 0.01deg);
     }
     to {
-      transform: rotateY(-180deg);
+      transform: rotate3d(0, 1, 0, -180deg);
     }
   }
 
   @keyframes rightPageFlipRight {
     from {
-      transform: rotateY(-180deg);
+      transform: rotate3d(0, 1, 0, -180deg);
     }
     to {
       display: block;
       z-index: 2;
+      transform: rotate3d(0, 1, 0, 0.01deg);
     }
   }
 
@@ -241,7 +247,10 @@
 
   @keyframes leftPageFlipLeft {
     from {
-      transform: rotateY(180deg);
+      transform: rotate3d(0, 1, 0, 180deg);
+    }
+    to {
+      transform: rotate3d(0, 1, 0, 0.01deg);
     }
   }
 
@@ -249,9 +258,10 @@
     from {
       display: block;
       z-index: 2;
+      transform: rotate3d(0, 1, 0, 0.01deg);
     }
     to {
-      transform: rotateY(180deg);
+      transform: rotate3d(0, 1, 0, -180deg);
     }
   }
 
