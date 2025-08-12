@@ -8,7 +8,7 @@ layout: default
     <div class="flex overflow-y-auto overflow-x-hidden flex-col grow">
         {{ siteNav(sticky=false) }}
         <div data-zine-part="navigator" class="zine-store-container flex flex-col lg:flex-row lg:justify-center lg:gap-10 xl:gap-20 grow">
-            {{ button(label="<", size="lg", class="h-[max(25dvh,_72px)] max-w-20 grow hidden lg:block self-center", attrs={"data-action": "prev-wide"}) }}
+            {{ button(label="<", size="lg", class="h-[max(25dvh,_72px)] max-w-20 grow hidden lg:flex self-center", attrs={"data-action": "prev-wide"}) }}
             <div data-zine-part="root" class="grow lg:grow-0 flex flex-col justify-center items-center perspective-zine col-start-1 col-end-3 lg:col-auto">
                 <!-- where the zine template is injected -->
                 <div data-zine-part="outer" class="w-full md:justify-center py-2 flex items-center" data-template="zine-pages">
@@ -21,7 +21,7 @@ layout: default
                     </div>
                 </div>
             </div>
-            {{ button(label=">", size="lg", class="h-[max(25dvh,_72px)] max-w-20 grow hidden lg:block self-center", attrs={"data-action": "next-wide"}) }}
+            {{ button(label=">", size="lg", class="h-[max(25dvh,_72px)] max-w-20 grow hidden lg:flex self-center", attrs={"data-action": "next-wide"}) }}
         </div>
         <div class="flex lg:hidden gap-site p-nav md:px-site w-[100vw] bg-gainsboro sticky -translate-x-site bottom-0">
             {{ button(label="<", size="lg", class="grow hidden md:block", attrs={"data-action": "prev-wide"}) }}
