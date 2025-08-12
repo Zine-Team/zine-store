@@ -97,7 +97,6 @@
     max-width: 1400px;
     padding-inline-start: var(--spacing-site);
     padding-inline-end: var(--spacing-site);
-    overflow: hidden;
   }
 
   .navigation-button {

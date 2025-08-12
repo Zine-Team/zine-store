@@ -4,6 +4,9 @@ recentZines: Most recent zines
 allZines: All zines (A-Z)
 ---
 {% from "components/button.njk" import button %}
+{% from "components/siteNav.njk" import siteNav %}
+
+{{ siteNav(sticky=true) }}
 
 <main class="flex flex-col items-center grow w-full">
     <header class="zine-store-container text-pretty flex py-section flex-col gap-8">
@@ -26,7 +29,7 @@ allZines: All zines (A-Z)
             <ul class="flex flex-col gap-10">
                 {% for zine in collections.zine | sort(false, false, "data.title") %}
                     <li class="flex">
-                        {{button(label=zine.data.title, href=zine.url, type="link")}}
+                        {{ button(label=zine.data.title, href=zine.url, type="link") }}
                     </li>
                 {% endfor %}
             </ul>

@@ -6,7 +6,6 @@ const prevButtonNarrow = document.querySelector("[data-action='prev-narrow']");
 
 let currentSpread = 0;
 let currentPage = 0;
-const DOMZineNavigator = document.querySelector("[data-zine-part='navigator'");
 const DOMZineOuter = document.querySelector("[data-zine-part='outer']");
 const DOMZine = document.querySelector("[data-zine-part='spread']");
 const DOMPages = document.querySelectorAll("[data-zine-part='page']");
@@ -31,8 +30,6 @@ function showSpread(spread, direction) {
   } else {
     DOMZine.dataset.direction = "increment";
   }
-
-  DOMZineNavigator.scrollTo({ top: 0, behavior: "smooth" });
 
   // hide previous pages
   DOMPages.forEach((page) => {
