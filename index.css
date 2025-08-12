@@ -8,6 +8,14 @@
   --text-2xl: 24px;
   --text-2xl--line-height: calc(2 / 1.5);
   --text-3xl: 36px;
+  --text-3xl--line-height: 1;
+
+  --space-site: 0.75rem;
+  --space-nav: 0.25rem;
+  --space-section: 4rem;
+  --space-section-title: 1.25rem;
+  --space-dialog-inline: 1.25rem;
+  --space-dialog-block: 2.5rem;
 
   @media screen and (min-width: 704px) {
     --text-base: 19px;
@@ -15,6 +23,29 @@
     --text-xl: 23px;
     --text-2xl: 30px;
     --text-3xl: 48px;
+
+    --space-site: 2rem;
+    --space-nav: 0.5rem;
+    --space-section: 5rem;
+    --space-section-title: 1.5rem;
+    --space-dialog-inline: 2rem;
+    --space-dialog-block: 3rem;
+  }
+
+  @media screen and (min-width: 960px) {
+    --space-site: 3rem;
+    --space-nav: 1rem;
+    --space-section: 6rem;
+    --space-section-title: 2rem;
+    --space-dialog-inline: 4.5rem;
+    --space-dialog-block: 3.5rem;
+  }
+
+  @media screen and (min-width: 1120px) {
+    --space-site: 3rem;
+    --space-nav: 1rem;
+    --space-section: 6rem;
+    --space-section-title: 2.5rem;
   }
 }
 
@@ -37,11 +68,12 @@
   --color-ghost-white: GhostWhite;
   --color-white-smoke: WhiteSmoke;
 
-  --spacing-site: clamp(0.75rem, 3vw, 3rem);
-  --spacing-nav: clamp(0.25rem, 1.5vw, 1rem);
-  --spacing-section: clamp(1.25rem, 3vw, 2.5rem);
-  --spacing-dialog-inline: clamp(1.25rem, 3.5vw, 4.5rem);
-  --spacing-dialog-block: clamp(2.5rem, 6vw, 3.5rem);
+  --spacing-site: var(--space-site);
+  --spacing-nav: var(--space-nav);
+  --spacing-section: var(--space-section);
+  --spacing-section-title: var(--space-section-title);
+  --spacing-dialog-inline: var(--space-dialog-inline);
+  --spacing-dialog-block: var(--space-dialog-block);
 
   --perspective-zine: 2000px;
   --duration-zine: 1000ms;
