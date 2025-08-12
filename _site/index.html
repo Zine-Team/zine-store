@@ -25,7 +25,7 @@
     </head>
     <body class="font-sans text-lg antialiased h-full overflow-auto flex flex-col items-center bg-gainsboro">
         
-        <nav class="zine-store-container shrink-0 flex items-center justify-between py-4 sticky top-0 z-10 bg-gainsboro">
+        <nav class="zine-store-container shrink-0 flex items-center justify-between py-nav sticky top-0 z-10 bg-gainsboro">
             <span class="flex justify-self-start gap-16">
                 <a href="/"
 
@@ -77,8 +77,8 @@
     <dialog
         closedby="any"
         x-ref="dialog"
-        class="flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-gainsboro p-0 mt-[15dvh] mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site-padding))] max-w-3xl border border-grey">
-        <header class="p-2 sticky bg-gainsboro top-0 w-full flex justify-end items-center">
+        class="flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-gainsboro p-0 mt-[15dvh] mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site))] max-w-3xl border border-grey">
+        <header class="p-nav sticky lg:-mb-4 bg-gainsboro top-0 w-full flex justify-end items-center">
             <button
 
         
@@ -91,10 +91,10 @@
         
     >X</button>
         </header>
-        <main class="px-8 text-center pb-14 pt-8 grow flex flex-col justify-center gap-14 max-w-2xl">
+        <main class="px-dialog-inline py-dialog-block text-center grow flex flex-col justify-center gap-dialog-block max-w-3xl">
             <div class="flex flex-col gap-6">
                 <h2 class="text-2xl w-full">Contribute to the zine store</h2>
-                <p class="w-full">Eventually we'll have a submission form, but for now, please just email a print-ready PDF of your zine to <a class="text-link underline hover:no-underline" href="mailto:zinestorefree@proton.me?subject=Zine%20Store%20submission&amp;body=(Attach%20a%20print-ready%20PDF%20of%20your%20zine.%20If%20you&#39;d%20like%20to%20be%20extra%20awesome%2C%20please%20also%20include%20any%20alt-text%20you&#39;d%20like%20to%20have%20for%20each%20page%20of%20the%20zine.%20Thank%20you!)">zinestorefree@proton.me</a>, and we'll get it added as soon as we can! ❤️</p>
+                <p class="w-full">Eventually we'll have a submission form, but for now, please just email a print-ready PDF of your zine to zinestorefree@proton.me, and we'll get it added as soon as we can! ❤️</p>
             </div>
             <a href="mailto:zinestorefree@proton.me?subject=Zine%20Store%20submission&amp;body=(Attach%20a%20print-ready%20PDF%20of%20your%20zine.%20If%20you&#39;d%20like%20to%20be%20extra%20awesome%2C%20please%20also%20include%20any%20alt-text%20you&#39;d%20like%20to%20have%20for%20each%20page%20of%20the%20zine.%20Thank%20you!)"
 
@@ -116,12 +116,12 @@
 
 <main class="flex flex-col items-center grow w-full">
     <header class="zine-store-container flex py-16 lg:py-32 flex-col gap-8">
-        <h1 class="text-3xl font-light tracking-wide">Zine Store (Free)</h1>
+        <h1 class="text-3xl">Zine Store (Free)</h1>
         <p class="text-xl">A place to store, share, and read zines online</p>
         
     </header>
     <div class="flex flex-col items-center gap-16 pb-16 lg:gap-24 lg:pb-24 grow w-full">
-        <section id="recentZines" class="zine-store-container flex flex-col gap-10">
+        <section id="recentZines" class="zine-store-container flex flex-col gap-section">
             <h2 class="text-2xl">Most recent zines</h2>
             <div class="zine-grid grow-1 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-8">
                 
@@ -136,7 +136,7 @@
                 
             </div>
         </section>
-        <section id="allZines" class="zine-store-container titled-section flex flex-col gap-10">
+        <section id="allZines" class="zine-store-container titled-section flex flex-col gap-section">
             <h2 class="text-2xl">All zines (A-Z)</h2>
             <ul class="flex flex-col gap-10">
                 

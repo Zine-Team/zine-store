@@ -7,12 +7,12 @@ allZines: All zines (A-Z)
 
 <main class="flex flex-col items-center grow w-full">
     <header class="zine-store-container flex py-16 lg:py-32 flex-col gap-8">
-        <h1 class="text-3xl font-light tracking-wide">{{ global.siteTitle }}</h1>
+        <h1 class="text-3xl">{{ global.siteTitle }}</h1>
         <p class="text-xl">{{ global.siteDescription }}</p>
         {# {% include "components/submissionDialog.njk" %} #}
     </header>
     <div class="flex flex-col items-center gap-16 pb-16 lg:gap-24 lg:pb-24 grow w-full">
-        <section id="recentZines" class="zine-store-container flex flex-col gap-10">
+        <section id="recentZines" class="zine-store-container flex flex-col gap-section">
             <h2 class="text-2xl">{{ recentZines }}</h2>
             <div class="zine-grid grow-1 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-8">
                 {% for zine in collections.zine | reverse | slice(4) %}
@@ -21,7 +21,7 @@ allZines: All zines (A-Z)
                 {% endfor %}
             </div>
         </section>
-        <section id="allZines" class="zine-store-container titled-section flex flex-col gap-10">
+        <section id="allZines" class="zine-store-container titled-section flex flex-col gap-section">
             <h2 class="text-2xl">{{ allZines }}</h2>
             <ul class="flex flex-col gap-10">
                 {% for zine in collections.zine | sort(false, false, "data.title") %}

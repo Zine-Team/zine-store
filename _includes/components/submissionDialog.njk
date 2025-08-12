@@ -6,14 +6,14 @@
     <dialog
         closedby="any"
         x-ref="dialog"
-        class="flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-gainsboro p-0 mt-[15dvh] mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site-padding))] max-w-3xl border border-grey">
-        <header class="p-2 sticky bg-gainsboro top-0 w-full flex justify-end items-center">
+        class="flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-gainsboro p-0 mt-[15dvh] mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site))] max-w-3xl border border-grey">
+        <header class="p-nav sticky lg:-mb-4 bg-gainsboro top-0 w-full flex justify-end items-center">
             {{button(label="X", size="lg", attrs={"@click" : "$refs.dialog.close()"})}}
         </header>
-        <main class="px-8 text-center pb-14 pt-8 grow flex flex-col justify-center gap-14 max-w-2xl">
+        <main class="px-dialog-inline py-dialog-block text-center grow flex flex-col justify-center gap-dialog-block max-w-3xl">
             <div class="flex flex-col gap-6">
                 <h2 class="text-2xl w-full">Contribute to the zine store</h2>
-                <p class="w-full">Eventually we'll have a submission form, but for now, please just email a print-ready PDF of your zine to <a class="text-link underline hover:no-underline" href="{{ mailtoHref }}">zinestorefree@proton.me</a>, and we'll get it added as soon as we can! ❤️</p>
+                <p class="w-full">Eventually we'll have a submission form, but for now, please just email a print-ready PDF of your zine to zinestorefree@proton.me, and we'll get it added as soon as we can! ❤️</p>
             </div>
             {{button(label=buttonText, size="lg", href=mailtoHref)}}
         </main>
