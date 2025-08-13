@@ -19,7 +19,7 @@ allZines: All zines (A-Z)
             <h2 class="text-lg leading-tight">{{ recentZines }}</h2>
             <div class="zine-grid grow-1 grid grid-cols-2 gap-section-title lg:grid-cols-4">
                 {% for zine in collections.zine | reverse | slice(4) %}
-                    <a class="shadow-zine" href="{{ zine.url }}">
+                    <a class="shadow-zine hover:scale-[1.02] transition-transform duration-75 ease-zine" href="{{ zine.url }}">
                         <img class="w-full shadow-page border border-dark-grey" src="{{ zine.data.pages[0].image }}" alt="{{ zine.data.title }}"></a>
                 {% endfor %}
             </div>

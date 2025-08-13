@@ -76,7 +76,7 @@
   --aspect-zine: 5.5 / 4.25;
   --ease-zine: cubic-bezier(0, 0, 0.2, 1);
 
-  --radius-xs: 3px;
+  --radius: 3px;
 
   --text-xl: var(--text-xl);
   --text-lg: var(--text-lg);
