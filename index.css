@@ -185,6 +185,9 @@
       transform: rotateX(calc(1deg * var(--aimY))) rotateY(calc(1deg * var(--aimX)));
     }
 
+    [data-zine-part="spread"] {
+      transition: transform calc(var(--duration-zine) * 0.75) var(--ease-zine);
+    }
     /* this is zine shadow that moves with the perspective effect */
     [data-zine-part="spread"]::before {
       content: "";

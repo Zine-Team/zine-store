@@ -18,8 +18,8 @@ layout: default
                             </div>
                         {% endfor %}
                     </div>
-                    <button data-action="prev-narrow" class="absolute inset-y-0 left-0 w-1/3"></button>
-                    <button data-action="next-narrow" class="absolute inset-y-0 right-0 w-1/3"></button>
+                    <button data-action="prev-narrow" class="absolute md:hidden inset-y-0 left-0 w-1/3"></button>
+                    <button data-action="next-narrow" class="absolute md:hidden inset-y-0 right-0 w-1/3"></button>
                 </div>
             </div>
             {{ button(label=">", size="lg", class="h-[max(25dvh,_72px)] max-w-20 grow hidden lg:flex self-center", attrs={"data-action": "next-wide"}) }}
