@@ -2,6 +2,6 @@
   "siteDomain": "https://zinestorefree.com",
   "siteTitle": "Zine Store (Free)",
   "siteDescription": "A place to store, share, and read zines online",
-  "siteImage": "images/uploads/og-image.jpg",
-  "favicon": "images/uploads/favicon.png"
+  "siteImage": "/images/uploads/og-image.jpg",
+  "favicon": "/images/uploads/favicon.png"
 }
