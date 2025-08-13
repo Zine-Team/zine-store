@@ -329,6 +329,12 @@
   .items-center {
     align-items: center;
   }
+  .items-end {
+    align-items: flex-end;
+  }
+  .justify-baseline {
+    justify-content: baseline;
+  }
   .justify-between {
     justify-content: space-between;
   }
@@ -337,6 +343,12 @@
   }
   .justify-end {
     justify-content: flex-end;
+  }
+  .gap-1 {
+    gap: calc(var(--spacing) * 1);
+  }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
   }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
@@ -367,6 +379,9 @@
   }
   .self-center {
     align-self: center;
+  }
+  .self-end {
+    align-self: flex-end;
   }
   .justify-self-end {
     justify-self: flex-end;
@@ -447,6 +462,9 @@
   }
   .text-center {
     text-align: center;
+  }
+  .align-baseline {
+    vertical-align: baseline;
   }
   .font-sans {
     font-family: var(--font-sans);
@@ -620,6 +638,16 @@
       display: none;
     }
   }
+  .sm\:flex-row {
+    @media (width >= 40rem) {
+      flex-direction: row;
+    }
+  }
+  .sm\:items-baseline {
+    @media (width >= 40rem) {
+      align-items: baseline;
+    }
+  }
   .sm\:max-md\:block {
     @media (width >= 40rem) {
       @media (width < 44rem) {
@@ -637,9 +665,24 @@
       display: none;
     }
   }
+  .md\:w-auto {
+    @media (width >= 44rem) {
+      width: auto;
+    }
+  }
   .md\:w-full {
     @media (width >= 44rem) {
       width: 100%;
+    }
+  }
+  .md\:flex-row {
+    @media (width >= 44rem) {
+      flex-direction: row;
+    }
+  }
+  .md\:items-baseline {
+    @media (width >= 44rem) {
+      align-items: baseline;
     }
   }
   .md\:justify-center {
@@ -709,12 +752,6 @@
       justify-self: center;
     }
   }
-  .lg\:text-2xl {
-    @media (width >= 60rem) {
-      font-size: var(--text-2xl);
-      line-height: var(--tw-leading, var(--text-2xl--line-height));
-    }
-  }
   .lg\:max-xl\:block {
     @media (width >= 60rem) {
       @media (width < 70rem) {
@@ -737,7 +774,7 @@
   --text-lg: 20.5px;
   --text-xl: 20.5px;
   --text-2xl: 24px;
-  --text-3xl: 36px;
+  --text-3xl: clamp(72px, 13vw, 11rem);
   --text-3xl--line-height: 1;
   --space-site: 1rem;
   --space-nav: 0.25rem;
@@ -750,7 +787,6 @@
     --text-lg: 22px;
     --text-xl: 22px;
     --text-2xl: 30px;
-    --text-3xl: 48px;
     --space-site: 2rem;
     --space-nav: 0.5rem;
     --space-section: 5rem;
@@ -759,7 +795,6 @@
     --space-dialog-block: 3rem;
   }
   @media screen and (min-width: 960px) {
-    --text-3xl: min(13vw, 11rem);
     --space-site: 3rem;
     --space-nav: 1rem;
     --space-section: 6rem;

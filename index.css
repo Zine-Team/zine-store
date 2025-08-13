@@ -4,7 +4,8 @@
   --text-lg: 20.5px;
   --text-xl: 20.5px;
   --text-2xl: 24px;
-  --text-3xl: 36px;
+  /* --text-3xl: 48px; */
+  --text-3xl: clamp(72px, 13vw, 11rem);
   --text-3xl--line-height: 1;
 
   --space-site: 1rem;
@@ -14,12 +15,12 @@
   --space-dialog-inline: 1.25rem;
   --space-dialog-block: 2.5rem;
 
+  /* > md */
   @media screen and (min-width: 704px) {
     --text-base: 19px;
     --text-lg: 22px;
     --text-xl: 22px;
     --text-2xl: 30px;
-    --text-3xl: 48px;
 
     --space-site: 2rem;
     --space-nav: 0.5rem;
@@ -29,8 +30,8 @@
     --space-dialog-block: 3rem;
   }
 
+  /* > lg */
   @media screen and (min-width: 960px) {
-    --text-3xl: min(13vw, 11rem);
     --space-site: 3rem;
     --space-nav: 1rem;
     --space-section: 6rem;
@@ -39,6 +40,7 @@
     --space-dialog-block: 3.5rem;
   }
 
+  /* > xl */
   @media screen and (min-width: 1120px) {
     --space-site: 3rem;
     --space-nav: 1rem;
