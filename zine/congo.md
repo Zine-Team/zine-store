@@ -1,6 +1,6 @@
 ---
 title: How the Green Energy Transition is Relying on Forced Labor in the Congo
-date: 2024-08-01
+date: 2024-06-01
 pages:
   - image: /images/uploads/congo/page_cover.jpg
     altText: How the Green Energy Transition is Relying on Forced Labor in the Congo. Dela wa Monga, an “artisanal miner,” holding up a chunk of cobalt stone mined near Kolwezi, DRC

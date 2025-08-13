@@ -709,16 +709,6 @@
       justify-self: center;
     }
   }
-  .lg\:text-center {
-    @media (width >= 60rem) {
-      text-align: center;
-    }
-  }
-  .lg\:text-right {
-    @media (width >= 60rem) {
-      text-align: right;
-    }
-  }
   .lg\:text-2xl {
     @media (width >= 60rem) {
       font-size: var(--text-2xl);
