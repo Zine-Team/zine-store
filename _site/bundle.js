@@ -1,8 +1,8 @@
 const nextButtonsWide = document.querySelectorAll("[data-action='next-wide']");
 const prevButtonsWide = document.querySelectorAll("[data-action='prev-wide']");
 
-const nextButtonNarrow = document.querySelector("[data-action='next-narrow']");
-const prevButtonNarrow = document.querySelector("[data-action='prev-narrow']");
+const nextButtonsNarrow = document.querySelectorAll("[data-action='next-narrow']");
+const prevButtonsNarrow = document.querySelectorAll("[data-action='prev-narrow']");
 
 let currentSpread = 0;
 let currentPage = 0;
@@ -86,7 +86,7 @@ function showPages(page) {
   }
 }
 
-//   wide screens navigation events
+// wide screens navigation events
 nextButtonsWide.forEach((button) => {
   button.addEventListener("click", (e) => {
     e.preventDefault();
@@ -105,19 +105,23 @@ prevButtonsWide.forEach((button) => {
   });
 });
 
-//   narrow screens navigation events
-nextButtonNarrow.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (currentSpread < totalSpreads) {
-    changePage(1);
-  }
+// narrow screens navigation events
+nextButtonsNarrow.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (currentSpread < totalSpreads) {
+      changePage(1);
+    }
+  });
 });
 
-prevButtonNarrow.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (currentSpread > 0) {
-    changePage(-1);
-  }
+prevButtonsNarrow.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (currentSpread > 0) {
+      changePage(-1);
+    }
+  });
 });
 
 showSpread(0);
