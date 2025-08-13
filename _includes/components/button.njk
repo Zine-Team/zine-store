@@ -1,11 +1,11 @@
 {% set typeClasses = {
-    button: "leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs",
+    button: "leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded-xs",
     link: "text-link underline hover:no-underline underline-offset-3 decoration-1 px-0!"
 }%}
 
 {% set sizeClasses = {
-    base: "text-base font-bold py-4 px-5",
-    lg: "text-xl font-bold py-4 px-5 underline-offset-3 decoration-from-font"
+    base: "font-bold py-4 px-5",
+    lg: "font-bold py-4 px-5 underline-offset-3 decoration-from-font"
 }%}
 
 {%- macro button(

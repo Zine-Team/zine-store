@@ -1,12 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --text-lg: 20.5px;
-  --text-xl: 20.5px;
-  --text-2xl: 24px;
-  /* --text-3xl: 48px; */
-  --text-3xl: clamp(72px, 13vw, 11rem);
-  --text-3xl--line-height: 1;
+  --text-base: 20.5px;
+  --text-lg: 24px;
+  --text-xl: clamp(72px, 13vw, 11rem);
+  --text-xl--line-height: 1;
 
   --space-site: 1rem;
   --space-nav: 0.25rem;
@@ -17,10 +15,8 @@
 
   /* > md */
   @media screen and (min-width: 704px) {
-    --text-base: 19px;
-    --text-lg: 22px;
-    --text-xl: 22px;
-    --text-2xl: 30px;
+    --text-base: 22px;
+    --text-lg: 30px;
 
     --space-site: 2rem;
     --space-nav: 0.5rem;
@@ -82,11 +78,9 @@
 
   --radius-xs: 3px;
 
-  --text-3xl: 48px;
-  --text-2xl: 30px;
-  --text-xl: 23px;
-  --text-lg: 21px;
-  --text-base: 19px;
+  --text-xl: var(--text-xl);
+  --text-lg: var(--text-lg);
+  --text-base: var(--text-base);
 
   --tracking-wide: 0.0125em;
 }
