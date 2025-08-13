@@ -22,9 +22,6 @@
     --text-3xl: 48px;
     --text-3xl--line-height: calc(2.25 / 1.875);
     --font-weight-bold: 700;
-    --tracking-tighter: -0.05em;
-    --tracking-tight: -0.025em;
-    --tracking-wide: 0.0125em;
     --leading-tight: 1.25;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -486,18 +483,6 @@
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
   }
-  .-tracking-wide {
-    --tw-tracking: calc(var(--tracking-wide) * -1);
-    letter-spacing: calc(var(--tracking-wide) * -1);
-  }
-  .tracking-tight {
-    --tw-tracking: var(--tracking-tight);
-    letter-spacing: var(--tracking-tight);
-  }
-  .tracking-tighter {
-    --tw-tracking: var(--tracking-tighter);
-    letter-spacing: var(--tracking-tighter);
-  }
   .text-pretty {
     text-wrap: pretty;
   }
@@ -679,6 +664,11 @@
       margin-bottom: calc(var(--spacing) * -4);
     }
   }
+  .lg\:-ml-2 {
+    @media (width >= 60rem) {
+      margin-left: calc(var(--spacing) * -2);
+    }
+  }
   .lg\:flex {
     @media (width >= 60rem) {
       display: flex;
@@ -717,6 +707,22 @@
   .lg\:justify-self-center {
     @media (width >= 60rem) {
       justify-self: center;
+    }
+  }
+  .lg\:text-center {
+    @media (width >= 60rem) {
+      text-align: center;
+    }
+  }
+  .lg\:text-right {
+    @media (width >= 60rem) {
+      text-align: right;
+    }
+  }
+  .lg\:text-2xl {
+    @media (width >= 60rem) {
+      font-size: var(--text-2xl);
+      line-height: var(--tw-leading, var(--text-2xl--line-height));
     }
   }
   .lg\:max-xl\:block {
@@ -763,6 +769,7 @@
     --space-dialog-block: 3rem;
   }
   @media screen and (min-width: 960px) {
+    --text-3xl: min(13vw, 11rem);
     --space-site: 3rem;
     --space-nav: 1rem;
     --space-section: 6rem;
@@ -1008,10 +1015,6 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-tracking {
-  syntax: "*";
-  inherits: false;
-}
 @property --tw-shadow {
   syntax: "*";
   inherits: false;
@@ -1141,7 +1144,6 @@
       --tw-border-style: solid;
       --tw-leading: initial;
       --tw-font-weight: initial;
-      --tw-tracking: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;

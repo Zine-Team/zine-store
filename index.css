@@ -30,6 +30,7 @@
   }
 
   @media screen and (min-width: 960px) {
+    --text-3xl: min(13vw, 11rem);
     --space-site: 3rem;
     --space-nav: 1rem;
     --space-section: 6rem;
