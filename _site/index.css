@@ -22,6 +22,7 @@
     --text-3xl: 48px;
     --text-3xl--line-height: calc(2.25 / 1.875);
     --font-weight-bold: 700;
+    --leading-tight: 1.25;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -217,9 +218,6 @@
   .bottom-0 {
     bottom: calc(var(--spacing) * 0);
   }
-  .z-10 {
-    z-index: 10;
-  }
   .z-20 {
     z-index: 20;
   }
@@ -286,6 +284,9 @@
   .max-w-20 {
     max-width: calc(var(--spacing) * 20);
   }
+  .min-w-15 {
+    min-width: calc(var(--spacing) * 15);
+  }
   .shrink-0 {
     flex-shrink: 0;
   }
@@ -297,6 +298,9 @@
   }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+  }
+  .scroll-p-section-title {
+    scroll-padding: var(--spacing-section-title);
   }
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -399,6 +403,9 @@
   .px-dialog-inline {
     padding-inline: var(--spacing-dialog-inline);
   }
+  .px-site {
+    padding-inline: var(--spacing-site);
+  }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
@@ -452,6 +459,10 @@
   .leading-none {
     --tw-leading: 1;
     line-height: 1;
+  }
+  .leading-tight {
+    --tw-leading: var(--leading-tight);
+    line-height: var(--leading-tight);
   }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
@@ -527,10 +538,12 @@
       transform-origin: left;
     }
   }
-  .odd\:border-l-0 {
-    &:nth-child(odd) {
-      border-left-style: var(--tw-border-style);
-      border-left-width: 0px;
+  .not-first\:odd\:border-l-0 {
+    &:not(*:first-child) {
+      &:nth-child(odd) {
+        border-left-style: var(--tw-border-style);
+        border-left-width: 0px;
+      }
     }
   }
   .even\:col-start-1 {
@@ -543,10 +556,12 @@
       transform-origin: right;
     }
   }
-  .even\:border-r-0 {
-    &:nth-child(even) {
-      border-right-style: var(--tw-border-style);
-      border-right-width: 0px;
+  .not-last\:even\:border-r-0 {
+    &:not(*:last-child) {
+      &:nth-child(even) {
+        border-right-style: var(--tw-border-style);
+        border-right-width: 0px;
+      }
     }
   }
   .open\:visible {
@@ -615,11 +630,6 @@
   .md\:justify-center {
     @media (width >= 44rem) {
       justify-content: center;
-    }
-  }
-  .md\:px-site {
-    @media (width >= 44rem) {
-      padding-inline: var(--spacing-site);
     }
   }
   .md\:max-lg\:block {
@@ -698,15 +708,12 @@
   }
 }
 :root {
-  --text-lg: 18px;
-  --text-lg--line-height: calc(1.75 / 1.125);
-  --text-xl: 20px;
-  --text-xl--line-height: calc(1.75 / 1.25);
+  --text-lg: 20.5px;
+  --text-xl: 20.5px;
   --text-2xl: 24px;
-  --text-2xl--line-height: calc(2 / 1.5);
   --text-3xl: 36px;
   --text-3xl--line-height: 1;
-  --space-site: 0.75rem;
+  --space-site: 1rem;
   --space-nav: 0.25rem;
   --space-section: 4rem;
   --space-section-title: 1.25rem;
@@ -714,8 +721,8 @@
   --space-dialog-block: 2.5rem;
   @media screen and (min-width: 704px) {
     --text-base: 19px;
-    --text-lg: 21px;
-    --text-xl: 23px;
+    --text-lg: 22px;
+    --text-xl: 22px;
     --text-2xl: 30px;
     --text-3xl: 48px;
     --space-site: 2rem;
@@ -781,7 +788,7 @@
       container-type: inline-size;
     }
     [data-zine-part="spread"] {
-      --narrow-width: min(768px, 200%);
+      --narrow-width: min(768px, 190%);
       width: var(--narrow-width);
       --translation-amount: 0%;
       --translation-offset: ((100cqi - 50%) / 2);
@@ -801,12 +808,17 @@
       display: block;
     }
   }
+  [data-zine-part="spread"] {
+    transition: transform calc(var(--duration-zine) * 0.75) var(--ease-zine);
+  }
+  @media screen and (min-width: 704px) {
+    [data-zine-part="spread"] {
+      transition: none;
+    }
+  }
   @supports (content-visibility: auto) {
     [data-zine-part="outer"] {
       transform: rotateX(calc(1deg * var(--aimY))) rotateY(calc(1deg * var(--aimX)));
-    }
-    [data-zine-part="spread"] {
-      transition: transform calc(var(--duration-zine) * 0.75) var(--ease-zine);
     }
     [data-zine-part="spread"]::before {
       content: "";

@@ -1,16 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --text-lg: 18px;
-  --text-lg--line-height: calc(1.75 / 1.125);
-  --text-xl: 20px;
-  --text-xl--line-height: calc(1.75 / 1.25);
+  --text-lg: 20.5px;
+  --text-xl: 20.5px;
   --text-2xl: 24px;
-  --text-2xl--line-height: calc(2 / 1.5);
   --text-3xl: 36px;
   --text-3xl--line-height: 1;
 
-  --space-site: 0.75rem;
+  --space-site: 1rem;
   --space-nav: 0.25rem;
   --space-section: 4rem;
   --space-section-title: 1.25rem;
@@ -19,8 +16,8 @@
 
   @media screen and (min-width: 704px) {
     --text-base: 19px;
-    --text-lg: 21px;
-    --text-xl: 23px;
+    --text-lg: 22px;
+    --text-xl: 22px;
     --text-2xl: 30px;
     --text-3xl: 48px;
 
@@ -145,7 +142,7 @@
     }
 
     [data-zine-part="spread"] {
-      --narrow-width: min(768px, 200%);
+      --narrow-width: min(768px, 190%);
       width: var(--narrow-width);
 
       /* translate left 0% or 50% of the zine width, and then right half of the difference between the page width and the container width */
@@ -172,14 +169,22 @@
     }
   }
 
+  [data-zine-part="spread"] {
+    transition: transform calc(var(--duration-zine) * 0.75) var(--ease-zine);
+  }
+
+  @media screen and (min-width: 704px) {
+    [data-zine-part="spread"] {
+      transition: none;
+    }
+  }
+
+  /* run the flipping animations when browser supports it */
   @supports (content-visibility: auto) {
     [data-zine-part="outer"] {
       transform: rotateX(calc(1deg * var(--aimY))) rotateY(calc(1deg * var(--aimX)));
     }
 
-    [data-zine-part="spread"] {
-      transition: transform calc(var(--duration-zine) * 0.75) var(--ease-zine);
-    }
     /* this is zine shadow that moves with the perspective effect */
     [data-zine-part="spread"]::before {
       content: "";

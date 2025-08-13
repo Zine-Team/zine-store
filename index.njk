@@ -6,7 +6,7 @@ allZines: All zines (A-Z)
 {% from "components/button.njk" import button %}
 {% from "components/siteNav.njk" import siteNav with context %}
 
-{{ siteNav(sticky=true) }}
+{{ siteNav() }}
 
 <main class="flex flex-col items-center grow w-full">
     <header class="zine-store-container text-pretty flex py-section flex-col gap-8">
@@ -15,7 +15,7 @@ allZines: All zines (A-Z)
     </header>
     <div class="flex flex-col items-center gap-section pb-section grow w-full">
         <section id="recentZines" class="zine-store-container flex flex-col gap-section-title">
-            <h2 class="text-2xl">{{ recentZines }}</h2>
+            <h2 class="text-2xl leading-tight">{{ recentZines }}</h2>
             <div class="zine-grid grow-1 grid grid-cols-2 gap-section-title lg:grid-cols-4">
                 {% for zine in collections.zine | reverse | slice(4) %}
                     <a class="shadow-zine" href="{{ zine.url }}">
@@ -24,7 +24,7 @@ allZines: All zines (A-Z)
             </div>
         </section>
         <section id="allZines" class="zine-store-container flex flex-col gap-section-title">
-            <h2 class="text-2xl">{{ allZines }}</h2>
+            <h2 class="text-2xl  leading-tight">{{ allZines }}</h2>
             <ul class="flex flex-col gap-10">
                 {% for zine in collections.zine | sort(false, false, "data.title") %}
                     <li class="flex">
