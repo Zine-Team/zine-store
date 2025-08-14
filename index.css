@@ -170,105 +170,96 @@
     transition: transform calc(var(--duration-zine) * 0.75) var(--ease-zine);
   }
 
-  @media screen and (min-width: 704px) {
-    [data-zine-part="spread"] {
-      transition: none;
+  [data-zine-part="outer"] {
+    transform: rotateX(calc(1deg * var(--aimY))) rotateY(calc(1deg * var(--aimX)));
+  }
+
+  [data-zine-part="spread"] {
+    transition: transform calc(var(--duration-zine) * 0.75) var(--ease-zine);
+  }
+  /* this is zine shadow that moves with the perspective effect */
+  [data-zine-part="spread"]::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    background: black;
+    filter: blur(20px);
+    opacity: 0.2;
+    --duration-multiplier: 0.3;
+    --rotateX: rotateX(calc(2deg * var(--aimY)));
+    --rotateY: rotateY(calc(2deg * var(--aimX)));
+    --scaleX: scaleX(calc((0.5% * max(var(--aimX), -1 * var(--aimX)) + 100%)));
+    --scaleY: scaleY(calc((0.5% * max(var(--aimY), -1 * var(--aimY)) + 100%)));
+    will-change: width;
+    transform: var(--rotateX) var(--rotateY) var(--scaleX) var(--scaleY);
+    transition: width calc(var(--duration-zine) * var(--duration-multiplier)) var(--ease-zine);
+  }
+
+  /* shadow delay when aninmating from the front cover to the first spread */
+  [data-zine-part="spread"]:not(.back-cover)[data-direction="increment"]::before {
+    right: 0;
+    --duration-multiplier: 0.75;
+    transition-delay: calc(var(--duration-zine) * 0.175);
+  }
+
+  /* shadow delay when aninmating from the back cover to the final spread */
+  [data-zine-part="spread"]:not(.front-cover)[data-direction="decrement"]::before {
+    --duration-multiplier: 0.75;
+    transition-delay: calc(var(--duration-zine) * 0.175);
+  }
+
+  /* shadow positioning when on the front cover */
+  [data-zine-part="spread"].front-cover::before {
+    width: 50%;
+    right: 0;
+  }
+
+  /* shadow positioning when on the back cover */
+  [data-zine-part="spread"].back-cover::before {
+    width: 50%;
+    left: 0;
+  }
+
+  /* when navigating forward through the zine... */
+  [data-zine-part="spread"][data-direction="increment"] [data-zine-part="page"] {
+    /* left pages */
+    &:nth-child(even) {
+      &.animatingIn {
+        animation: leftPageFlipLeft var(--duration-zine) var(--ease-zine);
+      }
+
+      &.animatingOut {
+        animation: leftPageGetCovered var(--duration-zine) var(--ease-zine);
+      }
+    }
+
+    /* right pages */
+    &:nth-child(odd) {
+      &.animatingOut {
+        animation: rightPageFlipLeft var(--duration-zine) var(--ease-zine);
+      }
     }
   }
 
-  /* run the flipping animations when browser supports it */
-  @supports (content-visibility: auto) {
-    [data-zine-part="outer"] {
-      transform: rotateX(calc(1deg * var(--aimY))) rotateY(calc(1deg * var(--aimX)));
-    }
-
-    [data-zine-part="spread"] {
-      transition: transform calc(var(--duration-zine) * 0.75) var(--ease-zine);
-    }
-    /* this is zine shadow that moves with the perspective effect */
-    [data-zine-part="spread"]::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      top: 0;
-      bottom: 0;
-      background: black;
-      filter: blur(20px);
-      opacity: 0.2;
-      --duration-multiplier: 0.3;
-      --rotateX: rotateX(calc(2deg * var(--aimY)));
-      --rotateY: rotateY(calc(2deg * var(--aimX)));
-      --scaleX: scaleX(calc((0.5% * max(var(--aimX), -1 * var(--aimX)) + 100%)));
-      --scaleY: scaleY(calc((0.5% * max(var(--aimY), -1 * var(--aimY)) + 100%)));
-      will-change: width;
-      transform: var(--rotateX) var(--rotateY) var(--scaleX) var(--scaleY);
-      transition: width calc(var(--duration-zine) * var(--duration-multiplier)) var(--ease-zine);
-    }
-
-    /* shadow delay when aninmating from the front cover to the first spread */
-    [data-zine-part="spread"]:not(.back-cover)[data-direction="increment"]::before {
-      right: 0;
-      --duration-multiplier: 0.75;
-      transition-delay: calc(var(--duration-zine) * 0.175);
-    }
-
-    /* shadow delay when aninmating from the back cover to the final spread */
-    [data-zine-part="spread"]:not(.front-cover)[data-direction="decrement"]::before {
-      --duration-multiplier: 0.75;
-      transition-delay: calc(var(--duration-zine) * 0.175);
-    }
-
-    /* shadow positioning when on the front cover */
-    [data-zine-part="spread"].front-cover::before {
-      width: 50%;
-      right: 0;
-    }
-
-    /* shadow positioning when on the back cover */
-    [data-zine-part="spread"].back-cover::before {
-      width: 50%;
-      left: 0;
-    }
-
-    /* when navigating forward through the zine... */
-    [data-zine-part="spread"][data-direction="increment"] [data-zine-part="page"] {
-      /* left pages */
-      &:nth-child(even) {
-        &.animatingIn {
-          animation: leftPageFlipLeft var(--duration-zine) var(--ease-zine);
-        }
-
-        &.animatingOut {
-          animation: leftPageGetCovered var(--duration-zine) var(--ease-zine);
-        }
-      }
-
-      /* right pages */
-      &:nth-child(odd) {
-        &.animatingOut {
-          animation: rightPageFlipLeft var(--duration-zine) var(--ease-zine);
-        }
+  /* when navigating backward through the zine... */
+  [data-zine-part="spread"][data-direction="decrement"] [data-zine-part="page"] {
+    /* left pages */
+    &:nth-child(even) {
+      &.animatingOut {
+        animation: leftPageFlipRight var(--duration-zine) var(--ease-zine);
       }
     }
 
-    /* when navigating backward through the zine... */
-    [data-zine-part="spread"][data-direction="decrement"] [data-zine-part="page"] {
-      /* left pages */
-      &:nth-child(even) {
-        &.animatingOut {
-          animation: leftPageFlipRight var(--duration-zine) var(--ease-zine);
-        }
+    /* right pages */
+    &:nth-child(odd) {
+      &.animatingIn {
+        animation: rightPageFlipRight var(--duration-zine) var(--ease-zine);
       }
 
-      /* right pages */
-      &:nth-child(odd) {
-        &.animatingIn {
-          animation: rightPageFlipRight var(--duration-zine) var(--ease-zine);
-        }
-
-        &.animatingOut {
-          animation: rightPageGetCovered var(--duration-zine) var(--ease-zine);
-        }
+      &.animatingOut {
+        animation: rightPageGetCovered var(--duration-zine) var(--ease-zine);
       }
     }
   }
@@ -334,6 +325,27 @@
   @keyframes leftPageGetCovered {
     from {
       display: block;
+    }
+  }
+}
+
+/* don't run the flipping animations when browser supports it */
+@supports not (content-visibility: auto) {
+  [data-zine-part="outer"] {
+    transform: none !important;
+  }
+  [data-zine-part="spread"]::before {
+    content: none !important;
+  }
+
+  [data-zine-part="page"] {
+    transform: none !important;
+    animation: none !important;
+  }
+
+  @media screen and (min-width: 704px) {
+    [data-zine-part="spread"] {
+      transition: none !important;
     }
   }
 }
