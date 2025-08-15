@@ -6,7 +6,7 @@ const prevButtonsNarrow = document.querySelectorAll("[data-action='prev-narrow']
 
 let currentSpread = 0;
 let currentPage = 0;
-const DOMZineOuter = document.querySelector("[data-zine-part='outer']");
+const DOMZineOuters = document.querySelectorAll("[data-zine-part='outer']");
 const DOMZine = document.querySelector("[data-zine-part='spread']");
 const DOMPages = document.querySelectorAll("[data-zine-part='page']");
 const totalSpreads = DOMPages.length / 2;
@@ -34,21 +34,21 @@ function showSpread(spread, direction) {
   // hide previous pages
   DOMPages.forEach((page) => {
     page.classList.remove("animatingOut", "animatingIn");
-    if (page.classList.contains("visible")) {
-      page.classList.remove("visible");
+    if (page.classList.contains("block")) {
+      page.classList.remove("block");
       page.classList.add("animatingOut");
     }
   });
 
   // show right page
   if (rightPage) {
-    rightPage.classList.add("visible");
+    rightPage.classList.add("block");
     rightPage.classList.add("animatingIn");
   }
 
   // show left page
   if (leftPage) {
-    leftPage.classList.add("visible");
+    leftPage.classList.add("block");
     leftPage.classList.add("animatingIn");
   }
 
@@ -132,7 +132,9 @@ if (mq.matches) {
   document.addEventListener("mousemove", function (event) {
     const aimX = (event.pageX - window.innerWidth / 2) / 100;
     const aimY = (event.pageY - window.innerHeight / 2) / -100;
-    DOMZineOuter.style.setProperty("--aimX", `${aimX}`);
-    DOMZineOuter.style.setProperty("--aimY", `${aimY}`);
+    DOMZineOuters.forEach((el) => {
+      el.style.setProperty("--aimX", `${aimX}`);
+      el.style.setProperty("--aimY", `${aimY}`);
+    });
   });
 }

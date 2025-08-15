@@ -194,9 +194,6 @@
   .invisible {
     visibility: hidden;
   }
-  .visible {
-    visibility: visible;
-  }
   .absolute {
     position: absolute;
   }
@@ -849,9 +846,6 @@
     display: none;
     box-shadow: var(--page-shadow), var(--zine-shadow);
     transition-behavior: allow-discrete;
-    &.visible {
-      display: block;
-    }
   }
   [data-zine-part="spread"] {
     transition: transform calc(var(--duration-zine) * 0.75) var(--ease-zine);

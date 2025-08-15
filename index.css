@@ -160,10 +160,6 @@
     display: none;
     box-shadow: var(--page-shadow), var(--zine-shadow);
     transition-behavior: allow-discrete;
-
-    &.visible {
-      display: block;
-    }
   }
 
   [data-zine-part="spread"] {

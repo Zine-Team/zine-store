@@ -13,7 +13,7 @@
             {% if page.url == "/" %}
                 {% include "components/submissionDialog.njk" %}
             {% else %}
-                {{button(label="Download zine", href=pdf, type="button", size="lg", attrs={download: null})}}
+                {{button(label="Download PDF", href=pdf, type="button", size="lg", attrs={download: null})}}
             {% endif %}
         </span>
     </nav>
