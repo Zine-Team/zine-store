@@ -6,7 +6,7 @@
     <dialog
         closedby="any"
         x-ref="dialog"
-        class="flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-gainsboro p-0 mt-[15dvh] mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site))] max-w-3xl border border-grey">
+        class="flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-gainsboro p-0 mt-[calc(var(--spacing-site)+1dvh)] mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site))] max-w-3xl border border-grey">
         <header class="p-nav sticky lg:-mb-4 bg-gainsboro top-0 w-full flex justify-end items-center">
             {{button(label="X", size="lg", attrs={"@click" : "$refs.dialog.close()"})}}
         </header>
