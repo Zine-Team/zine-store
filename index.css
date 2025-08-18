@@ -377,6 +377,10 @@
     line-height: none;
     font-weight: bold;
     font-size: var(--text-base);
+
+    &:hover {
+      background: var(--color-ghost-white);
+    }
   }
 
   &::scroll-button(*):disabled {

@@ -11,7 +11,8 @@
         </span>
         <span class="flex justify-self-end">
             {% if page.url == "/" %}
-                {% include "components/submissionDialog.njk" %}
+                {# {% include "components/submissionDialog.njk" %} #}
+                {{button(label="Submit a zine", size="lg", type="button", href=global.submissionHref)}}
             {% else %}
                 {{button(label="Download PDF", href=pdf, type="button", size="lg", attrs={download: null})}}
             {% endif %}
