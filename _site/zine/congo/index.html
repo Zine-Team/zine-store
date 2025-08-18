@@ -21,6 +21,7 @@ Zine Store (Free)"/>
         <meta name="generator" content="Eleventy v3.1.2">
         <link rel="icon" type="image/x-icon" href="/images/uploads/favicon.png">
         <link rel="stylesheet" href="/index.css">
+        <script defer src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script>
         <script defer src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script>
         <script defer src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
 
@@ -48,7 +49,28 @@ Zine Store (Free)"/>
         </span>
         <span class="flex justify-self-end">
             
-                <a href="/images/uploads/congo/congo.pdf"
+                <div
+                    x-data="{
+                    input: 'https://zinestorefree.com//zine/congo/',
+                        open: false,
+                        toggle() {
+                            if (this.open) {
+                                return this.close()
+                            }
+                            this.$refs.button.focus()
+                            this.open = true
+                        },
+                        close(focusAfter) {
+                            if (! this.open) return
+                            this.open = false
+                            focusAfter && focusAfter.focus()
+                        }
+                    }"
+                    x-on:keydown.escape.prevent.stop="close($refs.button)"
+                    x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                    class="relative"
+                >
+                    <button
 
         
         
@@ -56,9 +78,47 @@ Zine Store (Free)"/>
         class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] transition-transform    leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
 
         
+            x-ref="button"
+        
+            @click="toggle()"
+        
+            :aria-expanded="open"
+        
+            :aria-controls="$id(&#39;dropdown-button&#39;)"
+        
+            type="button"
+        
+    >Share</button>
+                    <div
+                        x-ref="panel"
+                        x-show="open"
+                        x-on:click.outside="close($refs.button)"
+                        x-cloak
+                        class="absolute right-0 min-w-max shadow-page mt-2 z-10 bg-white-smoke border border-grey px-5 py-3 gap-3 outline-none flex flex-col items-start">
+                        <a href="/images/uploads/congo/congo.pdf"
+
+        
+        
+
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] transition-transform    text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
+
+        
             download=""
         
     >Download PDF</a>
+                        <button
+
+        
+        
+
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] transition-transform    text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
+
+        
+            x-clipboard="input"
+        
+    >Copy link</button>
+                    </div>
+                </div>
             
         </span>
     </nav>

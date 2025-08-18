@@ -14,7 +14,44 @@
                 {# {% include "components/submissionDialog.njk" %} #}
                 {{button(label="Submit a zine", size="lg", type="button", href=global.submissionHref)}}
             {% else %}
-                {{button(label="Download PDF", href=pdf, type="button", size="lg", attrs={download: null})}}
+                <div
+                    x-data="{
+                    input: '{{ global.siteDomain }}/{{ page.url }}',
+                        open: false,
+                        toggle() {
+                            if (this.open) {
+                                return this.close()
+                            }
+                            this.$refs.button.focus()
+                            this.open = true
+                        },
+                        close(focusAfter) {
+                            if (! this.open) return
+                            this.open = false
+                            focusAfter && focusAfter.focus()
+                        }
+                    }"
+                    x-on:keydown.escape.prevent.stop="close($refs.button)"
+                    x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                    class="relative"
+                >
+                    {{button(label="Share", type="button", size="lg", attrs={
+                        "x-ref": "button",
+                        "@click": "toggle()",
+                        ":aria-expanded": "open",
+                        ":aria-controls": "$id('dropdown-button')",
+                        "type": "button"
+                    })}}
+                    <div
+                        x-ref="panel"
+                        x-show="open"
+                        x-on:click.outside="close($refs.button)"
+                        x-cloak
+                        class="absolute right-0 min-w-max shadow-page mt-2 z-10 bg-white-smoke border border-grey px-5 py-3 gap-3 outline-none flex flex-col items-start">
+                        {{button(label="Download PDF", href=pdf, type="link", attrs={download: null})}}
+                        {{button(label="Copy link", type="link", attrs={"x-clipboard": "input"})}}
+                    </div>
+                </div>
             {% endif %}
         </span>
     </nav>
