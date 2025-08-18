@@ -23,7 +23,7 @@
         {% if newTab %} target="_blank" {% endif %}
         {% if disabled %}disabled{% endif %}
 
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] transition-transform {{ class }} {% if page.url == href + '/' %} selected {% endif %} {% if disabled %}pointer-events-none{% endif %} {{ typeClasses[type] }} {{ sizeClasses[size] }}"
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] {{ class }} {% if page.url == href + '/' %} selected {% endif %} {% if disabled %}pointer-events-none{% endif %} {{ typeClasses[type] }} {{ sizeClasses[size] }}"
 
         {% for key, value in attrs %}
             {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}

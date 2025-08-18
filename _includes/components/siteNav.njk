@@ -11,12 +11,11 @@
         </span>
         <span class="flex justify-self-end">
             {% if page.url == "/" %}
-                {# {% include "components/submissionDialog.njk" %} #}
-                {{button(label="Submit a zine", size="lg", type="button", href=global.submissionHref)}}
+                {% include "components/submissionDialog.njk" %}
+                {# {{button(label="Submit a zine", size="lg", type="button", href=global.submissionHref)}} #}
             {% else %}
                 <div
                     x-data="{
-                    input: '{{ global.siteDomain }}/{{ page.url }}',
                         open: false,
                         toggle() {
                             if (this.open) {
@@ -29,6 +28,17 @@
                             if (! this.open) return
                             this.open = false
                             focusAfter && focusAfter.focus()
+                        },
+                        input: '{{ global.siteDomain }}/{{ page.url }}',
+                        copied: false,
+                        timeout: null,
+                        copy () {
+                        $clipboard(this.input)
+                        this.copied = true
+                        clearTimeout(this.timeout)
+                        this.timeout = setTimeout(() => {
+                            this.copied = false
+                        }, 1500)
                         }
                     }"
                     x-on:keydown.escape.prevent.stop="close($refs.button)"
@@ -47,9 +57,14 @@
                         x-show="open"
                         x-on:click.outside="close($refs.button)"
                         x-cloak
-                        class="absolute right-0 min-w-max shadow-page mt-2 z-10 bg-white-smoke border border-grey px-5 py-3 gap-3 outline-none flex flex-col items-start">
+                        class="absolute right-0 min-w-max shadow-zine mt-2 z-10 bg-white-smoke border border-dark-grey px-5 py-3 gap-3 outline-none flex flex-col items-start">
                         {{button(label="Download PDF", href=pdf, type="link", attrs={download: null})}}
-                        {{button(label="Copy link", type="link", attrs={"x-clipboard": "input"})}}
+                        {# {{button(label="Copy link", type="link", attrs={"@click": "copy"})}} #}
+                        {% call button(type = "link", attrs = {
+                            "@click": "copy"
+                        }) %}
+                        <span x-text="copied ? `Copied!` : `Copy link`"></span>
+                        {% endcall %}
                     </div>
                 </div>
             {% endif %}

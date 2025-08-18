@@ -287,6 +287,12 @@
   .ml-\[1\.5ch\] {
     margin-left: 1.5ch;
   }
+  .ml-\[1\.25ch\] {
+    margin-left: 1.25ch;
+  }
+  .ml-\[1ch\] {
+    margin-left: 1ch;
+  }
   .block {
     display: block;
   }
@@ -418,6 +424,12 @@
   }
   .gap-16 {
     gap: calc(var(--spacing) * 16);
+  }
+  .gap-\[calc\(var\(--section-title\)\/2\)\] {
+    gap: calc(var(--section-title) / 2);
+  }
+  .gap-\[calc\(var\(--spacing-section-title\)\/2\)\] {
+    gap: calc(var(--spacing-section-title) / 2);
   }
   .gap-dialog-block {
     gap: var(--spacing-dialog-block);
@@ -573,6 +585,9 @@
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
+  }
+  .text-balance {
+    text-wrap: balance;
   }
   .text-pretty {
     text-wrap: pretty;
