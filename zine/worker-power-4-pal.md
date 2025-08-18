@@ -1,5 +1,8 @@
 ---
 title: Worker Power for Palestine
+metadata:
+    - description: History and resources for workers looking to support Palestine
+https://zinestorefree.com/zine/worker-power-4-pal/
 date: 2025-08-18
 pages:
   - image: /images/uploads/worker-power-4-pal/page_FC.jpg
