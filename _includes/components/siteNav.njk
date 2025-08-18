@@ -1,4 +1,5 @@
 {% from "components/button.njk" import button %}
+{% from "components/dropdown.njk" import dropdown %}
 
 {% macro siteNav() %}
     <nav class="zine-store-container shrink-0 flex items-baseline justify-between py-nav">
@@ -14,59 +15,28 @@
                 {% include "components/submissionDialog.njk" %}
                 {# {{button(label="Submit a zine", size="lg", type="button", href=global.submissionHref)}} #}
             {% else %}
-                <div
-                    x-data="{
-                        open: false,
-                        toggle() {
-                            if (this.open) {
-                                return this.close()
-                            }
-                            this.$refs.button.focus()
-                            this.open = true
-                        },
-                        close(focusAfter) {
-                            if (! this.open) return
-                            this.open = false
-                            focusAfter && focusAfter.focus()
-                        },
-                        input: '{{ global.siteDomain }}/{{ page.url }}',
-                        copied: false,
-                        timeout: null,
-                        copy () {
-                        $clipboard(this.input)
-                        this.copied = true
-                        clearTimeout(this.timeout)
-                        this.timeout = setTimeout(() => {
-                            this.copied = false
-                        }, 1500)
-                        }
-                    }"
-                    x-on:keydown.escape.prevent.stop="close($refs.button)"
-                    x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
-                    class="relative"
-                >
-                    {{button(label="Share", type="button", size="lg", attrs={
-                        "x-ref": "button",
-                        "@click": "toggle()",
-                        ":aria-expanded": "open",
-                        ":aria-controls": "$id('dropdown-button')",
-                        "type": "button"
-                    })}}
-                    <div
-                        x-ref="panel"
-                        x-show="open"
-                        x-on:click.outside="close($refs.button)"
-                        x-cloak
-                        class="absolute right-0 min-w-max shadow-zine mt-2 z-10 bg-white-smoke border border-dark-grey px-5 py-3 gap-3 outline-none flex flex-col items-start">
-                        {{button(label="Download PDF", href=pdf, type="link", attrs={download: null})}}
-                        {# {{button(label="Copy link", type="link", attrs={"@click": "copy"})}} #}
-                        {% call button(type = "link", attrs = {
-                            "@click": "copy"
-                        }) %}
-                        <span x-text="copied ? `Copied!` : `Copy link`"></span>
-                        {% endcall %}
-                    </div>
-                </div>
+                {% call dropdown(label = "Share") %}
+                <li class="ml-[1.25ch]">{{button(label="Download PDF", href=pdf, type="link", attrs={download: null})}}</li>
+                <li x-data="{
+                input: '{{ global.siteDomain }}/{{ page.url }}',
+                copied: false,
+                timeout: null,
+                copy () {
+                    $clipboard(this.input)
+                    this.copied = true
+                    clearTimeout(this.timeout)
+                    this.timeout = setTimeout(() => {
+                        this.copied = false
+                    }, 1500)
+                }
+            }"
+        class="ml-[1.25ch]">
+                    {% call button(type = "link", attrs = {
+                        "@click": "copy"
+                    }) %}
+                    <span x-text="copied ? `Copied!` : `Copy link`"></span>
+                    {% endcall %}</li>
+                {% endcall %}
             {% endif %}
         </span>
     </nav>

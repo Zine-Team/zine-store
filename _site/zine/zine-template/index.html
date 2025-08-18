@@ -47,38 +47,29 @@
         </span>
         <span class="flex justify-self-end">
             
-                <div
-                    x-data="{
-                        open: false,
-                        toggle() {
-                            if (this.open) {
-                                return this.close()
-                            }
-                            this.$refs.button.focus()
-                            this.open = true
-                        },
-                        close(focusAfter) {
-                            if (! this.open) return
-                            this.open = false
-                            focusAfter && focusAfter.focus()
-                        },
-                        input: 'https://zinestorefree.com//zine/zine-template/',
-                        copied: false,
-                        timeout: null,
-                        copy () {
-                        $clipboard(this.input)
-                        this.copied = true
-                        clearTimeout(this.timeout)
-                        this.timeout = setTimeout(() => {
-                            this.copied = false
-                        }, 1500)
-                        }
-                    }"
-                    x-on:keydown.escape.prevent.stop="close($refs.button)"
-                    x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
-                    class="relative"
-                >
-                    <button
+                
+    <div
+        x-data="{
+            open: false,
+            toggle() {
+                if (this.open) {
+                    return this.close()
+                }
+                this.$refs.button.focus()
+                this.open = true
+            },
+            close(focusAfter) {
+                if (! this.open) return
+                this.open = false
+                focusAfter && focusAfter.focus()
+            },
+        }"
+        x-id="['dropdown']"
+        x-on:keydown.escape.prevent.stop="close($refs.button)"
+        x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+        class="relative max-w-fit"
+    >
+        <button
 
         
         
@@ -92,18 +83,18 @@
         
             :aria-expanded="open"
         
-            :aria-controls="$id(&#39;dropdown-button&#39;)"
-        
-            type="button"
+            :aria-controls="$id(&#39;dropdown&#39;)"
         
     >Share</button>
-                    <div
-                        x-ref="panel"
-                        x-show="open"
-                        x-on:click.outside="close($refs.button)"
-                        x-cloak
-                        class="absolute right-0 min-w-max shadow-zine mt-2 z-10 bg-white-smoke border border-dark-grey px-5 py-3 gap-3 outline-none flex flex-col items-start">
-                        <a href="/images/uploads/**/**.pdf"
+        <ul
+            x-ref="panel"
+            x-show="open"
+            x-on:click.outside="close($refs.button)"
+            x-cloak
+            :id="$id('dropdown')"
+            class="absolute right-0 min-w-max shadow-zine mt-2 gap-[calc(var(--spacing-section-title)/2)] list-disc z-10 bg-white-smoke border border-dark-grey px-5 py-3 outline-none flex flex-col items-start">
+            
+                <li class="ml-[1.25ch]"><a href="/images/uploads/**/**.pdf"
 
         
         
@@ -113,9 +104,22 @@
         
             download=""
         
-    >Download PDF</a>
-                        
-                        <button
+    >Download PDF</a></li>
+                <li x-data="{
+                input: 'https://zinestorefree.com//zine/zine-template/',
+                copied: false,
+                timeout: null,
+                copy () {
+                    $clipboard(this.input)
+                    this.copied = true
+                    clearTimeout(this.timeout)
+                    this.timeout = setTimeout(() => {
+                        this.copied = false
+                    }, 1500)
+                }
+            }"
+        class="ml-[1.25ch]">
+                    <button
 
         
         
@@ -126,10 +130,12 @@
             @click="copy"
         
     >
-                        <span x-text="copied ? `Copied!` : `Copy link`"></span>
-                        </button>
-                    </div>
-                </div>
+                    <span x-text="copied ? `Copied!` : `Copy link`"></span>
+                    </button></li>
+                
+        </ul>
+    </div>
+
             
         </span>
     </nav>
@@ -148,7 +154,7 @@
     >&lt;</button>
             <div data-zine-part="root" class="grow lg:grow-0 flex flex-col justify-center items-center perspective-zine col-start-1 col-end-3 lg:col-auto">
                 <div data-zine-part="outer" class="w-full md:justify-center py-2 flex items-center relative">
-                    <div data-zine-part="spread" class="relative grid grid-cols-2 justify-self-start shrink-0 lg:justify-self-center aspect-zine md:w-full max-w-4xl pointer-events-none perspective-zine front-cover">
+                    <div data-zine-part="spread" class="relative grid grid-cols-2 justify-self-start shrink-0 lg:justify-self-center aspect-zine md:w-full max-w-3xl pointer-events-none perspective-zine front-cover">
                         
                             <div data-zine-part="page" class="relative border border-dark-grey not-first:odd:border-l-0 not-last:even:border-r-0 backface-hidden row-start-1 row-end-2 even:col-start-1 odd:col-start-2 even:origin-right odd:origin-left">
                                 <img src="/images/uploads/**/page_FC.jpg" alt="">

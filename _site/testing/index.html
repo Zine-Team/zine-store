@@ -26,28 +26,100 @@
     </head>
     <body class="font-sans text-base antialiased h-full overflow-auto scroll-p-section-title flex flex-col items-center bg-gainsboro">
         
-        <style></style>
+        
 
 <section class="zine-store-container my-auto">
-    <ul data-carousel>
+
+    
+    
+    <div
+        x-data="{
+            open: false,
+            toggle() {
+                if (this.open) {
+                    return this.close()
+                }
+                this.$refs.button.focus()
+                this.open = true
+            },
+            close(focusAfter) {
+                if (! this.open) return
+                this.open = false
+                focusAfter && focusAfter.focus()
+            },
+        }"
+        x-id="['dropdown']"
+        x-on:keydown.escape.prevent.stop="close($refs.button)"
+        x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+        class="relative max-w-fit"
+    >
+        <button
+
         
-            <li class="shadow-zine w-[80cqi] max-w-[300px] shrink-0">
-                <img class="w-full shadow-page border border-dark-grey" src="/images/uploads/worker-power-4-pal/page_FC.jpg" alt="Worker Power for Palestine">
-            </li>
         
-            <li class="shadow-zine w-[80cqi] max-w-[300px] shrink-0">
-                <img class="w-full shadow-page border border-dark-grey" src="/images/uploads/racial-capitalism/racial-capitalism_FC.jpg" alt="Understanding Racial Capitalism (Why It’s So Hard to “Eat the Rich”)">
-            </li>
+
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]    leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+
         
-            <li class="shadow-zine w-[80cqi] max-w-[300px] shrink-0">
-                <img class="w-full shadow-page border border-dark-grey" src="/images/uploads/abductions/abductions-page_cover.jpg" alt="Why the U.S. Government Keeps Disappearing its International Students">
-            </li>
+            x-ref="button"
         
-            <li class="shadow-zine w-[80cqi] max-w-[300px] shrink-0">
-                <img class="w-full shadow-page border border-dark-grey" src="/images/uploads/capitalism-101/page_FC.jpg" alt="Capitalism 101">
-            </li>
+            @click="toggle()"
         
-    </ul>
+            :aria-expanded="open"
+        
+            :aria-controls="$id(&#39;dropdown&#39;)"
+        
+    >Label</button>
+        <ul
+            x-ref="panel"
+            x-show="open"
+            x-on:click.outside="close($refs.button)"
+            x-cloak
+            :id="$id('dropdown')"
+            class="absolute right-0 min-w-max shadow-zine mt-2 gap-[calc(var(--spacing-section-title)/2)] list-disc z-10 bg-white-smoke border border-dark-grey px-5 py-3 outline-none flex flex-col items-start">
+            
+    <li class="ml-[1.25ch]"><button
+
+        
+        
+
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]    text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
+
+        
+            download=""
+        
+    >Download PDF</button></li>
+    <li x-data="{
+                input: 'https://zinestorefree.com//testing/',
+                copied: false,
+                timeout: null,
+                copy () {
+                    $clipboard(this.input)
+                    this.copied = true
+                    clearTimeout(this.timeout)
+                    this.timeout = setTimeout(() => {
+                        this.copied = false
+                    }, 1500)
+                }
+            }"
+        class="ml-[1.25ch]">
+        <button
+
+        
+        
+
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]    text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
+
+        
+            @click="copy"
+        
+    >
+        <span x-text="copied ? `Copied!` : `Copy link`"></span>
+        </button></li>
+    
+        </ul>
+    </div>
+
 </section>
 
     </body>
