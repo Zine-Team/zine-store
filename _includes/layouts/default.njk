@@ -40,5 +40,7 @@
             <span class="hidden xl:block">Extra large</span>
         </div> #}
         {{ content | safe }}
+        {% from "components/toast.njk" import toaster %}
+        {{ toaster() }}
     </body>
 </html>

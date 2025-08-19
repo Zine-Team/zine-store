@@ -48,7 +48,7 @@ Zine Store (Free)"/>
 
             
 
-    <div x-data="{
+    <span x-data="{
         input: 'https://zinestorefree.com/zine/mutual-aid-101/',
         copied: false,
         timeout: null,
@@ -140,7 +140,7 @@ Zine Store (Free)"/>
         </div>
     </template>
 
-    </div>
+    </span>
 
         
     </span>
@@ -247,11 +247,11 @@ Zine Store (Free)"/>
         </div>
     </div>
 </main>
-
-
-    <div id="toaster" class="fixed top-nav right-site flex justify-center left-site z-50"></div>
-
 <script defer src="/bundle.js" type="module"></script>
+
+        
+        
+    <div id="toaster" class="fixed top-nav right-site flex justify-center left-site z-50  pointer-events-none"></div>
 
     </body>
 </html>

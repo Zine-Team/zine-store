@@ -283,6 +283,9 @@
   .mt-\[calc\(var\(--spacing-site\)\+1dvh\)\] {
     margin-top: calc(var(--spacing-site) + 1dvh);
   }
+  .mt-\[calc\(var\(--spacing-site\)\+10dvh\)\] {
+    margin-top: calc(var(--spacing-site) + 10dvh);
+  }
   .mb-auto {
     margin-bottom: auto;
   }
@@ -300,6 +303,12 @@
   }
   .hidden {
     display: none;
+  }
+  .inline {
+    display: inline;
+  }
+  .inline-flex {
+    display: inline-flex;
   }
   .aspect-zine {
     aspect-ratio: var(--aspect-zine);

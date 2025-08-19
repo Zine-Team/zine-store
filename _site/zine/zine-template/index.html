@@ -46,7 +46,7 @@
 
             
 
-    <div x-data="{
+    <span x-data="{
         input: 'https://zinestorefree.com/zine/zine-template/',
         copied: false,
         timeout: null,
@@ -138,7 +138,7 @@
         </div>
     </template>
 
-    </div>
+    </span>
 
         
     </span>
@@ -245,11 +245,11 @@
         </div>
     </div>
 </main>
-
-
-    <div id="toaster" class="fixed top-nav right-site flex justify-center left-site z-50"></div>
-
 <script defer src="/bundle.js" type="module"></script>
+
+        
+        
+    <div id="toaster" class="fixed top-nav right-site flex justify-center left-site z-50  pointer-events-none"></div>
 
     </body>
 </html>
