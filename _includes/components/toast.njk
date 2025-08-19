@@ -1,0 +1,15 @@
+{% macro toaster() %}
+    <div id="toaster" class="fixed top-nav right-site flex justify-center left-site z-50"></div>
+{% endmacro %}
+
+{% macro toast(props = {}) %}
+    <template x-teleport="#toaster">
+        <div
+            x-show="copied"
+            x-transition:enter-start="opacity-0 -translate-y-2"
+            x-transition:leave-end="opacity-0 -translate-y-2"
+            class="bg-black border-grey border delay-100 shadow-zine rounded transition text-white-smoke px-5 py-3 text-base">
+            {{ props.message }}
+        </div>
+    </template>
+{% endmacro %}

@@ -1,19 +1,6 @@
-{#
-    input: '{{ global.siteDomain }}/{{ page.url }}',
-    copied: false,
-    timeout: null,
-    copy () {
-        $clipboard(this.input)
-        this.copied = true
-        clearTimeout(this.timeout)
-        this.timeout = setTimeout(() => {
-            this.copied = false
-        }, 1500)
-    }
-#}
 {% from "components/button.njk" import button %}
 
-{% macro dropdown(label = "") %}
+{% macro dropdown(triggerProps = {}, dropdownItems = []) %}
     <div
         x-data="{
             open: false,
@@ -35,17 +22,15 @@
         x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
         class="relative max-w-fit"
     >
-        {{button({
-            label: label,
-            type: 'button',
-            size: 'lg',
-            attrs: {
+        {{ button(
+            props=triggerProps,
+            attrs={
                 "x-ref": "button",
                 "@click": "toggle()",
                 ":aria-expanded": "open",
                 ":aria-controls":"$id('dropdown')"
-            }
-        })}}
+            })
+        }}
         <div
             x-ref="panel"
             x-show="open"
@@ -53,7 +38,11 @@
             x-cloak
             :id="$id('dropdown')"
             class="absolute right-0 min-w-max shadow-zine mt-2 z-10 outline-none">
-            {{ caller() | safe }}
+            <ul class="gap-[calc(var(--spacing-section-title)/2)] list-disc bg-white-smoke border border-dark-grey px-5 py-3 flex flex-col items-start">
+                {% for item in dropdownItems %}
+                    <li class="ml-[1.25ch]">{{ item.macro(item.props, item.attrs) }}</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endmacro %}

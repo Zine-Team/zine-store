@@ -28,7 +28,7 @@ allZines: All zines (A-Z)
             <ul class="flex flex-col gap-[calc(var(--spacing-section-title)/2)] list-disc">
                 {% for zine in collections.zine | sort(false, false, "data.title") %}
                     <li class="max-w-max ml-[1.25ch]">
-                        {{ button({ label: zine.data.title, href: zine.url, type: "link" }) }}
+                        {{ button(props={label: zine.data.title, href: zine.url, type: "link"}) }}
                     </li>
                 {% endfor %}
             </ul>

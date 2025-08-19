@@ -1,0 +1,28 @@
+{% from "components/toast.njk" import toast %}
+
+{% macro copyToClipboard(props = {
+    input: "",
+    toastMessage: "Copied to clipboard!"
+}, attrs = {}) %}
+
+    <div x-data="{
+        input: '{{ props.input }}',
+        copied: false,
+        timeout: null,
+        copy () {
+            $clipboard(this.input)
+            this.copied = true
+            clearTimeout(this.timeout)
+            this.timeout = setTimeout(() => {
+                this.copied = false
+            }, 2000)
+        }
+    }"
+    {% for key, value in attrs %}
+        {{ key }}="{{ value }}"
+    {% endfor %}
+    >
+        {{ caller() | safe }}
+        {{ toast({message: props.toastMessage}) }}
+    </div>
+{% endmacro %}

@@ -11,9 +11,11 @@
   --shadow-zine: 0.5px 0.5px 1px lch(0% 0 0 / 0.1), 1px 1px 12px -4px lch(0% 0 0 / 0.2);
   --shadow-page: 0.33px 0.33px 1px lch(0% 0 0 / 0.1), 0.75px 0.75px 0.75px lch(0% 0 0 / 0.1);
 
+  --color-*: initial;
+  --color-black: Black;
   --color-gainsboro: Gainsboro;
+  --color-grey: Gray;
   --color-dark-grey: DarkGray;
-  --color-grey: gray;
   --color-ghost-white: GhostWhite;
   --color-white-smoke: WhiteSmoke;
   --color-link: #0000ee;
