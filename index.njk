@@ -4,19 +4,18 @@ recentZines: Most recent zines
 allZines: All zines (A-Z)
 ---
 {% from "components/button.njk" import button %}
-{% from "components/siteNav.njk" import siteNav with context %}
 
-{{ siteNav() }}
+{% include "components/siteNav.njk" %}
 
 <main class="flex flex-col items-center grow w-full">
-    <header class="zine-store-container text-pretty flex py-section flex-col gap-8">
-        <h1 class="lg:-ml-2 text-xl flex sm:flex-row flex-col gap-1 sm:gap-2 items-baseline">Zine Store
-            <span class="text-lg self-end"> (Free)</span></h1>
+    <header class="zine-store-container text-pretty flex py-section flex-col gap-10">
+        <h1 class="lg:-ml-2 text-xl flex sm:flex-row justify-between flex-col gap-1 sm:gap-2 items-baseline">Zine Store
+            <span class="text-xl self-end">(Free)</span></h1>
         <p class="text-lg">{{ global.siteDescription }}</p>
     </header>
     <div class="flex flex-col items-center gap-section pb-section grow w-full">
         <section id="recentZines" class="zine-store-container flex flex-col gap-section-title">
-            <h2 class="text-lg leading-tight">{{ recentZines }}</h2>
+            <h2 class="text-lg">{{ recentZines }}</h2>
             <div data-carousel class="grow-1">
                 {% for zine in collections.zine | reverse | slice(4) %}
                     <a class="shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="{{ zine.url }}">
@@ -25,11 +24,11 @@ allZines: All zines (A-Z)
             </div>
         </section>
         <section id="allZines" class="zine-store-container flex flex-col gap-section-title">
-            <h2 class="text-lg  leading-tight">{{ allZines }}</h2>
+            <h2 class="text-lg">{{ allZines }}</h2>
             <ul class="flex flex-col gap-[calc(var(--spacing-section-title)/2)] list-disc">
                 {% for zine in collections.zine | sort(false, false, "data.title") %}
                     <li class="max-w-max ml-[1.25ch]">
-                        {{ button(label=zine.data.title, href=zine.url, type="link") }}
+                        {{ button({ label: zine.data.title, href: zine.url, type: "link" }) }}
                     </li>
                 {% endfor %}
             </ul>

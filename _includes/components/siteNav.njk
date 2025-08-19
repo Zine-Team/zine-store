@@ -1,24 +1,23 @@
-{% from "components/button.njk" import button %}
+{% from "components/button.njk" import button,
+button %}
 {% from "components/dropdown.njk" import dropdown %}
-
-{% macro siteNav() %}
-    <nav class="zine-store-container shrink-0 flex items-baseline justify-between py-nav">
-        <span class="flex justify-self-start gap-16">
-            {{button(label="Home", href="/", size="lg", type="link")}}
-            {% if page.url == "/" %}
-                {{button(label="Most recent zines", href="#recentZines", size="lg", type="link", class="hidden lg:flex")}}
-                {{button(label="All zines", href="#allZines", size="lg", type="link", class="hidden lg:flex")}}
-            {% endif %}
-        </span>
-        <span class="flex justify-self-end">
-            {% if page.url == "/" %}
-                {% include "components/submissionDialog.njk" %}
-                {# {{button(label="Submit a zine", size="lg", type="button", href=global.submissionHref)}} #}
-            {% else %}
-                {% call dropdown(label = "Share") %}
-                <li class="ml-[1.25ch]">{{button(label="Download PDF", href=pdf, type="link", attrs={download: null})}}</li>
+<nav class="zine-store-container shrink-0 flex items-baseline justify-between py-nav">
+    <span class="flex justify-self-start gap-16">
+        {{button({ label:"Home", href:"/", size:"lg", type:"link"} )}}
+        {% if page.url == "/" %}
+            {{button({ label: "Most recent zines", href:"#recentZines", size:"lg", type:"link", attrs: {class:"hidden lg:flex"} } )}}
+            {{button({ label:"All zines", href:"#allZines", size:"lg", type:"link", attrs: {class:"hidden lg:flex"} } )}}
+        {% endif %}
+    </span>
+    <span class="flex justify-self-end">
+        {% if page.url == "/" %}
+            {% include "components/submissionDialog.njk" %}
+        {% else %}
+            {% call dropdown(label = "Share") %}
+            <ul class="gap-[calc(var(--spacing-section-title)/2)] list-disc  bg-white-smoke border border-dark-grey px-5 py-3 flex flex-col items-start">
+                <li class="ml-[1.25ch]">{{button({ label:"Download PDF", href:pdf, type:"link", attrs:{download: null} })}}</li>
                 <li x-data="{
-                input: '{{ global.siteDomain }}/{{ page.url }}',
+                input: '{{ global.siteDomain }}{{ page.url }}',
                 copied: false,
                 timeout: null,
                 copy () {
@@ -31,13 +30,16 @@
                 }
             }"
         class="ml-[1.25ch]">
-                    {% call button(type = "link", attrs = {
-                        "@click": "copy"
+                    {% call button({
+                        type: "link",
+                        attrs: {
+                            "@click": "copy"
+                        }
                     }) %}
                     <span x-text="copied ? `Copied!` : `Copy link`"></span>
                     {% endcall %}</li>
-                {% endcall %}
-            {% endif %}
-        </span>
-    </nav>
-{% endmacro %}
+            </ul>
+            {% endcall %}
+        {% endif %}
+    </span>
+</nav>

@@ -24,55 +24,43 @@
         <script defer src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
 
     </head>
-    <body class="font-sans text-base antialiased h-full overflow-auto scroll-p-section-title flex flex-col items-center bg-gainsboro">
+    <body class="font-sans text-base antialiased scroll-smooth h-full overflow-auto scroll-p-section-title flex flex-col items-center bg-gainsboro">
         
         
 
 
 
-    <nav class="zine-store-container shrink-0 flex items-baseline justify-between py-nav">
-        <span class="flex justify-self-start gap-16">
-            <a href="/"
-
-        
-        
-
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]    text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! font-bold underline-offset-3 decoration-from-font"
+<nav class="zine-store-container shrink-0 flex items-baseline justify-between py-nav">
+    <span class="flex justify-self-start gap-16">
+        <a href="/"
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! font-bold underline-offset-3 decoration-from-font"
 
         
     >Home</a>
+        
+            <a href="#recentZines"
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] hidden lg:flex  text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! font-bold underline-offset-3 decoration-from-font"
+
+        
             
-                <a href="#recentZines"
-
-        
-        
-
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] hidden lg:flex   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! font-bold underline-offset-3 decoration-from-font"
-
         
     >Most recent zines</a>
-                <a href="#allZines"
+            <a href="#allZines"
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] hidden lg:flex  text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! font-bold underline-offset-3 decoration-from-font"
 
         
-        
-
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] hidden lg:flex   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! font-bold underline-offset-3 decoration-from-font"
-
+            
         
     >All zines</a>
+        
+    </span>
+    <span class="flex justify-self-end">
+        
             
-        </span>
-        <span class="flex justify-self-end">
-            
-                
 
 <div x-data>
     <button
-
-        
-        
-
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]    leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]   leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
 
         
             @click="$refs.dialog.showModal()"
@@ -85,11 +73,7 @@
         class="flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-gainsboro p-0 mt-[calc(var(--spacing-site)+1dvh)] mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site))] max-w-3xl border border-grey">
         <header class="p-nav sticky lg:-mb-4 bg-gainsboro top-0 w-full flex justify-end items-center">
             <button
-
-        
-        
-
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]    leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]   leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
 
         
             @click="$refs.dialog.close()"
@@ -102,11 +86,7 @@
                 <p class="w-full text-pretty">Please send a PDF of your zine to <a class="text-link underline hover:no-underline" href="" target="_blank">zinestorefree@proton.me</a>, and we'll get it added as soon as we can! ❤️</p>
             </div>
             <a href="mailto:zinestorefree@proton.me?subject=Zine%20Store%20submission&amp;body=(Attach%20a%20print-ready%20PDF%20of%20your%20zine.%20If%20you&#39;d%20like%20to%20be%20extra%20awesome%2C%20please%20also%20include%20any%20alt-text%20you&#39;d%20like%20to%20have%20for%20each%20page%20of%20the%20zine.%20Thank%20you!)"
-
-        
-        
-
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]    leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]   leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
 
         
     >Submit a zine</a>
@@ -114,21 +94,20 @@
     </dialog>
 </div>
 
-                
-            
-        </span>
-    </nav>
+        
+    </span>
+</nav>
 
 
 <main class="flex flex-col items-center grow w-full">
-    <header class="zine-store-container text-pretty flex py-section flex-col gap-8">
-        <h1 class="lg:-ml-2 text-xl flex sm:flex-row flex-col gap-1 sm:gap-2 items-baseline">Zine Store
-            <span class="text-lg self-end"> (Free)</span></h1>
+    <header class="zine-store-container text-pretty flex py-section flex-col gap-10">
+        <h1 class="lg:-ml-2 text-xl flex sm:flex-row justify-between flex-col gap-1 sm:gap-2 items-baseline">Zine Store
+            <span class="text-xl self-end">(Free)</span></h1>
         <p class="text-lg">A place to store, share, and read zines online</p>
     </header>
     <div class="flex flex-col items-center gap-section pb-section grow w-full">
         <section id="recentZines" class="zine-store-container flex flex-col gap-section-title">
-            <h2 class="text-lg leading-tight">Most recent zines</h2>
+            <h2 class="text-lg">Most recent zines</h2>
             <div data-carousel class="grow-1">
                 
                     <a class="shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="/zine/worker-power-4-pal/">
@@ -146,16 +125,12 @@
             </div>
         </section>
         <section id="allZines" class="zine-store-container flex flex-col gap-section-title">
-            <h2 class="text-lg  leading-tight">All zines (A-Z)</h2>
+            <h2 class="text-lg">All zines (A-Z)</h2>
             <ul class="flex flex-col gap-[calc(var(--spacing-section-title)/2)] list-disc">
                 
                     <li class="max-w-max ml-[1.25ch]">
                         <a href="/zine/leo-kyr/"
-
-        
-        
-
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]    text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
     >A Primer on Exercising Your Rights with Law Enforcement</a>
@@ -163,11 +138,7 @@
                 
                     <li class="max-w-max ml-[1.25ch]">
                         <a href="/zine/capitalism-101/"
-
-        
-        
-
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]    text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
     >Capitalism 101</a>
@@ -175,11 +146,7 @@
                 
                     <li class="max-w-max ml-[1.25ch]">
                         <a href="/zine/congo/"
-
-        
-        
-
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]    text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
     >How the Green Energy Transition is Relying on Forced Labor in the Congo</a>
@@ -187,11 +154,7 @@
                 
                     <li class="max-w-max ml-[1.25ch]">
                         <a href="/zine/mutual-aid-101/"
-
-        
-        
-
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]    text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
     >Mutual Aid 101</a>
@@ -199,11 +162,7 @@
                 
                     <li class="max-w-max ml-[1.25ch]">
                         <a href="/zine/racial-capitalism/"
-
-        
-        
-
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]    text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
     >Understanding Racial Capitalism (Why It’s So Hard to “Eat the Rich”)</a>
@@ -211,11 +170,7 @@
                 
                     <li class="max-w-max ml-[1.25ch]">
                         <a href="/zine/abductions/"
-
-        
-        
-
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]    text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
     >Why the U.S. Government Keeps Disappearing its International Students</a>
@@ -223,11 +178,7 @@
                 
                     <li class="max-w-max ml-[1.25ch]">
                         <a href="/zine/worker-power-4-pal/"
-
-        
-        
-
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]    text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
     >Worker Power for Palestine</a>

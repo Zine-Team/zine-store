@@ -7,35 +7,28 @@
     lg: "font-bold underline-offset-3 decoration-from-font"
 }%}
 
-{%- macro button(
-    label=None,
-    href=None,
-    class,
-    newTab,
-    disabled=false,
-    attrs= {},
-    type="button",
-    size=None
-) -%}
+{%- macro button(props={
+        label: null,
+        href: null,
+        type: "button",
+        size: null,
+        attrs: {}
+    }) -%}
 
-    <{% if href %}a href="{{href}}"{% else %}button{% endif %}
+    <{% if props.href %}a href="{{props.href}}"{% else %}button{% endif %}
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] {{ props.attrs.class }} {% if props.attrs.disabled %}pointer-events-none{% endif %} {{ typeClasses[props.type] }} {{ sizeClasses[props.size] }}"
 
-        {% if newTab %} target="_blank" {% endif %}
-        {% if disabled %}disabled{% endif %}
-
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] {{ class }} {% if page.url == href + '/' %} selected {% endif %} {% if disabled %}pointer-events-none{% endif %} {{ typeClasses[type] }} {{ sizeClasses[size] }}"
-
-        {% for key, value in attrs %}
+        {% for key, value in props.attrs %}
             {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
         {% endfor %}
     >
 
-        {%- if label -%}
-            {{label}}
+        {%- if props.label -%}
+            {{props.label}}
         {%- else -%}
             {{ caller() | safe }}
         {%- endif -%}
 
-    </{% if href %}a{% else %}button{% endif %}>
+    </{% if props.href %}a{% else %}button{% endif %}>
 
 {%- endmacro -%}
