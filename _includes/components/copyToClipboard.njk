@@ -2,7 +2,8 @@
 
 {% macro copyToClipboard(props = {
     input: "",
-    toastMessage: "Copied to clipboard!"
+    toastMessage: "Copied to clipboard!",
+    toasterId: ""
 }, attrs = {}) %}
 
     <span x-data="{
@@ -23,6 +24,6 @@
     {% endfor %}
     >
         {{ caller() | safe }}
-        {{ toast({message: props.toastMessage}) }}
+        {{ toast({message: props.toastMessage, toasterId: toasterId}) }}
     </span>
 {% endmacro %}

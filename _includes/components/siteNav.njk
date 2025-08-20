@@ -19,13 +19,13 @@
                 input: global.siteDomain + page.url,
                 toastMessage: "URL copied to clipboard!"
             }) %}
-            {{ dropdown(
+                {{ dropdown(
                     triggerProps={label: "Share", type: "button", size:"lg"},
                     dropdownItems=[
                         {macro: button, props:{label:"Download PDF", href:pdf, type:"link"}, attrs:{download: null} },
                         {macro: button, props:{label:"Copy link", type:"link"}, attrs:{@click: "copy"} }
-                    ]
-                ) }}
+                    ])
+                }}
             {% endcall %}
         {% endif %}
     </span>
