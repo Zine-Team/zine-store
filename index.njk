@@ -25,7 +25,7 @@ allZines: All zines (A-Z)
         </section>
         <section id="allZines" class="zine-store-container flex flex-col gap-section-title">
             <h2 class="text-lg">{{ allZines }}</h2>
-            <ul class="flex flex-col gap-[calc(var(--spacing-section-title)/2)] list-disc">
+            <ul class="flex flex-col gap-item-gap list-disc">
                 {% for zine in collections.zine | sort(false, false, "data.title") %}
                     <li class="max-w-max ml-[1.25ch]">
                         {{ button(props={label: zine.data.title, href: zine.url, type: "link"}) }}

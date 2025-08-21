@@ -1,31 +1,28 @@
 {% from "components/copyToClipboard.njk" import copyToClipboard %}
 {% from "components/toast.njk" import toaster %}
+{% from "components/dialog.njk" import dialog %}
 
 {%- set email -%}
     {%- call copyToClipboard({input: "zinestorefree@proton.me", toastMessage: "Email copied to clipboard!"}) -%}
         {{- button(props={label:"zinestorefree@proton.me", type: "link"}, attrs={"@click": "copy", class:"inline-flex"}) -}},
     {%- endcall -%}
 {%- endset -%}
-
 {% set mailtoHref = "mailto:zinestorefree@proton.me?subject=Zine%20Store%20submission&body=(Attach%20a%20print-ready%20PDF%20of%20your%20zine.%20If%20you'd%20like%20to%20be%20extra%20awesome%2C%20please%20also%20include%20any%20alt-text%20you'd%20like%20to%20have%20for%20each%20page%20of%20the%20zine.%20Thank%20you!)" %}
 {% set buttonText = "Submit a zine" %}
-<div x-data>
-    {{ button(props={label:buttonText, size:"lg", type: "button"}, attrs={"@click": "$refs.dialog.showModal()"}) }}
 
-    <dialog
-        closedby="any"
-        x-ref="dialog"
-        class="flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-gainsboro p-0 mt-[calc(var(--spacing-site)+1dvh)] mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site))] max-w-3xl border border-grey">
-        <header class="p-nav sticky lg:-mb-4 bg-gainsboro top-0 w-full flex justify-end items-center">
-            {{ button(props={label:"X", size:"lg", type: "button"}, attrs={"@click": "$refs.dialog.close()"}) }}
-        </header>
-        <main class="px-dialog-inline py-dialog-block text-center grow flex flex-col justify-center gap-dialog-block max-w-3xl">
-            <div class="flex flex-col gap-6">
-                <h2 class="text-lg w-full">Store your zine in the zine store (free)</h2>
-                <p class="w-full text-pretty">Please send a PDF of your zine to {{- email | safe -}} and we'll get it added as soon as we can! ❤️</p>
-            </div>
-            {{ button(props={label:buttonText, size:"lg", type:"button", href:mailtoHref}) }}
-        </main>
-        {{toaster({toasterId: "dialog"})}}
-    </dialog>
-</div>
+{% call dialog(
+    triggerProps={
+        label:buttonText, size:"lg", type: "button"
+}) %}
+    <header class="p-nav sticky lg:-mb-4 bg-gainsboro top-0 w-full flex justify-end items-center">
+        {{ button(props={label:"X", size:"lg", type: "button"}, attrs={"@click": "$refs.dialog.close()"}) }}
+    </header>
+    <main class="px-dialog-inline py-dialog-block text-center grow flex flex-col justify-center gap-dialog-block max-w-3xl">
+        <div class="flex flex-col gap-6">
+            <h2 class="text-lg w-full">Store your zine in the zine store (free)</h2>
+            <p class="w-full text-pretty">Please send a PDF of your zine to {{- email | safe -}} and we'll get it added as soon as we can! ❤️</p>
+        </div>
+        {{ button(props={label:buttonText, size:"lg", type:"button", href:mailtoHref}) }}
+    </main>
+    {{toaster({toasterId: "dialog"})}}
+{% endcall %}

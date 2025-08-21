@@ -1,0 +1,26 @@
+{#
+    Dialog
+
+    @param label = "" // what the button says. If omitted, use call() to define button HTML contents
+    @param href = "" // if omitted, it'll be rendered as a button element
+    @param type = "" // type styles
+    @param size = "" // size styles
+    @param attrs = {} // all other HTML attributes
+#}
+
+{% from "components/button.njk" import button %}
+
+{% macro dialog(
+    triggerProps={}
+) %}
+    <div x-data>
+        {{ button(props=triggerProps, attrs={"@click": "$refs.dialog.showModal()"}) }}
+
+        <dialog
+            closedby="any"
+            x-ref="dialog"
+            class="flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-gainsboro p-0 mt-[calc(var(--spacing-site)+1dvh)] mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site))] max-w-3xl border border-grey">
+            {{ caller() | safe }}
+        </dialog>
+    </div>
+{% endmacro %}

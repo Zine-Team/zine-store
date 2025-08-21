@@ -19,6 +19,8 @@ Zine Store (Free)"/>
         <meta name="generator" content="Eleventy v3.1.2">
         <link rel="icon" type="image/x-icon" href="/images/uploads/favicon.png">
         <link rel="stylesheet" href="/index.css">
+
+        <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script>
         <script defer src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script>
         <script defer src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
@@ -37,7 +39,7 @@ Zine Store (Free)"/>
 <nav class="zine-store-container shrink-0 flex items-baseline justify-between py-nav">
     <span class="flex justify-self-start gap-16">
         <a href="/"
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! font-bold underline-offset-3 decoration-from-font"
 
         
     >Home</a>
@@ -87,7 +89,7 @@ Zine Store (Free)"/>
         class="relative max-w-fit"
     >
         <button
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]   leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
 
         
             x-ref="button"
@@ -109,7 +111,7 @@ Zine Store (Free)"/>
             <ul class="gap-[calc(var(--spacing-section-title)/2)] list-disc bg-white-smoke border border-dark-grey px-5 py-3 flex flex-col items-start">
                 
                     <li class="ml-[1.25ch]"><a href="/images/uploads/congo/congo.pdf"
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
             download=""
@@ -117,7 +119,7 @@ Zine Store (Free)"/>
     >Download PDF</a></li>
                 
                     <li class="ml-[1.25ch]"><button
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98]   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
             @click="copy"
@@ -148,7 +150,7 @@ Zine Store (Free)"/>
 
         <div data-zine-part="navigator" class="zine-store-container flex flex-col lg:flex-row lg:justify-center lg:gap-10 xl:gap-20 grow">
             <button
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] h-[max(25dvh,_72px)] max-w-20 grow hidden lg:flex self-center  leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer h-[max(25dvh,_72px)] max-w-20 grow hidden lg:flex self-center  leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
 
         
             
@@ -198,7 +200,7 @@ Zine Store (Free)"/>
                 </div>
             </div>
             <button
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] h-[max(25dvh,_72px)] max-w-20 grow hidden lg:flex self-center  leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer h-[max(25dvh,_72px)] max-w-20 grow hidden lg:flex self-center  leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
 
         
             
@@ -209,7 +211,7 @@ Zine Store (Free)"/>
         </div>
         <div class="flex lg:hidden gap-site py-nav px-site w-[100vw] bg-gainsboro sticky bottom-0">
             <button
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] grow hidden md:block  leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer grow hidden md:block  leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
 
         
             
@@ -218,7 +220,7 @@ Zine Store (Free)"/>
         
     >&lt;</button>
             <button
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] grow hidden md:block  leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer grow hidden md:block  leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
 
         
             
@@ -227,7 +229,7 @@ Zine Store (Free)"/>
         
     >&gt;</button>
             <button
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] grow md:hidden  leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer grow md:hidden  leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
 
         
             
@@ -236,7 +238,7 @@ Zine Store (Free)"/>
         
     >&lt;</button>
             <button
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] grow md:hidden  leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer grow md:hidden  leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
 
         
             
@@ -251,7 +253,7 @@ Zine Store (Free)"/>
 
         
         
-    <div id="toaster" class="fixed top-nav right-site flex justify-center left-site z-50  pointer-events-none"></div>
+    <div id="toaster" class="fixed top-nav right-site flex justify-center left-site z-50 pointer-events-none"></div>
 
     </body>
 </html>

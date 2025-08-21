@@ -1,10 +1,27 @@
+{#
+    Toaster
+
+    @param id = "" // optional suffix to be appended on the default id; ex: toasterdialog
+#}
+
 {% macro toaster(props = {
     id: ""
 }) %}
-    <div id="toaster{{props.id}}" class="fixed top-nav right-site flex justify-center left-site z-50  pointer-events-none"></div>
+    <div id="toaster{{props.id}}" class="fixed top-nav right-site flex justify-center left-site z-50 pointer-events-none"></div>
 {% endmacro %}
 
-{% macro toast(props = {}) %}
+
+{#
+    Toast
+
+    @param toasterId = "" // optional suffix to where the toast should be teleported
+    @param message = "" // What the toast should say
+#}
+
+{% macro toast(props = {
+    toasterId: "",
+    message: ""
+}) %}
     <template x-teleport="#toaster{{props.toasterId}}">
         <div
             x-show="copied"

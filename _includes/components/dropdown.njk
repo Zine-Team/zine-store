@@ -1,3 +1,10 @@
+{#
+    Dropdown
+
+    @param triggerProps = {} // props for the button component that triggers the dropdown
+    @param dropdownItems = [] // array of macros (objects) that should be rendered inside the dropdown panel
+#}
+
 {% from "components/button.njk" import button %}
 
 {% macro dropdown(triggerProps = {}, dropdownItems = []) %}

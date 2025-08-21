@@ -1,10 +1,22 @@
+{#
+    copyToClipboard
+
+    @param input = "" // what should be copied to the clipboard
+    @param toastMessage = "" // what the toast should say
+    @param toasterId = "" // where to transport the toast component to
+    @param attrs = {} // all other HTML attributes
+#}
+
 {% from "components/toast.njk" import toast %}
 
-{% macro copyToClipboard(props = {
-    input: "",
-    toastMessage: "Copied to clipboard!",
-    toasterId: ""
-}, attrs = {}) %}
+{% macro copyToClipboard(
+    props = {
+        input: "",
+        toastMessage: "Copied to clipboard!",
+        toasterId: ""
+    },
+    attrs = {}
+) %}
 
     <span x-data="{
         input: '{{ props.input }}',
