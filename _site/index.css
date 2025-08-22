@@ -420,9 +420,6 @@
   .gap-16 {
     gap: calc(var(--spacing) * 16);
   }
-  .gap-\[calc\(var\(--spacing-section-title\)\/1\.5\)\] {
-    gap: calc(var(--spacing-section-title) / 1.5);
-  }
   .gap-\[calc\(var\(--spacing-section-title\)\/2\)\] {
     gap: calc(var(--spacing-section-title) / 2);
   }
