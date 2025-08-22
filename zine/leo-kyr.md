@@ -2,21 +2,21 @@
 title: A Primer on Exercising Your Rights with Law Enforcement
 date: 2024-03-01
 pages:
-  - image: /images/uploads/leo-kyr/page_front.jpg
+  - image: page_FC
     altText: ""
-  - image: /images/uploads/leo-kyr/page_1.jpg
+  - image: page_01
     altText: ""
-  - image: /images/uploads/leo-kyr/page_2.jpg
+  - image: page_02
     altText: ""
-  - image: /images/uploads/leo-kyr/page_3.jpg
+  - image: page_03
     altText: ""
-  - image: /images/uploads/leo-kyr/page_4.jpg
+  - image: page_04
     altText: ""
-  - image: /images/uploads/leo-kyr/page_5.jpg
+  - image: page_05
     altText: ""
-  - image: /images/uploads/leo-kyr/page_6.jpg
+  - image: page_06
     altText: ""
-  - image: /images/uploads/leo-kyr/page_back.jpg
+  - image: page_BC
     altText: ""
 pdf: /images/uploads/leo-kyr/leo-kyr.pdf
 ---

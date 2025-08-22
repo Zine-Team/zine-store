@@ -2,21 +2,21 @@
 title: Capitalism 101
 date: 2024-08-02
 pages:
-  - image: /images/uploads/capitalism-101/page_FC.jpg
+  - image: page_FC
     altText: ""
-  - image: /images/uploads/capitalism-101/page_1.jpg
+  - image: page_01
     altText: ""
-  - image: /images/uploads/capitalism-101/page_2.jpg
+  - image: page_02
     altText: ""
-  - image: /images/uploads/capitalism-101/page_3.jpg
+  - image: page_03
     altText: ""
-  - image: /images/uploads/capitalism-101/page_4.jpg
+  - image: page_04
     altText: ""
-  - image: /images/uploads/capitalism-101/page_5.jpg
+  - image: page_05
     altText: ""
-  - image: /images/uploads/capitalism-101/page_6.jpg
+  - image: page_06
     altText: ""
-  - image: /images/uploads/capitalism-101/page_BC.jpg
+  - image: page_BC
     altText: ""
 pdf: /images/uploads/capitalism-101/capitalism-101.pdf
 ---
