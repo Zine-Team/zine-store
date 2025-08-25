@@ -4,22 +4,23 @@ title:
 metadata:
   - description:
 date:
+aspect: # Mini zine: 5.5 / 4.25  # Half page zine: 11 / 8.5
 pages:
-  - image: /images/uploads/**/page_FC.jpg
+  - image: page_FC.jpg
     altText: ""
-  - image: /images/uploads/**/page_1.jpg
+  - image: page_1.jpg
     altText: ""
-  - image: /images/uploads/**/page_2.jpg
+  - image: page_2.jpg
     altText: ""
-  - image: /images/uploads/**/page_3.jpg
+  - image: page_3.jpg
     altText: ""
-  - image: /images/uploads/**/page_4.jpg
+  - image: page_4.jpg
     altText: ""
-  - image: /images/uploads/**/page_5.jpg
+  - image: page_5.jpg
     altText: ""
-  - image: /images/uploads/**/page_6.jpg
+  - image: page_6.jpg
     altText: ""
-  - image: /images/uploads/**/page_BC.jpg
+  - image: page_BC.jpg
     altText: ""
 pdf: /images/uploads/**/**.pdf
 ---

@@ -3,6 +3,7 @@ title: "Per H C'è Niente"
 metadata:
   - description:
 date: 2025-08-25
+aspect: 11 / 8.5
 pages:
   - image: page_FC
   - image: page_1
