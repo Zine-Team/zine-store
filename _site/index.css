@@ -331,6 +331,9 @@
   .h-full {
     height: 100%;
   }
+  .max-h-full {
+    max-height: 100%;
+  }
   .w-1\/3 {
     width: calc(1/3 * 100%);
   }
@@ -498,9 +501,6 @@
   }
   .bg-gainsboro {
     background-color: var(--color-gainsboro);
-  }
-  .bg-ghost-white {
-    background-color: var(--color-ghost-white);
   }
   .bg-white-smoke {
     background-color: var(--color-white-smoke);
@@ -763,6 +763,11 @@
   .md\:w-full {
     @media (width >= 44rem) {
       width: 100%;
+    }
+  }
+  .md\:max-w-full {
+    @media (width >= 44rem) {
+      max-width: 100%;
     }
   }
   .md\:justify-center {
