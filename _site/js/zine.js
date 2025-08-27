@@ -138,3 +138,35 @@ if (mq.matches) {
     });
   });
 }
+
+window.addEventListener(
+  "keydown",
+  (event) => {
+    if (event.defaultPrevented) {
+      return; // Do nothing if the event was already processed
+    }
+
+    switch (event.key) {
+      case "ArrowLeft":
+        if (window.matchMedia("(min-width: 704px)").matches) {
+          if (currentSpread > 0) {
+            changeSpread(-1);
+          }
+        }
+        break;
+      case "ArrowRight":
+        if (window.matchMedia("(min-width: 704px)").matches) {
+          if (currentSpread < totalSpreads) {
+            changeSpread(1);
+          }
+        }
+        break;
+      default:
+        return; // Quit when this doesn't handle the key event.
+    }
+
+    // Cancel the default action to avoid it being handled twice
+    event.preventDefault();
+  },
+  true
+);
