@@ -46,6 +46,11 @@
 
 @layer components {
   :root {
+    --breakpoint-sm: 40rem; /* 640px */
+    --breakpoint-md: 44rem; /* 704px */
+    --breakpoint-lg: 60rem; /* 960px */
+    --breakpoint-xl: 70rem; /* 1120px */
+
     --text-base: 21px;
     --text-lg: 26px;
     --text-lg--line-height: 1.3;

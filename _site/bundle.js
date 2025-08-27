@@ -146,16 +146,17 @@ window.addEventListener(
       return; // Do nothing if the event was already processed
     }
 
+    const bpmd = getComputedStyle(document.documentElement).getPropertyValue("--breakpoint-md");
     switch (event.key) {
       case "ArrowLeft":
-        if (window.matchMedia("(min-width: 704px)").matches) {
+        if (window.matchMedia(`(min-width: ${bpmd})`).matches) {
           if (currentSpread > 0) {
             changeSpread(-1);
           }
         }
         break;
       case "ArrowRight":
-        if (window.matchMedia("(min-width: 704px)").matches) {
+        if (window.matchMedia(`(min-width: ${bpmd})`).matches) {
           if (currentSpread < totalSpreads) {
             changeSpread(1);
           }
