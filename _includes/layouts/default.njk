@@ -23,10 +23,10 @@
         <meta name="description" content="{{ pageDescription }}">
         <meta property="og:description" content="{{ pageDescription }}"/>
         <meta property="og:url" content="{{ global.siteDomain }}{{ page.url }}"/>
-        <meta property="og:image" content="{{ global.siteDomain }}{% if metadata.seoImage %}{{ metadata.seoImage }}{% else %}{{ global.siteImage }}{% endif %}"/>
+        <meta property="og:image" content="{{ global.siteDomain }}{{ global.imagesFolder }}/{% if seoImage %}{{ page.fileSlug }}{{ seoImage }}{% else %}{{ global.siteImage }}{% endif %}"/>
         <meta property="og:type" content="{% if ogType %}{{ ogType }}{% else %}website{% endif %}"/>
         <meta name="generator" content="{{ eleventy.generator }}">
-        <link rel="icon" type="image/x-icon" href="{{ global.favicon }}">
+        <link rel="icon" type="image/x-icon" href="{{ global.siteDomain }}{{ global.imagesFolder }}/{{ global.favicon }}">
         <link rel="stylesheet" href="/index.css">
 
         <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>

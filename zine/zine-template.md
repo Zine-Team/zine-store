@@ -3,6 +3,7 @@ eleventyExcludeFromCollections: true # remove when publishing
 title:
 metadata:
   - description:
+  - seoImage:
 date:
 aspect: # Mini zine: 5.5 / 4.25  # Half page zine: 11 / 8.5
 pages:
