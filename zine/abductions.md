@@ -1,7 +1,6 @@
 ---
 title: Why the U.S. Government Keeps Disappearing its International Students
-metadata:
-  - description: International student Palestinian activists are being detained or deported for expressing their views.
+description: International student Palestinian activists are being detained or deported for expressing their views.
 date: 2025-06-01
 pages:
   - image: page_FC

@@ -3,6 +3,6 @@
   "layout": "zine",
   "aspect": "5.5 / 4.25",
   "date": "Last Modified",
-  "seoImage": "/og-image.jpg",
+  "ogImage": "/og-image.jpg",
   "tags": ["zine"]
 }

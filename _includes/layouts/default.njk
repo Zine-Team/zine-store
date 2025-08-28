@@ -1,14 +1,21 @@
 {% set pageTitle %}
-{%- if metadata.seoTitle -%}
-    {{ metadata.seoTitle }} –{% elseif title %}{{ title }} –
-{% endif %}
-{{- global.siteTitle -}}
+    {%- if seoTitle -%}
+        {{ seoTitle }} –
+    {% elseif title %}
+        {{ title }} –
+    {% endif %}
+    {{- global.siteTitle -}}
 {% endset %}
 
 {% set pageDescription %}
-{%- if metadata.seoDescription -%}{{- metadata.seoDescription -}}
-{% else %}{{- global.siteDescription -}}
-{%- endif -%}
+    {% if description %}{{- description -}}{% endif %} {{global.siteDescription -}}
+{% endset %}
+
+{% set ogImage %}
+    {{- global.siteDomain -}}{{- global.imagesFolder -}}/{% if ogImage %}{{- page.fileSlug -}}{{- ogImage -}}
+    {% else %}
+        {{- global.siteImage -}}
+    {% endif %}
 {% endset %}
 
 <!DOCTYPE html>
@@ -23,7 +30,7 @@
         <meta name="description" content="{{ pageDescription }}">
         <meta property="og:description" content="{{ pageDescription }}"/>
         <meta property="og:url" content="{{ global.siteDomain }}{{ page.url }}"/>
-        <meta property="og:image" content="{{ global.siteDomain }}{{ global.imagesFolder }}/{% if seoImage %}{{ page.fileSlug }}{{ seoImage }}{% else %}{{ global.siteImage }}{% endif %}"/>
+        <meta property="og:image" content="{{ ogImage }}"/>
         <meta property="og:type" content="{% if ogType %}{{ ogType }}{% else %}website{% endif %}"/>
         <meta name="generator" content="{{ eleventy.generator }}">
         <link rel="icon" type="image/x-icon" href="{{ global.siteDomain }}{{ global.imagesFolder }}/{{ global.favicon }}">
