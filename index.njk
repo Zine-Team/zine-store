@@ -24,7 +24,20 @@ allZines: All zines (A-Z)
             </div>
         </section>
         <section id="allZines" class="zine-store-container flex flex-col gap-section-title">
-            <h2 class="text-lg">{{ allZines }}</h2>
+            <header
+                x-data="{
+                    zines:[ {%- for zine in collections.zine -%} '{{ zine.url }}'{% if loop.last === false %}, {% endif %} {%- endfor -%} ],
+                    chooseRandom () {
+                        window.location.href = this.zines[Math.floor(Math.random() * this.zines.length)];
+                    }
+                }"
+                class="flex flex-col xs:flex-row xs:justify-between border-dark-grey border-b items-baseline sm:items-end gap-item-gap pb-item-gap">
+                <h2 class="text-lg">{{ allZines }}</h2>
+                {% call button({type: "button"}, {"@click": "chooseRandom"}) %}
+                    <span class="sm:hidden">Random zine</span>
+                    <span class="hidden sm:block">Pick a random zine</span>
+                {% endcall %}
+            </header>
             <ul class="flex flex-col gap-item-gap list-disc">
                 {% for zine in collections.zine | sort(false, false, "data.title") %}
                     <li class="max-w-max ml-[1.25ch]">
