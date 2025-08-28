@@ -15,7 +15,7 @@
         label:buttonText, size:"lg", type: "button"
 }) %}
     <header class="p-nav sticky lg:-mb-4 bg-gainsboro top-0 w-full flex justify-end items-center">
-        {{ button(props={label:"X", size:"lg", type: "button"}, attrs={"@click": "$refs.dialog.close()"}) }}
+        {{ button(props={icon:"✕", size:"lg", type: "button"}, attrs={"@click": "$refs.dialog.close()"}) }}
     </header>
     <main class="px-dialog-inline py-dialog-block text-center grow flex flex-col justify-center gap-dialog-block max-w-3xl">
         <div class="flex flex-col gap-6">

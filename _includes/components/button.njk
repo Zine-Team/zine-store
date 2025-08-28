@@ -13,22 +13,29 @@
         label: null,
         href: null,
         type: "button",
-        size: null
+        size: null,
+        icon: null
     },
     attrs={}
     ) -%}
 
     <{% if props.href %}a href="{{- props.href -}}"{% else %}button{% endif %}
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer {{ attrs.class }} {% if attrs.disabled %}pointer-events-none{% endif %} {{ typeClasses[props.type] }} {{ sizeClasses[props.size] }}"
+        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer {{ attrs.class }} {% if attrs.disabled %}pointer-events-none{% endif %} {{ typeClasses[props.type] }} {{ sizeClasses[props.size] }}"
 
         {% for key, value in attrs %}
             {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
         {% endfor %}
     >
 
-        {%- if props.label -%}
-            {{ props.label }}
-        {%- else -%}
+        {% if props.icon %}
+            <span class="text-icon">{{ props.icon }}</span>
+        {% endif %}
+
+        {% if props.label %}
+            <span>{{ props.label }}</span>
+        {%- endif -%}
+
+        {%- if not props.label and not props.icon -%}
             {{ caller() | safe }}
         {%- endif -%}
 

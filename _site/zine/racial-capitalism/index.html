@@ -44,10 +44,15 @@ Zine Store (Free)"/>
 <nav class="zine-store-container shrink-0 flex items-baseline justify-between py-nav">
     <span class="flex justify-self-start gap-16">
         <a href="/"
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! font-bold underline-offset-3 decoration-from-font"
 
         
-    >Home</a>
+    >
+
+        
+
+        
+            <span>Home</span></a>
         
     </span>
     <span class="flex justify-self-end">
@@ -94,7 +99,7 @@ Zine Store (Free)"/>
         class="relative max-w-fit"
     >
         <button
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
 
         
             x-ref="button"
@@ -105,7 +110,12 @@ Zine Store (Free)"/>
         
             :aria-controls="$id(&#39;dropdown&#39;)"
         
-    >Share</button>
+    >
+
+        
+
+        
+            <span>Share</span></button>
         <div
             x-ref="panel"
             x-show="open"
@@ -116,20 +126,30 @@ Zine Store (Free)"/>
             <ul class="gap-[calc(var(--spacing-section-title)/2)] list-disc bg-white-smoke border border-dark-grey px-5 py-3 flex flex-col items-start">
                 
                     <li class="ml-[1.25ch]"><a href="/images/uploads/racial-capitalism/racial-capitalism.pdf"
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
+        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
             download=""
         
-    >Download PDF</a></li>
+    >
+
+        
+
+        
+            <span>Download PDF</span></a></li>
                 
                     <li class="ml-[1.25ch]"><button
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
+        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
             @click="copy"
         
-    >Copy link</button></li>
+    >
+
+        
+
+        
+            <span>Copy link</span></button></li>
                 
             </ul>
         </div>
@@ -155,14 +175,20 @@ Zine Store (Free)"/>
 
         <div data-zine-part="navigator" class="zine-store-container flex flex-col lg:flex-row lg:justify-center lg:gap-10 xl:gap-20 grow">
             <button
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer h-[max(25dvh,_72px)] max-w-20 grow hidden lg:flex self-center  font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer h-[max(25dvh,_72px)] max-w-20 grow hidden lg:flex self-center  font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 "
 
         
             
         
             data-action="prev-wide"
         
-    >&lt;</button>
+    >
+
+        
+            <span class="text-icon">←</span>
+        
+
+        </button>
             <div data-zine-part="root" class="grow lg:grow-0 flex flex-col justify-center items-center perspective-zine col-start-1 col-end-3 lg:col-auto">
                 <div data-zine-part="outer" class="w-full md:justify-center py-2 flex items-center relative inset-0">
                     <div data-zine-part="spread" style="--aspect-zine: 5.5 / 4.25" class="relative grid grid-cols-2 justify-self-start shrink-0 lg:justify-self-center aspect-zine md:w-full max-w-3xl pointer-events-none perspective-zine front-cover">
@@ -205,52 +231,82 @@ Zine Store (Free)"/>
                 </div>
             </div>
             <button
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer h-[max(25dvh,_72px)] max-w-20 grow hidden lg:flex self-center  font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer h-[max(25dvh,_72px)] max-w-20 grow hidden lg:flex self-center  font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 "
 
         
             
         
             data-action="next-wide"
         
-    >&gt;</button>
+    >
+
+        
+            <span class="text-icon">→</span>
+        
+
+        </button>
         </div>
         <div class="flex lg:hidden gap-site py-nav px-site w-[100vw] bg-gainsboro sticky bottom-0">
             <button
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer grow hidden md:block  font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer grow hidden md:block  font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 "
 
         
             
         
             data-action="prev-wide"
         
-    >&lt;</button>
+    >
+
+        
+            <span class="text-icon">←</span>
+        
+
+        </button>
             <button
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer grow hidden md:block  font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer grow hidden md:block  font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 "
 
         
             
         
             data-action="next-wide"
         
-    >&gt;</button>
+    >
+
+        
+            <span class="text-icon">→</span>
+        
+
+        </button>
             <button
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer grow md:hidden  font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer grow md:hidden  font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 "
 
         
             
         
             data-action="prev-narrow"
         
-    >&lt;</button>
+    >
+
+        
+            <span class="text-icon">←</span>
+        
+
+        </button>
             <button
-        class="flex justify-center items-center disabled:opacity-60 active:scale-[.98] cursor-pointer grow md:hidden  font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer grow md:hidden  font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 "
 
         
             
         
             data-action="next-narrow"
         
-    >&gt;</button>
+    >
+
+        
+            <span class="text-icon">→</span>
+        
+
+        </button>
         </div>
     </div>
 </main>

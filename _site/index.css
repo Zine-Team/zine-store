@@ -13,9 +13,9 @@
     --text-base: var(--text-base);
     --text-base--line-height: calc(1.5 / 1);
     --text-lg: var(--text-lg);
-    --text-lg--line-height: calc(1.75 / 1.125);
+    --text-lg--line-height: 1.3;
     --text-xl: var(--text-xl);
-    --text-xl--line-height: calc(1.75 / 1.25);
+    --text-xl--line-height: 1;
     --font-weight-bold: 700;
     --shadow-2xs: 0 1px rgb(0 0 0 / 0.05);
     --default-transition-duration: 150ms;
@@ -24,9 +24,9 @@
     --default-mono-font-family: var(--font-mono);
     --radius: 3px;
     --color-black: Black;
-    --color-gainsboro: Gainsboro;
     --color-grey: Gray;
     --color-dark-grey: DarkGray;
+    --color-gainsboro: Gainsboro;
     --color-ghost-white: GhostWhite;
     --color-white-smoke: WhiteSmoke;
     --color-link: #0000ee;
@@ -41,6 +41,8 @@
     --duration-zine: 1000ms;
     --aspect-zine: 5.5 / 4.25;
     --ease-zine: cubic-bezier(0, 0, 0.2, 1);
+    --text-icon: var(--text-icon);
+    --text-icon--line-height: 0;
   }
 }
 @layer base {
@@ -402,6 +404,9 @@
   .flex-col {
     flex-direction: column;
   }
+  .flex-row {
+    flex-direction: row;
+  }
   .items-baseline {
     align-items: baseline;
   }
@@ -422,6 +427,9 @@
   }
   .gap-1 {
     gap: calc(var(--spacing) * 1);
+  }
+  .gap-3 {
+    gap: calc(var(--spacing) * 3);
   }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
@@ -567,6 +575,10 @@
   .text-base {
     font-size: var(--text-base);
     line-height: var(--tw-leading, var(--text-base--line-height));
+  }
+  .text-icon {
+    font-size: var(--text-icon);
+    line-height: var(--tw-leading, var(--text-icon--line-height));
   }
   .text-lg {
     font-size: var(--text-lg);
@@ -887,9 +899,8 @@
     --breakpoint-xl: 70rem;
     --text-base: 21px;
     --text-lg: 26px;
-    --text-lg--line-height: 1.3;
+    --text-icon: 30px;
     --text-xl: clamp(75px, 11vw, 10rem);
-    --text-xl--line-height: 1;
     --space-site: 1rem;
     --space-nav: 0.5rem;
     --space-section: 4.5rem;
@@ -899,6 +910,7 @@
     @media screen and (min-width: 704px) {
       --text-base: 22px;
       --text-lg: 30px;
+      --text-icon: 33px;
       --space-site: 2rem;
       --space-nav: 0.5rem;
       --space-section: 6.5rem;
@@ -917,6 +929,10 @@
       --space-site: 3rem;
       --space-nav: 1rem;
     }
+  }
+  .text-icon {
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
   }
   .zine-store-container {
     width: 100%;
@@ -1149,7 +1165,8 @@
     padding: 1rem 1.25rem;
     line-height: none;
     font-weight: bold;
-    font-size: var(--text-base);
+    font-size: var(--text-icon);
+    font-family: var(--font-sans);
     &:hover {
       background: var(--color-ghost-white);
     }
@@ -1159,12 +1176,12 @@
   }
   &::scroll-button(right) {
     position-area: center span-inline-start;
-    content: ">";
+    content: "→";
     margin-inline-end: calc(-0.5 * var(--spacing-site));
   }
   &::scroll-button(left) {
     position-area: span-inline-end center;
-    content: "<";
+    content: "←";
     margin-inline-start: calc(-0.5 * var(--spacing-site));
   }
 }
