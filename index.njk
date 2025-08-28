@@ -15,7 +15,9 @@ allZines: All zines (A-Z)
     </header>
     <div class="flex flex-col items-center gap-section pb-section grow w-full">
         <section id="recentZines" class="zine-store-container flex flex-col gap-section-title">
-            <h2 class="text-lg">{{ recentZines }}</h2>
+            <header class="flex flex-col xs:flex-row xs:justify-between border-dark-grey border-b items-baseline sm:items-end gap-item-gap pb-item-gap">
+                <h2 class="text-lg">{{ recentZines }}</h2>
+            </header>
             <div data-carousel class="grow-1">
                 {% for zine in collections.zine | reverse | slice(4) %}
                     <a class="shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="{{ zine.url }}">
@@ -33,7 +35,7 @@ allZines: All zines (A-Z)
                 }"
                 class="flex flex-col xs:flex-row xs:justify-between border-dark-grey border-b items-baseline sm:items-end gap-item-gap pb-item-gap">
                 <h2 class="text-lg">{{ allZines }}</h2>
-                {% call button({type: "button"}, {"@click": "chooseRandom"}) %}
+                {% call button({type: "button"}, {"@click": "chooseRandom", class:"self-end xs:self-auto"}) %}
                     <span class="sm:hidden">Random zine</span>
                     <span class="hidden sm:block">Pick a random zine</span>
                 {% endcall %}
