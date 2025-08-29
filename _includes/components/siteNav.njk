@@ -6,8 +6,8 @@
     <span class="flex justify-self-start gap-16">
         {{ button(props={label:"Home", href:"/", size:"lg", type:"link"}) }}
         {% if page.url == "/" %}
-            {{ button(props={ label: "Most recent zines", href:"#recentZines", size:"lg", type:"link"}, attrs={class:"hidden lg:flex"}) }}
-            {{ button(props={ label:"All zines", href:"#allZines", size:"lg", type:"link"}, attrs={class:"hidden lg:flex"}) }}
+            {{ button(props={ label: "Most recent zines", href:"#recentZines", size:"lg", type:"link"}, attrs={class:"hidden lg:block"}) }}
+            {{ button(props={ label:"All zines", href:"#allZines", size:"lg", type:"link"}, attrs={class:"hidden lg:block"}) }}
         {% endif %}
     </span>
     <span class="flex justify-self-end">

@@ -1,1 +1,96 @@
-<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"><url><loc>https://zinestorefree.com/zine/leo-kyr/</loc><lastmod>2024-03-01T00:00:00.000Z</lastmod></url><url><loc>https://zinestorefree.com/zine/congo/</loc><lastmod>2024-06-01T00:00:00.000Z</lastmod></url><url><loc>https://zinestorefree.com/zine/mutual-aid-101/</loc><lastmod>2024-08-01T00:00:00.000Z</lastmod></url><url><loc>https://zinestorefree.com/zine/capitalism-101/</loc><lastmod>2024-08-02T00:00:00.000Z</lastmod></url><url><loc>https://zinestorefree.com/zine/abductions/</loc><lastmod>2025-06-01T00:00:00.000Z</lastmod></url><url><loc>https://zinestorefree.com/README/</loc><lastmod>2025-06-02T21:50:14.702Z</lastmod></url><url><loc>https://zinestorefree.com/</loc><lastmod>2025-08-03T19:18:48.550Z</lastmod></url><url><loc>https://zinestorefree.com/zine/racial-capitalism/</loc><lastmod>2025-08-04T00:00:00.000Z</lastmod></url><url><loc>https://zinestorefree.com/testing/</loc><lastmod>2025-08-15T14:57:58.688Z</lastmod></url><url><loc>https://zinestorefree.com/zine/worker-power-4-pal/</loc><lastmod>2025-08-18T00:00:00.000Z</lastmod></url><url><loc>https://zinestorefree.com/zine/our-fight-is-one-v0/</loc><lastmod>2025-08-22T00:00:00.000Z</lastmod></url><url><loc>https://zinestorefree.com/zine/per-h-non-ce-niente/</loc><lastmod>2025-08-25T00:00:00.000Z</lastmod></url><url><loc>https://zinestorefree.com/zine/give-peace-a-chance/</loc><lastmod>2025-08-28T00:00:00.000Z</lastmod></url></urlset>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://zinestorefree.com/zine/leo-kyr/</loc>
+    <lastmod>2024-02-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://zinestorefree.com/zine/congo/</loc>
+    <lastmod>2024-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://zinestorefree.com/zine/mutual-aid-101/</loc>
+    <lastmod>2024-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://zinestorefree.com/zine/capitalism-101/</loc>
+    <lastmod>2024-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://zinestorefree.com/zine/abductions/</loc>
+    <lastmod>2025-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://zinestorefree.com/README/</loc>
+    <lastmod>2025-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://zinestorefree.com/</loc>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://zinestorefree.com/zine/racial-capitalism/</loc>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://zinestorefree.com/testing/</loc>
+    <lastmod>2025-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://zinestorefree.com/zine/worker-power-4-pal/</loc>
+    <lastmod>2025-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://zinestorefree.com/zine/our-fight-is-one-v0/</loc>
+    <lastmod>2025-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://zinestorefree.com/zine/per-h-non-ce-niente/</loc>
+    <lastmod>2025-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://zinestorefree.com/zine/give-peace-a-chance/</loc>
+    <lastmod>2025-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

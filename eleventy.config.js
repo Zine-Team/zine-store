@@ -1,7 +1,5 @@
-import dateFilter from "nunjucks-date-filter";
-import sitemap from "@quasibit/eleventy-plugin-sitemap";
-import EleventyPluginRobotsTxt from "eleventy-plugin-robotstxt";
-const siteDomain = "https://zinestorefree.com";
+import format from "date-fns/format";
+import htmlmin from "html-minifier";
 
 export default async function (eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
@@ -13,20 +11,20 @@ export default async function (eleventyConfig) {
     return array.slice(0, number);
   });
 
-  eleventyConfig.addFilter("date", (input) => {
-    return dateFilter(input);
-  });
-  dateFilter.setDefaultFormat("MM/DD/YYYY");
-
-  eleventyConfig.addPlugin(sitemap, {
-    sitemap: {
-      hostname: siteDomain,
-    },
+  eleventyConfig.addFilter("date", function (date, dateFormat) {
+    return format(date, dateFormat);
   });
 
-  eleventyConfig.addPlugin(EleventyPluginRobotsTxt, {
-    sitemapURL: `${siteDomain}/sitemap.xml`,
-    shouldBlockAIRobots: "true",
+  eleventyConfig.addTransform("htmlmin", (content, outputPath) => {
+    if (outputPath.endsWith(".html")) {
+      return htmlmin.minify(content, {
+        collapseWhitespace: true,
+        removeComments: true,
+        useShortDoctype: true,
+      });
+    }
+
+    return content;
   });
 }
 
