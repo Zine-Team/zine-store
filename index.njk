@@ -21,7 +21,7 @@ layout: default
         {% call sectionHeader({label: "Most recent zines"}) %}
             <div class="hidden sm:block">
                 {% for zine in collections.zine | reverse | slice(1) %}
-                    Last updated {{ zine.date | date }}
+                    Last updated: {{ zine.date | date }}
                 {% endfor %}
             </div>
         {% endcall %}

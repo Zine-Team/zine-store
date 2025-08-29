@@ -1,0 +1,53 @@
+@theme {
+  --breakpoint-xs: 28rem; /* 448px */
+  --breakpoint-sm: 40rem; /* 640px */
+  --breakpoint-md: 44rem; /* 704px */
+  --breakpoint-lg: 60rem; /* 960px */
+  --breakpoint-xl: 70rem; /* 1120px */
+
+  --container-2xl: 40rem;
+  --container-4xl: 52rem;
+
+  --shadow-*: initial;
+  --shadow-zine: 0.5px 0.5px 1px lch(0% 0 0 / 0.1), 1px 1px 12px -4px lch(0% 0 0 / 0.2);
+  --shadow-page: 0.33px 0.33px 1px lch(0% 0 0 / 0.1), 0.75px 0.75px 0.75px lch(0% 0 0 / 0.1);
+
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-black: Black;
+  --color-grey: Gray;
+  --color-dark-grey: DarkGray;
+  --color-gainsboro: Gainsboro;
+  --color-ghost-white: GhostWhite;
+  --color-white-smoke: WhiteSmoke;
+  --color-link: #0000ee;
+  --color-link-visited: #551a8b;
+
+  --spacing-site: var(--space-site);
+  --spacing-nav: var(--space-nav);
+  --spacing-section: var(--space-section);
+  --spacing-section-title: var(--space-section-title);
+  --spacing-item-gap: calc(var(--space-section-title) / 1.25);
+  --spacing-dialog-inline: var(--space-dialog-inline);
+  --spacing-dialog-block: var(--space-dialog-block);
+
+  --perspective-zine: 2000px;
+  --aspect-zine: 5.5 / 4.25;
+
+  --duration-*: initial;
+  --duration-zine: 1000ms;
+
+  --ease-*: initial;
+  --ease-zine: cubic-bezier(0, 0, 0.2, 1);
+
+  --radius-*: initial;
+  --radius: 3px;
+
+  --text-icon: var(--text-icon);
+  --text-icon--line-height: 1;
+  --text-xl: var(--text-xl);
+  --text-xl--line-height: 1;
+  --text-lg: var(--text-lg);
+  --text-lg--line-height: 1.3;
+  --text-base: var(--text-base);
+}

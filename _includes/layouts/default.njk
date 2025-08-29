@@ -19,9 +19,7 @@
 {% endset %}
 
 <!DOCTYPE html>
-<html lang="en"
-    {# class="h-dvh overflow-hidden" #}
->
+<html lang="en" class="scroll-smooth scroll-p-section-title">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,14 +40,8 @@
         <script defer src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
 
     </head>
-    <body class="font-sans text-base antialiased scroll-smooth h-full overflow-auto scroll-p-section-title flex flex-col items-center bg-gainsboro">
-        {# <div class="fixed z-20 text-base pt-1">
-            <span class="sm:hidden block">Less than small</span>
-            <span class="hidden sm:max-md:block">Small</span>
-            <span class="hidden md:max-lg:block">Medium</span>
-            <span class="hidden lg:max-xl:block">Large</span>
-            <span class="hidden xl:block">Extra large</span>
-        </div> #}
+    <body class="font-sans text-base antialiased flex flex-col items-center bg-gainsboro">
+        {# {% include "components/breakpointVisualizer.njk" %} #}
         {{ content | safe }}
         {% from "components/toast.njk" import toaster %}
         {{ toaster() }}
