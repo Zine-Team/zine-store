@@ -592,6 +592,9 @@
   .pb-section {
     padding-bottom: var(--spacing-section);
   }
+  .pb-section-title {
+    padding-bottom: var(--spacing-section-title);
+  }
   .text-center {
     text-align: center;
   }
