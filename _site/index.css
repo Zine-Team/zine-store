@@ -585,6 +585,9 @@
   .pt-1 {
     padding-top: calc(var(--spacing) * 1);
   }
+  .pb-\[env\(safe-area-inset-bottom\)\] {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
   .pb-item-gap {
     padding-bottom: var(--spacing-item-gap);
   }
