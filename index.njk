@@ -17,39 +17,49 @@ layout: default
     </header>
 
     <section id="recentZines" class="zine-store-container flex flex-col gap-section-title">
-        {{sectionHeader({label: "Most recent zines"}) }}
+
+        {% call sectionHeader({label: "Most recent zines"}) %}
+            <div class="hidden sm:block">
+                {% for zine in collections.zine | reverse | slice(1) %}
+                    Last updated {{ zine.date | date }}
+                {% endfor %}
+            </div>
+        {% endcall %}
+
         {% call carousel({},{class:"gap-item-gap"}) %}
             {% for zine in collections.zine | reverse | slice(4) %}
                 <a class="shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="{{ zine.url }}">
                     <img class="w-full shadow-page border border-dark-grey" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}"></a>
             {% endfor %}
         {% endcall %}
-        </div>
+
     </section>
 
-    <section id="allZines" class="zine-store-container flex flex-col gap-section-title">
-        {% set xData %}
-            {
-                zines: [{% for zine in collections.zine %} '{{ zine.url }}', {% endfor %}],
-                chooseRandom () {
-                    window.location.href = this.zines[Math.floor(Math.random() * this.zines.length)];
-                }
+    <section
+        id="allZines"
+        {% set comma = joiner() %}
+        x-data="{
+            zines: [{% for zine in collections.zine %} {{ comma() }} '{{ zine.url }}' {% endfor %}],
+            chooseRandom () {
+                window.location.href = this.zines[Math.floor(Math.random() * this.zines.length)];
             }
-        {% endset %}
-        {% call sectionHeader(attrs={
-            "x-data": xData
-        }) %}
-            <h2 class="text-lg">All zines <span class="hidden sm:inline">(A-Z)</span></h2>
-            {{ button({label: "Get a random zine", type: "button"}, {"@click": "chooseRandom", title:"Get a random zine"}) }}
+        }"
+        class="zine-store-container flex flex-col gap-section-title">
+
+        {% call sectionHeader() %}
+            <h2 class="text-lg">All zines (A-Z)</h2>
+            <div class="hidden xs:block">{{ button({label: "Get a random zine", type: "button"}, {"@click": "chooseRandom", title:"Get a random zine"}) }}</div>
         {% endcall %}
 
         <ul class="flex flex-col gap-item-gap list-disc">
             {% for zine in collections.zine | sort(false, false, "data.title") %}
-                <li class="max-w-max ml-[1.25ch]">
-                    {{ button(props={label: zine.data.title, href: zine.url, type: "link"}) }}
-                </li>
+                    <li class="max-w-max ml-[1.25ch]">
+                        {{ button(props={label: zine.data.title, href: zine.url, type: "link"}) }}
+                    </li>
             {% endfor %}
+            {{ button({label: "Get a random zine", type: "button"}, {"@click": "chooseRandom", title:"Get a random zine", class:"xs:hidden"}) }}
         </ul>
+
     </section>
 
 </main>

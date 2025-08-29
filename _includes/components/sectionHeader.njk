@@ -3,7 +3,7 @@
         {% for key, value in attrs %}
             {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
         {% endfor %}
-        class="flex justify-between border-dark-grey border-dotted border-b items-center sm:items-end gap-item-gap pb-item-gap">
+        class="flex justify-between border-dark-grey border-b border-dotted items-center sm:items-end gap-item-gap pb-item-gap">
     {% if props.label %}
         <h2 class="text-lg">{{ props.label }}</h2>
     {% endif %}
