@@ -1,55 +1,55 @@
 ---
 layout: default
-recentZines: Most recent zines
-allZines: All zines (A-Z)
 ---
 {% from "components/button.njk" import button %}
-
+{% from "components/carousel.njk" import carousel %}
+{% from "components/sectionHeader.njk" import sectionHeader %}
 {% include "components/siteNav.njk" %}
 
-<main class="flex flex-col items-center grow w-full">
-    <header class="zine-store-container text-pretty flex py-section flex-col gap-10">
+<main class="flex flex-col items-center gap-section py-section grow w-full">
+
+    <header class="zine-store-container text-pretty flex flex-col gap-10">
         <h1 class="lg:-ml-2 text-xl flex sm:flex-row justify-between flex-col gap-1 sm:gap-2 items-baseline">
             Zine Store
             <span class="text-xl self-end">(Free)</span>
         </h1>
-        <p class="text-lg">{{ global.siteDescription }}</p>
+        <p class="text-lg max-w-2xl">{{ global.siteDescription }}</p>
     </header>
-    <div class="flex flex-col items-center gap-section pb-section grow w-full">
-        <section id="recentZines" class="zine-store-container flex flex-col gap-section-title">
-            <header class="flex flex-col xs:flex-row xs:justify-between border-dark-grey border-b items-baseline sm:items-end gap-item-gap pb-item-gap">
-                <h2 class="text-lg">{{ recentZines }}</h2>
-            </header>
-            <div data-carousel class="grow-1">
-                {% for zine in collections.zine | reverse | slice(4) %}
-                    <a class="shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="{{ zine.url }}">
-                        <img class="w-full shadow-page border border-dark-grey" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}"></a>
-                {% endfor %}
-            </div>
-        </section>
-        <section id="allZines" class="zine-store-container flex flex-col gap-section-title">
-            <header
-                x-data="{
-                    zines:[ {%- for zine in collections.zine -%} '{{ zine.url }}'{% if loop.last === false %}, {% endif %} {%- endfor -%} ],
-                    chooseRandom () {
-                        window.location.href = this.zines[Math.floor(Math.random() * this.zines.length)];
-                    }
-                }"
-                class="flex flex-row justify-between border-dark-grey border-b items-baseline sm:items-end gap-item-gap pb-item-gap">
-                <h2 class="text-lg">{{ allZines }}</h2>
-                {% call button({type: "button"}, {"@click": "chooseRandom", title:"Get a random zine", class:"group self-end xs:self-auto gap-3 items-baseline"}) %}
-                    <span class="sm:hidden text-icon">⚄</span>
-                    <span class="hidden sm:block">Get a random zine</span>
-                {% endcall %}
-            </header>
-            <ul class="flex flex-col gap-item-gap list-disc">
-                {% for zine in collections.zine | sort(false, false, "data.title") %}
-                    <li class="max-w-max ml-[1.25ch]">
-                        {{ button(props={label: zine.data.title, href: zine.url, type: "link"}) }}
-                    </li>
-                {% endfor %}
-            </ul>
-        </section>
-    </div>
+
+    <section id="recentZines" class="zine-store-container flex flex-col gap-section-title">
+        {{sectionHeader({label: "Most recent zines"}) }}
+        {% call carousel({},{class:"gap-item-gap"}) %}
+            {% for zine in collections.zine | reverse | slice(4) %}
+                <a class="shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="{{ zine.url }}">
+                    <img class="w-full shadow-page border border-dark-grey" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}"></a>
+            {% endfor %}
+        {% endcall %}
+        </div>
+    </section>
+
+    <section id="allZines" class="zine-store-container flex flex-col gap-section-title">
+        {% set xData %}
+            {
+                zines: [{% for zine in collections.zine %} '{{ zine.url }}', {% endfor %}],
+                chooseRandom () {
+                    window.location.href = this.zines[Math.floor(Math.random() * this.zines.length)];
+                }
+            }
+        {% endset %}
+        {% call sectionHeader(attrs={
+            "x-data": xData
+        }) %}
+            <h2 class="text-lg">All zines <span class="hidden sm:inline">(A-Z)</span></h2>
+            {{ button({label: "Get a random zine", type: "button"}, {"@click": "chooseRandom", title:"Get a random zine"}) }}
+        {% endcall %}
+
+        <ul class="flex flex-col gap-item-gap list-disc">
+            {% for zine in collections.zine | sort(false, false, "data.title") %}
+                <li class="max-w-max ml-[1.25ch]">
+                    {{ button(props={label: zine.data.title, href: zine.url, type: "link"}) }}
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
 
 </main>

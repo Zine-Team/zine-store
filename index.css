@@ -7,6 +7,7 @@
   --breakpoint-lg: 60rem; /* 960px */
   --breakpoint-xl: 70rem; /* 1120px */
 
+  --container-2xl: 40rem;
   --container-4xl: 52rem;
 
   --shadow-zine: 0.5px 0.5px 1px lch(0% 0 0 / 0.1), 1px 1px 12px -4px lch(0% 0 0 / 0.2);
@@ -27,7 +28,7 @@
   --spacing-nav: var(--space-nav);
   --spacing-section: var(--space-section);
   --spacing-section-title: var(--space-section-title);
-  --spacing-item-gap: calc(var(--space-section-title) / 1.5);
+  --spacing-item-gap: calc(var(--space-section-title) / 1.25);
   --spacing-dialog-inline: var(--space-dialog-inline);
   --spacing-dialog-block: var(--space-dialog-block);
 
@@ -39,7 +40,7 @@
   --radius: 3px;
 
   --text-icon: var(--text-icon);
-  --text-icon--line-height: 0;
+  --text-icon--line-height: 1;
   --text-xl: var(--text-xl);
   --text-xl--line-height: 1;
   --text-lg: var(--text-lg);
@@ -57,8 +58,8 @@
     --breakpoint-lg: 60rem; /* 960px */
     --breakpoint-xl: 70rem; /* 1120px */
 
-    --text-base: 21px;
-    --text-lg: 26px;
+    --text-base: 20px;
+    --text-lg: 27px;
     --text-icon: 30px;
     --text-xl: clamp(75px, 11vw, 10rem);
 
@@ -361,60 +362,5 @@
     [data-zine-part="spread"] {
       transition: none !important;
     }
-  }
-}
-
-[data-carousel] {
-  container: carousel / inline-size;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: var(--size-content-1);
-  gap: 1.5rem;
-  scroll-padding-inline: 5vmin;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  anchor-name: --carousel;
-
-  > * {
-    scroll-snap-align: center;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    scroll-behavior: smooth;
-  }
-
-  &::scroll-button(*) {
-    position: fixed;
-    position-anchor: --carousel;
-    background: var(--color-white-smoke);
-    border: 1px solid var(--color-dark-grey);
-    box-shadow: var(--shadow-2xs);
-    border-radius: var(--radius);
-    padding: 1rem 1.25rem;
-    line-height: none;
-    font-weight: bold;
-    font-size: var(--text-icon);
-    font-family: var(--font-sans);
-
-    &:hover {
-      background: var(--color-ghost-white);
-    }
-  }
-
-  &::scroll-button(*):disabled {
-    opacity: 0;
-  }
-
-  &::scroll-button(right) {
-    position-area: center span-inline-start;
-    content: "→";
-    margin-inline-end: calc(-0.5 * var(--spacing-site));
-  }
-
-  &::scroll-button(left) {
-    position-area: span-inline-end center;
-    content: "←";
-    margin-inline-start: calc(-0.5 * var(--spacing-site));
   }
 }

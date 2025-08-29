@@ -1,0 +1,14 @@
+{% macro sectionHeader(props={}, attrs={}) %}
+    <header
+        {% for key, value in attrs %}
+            {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
+        {% endfor %}
+        class="flex justify-between border-dark-grey border-dotted border-b items-center sm:items-end gap-item-gap pb-item-gap">
+    {% if props.label %}
+        <h2 class="text-lg">{{ props.label }}</h2>
+    {% endif %}
+    {% if caller %}
+        {{ caller() | safe }}
+    {% endif %}
+    </header>
+{% endmacro %}

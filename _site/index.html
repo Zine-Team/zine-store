@@ -14,9 +14,9 @@
         <title>Zine Store (Free)</title>
         <meta property="og:title" content="Zine Store (Free)"/>
         <meta name="description" content="
-     The Zine Store (Free) is a place to store, share, and read zines online.">
+     The Zine Store (Free) is a free place to store, share, and read zines online.">
         <meta property="og:description" content="
-     The Zine Store (Free) is a place to store, share, and read zines online."/>
+     The Zine Store (Free) is a free place to store, share, and read zines online."/>
         <meta property="og:url" content="https://zinestorefree.com/"/>
         <meta property="og:image" content="https://zinestorefree.com/images/uploads/og-image.jpg
 "/>
@@ -34,6 +34,7 @@
     <body class="font-sans text-base antialiased scroll-smooth h-full overflow-auto scroll-p-section-title flex flex-col items-center bg-gainsboro">
         
         
+
 
 
 
@@ -88,7 +89,7 @@
 
     <div x-data>
         <button
-        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 min-h-14 font-bold underline-offset-3 decoration-from-font"
 
         
             @click="$refs.dialog.showModal()"
@@ -107,7 +108,7 @@
             
     <header class="p-nav sticky lg:-mb-4 bg-gainsboro top-0 w-full flex justify-end items-center">
         <button
-        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 min-h-14 font-bold underline-offset-3 decoration-from-font"
 
         
             @click="$refs.dialog.close()"
@@ -115,7 +116,7 @@
     >
 
         
-            <span class="text-icon">✕</span>
+            <span class="text-icon">×</span>
         
 
         </button>
@@ -169,7 +170,7 @@
 and we'll get it added as soon as we can! ❤️</p>
         </div>
         <a href="mailto:zinestorefree@proton.me?subject=Zine%20Store%20submission&amp;body=(Attach%20a%20print-ready%20PDF%20of%20your%20zine.%20If%20you&#39;d%20like%20to%20be%20extra%20awesome%2C%20please%20also%20include%20any%20alt-text%20you&#39;d%20like%20to%20have%20for%20each%20page%20of%20the%20zine.%20Thank%20you!)"
-        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 font-bold underline-offset-3 decoration-from-font"
+        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 min-h-14 font-bold underline-offset-3 decoration-from-font"
 
         
     >
@@ -192,68 +193,140 @@ and we'll get it added as soon as we can! ❤️</p>
 </nav>
 
 
-<main class="flex flex-col items-center grow w-full">
-    <header class="zine-store-container text-pretty flex py-section flex-col gap-10">
+<main class="flex flex-col items-center gap-section py-section grow w-full">
+
+    <header class="zine-store-container text-pretty flex flex-col gap-10">
         <h1 class="lg:-ml-2 text-xl flex sm:flex-row justify-between flex-col gap-1 sm:gap-2 items-baseline">
             Zine Store
             <span class="text-xl self-end">(Free)</span>
         </h1>
-        <p class="text-lg">The Zine Store (Free) is a place to store, share, and read zines online.</p>
+        <p class="text-lg max-w-2xl">The Zine Store (Free) is a free place to store, share, and read zines online.</p>
     </header>
-    <div class="flex flex-col items-center gap-section pb-section grow w-full">
-        <section id="recentZines" class="zine-store-container flex flex-col gap-section-title">
-            <header class="flex flex-col xs:flex-row xs:justify-between border-dark-grey border-b items-baseline sm:items-end gap-item-gap pb-item-gap">
-                <h2 class="text-lg">Most recent zines</h2>
-            </header>
-            <div data-carousel class="grow-1">
-                
-                    <a class="shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="/zine/per-h-non-ce-niente/">
-                        <img class="w-full shadow-page border border-dark-grey" src="/images/uploads/per-h-non-ce-niente/page_FC.jpg" alt="Per H C&#39;è Niente"></a>
-                
-                    <a class="shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="/zine/our-fight-is-one-v0/">
-                        <img class="w-full shadow-page border border-dark-grey" src="/images/uploads/our-fight-is-one-v0/page_FC.jpg" alt="Our Fight is One Vol 0: Connecting our Struggles from Chicago to Palestine"></a>
-                
-                    <a class="shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="/zine/worker-power-4-pal/">
-                        <img class="w-full shadow-page border border-dark-grey" src="/images/uploads/worker-power-4-pal/page_FC.jpg" alt="Worker Power for Palestine"></a>
-                
-                    <a class="shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="/zine/racial-capitalism/">
-                        <img class="w-full shadow-page border border-dark-grey" src="/images/uploads/racial-capitalism/page_FC.jpg" alt="Understanding Racial Capitalism (Why It’s So Hard to “Eat the Rich”)"></a>
-                
-            </div>
-        </section>
-        <section id="allZines" class="zine-store-container flex flex-col gap-section-title">
-            <header
-                x-data="{
-                    zines:['/zine/leo-kyr/', '/zine/congo/', '/zine/mutual-aid-101/', '/zine/capitalism-101/', '/zine/abductions/', '/zine/racial-capitalism/', '/zine/worker-power-4-pal/', '/zine/our-fight-is-one-v0/', '/zine/per-h-non-ce-niente/'],
-                    chooseRandom () {
-                        window.location.href = this.zines[Math.floor(Math.random() * this.zines.length)];
-                    }
-                }"
-                class="flex flex-row justify-between border-dark-grey border-b items-baseline sm:items-end gap-item-gap pb-item-gap">
-                <h2 class="text-lg">All zines (A-Z)</h2>
-                <button
-        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer group self-end xs:self-auto gap-3 items-baseline  font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 "
+
+    <section id="recentZines" class="zine-store-container flex flex-col gap-section-title">
+        
+    <header
+        
+        class="flex justify-between border-dark-grey border-dotted border-b items-center sm:items-end gap-item-gap pb-item-gap">
+    
+        <h2 class="text-lg">Most recent zines</h2>
+    
+    
+    </header>
+
+        
+    <div data-carousel class="grid scroll-px-[5vmin] overflow-x-auto overflow-y-hidden overscroll-x-contain grid-flow-col snap-x snap-mandatory gap-item-gap">
+        
+            
+                <a class="shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="/zine/per-h-non-ce-niente/">
+                    <img class="w-full shadow-page border border-dark-grey" src="/images/uploads/per-h-non-ce-niente/page_FC.jpg" alt="Per H C&#39;è Niente"></a>
+            
+                <a class="shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="/zine/our-fight-is-one-v0/">
+                    <img class="w-full shadow-page border border-dark-grey" src="/images/uploads/our-fight-is-one-v0/page_FC.jpg" alt="Our Fight is One Vol 0: Connecting our Struggles from Chicago to Palestine"></a>
+            
+                <a class="shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="/zine/worker-power-4-pal/">
+                    <img class="w-full shadow-page border border-dark-grey" src="/images/uploads/worker-power-4-pal/page_FC.jpg" alt="Worker Power for Palestine"></a>
+            
+                <a class="shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="/zine/racial-capitalism/">
+                    <img class="w-full shadow-page border border-dark-grey" src="/images/uploads/racial-capitalism/page_FC.jpg" alt="Understanding Racial Capitalism (Why It’s So Hard to “Eat the Rich”)"></a>
+            
+        
+    </div>
+
+    <style>
+        [data-carousel] {
+            anchor-name: --carousel;
+
+            > * {
+                scroll-snap-align: center;
+            }
+
+            @media (prefers-reduced-motion: no-preference) {
+                scroll-behavior: smooth;
+            }
+
+        &::scroll-button(*) {
+            position: fixed;
+            position-anchor: --carousel;
+            background: var(--color-white-smoke);
+            border: 1px solid var(--color-dark-grey);
+            box-shadow: var(--shadow-2xs);
+            border-radius: var(--radius);
+            padding: 1rem 1.25rem;
+            line-height: none;
+            font-weight: bold;
+            font-size: var(--text-icon);
+            font-family: var(--font-sans);
+
+            &:hover {
+            background: var(--color-ghost-white);
+            }
+        }
+
+            &::scroll-button(*):disabled {
+                opacity: 0;
+            }
+
+            &::scroll-button(right) {
+            position-area: center span-inline-start;
+            content: "→";
+            margin-inline-end: calc(-0.5 * var(--spacing-site));
+            }
+
+            &::scroll-button(left) {
+            position-area: span-inline-end center;
+            content: "←";
+            margin-inline-start: calc(-0.5 * var(--spacing-site));
+            }
+        }
+    </style>
+
+
+        </div>
+    </section>
+
+    <section id="allZines" class="zine-store-container flex flex-col gap-section-title">
+        
+        
+    <header
+        
+            x-data="
+            {
+                zines: [ &#39;/zine/leo-kyr/&#39;,  &#39;/zine/congo/&#39;,  &#39;/zine/mutual-aid-101/&#39;,  &#39;/zine/capitalism-101/&#39;,  &#39;/zine/abductions/&#39;,  &#39;/zine/racial-capitalism/&#39;,  &#39;/zine/worker-power-4-pal/&#39;,  &#39;/zine/our-fight-is-one-v0/&#39;,  &#39;/zine/per-h-non-ce-niente/&#39;, ],
+                chooseRandom () {
+                    window.location.href = this.zines[Math.floor(Math.random() * this.zines.length)];
+                }
+            }
+        "
+        
+        class="flex justify-between border-dark-grey border-dotted border-b items-center sm:items-end gap-item-gap pb-item-gap">
+    
+    
+        
+            <h2 class="text-lg">All zines <span class="hidden sm:inline">(A-Z)</span></h2>
+            <button
+        class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey min-w-15 shadow-2xs rounded py-4 px-5 min-h-14 "
 
         
             @click="chooseRandom"
         
             title="Get a random zine"
         
-            
-        
     >
 
         
 
         
-                    <span class="sm:hidden text-icon">⚄</span>
-                    <span class="hidden sm:block">Get a random zine</span>
-                </button>
-            </header>
-            <ul class="flex flex-col gap-item-gap list-disc">
-                
-                    <li class="max-w-max ml-[1.25ch]">
-                        <a href="/zine/leo-kyr/"
+            <span>Get a random zine</span></button>
+        
+    
+    </header>
+
+
+        <ul class="flex flex-col gap-item-gap list-disc">
+            
+                <li class="max-w-max ml-[1.25ch]">
+                    <a href="/zine/leo-kyr/"
         class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
@@ -263,10 +336,10 @@ and we'll get it added as soon as we can! ❤️</p>
 
         
             <span>A Primer on Exercising Your Rights with Law Enforcement</span></a>
-                    </li>
-                
-                    <li class="max-w-max ml-[1.25ch]">
-                        <a href="/zine/capitalism-101/"
+                </li>
+            
+                <li class="max-w-max ml-[1.25ch]">
+                    <a href="/zine/capitalism-101/"
         class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
@@ -276,10 +349,10 @@ and we'll get it added as soon as we can! ❤️</p>
 
         
             <span>Capitalism 101</span></a>
-                    </li>
-                
-                    <li class="max-w-max ml-[1.25ch]">
-                        <a href="/zine/congo/"
+                </li>
+            
+                <li class="max-w-max ml-[1.25ch]">
+                    <a href="/zine/congo/"
         class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
@@ -289,10 +362,10 @@ and we'll get it added as soon as we can! ❤️</p>
 
         
             <span>How the Green Energy Transition is Relying on Forced Labor in the Congo</span></a>
-                    </li>
-                
-                    <li class="max-w-max ml-[1.25ch]">
-                        <a href="/zine/mutual-aid-101/"
+                </li>
+            
+                <li class="max-w-max ml-[1.25ch]">
+                    <a href="/zine/mutual-aid-101/"
         class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
@@ -302,10 +375,10 @@ and we'll get it added as soon as we can! ❤️</p>
 
         
             <span>Mutual Aid 101</span></a>
-                    </li>
-                
-                    <li class="max-w-max ml-[1.25ch]">
-                        <a href="/zine/our-fight-is-one-v0/"
+                </li>
+            
+                <li class="max-w-max ml-[1.25ch]">
+                    <a href="/zine/our-fight-is-one-v0/"
         class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
@@ -315,10 +388,10 @@ and we'll get it added as soon as we can! ❤️</p>
 
         
             <span>Our Fight is One Vol 0: Connecting our Struggles from Chicago to Palestine</span></a>
-                    </li>
-                
-                    <li class="max-w-max ml-[1.25ch]">
-                        <a href="/zine/per-h-non-ce-niente/"
+                </li>
+            
+                <li class="max-w-max ml-[1.25ch]">
+                    <a href="/zine/per-h-non-ce-niente/"
         class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
@@ -328,10 +401,10 @@ and we'll get it added as soon as we can! ❤️</p>
 
         
             <span>Per H C&#39;è Niente</span></a>
-                    </li>
-                
-                    <li class="max-w-max ml-[1.25ch]">
-                        <a href="/zine/racial-capitalism/"
+                </li>
+            
+                <li class="max-w-max ml-[1.25ch]">
+                    <a href="/zine/racial-capitalism/"
         class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
@@ -341,10 +414,10 @@ and we'll get it added as soon as we can! ❤️</p>
 
         
             <span>Understanding Racial Capitalism (Why It’s So Hard to “Eat the Rich”)</span></a>
-                    </li>
-                
-                    <li class="max-w-max ml-[1.25ch]">
-                        <a href="/zine/abductions/"
+                </li>
+            
+                <li class="max-w-max ml-[1.25ch]">
+                    <a href="/zine/abductions/"
         class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
@@ -354,10 +427,10 @@ and we'll get it added as soon as we can! ❤️</p>
 
         
             <span>Why the U.S. Government Keeps Disappearing its International Students</span></a>
-                    </li>
-                
-                    <li class="max-w-max ml-[1.25ch]">
-                        <a href="/zine/worker-power-4-pal/"
+                </li>
+            
+                <li class="max-w-max ml-[1.25ch]">
+                    <a href="/zine/worker-power-4-pal/"
         class="flex justify-center gap-4 items-center disabled:opacity-60 active:scale-[.98] cursor-pointer   text-link underline hover:no-underline underline-offset-3 decoration-1 px-0! "
 
         
@@ -367,11 +440,10 @@ and we'll get it added as soon as we can! ❤️</p>
 
         
             <span>Worker Power for Palestine</span></a>
-                    </li>
-                
-            </ul>
-        </section>
-    </div>
+                </li>
+            
+        </ul>
+    </section>
 
 </main>
 
