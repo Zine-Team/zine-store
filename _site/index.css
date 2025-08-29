@@ -331,12 +331,6 @@
   .h-\[max\(25dvh\,_72px\)\] {
     height: max(25dvh, 72px);
   }
-  .h-dvh {
-    height: 100dvh;
-  }
-  .h-full {
-    height: 100%;
-  }
   .min-h-14 {
     min-height: calc(var(--spacing) * 14);
   }
@@ -484,12 +478,6 @@
   }
   .justify-self-start {
     justify-self: flex-start;
-  }
-  .overflow-auto {
-    overflow: auto;
-  }
-  .overflow-hidden {
-    overflow: hidden;
   }
   .overflow-x-auto {
     overflow-x: auto;
