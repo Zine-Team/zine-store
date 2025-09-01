@@ -5,8 +5,8 @@ layout: default
 {% from "components/carousel.njk" import carousel %}
 {% from "components/select.njk" import select %}
 {% from "components/sectionHeader.njk" import sectionHeader %}
-{% include "components/siteNav.njk" %}
 
+{% include "components/siteNav.njk" %}
 <main class="flex flex-col items-center gap-section py-section grow w-full">
     <header class="zine-store-container text-pretty flex flex-col gap-10">
         <h1 class="lg:-ml-2 text-2xl flex sm:flex-row justify-between flex-col gap-1 sm:gap-2 items-baseline">
@@ -47,16 +47,16 @@ layout: default
         class="zine-store-container flex flex-col gap-section-title">
 
         {% call sectionHeader() %}
-            <h2 class="text-lg">All zines</h2>
+            <h2 class="text-lg">All zines (A-Z)</h2>
             <div class="hidden xs:block">{{ button({label: "Get a random zine", type: "button"}, {"@click": "chooseRandom", title:"Get a random zine"}) }}</div>
         {% endcall %}
-                    <ul class="flex col-start-5 col-span-8 flex-col gap-item-gap list-disc">
-                {% for zine in collections.zine | sort(false, false, "data.title") %}
+                {{ button({label: "Read a random zine", type: "button"}, {"@click": "chooseRandom", title:"Read a random zine", class:"xs:hidden"}) }}
+                <ul class="flex col-start-5 col-span-8 flex-col gap-item-gap list-disc">
+                    {% for zine in collections.zine | sort(false, false, "data.title") %}
                         <li class="max-w-max ml-[1.25ch]">
                             {{ button(props={label: zine.data.title, href: zine.url, type: "link"}) }}
                         </li>
                 {% endfor %}
-                {{ button({label: "Read a random zine", type: "button"}, {"@click": "chooseRandom", title:"Read a random zine", class:"xs:hidden"}) }}
             </ul>
 
 {# Grid layout #}

@@ -18,7 +18,7 @@
     --text-2xl: clamp(75px, 11vw, 10rem);
 
     --space-site: 1rem;
-    --space-nav: 0.5rem;
+    --space-nav: 0.75rem;
     --space-section: 4.5rem;
     --space-section-title: 1.25rem;
     --space-dialog-inline: 1.25rem;
@@ -31,7 +31,6 @@
       --text-icon: 33px;
 
       --space-site: 2rem;
-      --space-nav: 0.5rem;
       --space-section: 6.5rem;
       --space-dialog-inline: 2rem;
       --space-dialog-block: 3rem;
@@ -49,8 +48,6 @@
 
     /* > xl */
     @media screen and (min-width: 1120px) {
-      --space-site: 3rem;
-      --space-nav: 1rem;
     }
   }
 

@@ -27,7 +27,7 @@ layout: default
             {{ button(props={icon: "→", size: "icon", type: "button" }, attrs={class: "h-[max(25dvh,_72px)] hidden lg:block self-center", "data-action": "next-wide"}) }}
         </div>
     </div>
-    <div class="flex lg:hidden gap-site py-nav px-site w-[100vw] bg-gainsboro sticky bottom-0">
+    <div class="flex lg:hidden gap-site py-nav border-dark-grey border-t border-dotted px-site w-[100vw] bg-gainsboro sticky bottom-0">
         {{ button(props={icon: "←", type: "button"}, attrs={class: "grow hidden md:block min-h-14", "data-action": "prev-wide"}) }}
         {{ button(props={icon: "→", type: "button"}, attrs={class: "grow hidden md:block min-h-14", "data-action": "next-wide"}) }}
         {{ button(props={icon: "←", type: "button"}, attrs={class: "grow md:hidden min-h-14", "data-action": "prev-narrow"}) }}
