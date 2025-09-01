@@ -2,7 +2,7 @@
 {% from "components/dropdown.njk" import dropdown %}
 {% from "components/copyToClipboard.njk" import copyToClipboard %}
 
-<nav class="zine-store-container shrink-0 flex items-baseline sticky top-0 justify-between py-nav border-dark-grey max-lg:border-b border-dotted">
+<nav class="zine-store-container shrink-0 flex items-baseline justify-between py-nav border-dark-grey max-lg:border-b border-dotted">
     <span class="flex justify-self-start gap-16">
         {{ button(props={label:"Home", href:"/", size:"lg", type:"link"}) }}
         {% if page.url == "/" %}
