@@ -14,7 +14,8 @@
     --text-base: 20px;
     --text-lg: 27px;
     --text-icon: 28px;
-    --text-xl: clamp(75px, 11vw, 10rem);
+    --text-xl: 48px;
+    --text-2xl: clamp(75px, 11vw, 10rem);
 
     --space-site: 1rem;
     --space-nav: 0.5rem;
@@ -26,7 +27,7 @@
     /* > md */
     @media screen and (min-width: 704px) {
       --text-base: 22px;
-      --text-lg: 30px;
+      --text-lg: 32px;
       --text-icon: 33px;
 
       --space-site: 2rem;

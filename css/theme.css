@@ -1,9 +1,19 @@
 @theme {
   --breakpoint-xs: 28rem; /* 448px */
-  --breakpoint-sm: 40rem; /* 640px */
+  --breakpoint-sm: 36rem; /* 640px */
   --breakpoint-md: 44rem; /* 704px */
   --breakpoint-lg: 60rem; /* 960px */
   --breakpoint-xl: 70rem; /* 1120px */
+
+  --text-icon: var(--text-icon);
+  --text-icon--line-height: 1;
+  --text-2xl: var(--text-2xl);
+  --text-2xl--line-height: 1;
+  --text-xl: var(--text-xl);
+  --text-xl--line-height: 1.3;
+  --text-lg: var(--text-lg);
+  --text-lg--line-height: 1.3;
+  --text-base: var(--text-base);
 
   --container-2xl: 40rem;
   --container-4xl: 52rem;
@@ -42,12 +52,4 @@
 
   --radius-*: initial;
   --radius: 3px;
-
-  --text-icon: var(--text-icon);
-  --text-icon--line-height: 1;
-  --text-xl: var(--text-xl);
-  --text-xl--line-height: 1;
-  --text-lg: var(--text-lg);
-  --text-lg--line-height: 1.3;
-  --text-base: var(--text-base);
 }

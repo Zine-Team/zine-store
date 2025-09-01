@@ -1,8 +1,18 @@
 ---
 layout: default
 ---
-{% from "components/button.njk" import button %}
+{% from "components/select.njk" import select %}
 
-<div class="zine-store-container max-w-3xl my-section">
+<section class="zine-store-container max-w-3xl my-section">
+    <div x-data="{selected: ''}" @select-sort-by.window="selected = $event.detail">
+        {{ select({
+            "name": "sort-by",
+            "label": "Sort by...",
+            "options": [
+                'A-Z',
+                'Most recent'
+            ]}) }}
 
-</div>
+        <div class="mt-8 text-center p-4 bg-dark-grey" x-text="selected"></div>
+    </div>
+</section>

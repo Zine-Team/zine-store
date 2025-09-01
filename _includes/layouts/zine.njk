@@ -28,10 +28,10 @@ layout: default
         </div>
     </div>
     <div class="flex lg:hidden gap-site py-nav px-site w-[100vw] bg-gainsboro sticky bottom-0">
-        {{ button(props={icon: "←", type: "button"}, attrs={class: "grow hidden md:block", "data-action": "prev-wide"}) }}
-        {{ button(props={icon: "→", type: "button"}, attrs={class: "grow hidden md:block", "data-action": "next-wide"}) }}
-        {{ button(props={icon: "←", type: "button"}, attrs={class: "grow md:hidden", "data-action": "prev-narrow"}) }}
-        {{ button(props={icon: "→", type: "button"}, attrs={class: "grow md:hidden", "data-action": "next-narrow"}) }}
+        {{ button(props={icon: "←", type: "button"}, attrs={class: "grow hidden md:block min-h-14", "data-action": "prev-wide"}) }}
+        {{ button(props={icon: "→", type: "button"}, attrs={class: "grow hidden md:block min-h-14", "data-action": "next-wide"}) }}
+        {{ button(props={icon: "←", type: "button"}, attrs={class: "grow md:hidden min-h-14", "data-action": "prev-narrow"}) }}
+        {{ button(props={icon: "→", type: "button"}, attrs={class: "grow md:hidden min-h-14", "data-action": "next-narrow"}) }}
     </div>
 </main>
 <script defer src="/bundle.js" type="module"></script>
