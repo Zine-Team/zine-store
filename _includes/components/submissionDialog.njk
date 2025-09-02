@@ -11,10 +11,11 @@
 {% set buttonText = "Submit a zine" %}
 
 {% call dialog(
+    attrs={class:"max-w-2xl"},
     triggerProps={
         label:buttonText, size:"lg", type: "button"
 }) %}
-    <header class="p-nav sticky lg:-mb-4 bg-gainsboro top-0 w-full flex justify-end items-center">
+    {# <header class="p-nav sticky lg:-mb-4 bg-gainsboro top-0 w-full flex justify-end items-center">
         {{ button(props={icon:"×", size:"lg", type: "button"}, attrs={"@click": "$refs.dialog.close()"}) }}
     </header>
     <main class="px-dialog-inline py-dialog-block text-center grow flex flex-col justify-center gap-dialog-block max-w-3xl">
@@ -24,5 +25,19 @@
         </div>
         {{ button(props={label:buttonText, size:"lg", type:"button", href:mailtoHref}) }}
     </main>
+    {{toaster({toasterId: "dialog"})}} #}
+
+    <header class="px-dialog-inline pt-dialog-block w-full flex justify-end items-center">
+        <h2 class="text-lg w-full text-pretty">Submit a zine to the Zine Store (Free)</h2>
+    </header>
+    <main class="w-full px-dialog-inline py-dialog-block grow flex flex-col justify-center gap-dialog-block max-w-3xl">
+        <div class="flex flex-col gap-6">
+            <p class="w-full text-pretty">Please send a PDF of your zine to {{- email | safe -}} and we'll get it added as soon as we can! ❤️</p>
+        </div>
+    </main>
+    <footer class="w-full flex gap-nav sticky bottom-0 bg-gainsboro justify-end py-nav px-nav border-dark-grey border-t border-dotted">
+        {{ button(props={label:"Close", type: "button"}, attrs={"@click": "$refs.dialog.close()"}) }}
+        {{ button(props={label:buttonText, type:"button", href:mailtoHref}) }}
+    </footer>
     {{toaster({toasterId: "dialog"})}}
 {% endcall %}

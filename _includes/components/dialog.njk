@@ -11,6 +11,8 @@
 {% from "components/button.njk" import button %}
 
 {% macro dialog(
+    props={},
+    attrs={},
     triggerProps={}
 ) %}
     <div x-data>
@@ -19,7 +21,7 @@
         <dialog
             closedby="any"
             x-ref="dialog"
-            class="flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-gainsboro p-0 mt-[calc(var(--spacing-site)+1dvh)] mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site))] max-w-3xl border border-grey">
+            class="{{ attrs.class }} flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-gainsboro p-0 mt-[calc(var(--spacing-dialog-block)+1dvh)] mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site))] border border-grey">
             {{ caller() | safe }}
         </dialog>
     </div>

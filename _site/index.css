@@ -312,6 +312,9 @@
   .mt-8 {
     margin-top: calc(var(--spacing) * 8);
   }
+  .mt-\[calc\(var\(--spacing-dialog-block\)\+1dvh\)\] {
+    margin-top: calc(var(--spacing-dialog-block) + 1dvh);
+  }
   .mt-\[calc\(var\(--spacing-site\)\+1dvh\)\] {
     margin-top: calc(var(--spacing-site) + 1dvh);
   }
@@ -472,6 +475,9 @@
   .gap-item-gap {
     gap: var(--spacing-item-gap);
   }
+  .gap-nav {
+    gap: var(--spacing-nav);
+  }
   .gap-section {
     gap: var(--spacing-section);
   }
@@ -576,6 +582,9 @@
   .px-dialog-inline {
     padding-inline: var(--spacing-dialog-inline);
   }
+  .px-nav {
+    padding-inline: var(--spacing-nav);
+  }
   .px-site {
     padding-inline: var(--spacing-site);
   }
@@ -597,8 +606,17 @@
   .py-section {
     padding-block: var(--spacing-section);
   }
+  .py-section-title {
+    padding-block: var(--spacing-section-title);
+  }
   .pt-1 {
     padding-top: calc(var(--spacing) * 1);
+  }
+  .pt-dialog-block {
+    padding-top: var(--spacing-dialog-block);
+  }
+  .pt-section-title {
+    padding-top: var(--spacing-section-title);
   }
   .pb-\[env\(safe-area-inset-bottom\)\] {
     padding-bottom: env(safe-area-inset-bottom);
@@ -1186,7 +1204,7 @@
       --space-nav: 1rem;
       --space-section: 8rem;
       --space-section-title: 1.75rem;
-      --space-dialog-inline: 4.5rem;
+      --space-dialog-inline: 3.5rem;
       --space-dialog-block: 3.5rem;
     }
   }
