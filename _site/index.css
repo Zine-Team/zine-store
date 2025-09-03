@@ -335,6 +335,15 @@
   .hidden {
     display: none;
   }
+  .inline {
+    display: inline;
+  }
+  .inline-block {
+    display: inline-block;
+  }
+  .inline-flex {
+    display: inline-flex;
+  }
   .aspect-zine {
     aspect-ratio: var(--aspect-zine);
   }
@@ -848,6 +857,11 @@
   .disabled\:opacity-60 {
     &:disabled {
       opacity: 60%;
+    }
+  }
+  .max-lg\:hidden {
+    @media (width < 60rem) {
+      display: none;
     }
   }
   .max-lg\:border-b {
