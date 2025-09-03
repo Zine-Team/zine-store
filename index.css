@@ -11,6 +11,7 @@
     --breakpoint-lg: 60rem; /* 960px */
     --breakpoint-xl: 70rem; /* 1120px */
 
+    --text-sm: 18px;
     --text-base: 20px;
     --text-lg: 27px;
     --text-icon: 28px;
@@ -68,5 +69,11 @@
     max-width: 1400px;
     padding-inline-start: var(--spacing-site);
     padding-inline-end: var(--spacing-site);
+  }
+
+  [data-button-card]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
   }
 }

@@ -49,14 +49,20 @@ layout: default
             <h2 class="text-lg">All zines (A-Z)</h2>
             <div class="hidden xs:block">{{ button({label: "Get a random zine", type: "button"}, {"@click": "chooseRandom", title:"Get a random zine"}) }}</div>
         {% endcall %}
-                {{ button({label: "Read a random zine", type: "button"}, {"@click": "chooseRandom", title:"Read a random zine", class:"xs:hidden"}) }}
-                <ul class="flex col-start-5 col-span-8 flex-col gap-item-gap list-disc">
-                    {% for zine in collections.zine | sort(false, false, "data.title") %}
-                        <li class="max-w-max ml-[1.25ch]">
-                            {{ button({label: zine.data.title, href: zine.url, type: "link"}, {class:"inline-block"}) }}
-                        </li>
+            <ul class="grid gap-x-item-gap gap-y-section-title max-xs:list-disc" style="grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );">
+                {% for zine in collections.zine | sort(false, false, "data.title") %}
+                    <li class="flex relative flex-col gap-2 items-start max-w-max max-xs:ml-[1.25ch]">
+                        <div class="max-xs:hidden shadow-zine">
+                            <img class="w-full shadow-page border border-dark-grey" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}">
+                        </div>
+                        {% call button({type:"link", href:zine.url, size:"sm"},{class: "text-left scale-none!"}) %}
+                            <span class="absolute inset-0"></span>
+                            <span>{{ zine.data.title }}</span>
+                        {% endcall %}
+                    </li>
                 {% endfor %}
             </ul>
+            {{ button({label: "Read a random zine", type: "button"}, {"@click": "chooseRandom", title:"Read a random zine", class:"xs:hidden"}) }}
     </section>
 
 </main>
