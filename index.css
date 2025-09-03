@@ -23,6 +23,12 @@
     --space-section-title: 1.25rem;
     --space-dialog-inline: 1.25rem;
     --space-dialog-block: 2.5rem;
+    --space-tube: 3rem;
+
+    /* > md */
+    @media screen and (min-width: 640px) {
+      --space-tube: 3.25rem;
+    }
 
     /* > md */
     @media screen and (min-width: 704px) {
@@ -44,6 +50,7 @@
       --space-section-title: 1.75rem;
       --space-dialog-inline: 3.5rem;
       --space-dialog-block: 3.5rem;
+      --space-tube: 3.5rem;
     }
 
     /* > xl */

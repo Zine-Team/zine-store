@@ -3,7 +3,6 @@ layout: default
 ---
 {% from "components/button.njk" import button %}
 {% from "components/carousel.njk" import carousel %}
-{% from "components/select.njk" import select %}
 {% from "components/sectionHeader.njk" import sectionHeader %}
 
 {% include "components/siteNav.njk" %}
@@ -58,29 +57,6 @@ layout: default
                         </li>
                 {% endfor %}
             </ul>
-
-{# Grid layout #}
-        {# <div class="grid grid-cols-12 gap-item-gap">
-            <div class="col-span-3 flex flex-col gap-section-title">
-                {{ select({
-                "name": "sort-by",
-                "label": "Sorted",
-                "options": [
-                    'alphabetically',
-                    'by recency'
-                ]}) }}
-                {{ button({label: "Read a random zine", type: "button"}, {"@click": "chooseRandom", title:"Read a random zine", class:"self-stretch"}) }}
-            </div>
-            <ul class="flex col-start-5 col-span-8 flex-col gap-item-gap list-disc">
-                {% for zine in collections.zine | sort(false, false, "data.title") %}
-                        <li class="max-w-max ml-[1.25ch]">
-                            {{ button(props={label: zine.data.title, href: zine.url, type: "link"}) }}
-                        </li>
-                {% endfor %}
-                {{ button({label: "Read a random zine", type: "button"}, {"@click": "chooseRandom", title:"Read a random zine", class:"xs:hidden"}) }}
-            </ul>
-        </div> #}
-
     </section>
 
 </main>

@@ -1,0 +1,189 @@
+{% set directionClasses = {
+    row: "flex gap-2 items-center",
+    column: "flex flex-col gap-1.5"
+} %}
+
+{% set fieldStyles = "leading-none grow bg-white-smoke not-disabled:hover:bg-ghost-white border-1 border-dark-grey disabled:opacity-60 not-disabled:hover:border-grey min-h-tube rounded p-2.5" %}
+
+{#
+    FieldLabel
+
+    props = {
+        tag: "label | legend" // html tag to render
+        label: "" // text for the label
+    }
+#}
+{% macro fieldLabel(props={}, fieldProps={}, fieldAttrs={}) %}
+    <{{ props.tag }} {% if props.tag === "label" %}for="{{ fieldProps.name }}"{% endif %} class="font-bold">{{ fieldProps.label }} {% if fieldAttrs.required %}<span class="text-fire-brick">*</span>{% endif %}</{{ props.tag }}>
+{% endmacro %}
+
+{#
+    FieldDescription
+
+    props = {
+        description: "" // text for the description
+    }
+#}
+{% macro fieldDescription(props={}) %}
+    <small class="opacity-70">{{ props.description }}</small>
+{% endmacro %}
+
+{#
+    Select
+
+    props = {
+        name: "" // internal way to reference the select on the page
+        options = [""], // object of strings that should be available
+        direction = "column | row" // *optional* to make the label appear to the left of the field instead of above
+        label: "" // *optional* text for the label
+    }
+    fieldAttrs = {} // attributes for the field element
+    attrs = {} // attributes for the component outer element
+#}
+
+{% macro select(props={}, fieldAttrs={}, attrs={}) %}
+    <div
+        x-data="{value:'{% if not fieldAttrs.placeholder %}{{props.options[0]}}{% endif %}'}"
+        {% for key, value in attrs %}
+            {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
+        {% endfor %}
+        class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
+
+        {% if props.label %}{{ fieldLabel({tag: "label"}, props, fieldAttrs) }}{% endif %}
+
+        <select
+            {% if not fieldAttrs.placeholder %}x-init="$dispatch('select-{{ props.name }}', value)"{% endif %}
+            x-on:change="$dispatch('select-{{ props.name }}', value)"
+            x-model="value"
+            id="{{ props.name }}"
+            {% for key, value in fieldAttrs %}
+                {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
+            {% endfor %}
+            class="{{ fieldStyles }}">
+
+            {% if fieldAttrs.placeholder %}<option value="" disabled>{{ fieldAttrs.placeholder}}</option>{% endif %}
+            {% set comma = joiner() %}
+            <template x-for="option in [{% for option in props.options %}{{ comma() }} '{{ option }}'{% endfor%}]">
+                <option x-text="option"></option>
+            </template>
+
+        </select>
+
+        {% if props.description %}{{ fieldDescription(props) }}{% endif %}
+    </div>
+{% endmacro %}
+
+
+{#
+    Input
+
+    props = {
+        name: "" // internal way to reference the select on the page
+        options = [""], // object of strings that should be available
+        direction = "column | row" // *optional* to make the label appear to the left of the field instead of above
+        label: "" // *optional* text for the label
+        placeholder: "", // *optional* a non-selected initial string for the select
+    }
+    fieldAttrs = {} // attributes for the field element
+    attrs = {} // attributes for the component outer element
+#}
+
+{% macro input(props={}, fieldAttrs={}, attrs={}) %}
+    <div
+        x-data="{value:'{% if fieldAttrs.value %}{{fieldAttrs.value}}{% endif %}'}"
+        {% for key, value in attrs %}
+            {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
+        {% endfor %}
+        class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
+
+        {% if props.label %}{{ fieldLabel({tag: "label"}, props, fieldAttrs) }}{% endif %}
+
+         <input
+            {% if fieldAttrs.value %}x-init="$dispatch('input-{{ props.name }}', '{{ fieldAttrs.value }}')"{% endif %}
+            x-on:input="$dispatch('input-{{ props.name }}', value)"
+            x-model="value"
+            id="{{ props.name }}"
+            {% for key, value in fieldAttrs %}
+                {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
+            {% endfor %}
+            class="{{ fieldStyles }} {{ fieldAttrs.class }}">
+
+        {% if props.description %}{{ fieldDescription(props) }}{% endif %}
+
+    </div>
+{% endmacro %}
+
+
+{#
+    Textarea
+
+    props = {
+        name: "" // internal way to reference the select on the page
+        options = [""], // object of strings that should be available
+        direction = "column | row" // *optional* to make the label appear to the left of the field instead of above
+        label: "" // *optional* text for the label
+        placeholder: "", // *optional* a non-selected initial string for the select
+    }
+    fieldAttrs = {} // attributes for the field element
+    attrs = {} // attributes for the component outer element
+#}
+
+{% macro textarea(props={}, fieldAttrs={}, attrs={}) %}
+    <div
+        x-data="{value:'{% if fieldAttrs.value %}{{fieldAttrs.value}}{% endif %}'}"
+        {% for key, value in attrs %}
+            {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
+        {% endfor %}
+        class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
+
+        {% if props.label %}{{ fieldLabel({tag: "label"}, props, fieldAttrs) }}{% endif %}
+
+         <textarea
+            {% if fieldAttrs.value %}x-init="$dispatch('input-{{ props.name }}', '{{ fieldAttrs.value }}')"{% endif %}
+            x-on:input="$dispatch('input-{{ props.name }}', value)"
+            x-model="value"
+            id="{{ props.name }}"
+            {% for key, value in fieldAttrs %}
+                {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
+            {% endfor %}
+            class="{{ fieldStyles }} {{ fieldAttrs.class }}"></textarea>
+
+        {% if props.description %}{{ fieldDescription(props) }}{% endif %}
+
+    </div>
+{% endmacro %}
+
+
+{% macro checkbox(props={}, fieldAttrs={}, attrs={}) %}
+    <fieldset id="{{ props.name }}" name="{{ props.name }}">
+        <div class="{{ directionClasses["column"] }}">
+            {{ fieldLabel({tag: "legend"}, props, fieldAttrs) }}
+            <div class="{{ directionClasses["column"] }}">
+                {% set comma = joiner() %}
+                <template x-for="option in [{% for option in props.options %}{{ comma() }} '{{ option }}'{% endfor%}]">
+                    <div x-id="[option]" class="{{ directionClasses["row"] }}">
+                        <input class="accent-current  w-[1.1em] h-[1.1em]" type="checkbox" :id="$id(option)" name="{{ props.name }}"/>
+                        <label :for="$id(option)" x-text="option"></label>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </fieldset>
+{% endmacro %}
+
+{% macro radio(props={}, fieldAttrs={}, attrs={}) %}
+    <fieldset id="{{ props.name }}" name="{{ props.name }}">
+        <div class="{{ directionClasses["column"] }}">
+            {{ fieldLabel({tag: "legend"}, props, fieldAttrs) }}
+            <div class="{{ directionClasses["column"] }}">
+                {% set comma = joiner() %}
+                <template x-for="option in [{% for option in props.options %}{{ comma() }} '{{ option }}'{% endfor%}]">
+                    <div  x-id="[option]" class="{{ directionClasses["row"] }}">
+                        <input class="accent-current  w-[1.1em] h-[1.1em]" type="radio" :id="$id(option)" name="{{ props.name }}"/>
+                        <label :for="$id(option)" x-text="option"></label>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </fieldset>
+{% endmacro %}

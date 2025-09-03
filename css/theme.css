@@ -32,6 +32,7 @@
   --color-white-smoke: WhiteSmoke;
   --color-link: #0000ee;
   --color-link-visited: #551a8b;
+  --color-fire-brick: FireBrick;
 
   --spacing-site: var(--space-site);
   --spacing-nav: var(--space-nav);
@@ -40,6 +41,7 @@
   --spacing-item-gap: calc(var(--space-section-title) / 1.25);
   --spacing-dialog-inline: var(--space-dialog-inline);
   --spacing-dialog-block: var(--space-dialog-block);
+  --spacing-tube: var(--space-tube);
 
   --perspective-zine: 2000px;
   --aspect-zine: 5.5 / 4.25;
