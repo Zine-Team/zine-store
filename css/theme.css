@@ -39,7 +39,7 @@
   --spacing-nav: var(--space-nav);
   --spacing-section: var(--space-section);
   --spacing-section-title: var(--space-section-title);
-  --spacing-item-gap: calc(var(--space-section-title) / 1.25);
+  --spacing-item-gap: calc(var(--space-section-title) / 1.5);
   --spacing-dialog-inline: var(--space-dialog-inline);
   --spacing-dialog-block: var(--space-dialog-block);
   --spacing-tube: var(--space-tube);

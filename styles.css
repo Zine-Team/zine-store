@@ -11,7 +11,7 @@
     --breakpoint-lg: 60rem; /* 960px */
     --breakpoint-xl: 70rem; /* 1120px */
 
-    --text-sm: 18px;
+    --text-sm: 17px;
     --text-base: 20px;
     --text-lg: 27px;
     --text-icon: 28px;
@@ -33,6 +33,7 @@
 
     /* > md */
     @media screen and (min-width: 704px) {
+      --text-sm: 18px;
       --text-base: 22px;
       --text-lg: 32px;
       --text-icon: 33px;

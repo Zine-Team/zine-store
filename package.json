@@ -7,9 +7,9 @@
     "start": "npm-run-all -p dev:*",
     "build": "run-s build:*",
     "dev:11ty": "eleventy --serve",
-    "dev:css": "npx @tailwindcss/cli -i ./index.css -o ./_site/index.css --watch",
+    "dev:css": "npx @tailwindcss/cli -i ./styles.css -o ./_site/styles.css --watch",
     "build:11ty": "eleventy",
-    "build:css": "npx @tailwindcss/cli -i ./index.css -o ./_site/index.css"
+    "build:css": "npx @tailwindcss/cli -i ./styles.css -o ./_site/styles.css"
   },
   "keywords": [],
   "author": "",

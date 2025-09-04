@@ -166,7 +166,8 @@
 }
 
 /* gradient overlay on right pages */
-[data-zine-part="page"]:nth-child(odd)::after {
+[data-zine-part="page"]:nth-child(odd)::after,
+[data-zine-shading]::after {
   content: "";
   position: absolute;
   inset: 0;

@@ -25,7 +25,7 @@
     }
 #}
 {% macro fieldDescription(props={}) %}
-    <small class="opacity-70">{{ props.description }}</small>
+    <small class="opacity-70 text-sm">{{ props.description }}</small>
 {% endmacro %}
 
 {#
@@ -154,32 +154,20 @@
 {% endmacro %}
 
 
-{% macro checkbox(props={}, fieldAttrs={}, attrs={}) %}
-    <fieldset id="{{ props.name }}" name="{{ props.name }}">
+{% macro fieldset(props={}, fieldAttrs={}, attrs={}) %}
+    <fieldset
+        x-data="{
+            selected: []
+        }"
+        id="{{ props.name }}"
+        name="{{ props.name }}">
         <div class="{{ directionClasses["column"] }}">
             {{ fieldLabel({tag: "legend"}, props, fieldAttrs) }}
             <div class="{{ directionClasses["column"] }}">
                 {% set comma = joiner() %}
                 <template x-for="option in [{% for option in props.options %}{{ comma() }} '{{ option }}'{% endfor%}]">
                     <div x-id="[option]" class="{{ directionClasses["row"] }}">
-                        <input class="accent-current  w-[1.1em] h-[1.1em]" type="checkbox" :id="$id(option)" name="{{ props.name }}"/>
-                        <label :for="$id(option)" x-text="option"></label>
-                    </div>
-                </template>
-            </div>
-        </div>
-    </fieldset>
-{% endmacro %}
-
-{% macro radio(props={}, fieldAttrs={}, attrs={}) %}
-    <fieldset id="{{ props.name }}" name="{{ props.name }}">
-        <div class="{{ directionClasses["column"] }}">
-            {{ fieldLabel({tag: "legend"}, props, fieldAttrs) }}
-            <div class="{{ directionClasses["column"] }}">
-                {% set comma = joiner() %}
-                <template x-for="option in [{% for option in props.options %}{{ comma() }} '{{ option }}'{% endfor%}]">
-                    <div  x-id="[option]" class="{{ directionClasses["row"] }}">
-                        <input class="accent-current  w-[1.1em] h-[1.1em]" type="radio" :id="$id(option)" name="{{ props.name }}"/>
+                        <input x-on:change="$dispatch('fieldset-{{ props.name }}', selected)" x-model="selected" class="accent-current w-[1.1em] h-[1.1em]" type="{{ props.type }}" :id="$id(option)" name="{{ props.name }}" :value="option"/>
                         <label :for="$id(option)" x-text="option"></label>
                     </div>
                 </template>

@@ -40,7 +40,7 @@
     --spacing-nav: var(--space-nav);
     --spacing-section: var(--space-section);
     --spacing-section-title: var(--space-section-title);
-    --spacing-item-gap: calc(var(--space-section-title) / 1.25);
+    --spacing-item-gap: calc(var(--space-section-title) / 1.5);
     --spacing-dialog-inline: var(--space-dialog-inline);
     --spacing-dialog-block: var(--space-dialog-block);
     --spacing-tube: var(--space-tube);
@@ -232,9 +232,6 @@
   .inset-y-0 {
     inset-block: calc(var(--spacing) * 0);
   }
-  .top-0 {
-    top: calc(var(--spacing) * 0);
-  }
   .top-nav {
     top: var(--spacing-nav);
   }
@@ -262,14 +259,11 @@
   .z-50 {
     z-index: 50;
   }
-  .col-span-8 {
-    grid-column: span 8 / span 8;
+  .col-span-2 {
+    grid-column: span 2 / span 2;
   }
   .col-start-1 {
     grid-column-start: 1;
-  }
-  .col-start-5 {
-    grid-column-start: 5;
   }
   .col-end-3 {
     grid-column-end: 3;
@@ -310,14 +304,14 @@
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
-  .mt-8 {
-    margin-top: calc(var(--spacing) * 8);
-  }
   .mt-\[calc\(var\(--spacing-dialog-block\)\+1dvh\)\] {
     margin-top: calc(var(--spacing-dialog-block) + 1dvh);
   }
   .mb-auto {
     margin-bottom: auto;
+  }
+  .ml-\[1\.5ch\] {
+    margin-left: 1.5ch;
   }
   .ml-\[1\.25ch\] {
     margin-left: 1.25ch;
@@ -413,9 +407,6 @@
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
-  .transform-none\! {
-    transform: none !important;
-  }
   .cursor-pointer {
     cursor: pointer;
   }
@@ -470,20 +461,14 @@
   .gap-2 {
     gap: calc(var(--spacing) * 2);
   }
-  .gap-6 {
-    gap: calc(var(--spacing) * 6);
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
   }
   .gap-10 {
     gap: calc(var(--spacing) * 10);
   }
   .gap-16 {
     gap: calc(var(--spacing) * 16);
-  }
-  .gap-\[calc\(var\(--spacing-section-title\)\/2\)\] {
-    gap: calc(var(--spacing-section-title) / 2);
-  }
-  .gap-dialog-block {
-    gap: var(--spacing-dialog-block);
   }
   .gap-item-gap {
     gap: var(--spacing-item-gap);
@@ -565,9 +550,6 @@
   .bg-black {
     background-color: var(--color-black);
   }
-  .bg-dark-grey {
-    background-color: var(--color-dark-grey);
-  }
   .bg-gainsboro {
     background-color: var(--color-gainsboro);
   }
@@ -580,11 +562,8 @@
   .p-2\.5 {
     padding: calc(var(--spacing) * 2.5);
   }
-  .p-4 {
-    padding: calc(var(--spacing) * 4);
-  }
-  .p-nav {
-    padding: var(--spacing-nav);
+  .p-6 {
+    padding: calc(var(--spacing) * 6);
   }
   .px-0\! {
     padding-inline: calc(var(--spacing) * 0) !important;
@@ -628,9 +607,6 @@
   .pt-1 {
     padding-top: calc(var(--spacing) * 1);
   }
-  .pt-dialog-block {
-    padding-top: var(--spacing-dialog-block);
-  }
   .pb-\[env\(safe-area-inset-bottom\)\] {
     padding-bottom: env(safe-area-inset-bottom);
   }
@@ -639,9 +615,6 @@
   }
   .pb-section-title {
     padding-bottom: var(--spacing-section-title);
-  }
-  .text-center {
-    text-align: center;
   }
   .text-left {
     text-align: left;
@@ -872,6 +845,11 @@
       margin-left: 1.25ch;
     }
   }
+  .max-xs\:flex {
+    @media (width < 28rem) {
+      display: flex;
+    }
+  }
   .max-xs\:hidden {
     @media (width < 28rem) {
       display: none;
@@ -885,6 +863,11 @@
   .xs\:block {
     @media (width >= 28rem) {
       display: block;
+    }
+  }
+  .xs\:flex {
+    @media (width >= 28rem) {
+      display: flex;
     }
   }
   .xs\:hidden {
@@ -972,11 +955,6 @@
   .lg\:col-auto {
     @media (width >= 60rem) {
       grid-column: auto;
-    }
-  }
-  .lg\:-mb-4 {
-    @media (width >= 60rem) {
-      margin-bottom: calc(var(--spacing) * -4);
     }
   }
   .lg\:-ml-2 {
@@ -1163,7 +1141,7 @@
       }
     }
   }
-  [data-zine-part="page"]:nth-child(odd)::after {
+  [data-zine-part="page"]:nth-child(odd)::after, [data-zine-shading]::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -1241,7 +1219,7 @@
     --breakpoint-md: 44rem;
     --breakpoint-lg: 60rem;
     --breakpoint-xl: 70rem;
-    --text-sm: 18px;
+    --text-sm: 17px;
     --text-base: 20px;
     --text-lg: 27px;
     --text-icon: 28px;
@@ -1258,6 +1236,7 @@
       --space-tube: 3.25rem;
     }
     @media screen and (min-width: 704px) {
+      --text-sm: 18px;
       --text-base: 22px;
       --text-lg: 32px;
       --text-icon: 33px;

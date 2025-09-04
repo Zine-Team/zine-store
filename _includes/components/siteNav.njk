@@ -1,32 +1,17 @@
 {% from "components/button.njk" import button %}
-{% from "components/dropdown.njk" import dropdown %}
-{% from "components/copyToClipboard.njk" import copyToClipboard %}
 
-<nav class="zine-store-container shrink-0 flex items-baseline justify-between py-nav border-dark-grey max-lg:border-b border-dotted">
-    <span class="flex justify-self-start gap-16">
-        {{ button(props={label:"Home", href:"/", size:"lg", type:"link"}) }}
-        {% if page.url == "/" %}
-            {{ button(props={ label: "Most recent zines", href:"#recentZines", size:"lg", type:"link"}, attrs={class:"max-lg:hidden"}) }}
-            {{ button(props={ label:"All zines", href:"#allZines", size:"lg", type:"link"}, attrs={class:"max-lg:hidden"}) }}
-        {% endif %}
-    </span>
-    <span class="flex justify-self-end">
-        {% if page.url == "/" %}
-            {% include "components/submissionDialog.njk" %}
-        {% else %}
-
-            {% call copyToClipboard({
-                input: global.siteDomain + page.url,
-                toastMessage: "URL copied to clipboard!"
-            }) %}
-                {{ dropdown(
-                    triggerProps={label: "Share", type: "button", size:"lg"},
-                    dropdownItems=[
-                        {macro: button, props:{label:"Download PDF", href:pdf, type:"link"}, attrs:{download: null} },
-                        {macro: button, props:{label:"Copy link", type:"link"}, attrs:{@click: "copy"} }
-                    ])
-                }}
-            {% endcall %}
-        {% endif %}
-    </span>
-</nav>
+{% macro siteNav(props={}) %}
+    <nav class="zine-store-container shrink-0 flex items-baseline justify-between py-nav border-dark-grey max-lg:border-b border-dotted">
+        <span class="flex justify-self-start gap-16">
+            {{ button(props={label:"Home", href:"/", size:"lg", type:"link"}) }}
+            {% for item in props.links %}
+                {{ item.macro(item.props, item.attrs) }}
+            {% endfor %}
+        </span>
+        <span class="flex justify-self-end">
+            {% if caller %}
+                {{ caller() | safe }}
+            {% endif %}
+        </span>
+    </nav>
+{% endmacro %}

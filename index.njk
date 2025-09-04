@@ -4,8 +4,17 @@ layout: default
 {% from "components/button.njk" import button %}
 {% from "components/carousel.njk" import carousel %}
 {% from "components/sectionHeader.njk" import sectionHeader %}
+{% from "components/siteNav.njk" import siteNav %}
 
-{% include "components/siteNav.njk" %}
+{% call siteNav({
+    links: [
+     { macro: button, props:{ label: "Most recent zines", href:"#recentZines", size:"lg", type:"link"}, attrs:{class:"max-lg:hidden"} },
+     { macro: button, props:{ label:"All zines", href:"#allZines", size:"lg", type:"link"}, attrs:{class:"max-lg:hidden"} }
+    ]
+}) %}
+    {% include "components/submissionDialog.njk" %}
+{% endcall %}
+
 <main class="flex flex-col items-center gap-section py-section grow w-full">
     <header class="zine-store-container text-pretty flex flex-col gap-10">
         <h1 class="lg:-ml-2 text-2xl flex sm:flex-row justify-between flex-col gap-1 sm:gap-2 items-baseline">
@@ -27,7 +36,7 @@ layout: default
 
         {% call carousel({},{class:"gap-item-gap"}) %}
             {% for zine in collections.zine | reverse | slice(4) %}
-                <a class="shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="{{ zine.url }}">
+                <a data-zine-shading class="relative shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="{{ zine.url }}">
                     <img class="w-full shadow-page border border-dark-grey" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}"></a>
             {% endfor %}
         {% endcall %}
@@ -51,14 +60,15 @@ layout: default
         {% endcall %}
             <ul class="grid gap-x-item-gap gap-y-section-title max-xs:list-disc" style="grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );">
                 {% for zine in collections.zine | sort(false, false, "data.title") %}
-                    <li class="flex relative flex-col gap-2 items-start max-w-max max-xs:ml-[1.25ch]">
-                        <div class="max-xs:hidden shadow-zine">
+                    <li class="xs:flex flex-col gap-2 relative items-start max-w-max max-xs:ml-[1.25ch]">
+                        <div data-zine-shading class="max-xs:hidden relative shadow-zine">
                             <img class="w-full shadow-page border border-dark-grey" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}">
                         </div>
-                        {% call button({type:"link", href:zine.url, size:"sm"},{class: "text-left scale-none!"}) %}
+                        {% call button({type:"link", href:zine.url, size:"sm"},{class: "text-left scale-none! max-xs:hidden"}) %}
                             <span class="absolute inset-0"></span>
                             <span>{{ zine.data.title }}</span>
                         {% endcall %}
+                        {{ button({label:zine.data.title, type:"link", href:zine.url}, {class: "text-left xs:hidden"}) }}
                     </li>
                 {% endfor %}
             </ul>

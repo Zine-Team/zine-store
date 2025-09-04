@@ -2,13 +2,29 @@
 layout: default
 ---
 {% from "components/button.njk" import button %}
+{% from "components/siteNav.njk" import siteNav %}
+{% from "components/dropdown.njk" import dropdown %}
+{% from "components/copyToClipboard.njk" import copyToClipboard %}
 
+{% call siteNav({}) %}
+    {% call copyToClipboard({
+        input: global.siteDomain + page.url,
+        toastMessage: "URL copied to clipboard!"
+    }) %}
+        {{ dropdown(
+            triggerProps={label: "Share", type: "button", size:"lg"},
+            dropdownItems=[
+                {macro: button, props:{label:"Download PDF", href:pdf, type:"link"}, attrs:{download: null} },
+                {macro: button, props:{label:"Copy link", type:"link"}, attrs:{@click: "copy"} }
+            ])
+        }}
+    {% endcall %}
+{% endcall %}
 <main class="w-full flex flex-col items-center min-h-dvh grow relative">
     <div class="sr-only">
         <h1>{{ title }}</h1>
     </div>
     <div class="flex  flex-col items-center w-full grow">
-        {% include "components/siteNav.njk" %}
         <div data-zine-part="navigator" class="zine-store-container flex flex-col lg:flex-row lg:justify-center lg:gap-10 xl:gap-20 grow {% if aspect !== "5.5 / 4.25" %} pb-section-title{% endif %}">
             {{ button(props={icon:"←", type: "button"}, attrs={class:"h-[max(25dvh,_72px)] hidden lg:block self-center", "data-action": "prev-wide"}) }}
             <div data-zine-part="root" class="grow lg:grow-0 flex flex-col justify-center items-center perspective-zine col-start-1 col-end-3 lg:col-auto">

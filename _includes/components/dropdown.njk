@@ -45,7 +45,7 @@
             x-cloak
             :id="$id('dropdown')"
             class="absolute right-0 min-w-max shadow-zine mt-2 z-10 outline-none">
-            <ul class="gap-[calc(var(--spacing-section-title)/2)] list-disc bg-white-smoke border border-dark-grey px-5 py-3 flex flex-col items-start">
+            <ul class="gap-item-gap list-disc bg-white-smoke border border-dark-grey px-5 py-3 flex flex-col items-start">
                 {% for item in dropdownItems %}
                     <li class="ml-[1.25ch]">{{ item.macro(item.props, item.attrs) }}</li>
                 {% endfor %}
