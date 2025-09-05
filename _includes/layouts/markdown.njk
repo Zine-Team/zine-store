@@ -1,0 +1,16 @@
+---
+layout: default
+eleventyExcludeFromCollections: true
+---
+{% from "components/button.njk" import button %}
+{% from "components/siteNav.njk" import siteNav %}
+{% from "components/markdown.njk" import markdown %}
+
+{{ siteNav() }}
+<main class="flex flex-col zine-store-container items-start gap-site py-section grow w-full">
+    <header class=""><h1 class="text-xl">{{ title }}</h1></header>
+    {{ markdown({content: content }) }}
+    {% call markdown() %}
+        {{ content | safe }}
+    {% endcall %}
+</main>

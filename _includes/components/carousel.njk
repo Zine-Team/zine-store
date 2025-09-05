@@ -1,5 +1,5 @@
 {% macro carousel(props={}, attrs={}) %}
-    <div data-carousel class="grid scroll-px-[5vmin] overflow-x-auto overflow-y-hidden overscroll-x-contain grid-flow-col snap-x snap-mandatory {{ attrs.class }}">
+    <div data-carousel class="grid scroll-px-[5vmin] overflow-x-auto overflow-y-visible overscroll-x-contain grid-flow-col snap-x snap-mandatory {{ attrs.class }}">
         {{ caller() | safe }}
     </div>
 

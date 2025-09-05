@@ -18,7 +18,8 @@ layout: default
 <main class="flex flex-col items-center gap-section py-section grow w-full">
     <header class="zine-store-container text-pretty flex flex-col gap-10">
         <h1 class="lg:-ml-2 text-2xl flex sm:flex-row justify-between flex-col gap-1 sm:gap-2 items-baseline">
-            Zine Store
+            <span class="shrink-0">Zine Store</span>
+            <span class="max-sm:hidden">•</span>
             <span class="text-xl sm:text-2xl">(Free)</span>
         </h1>
         <p class="text-lg max-w-2xl">{{ global.siteDescription }}</p>
@@ -34,9 +35,9 @@ layout: default
             </div>
         {% endcall %}
 
-        {% call carousel({},{class:"gap-item-gap"}) %}
+        {% call carousel({},{class:"gap-item-gap py-2"}) %}
             {% for zine in collections.zine | reverse | slice(4) %}
-                <a data-zine-shading class="relative shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="{{ zine.url }}">
+                <a data-zine-shading class="relative hover:scale-[1.01] shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="{{ zine.url }}">
                     <img class="w-full shadow-page border border-dark-grey" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}"></a>
             {% endfor %}
         {% endcall %}
@@ -54,13 +55,12 @@ layout: default
         }"
         class="zine-store-container flex flex-col gap-section-title">
 
-        {% call sectionHeader() %}
-            <h2 class="text-lg">All zines (A-Z)</h2>
+        {% call sectionHeader({label: "All zines (A-Z)"}) %}
             <div class="hidden xs:block">{{ button({label: "Get a random zine", type: "button"}, {"@click": "chooseRandom", title:"Get a random zine"}) }}</div>
         {% endcall %}
             <ul class="grid gap-x-item-gap gap-y-section-title max-xs:list-disc" style="grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );">
                 {% for zine in collections.zine | sort(false, false, "data.title") %}
-                    <li class="xs:flex flex-col gap-2 relative items-start max-w-max max-xs:ml-[1.25ch]">
+                    <li class="xs:flex flex-col gap-item-sm relative items-start max-w-max max-xs:ml-[1.25ch]">
                         <div data-zine-shading class="max-xs:hidden relative shadow-zine">
                             <img class="w-full shadow-page border border-dark-grey" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}">
                         </div>

@@ -44,11 +44,15 @@
             x-on:click.outside="close($refs.button)"
             x-cloak
             :id="$id('dropdown')"
-            class="absolute right-0 min-w-max shadow-zine mt-2 z-10 outline-none">
-            <ul class="gap-item-gap list-disc bg-white-smoke border border-dark-grey px-5 py-3 flex flex-col items-start">
-                {% for item in dropdownItems %}
-                    <li class="ml-[1.25ch]">{{ item.macro(item.props, item.attrs) }}</li>
-                {% endfor %}
+            class="absolute right-0 min-w-max bg-white-smoke border border-dark-grey px-5 py-3 shadow-zine mt-2 z-10 outline-none">
+            <ul class="gap-item-sm list-disc flex flex-col items-start">
+                {% if caller %}
+                    {{ caller() | safe }}
+                {% else %}
+                    {% for item in dropdownItems %}
+                        <li class="ml-[1.25ch]">{{ item.macro(item.props, item.attrs) }}</li>
+                    {% endfor %}
+                {% endif %}
             </ul>
         </div>
     </div>

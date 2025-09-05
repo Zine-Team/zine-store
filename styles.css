@@ -3,6 +3,7 @@
 
 @layer components {
   @import "./css/zine.css";
+  @import "./css/markdown.css";
 
   :root {
     --breakpoint-xs: 28rem; /* 448px */

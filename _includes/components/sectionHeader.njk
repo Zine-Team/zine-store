@@ -5,7 +5,7 @@
         {% endfor %}
         class="flex justify-between border-dark-grey border-b border-dotted items-center sm:items-end gap-item-gap pb-item-gap">
     {% if props.label %}
-        <h2 class="text-lg">{{ props.label }}</h2>
+        <h2 class="text-lg list-item list-disc ml-[1.5ch]">{{ props.label }}</h2>
     {% endif %}
     {% if caller %}
         {{ caller() | safe }}

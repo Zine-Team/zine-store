@@ -1,0 +1,14 @@
+{% macro markdown(props={}, attrs={}) %}
+    <div
+        {% for key, value in attrs %}
+            {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
+        {% endfor %}
+        class="markdown {{ attrs.class }}">
+        {% if props.content %}
+            {{ props.content | safe }}
+        {% endif %}
+        {% if caller %}
+            {{ caller() | safe }}
+        {% endif %}
+    </div>
+{% endmacro %}
