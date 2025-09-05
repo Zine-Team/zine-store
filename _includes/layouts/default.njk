@@ -40,7 +40,7 @@
 
     </head>
     <body class="font-sans text-base antialiased flex flex-col  min-h-dvh items-center bg-gainsboro pb-[env(safe-area-inset-bottom)]">
-        {% include "components/breakpointVisualizer.njk" %}
+        {# {% include "components/breakpointVisualizer.njk" %} #}
         {{ content | safe }}
         {% from "components/toast.njk" import toaster %}
         {{ toaster() }}
