@@ -519,6 +519,9 @@
   .overflow-y-auto {
     overflow-y: auto;
   }
+  .overflow-y-hidden {
+    overflow-y: hidden;
+  }
   .overflow-y-visible {
     overflow-y: visible;
   }
@@ -625,6 +628,9 @@
   }
   .pb-section-title {
     padding-bottom: var(--spacing-section-title);
+  }
+  .text-center {
+    text-align: center;
   }
   .text-left {
     text-align: left;
@@ -865,6 +871,16 @@
       display: none;
     }
   }
+  .max-sm\:list-item {
+    @media (width < 36rem) {
+      display: list-item;
+    }
+  }
+  .max-sm\:list-disc {
+    @media (width < 36rem) {
+      list-style-type: disc;
+    }
+  }
   .max-xs\:ml-\[1\.25ch\] {
     @media (width < 28rem) {
       margin-left: 1.25ch;
@@ -875,9 +891,19 @@
       display: none;
     }
   }
+  .max-xs\:list-item {
+    @media (width < 28rem) {
+      display: list-item;
+    }
+  }
   .max-xs\:list-disc {
     @media (width < 28rem) {
       list-style-type: disc;
+    }
+  }
+  .xs\:ml-\[1\.5ch\] {
+    @media (width >= 28rem) {
+      margin-left: 1.5ch;
     }
   }
   .xs\:block {
@@ -893,6 +919,16 @@
   .xs\:hidden {
     @media (width >= 28rem) {
       display: none;
+    }
+  }
+  .xs\:list-item {
+    @media (width >= 28rem) {
+      display: list-item;
+    }
+  }
+  .xs\:list-disc {
+    @media (width >= 28rem) {
+      list-style-type: disc;
     }
   }
   .xs\:max-sm\:block {

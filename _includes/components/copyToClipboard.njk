@@ -36,6 +36,6 @@
     {% endfor %}
     >
         {{ caller() | safe }}
-        {{ toast({message: props.toastMessage, toasterId: toasterId}) }}
+        {{ toast({message: props.toastMessage, toasterId: toasterId, show: "copied"}) }}
     </span>
 {% endmacro %}
