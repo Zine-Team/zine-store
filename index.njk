@@ -39,7 +39,7 @@ layout: default
             {% endcall %}
             {% call carousel({},{class:"gap-item-gap py-2"}) %}
                 {% for zine in collections.zine | reverse | slice(4) %}
-                    <a data-zine-shading class="relative hover:scale-[1.01] shadow-zine w-[70cqi] max-w-[300px] shrink-0" href="{{ zine.url }}">
+                    <a data-zine-shading class="relative hover:scale-[1.01] shadow-zine w-[70cqi] max-w-[312px]" href="{{ zine.url }}">
                         <img class="w-full shadow-page border border-dark-grey" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}"></a>
                 {% endfor %}
             {% endcall %}

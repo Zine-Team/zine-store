@@ -17,6 +17,8 @@
   --text-sm: var(--text-sm);
 
   --container-*: initial;
+  --container-sm: 48rem;
+  --container-base: 87.5rem;
   --container-2xl: 40rem;
   --container-3xl: 48rem;
   --container-4xl: 52rem;

@@ -26,9 +26,10 @@
     --default-mono-font-family: var(--font-mono);
     --text-icon: var(--text-icon);
     --text-icon--line-height: 1;
+    --container-sm: 48rem;
+    --container-base: 87.5rem;
     --container-2xl: 40rem;
     --container-3xl: 48rem;
-    --container-4xl: 52rem;
     --color-black: Black;
     --color-grey: Gray;
     --color-dark-grey: DarkGray;
@@ -384,8 +385,8 @@
   .max-w-3xl {
     max-width: var(--container-3xl);
   }
-  .max-w-4xl {
-    max-width: var(--container-4xl);
+  .max-w-\[25\%\] {
+    max-width: 25%;
   }
   .max-w-\[50ch\] {
     max-width: 50ch;
@@ -393,8 +394,14 @@
   .max-w-\[300px\] {
     max-width: 300px;
   }
+  .max-w-\[312px\] {
+    max-width: 312px;
+  }
   .max-w-\[var\(--container-base\)\] {
     max-width: var(--container-base);
+  }
+  .max-w-\[var\(--container-sm\)\] {
+    max-width: var(--container-sm);
   }
   .max-w-fit {
     max-width: fit-content;
@@ -1434,8 +1441,6 @@
     --breakpoint-md: 44rem;
     --breakpoint-lg: 60rem;
     --breakpoint-xl: 70rem;
-    --container-sm: 56rem;
-    --container-base: 87.5rem;
     --text-sm: 17px;
     --text-base: 20px;
     --text-lg: 27px;

@@ -15,39 +15,39 @@
                 scroll-behavior: smooth;
             }
 
-        &::scroll-button(*) {
-            position: fixed;
-            position-anchor: --carousel;
-            background: var(--color-white-smoke);
-            border: 1px solid var(--color-dark-grey);
-            box-shadow: var(--shadow-2xs);
-            border-radius: var(--radius);
-            min-height: var(--spacing-tube);
-            aspect-ratio: 1 / 1;
-            line-height: none;
-            font-weight: bold;
-            font-size: var(--text-icon);
-            font-family: var(--font-sans);
+            &::scroll-button(*) {
+                position: fixed;
+                position-anchor: --carousel;
+                background: var(--color-white-smoke);
+                border: 1px solid var(--color-dark-grey);
+                box-shadow: var(--shadow-2xs);
+                border-radius: var(--radius);
+                min-height: var(--spacing-tube);
+                aspect-ratio: 1 / 1;
+                line-height: none;
+                font-weight: bold;
+                font-size: var(--text-icon);
+                font-family: var(--font-sans);
 
-            &:hover {
-            background: var(--color-ghost-white);
+                &:hover {
+                background: var(--color-ghost-white);
+                }
             }
-        }
 
             &::scroll-button(*):disabled {
                 opacity: 0;
             }
 
             &::scroll-button(right) {
-            position-area: center span-inline-start;
-            content: "→";
-            margin-inline-end: calc(-0.5 * var(--spacing-site));
+                position-area: center span-inline-start;
+                content: "→";
+                margin-inline-end: calc(-0.5 * var(--spacing-site));
             }
 
             &::scroll-button(left) {
-            position-area: span-inline-end center;
-            content: "←";
-            margin-inline-start: calc(-0.5 * var(--spacing-site));
+                position-area: span-inline-end center;
+                content: "←";
+                margin-inline-start: calc(-0.5 * var(--spacing-site));
             }
         }
     </style>
