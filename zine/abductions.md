@@ -19,5 +19,5 @@ pages:
     altText: "Don’t give in—get organized! We can combat isolation and fear by doing the opposite: connecting with others and realizing our collective power. Link up with your friends, your neighbors, a local group, a formal organization, (just start somewhere!) to continue learning and making sense of today’s context. Another world is possible, but we must imagine it and create it for ourselves. Free Palestine!"
   - image: page_BC
     altText: "Continue learning: Why is the U.S. still so unyielding in its support of Israel? The two countries’ shared history as settler colonial states and the U.S.’ interests in the Middle East keep the nations tightly allied. Recommended readings: Why the fight for Palestine is the fight against U.S. imperialism in the region • mondoweiss.net. The 100 Years' War on Palestine • Rashid Khalidi"
-pdf: /images/uploads/abductions/abductions.pdf
+pdf: abductions.pdf
 ---

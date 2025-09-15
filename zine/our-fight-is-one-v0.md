@@ -20,5 +20,5 @@ pages:
     altText: "U.S. Racial Capitalism is in Crisis. The U.S. empire is in decline. More & more people in the U.S. don't believe in the system as they struggle to survive. After all, this system has plundered our wages, our health, our education, our communities, our planet. In the past 20 years, people have been rising up for racial, gender, sexual, economic, health, & climate justice. The forces against us organized & connected. They want to turn us against each other. They use violent tactics to repress & silence us. Their fear of the people is why they don't want educators to teach the truth. By connecting our struggles, we can build our power. OUR FIGHT IS ONE."
   - image: page_BC
     altText: "Coming soon: Our Fight is One volumes on: homelessness, gentrification, mexican migration, displacement in Palestine ... and more! Follow for updates: @edworkers4palichi"
-pdf: /images/uploads/our-fight-is-one-v0/our-fight-is-one-v0.pdf
+pdf: our-fight-is-one-v0.pdf
 ---

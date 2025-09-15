@@ -18,5 +18,5 @@ pages:
     altText: ""
   - image: page_BC
     altText: ""
-pdf: /images/uploads/leo-kyr/leo-kyr.pdf
+pdf: leo-kyr.pdf
 ---

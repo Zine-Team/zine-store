@@ -6,6 +6,8 @@ layout: default
 {% from "components/dropdown.njk" import dropdown %}
 {% from "components/copyToClipboard.njk" import copyToClipboard %}
 
+{% set pdfUrl = global.imagesFolder + "/" + page.fileSlug +"/" + pdf %}
+
 {% set embed %}
     <iframe name="{{title | lower | replace(' ', '-')}}" width="100%" height="100%" src="{{global.siteDomain}}{{page.url}}?embed=true" allow="clipboard-write" marginwidth="0" marginheight="0" style=" border: 1px solid darkGray; max-width: 900px; max-height: 800px; aspect-ratio: 1 / 1.8;"></iframe>
 {% endset %}
@@ -21,13 +23,9 @@ layout: default
             "x-show": "!isEmbed()"
         }) %}
             {% call dropdown(
-                triggerProps={label: "Share", type: "button", size:"lg"},
-                dropdownItems=[
-                    {macro: button, props:{label:"Download PDF", href:pdf, type:"link"}, attrs:{download: null} },
-                    {macro: button, props:{label:"Copy link", type:"link"}, attrs:{@click: "copy"} }
-                ])
+                triggerProps={label: "Share", type: "button", size:"lg"})
             %}
-                <li class="ml-[1.25ch]">{{ button({label:"Download PDF", href:pdf, type:"link"}, {download: null}) }}</li>
+                <li class="ml-[1.25ch]">{{ button({label:"Download PDF", href:pdfUrl, type:"link"}, {download: null}) }}</li>
                 {% call copyToClipboard({
                     input: global.siteDomain + page.url ,
                     toastMessage: "URL copied to clipboard!"

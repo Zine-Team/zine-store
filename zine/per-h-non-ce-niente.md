@@ -65,5 +65,5 @@ pages:
   - image: page_57
   - image: page_58
   - image: page_BC
-pdf: /images/uploads/per-h-ce-niente/per-h-ce-niente.pdf
+pdf: per-h-non-ce-niente.pdf
 ---

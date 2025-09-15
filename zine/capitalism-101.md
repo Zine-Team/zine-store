@@ -18,5 +18,5 @@ pages:
     altText: ""
   - image: page_BC
     altText: ""
-pdf: /images/uploads/capitalism-101/capitalism-101.pdf
+pdf: capitalism-101.pdf
 ---

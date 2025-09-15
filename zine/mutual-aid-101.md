@@ -18,5 +18,5 @@ pages:
     altText: ""
   - image: page_BC
     altText: ""
-pdf: /images/uploads/mutual-aid-101/mutual-aid-101.pdf
+pdf: mutual-aid-101.pdf
 ---

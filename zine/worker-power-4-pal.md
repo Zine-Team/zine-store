@@ -20,5 +20,5 @@ pages:
     altText: "Labor is power. So what will you do? Research: what are your field's ties to Zionism? What is the history of resistance and complicity to zionism in your field? How are major institutions in your field responding to the genocide? Build power: find out who's on your side. Get to know each other. Make demands together. Take risks collectively. Use many tactics: organize sick-outs, strikes, vigils, boycotts, petitions, phone banks. Show up to protests in blocs. Leafleet your workplace, hold a teach-in, and learn together."
   - image: page_BC
     altText: "Resources for workers. Legal support: Palestine legal (palestinelegal.org), American-Arab Anti-discrimination Committee (adc.org), Council on American-Islamic Relations, Chicago (cairchicago.org). Organizing resources: Beautiful Trouble (beautifultrouble.org), Palestinian Feminist Collective (palestinianfeministcollective.org/all-out-for-palestine), Labor for Palestine (laborforpalestine.net)"
-pdf: /images/uploads/worker-power-4-pal/worker-power-4-pal.pdf
+pdf: worker-power-4-pal.pdf
 ---

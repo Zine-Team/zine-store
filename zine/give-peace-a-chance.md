@@ -44,5 +44,5 @@ pages:
     altText: ""
   - image: page_BC
     altText: ""
-pdf: /images/uploads/give-peace-a-chance/give-peace-a-chance.pdf
+pdf: give-peace-a-chance.pdf
 ---
