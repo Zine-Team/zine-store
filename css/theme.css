@@ -2,7 +2,7 @@
   --breakpoint-xs: 28rem; /* 448px */
   --breakpoint-sm: 36rem; /* 640px */
   --breakpoint-md: 44rem; /* 704px */
-  --breakpoint-lg: 60rem; /* 960px */
+  --breakpoint-lg: 56rem; /* 960px */
   --breakpoint-xl: 70rem; /* 1120px */
 
   --text-icon: var(--text-icon);
@@ -16,7 +16,9 @@
   --text-base: var(--text-base);
   --text-sm: var(--text-sm);
 
+  --container-*: initial;
   --container-2xl: 40rem;
+  --container-3xl: 48rem;
   --container-4xl: 52rem;
 
   --shadow-*: initial;

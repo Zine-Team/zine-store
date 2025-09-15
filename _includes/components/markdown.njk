@@ -3,12 +3,31 @@
         {% for key, value in attrs %}
             {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
         {% endfor %}
-        class="markdown {{ attrs.class }}">
+        style="
+            {% if props.fontSize %}--md-font-size: var(--{{ props.fontSize }});{% endif %}
+            {% if props.fontSize %}--md-line-height: var(--{{ props.fontSize }}--line-height);{% endif %}
+            {% if props.primaryColor %}--md-primary-text-color: var(--{{ props.primaryColor }});{% endif %}
+            {% if props.linkColor %}--md-link-color: var(--{{ props.linkColor }});{% endif %}
+            {% if props.radius %}--md-radius: var(--{{ props.radius }});{% endif %}
+        "
+        class="markdown max-w-[50ch] {{ attrs.class }}">
         {% if props.content %}
-            {{ props.content | safe }}
+            {% if props.transform === true %}
+                {{ props.content | markdownify | safe }}
+            {% else %}
+                {{ props.content | safe }}
+            {% endif %}
         {% endif %}
         {% if caller %}
             {{ caller() | safe }}
         {% endif %}
     </div>
+
+    {% if props.customStyles %}
+        <style>
+            .markdown {
+                {{ props.customStyles }}
+            }
+        </style>
+    {% endif %}
 {% endmacro %}

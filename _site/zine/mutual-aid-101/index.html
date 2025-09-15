@@ -4,6 +4,13 @@
      The Zine Store (Free) is a free place to store, share, and read zines online."><meta property="og:description" content="
      The Zine Store (Free) is a free place to store, share, and read zines online."><meta property="og:url" content="https://zinestorefree.com/zine/mutual-aid-101/"><meta property="og:image" content="https://zinestorefree.com/images/uploads/mutual-aid-101/og-image.jpg
 "><meta property="og:type" content="article"><meta name="generator" content="Eleventy v3.1.2"><link rel="icon" type="image/x-icon" href="https://zinestorefree.com/images/uploads/favicon.png"><link rel="stylesheet" href="/styles.css"><script defer="defer" src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script><script defer="defer" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><script defer="defer" src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script></head><body class="font-sans text-base antialiased flex flex-col min-h-dvh items-center bg-gainsboro pb-[env(safe-area-inset-bottom)]"><div x-data="{
+        windowWidth: window.innerWidth,
+        getWidth() {
+            window.addEventListener('resize', () => {
+                this.windowWidth = window.innerWidth
+            })
+        }
+    }" x-init="getWidth" class="fixed flex z-20 text-sm pt-1 opacity-50"><span class="xs:hidden">XS-</span> <span class="hidden xs:max-sm:block">XS-SM</span> <span class="hidden sm:max-md:block">SM-MD</span> <span class="hidden md:max-lg:block">MD-LG</span> <span class="hidden lg:max-xl:block">LG-XL</span> <span class="hidden xl:block">XL+</span> <span>&nbsp;•&nbsp;</span> <span x-text="windowWidth"></span> <span>px</span></div><div x-data="{
         params: new URLSearchParams(window.location.search),
         isEmbed () {
             const value = this.params.get('embed')

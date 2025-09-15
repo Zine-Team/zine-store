@@ -1,0 +1,33 @@
+---
+title: Testing
+asdf: "**Turbo Power Semiconductors** helps electric vehicle manufacturers get
+      more performance out of their batteries at about one-third the cost of the
+      current solution. Our Silicon-based solution has the performance of
+      Silicon Carbide at a much lower cost."
+---
+{% from "components/button.njk" import button %}
+{% from "components/markdown.njk" import markdown %}
+{% from "components/blocks.njk" import section, container %}
+
+{% call section({}, {
+    class: "gap-section-title grid my-section"
+}) %}
+    {% call container() %}
+        <header class="text-center w-full"><h1 class="text-xl">{{ title }}</h1></header>
+    {% endcall %}
+
+    {% call container({
+        width: "sm",
+        cols: "2"
+    }, {class: "gap-section-title"}) %}
+        {{ markdown({
+            content: asdf,
+            transform: true,
+            fontSize: "text-base",
+            primaryColor: "color-black",
+            linkColor: "color-link",
+            radius: "radius"
+        }) }}
+        <img src="/images/uploads/racial-capitalism/page_FC.jpg" alt="">
+    {% endcall %}
+{% endcall %}

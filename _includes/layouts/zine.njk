@@ -6,7 +6,6 @@ layout: default
 {% from "components/dropdown.njk" import dropdown %}
 {% from "components/copyToClipboard.njk" import copyToClipboard %}
 
-{# embed | dump | trim | unquote #}
 {% set embed %}
     <iframe name="{{title | lower | replace(' ', '-')}}" width="100%" height="100%" src="{{global.siteDomain}}{{page.url}}?embed=true" allow="clipboard-write" marginwidth="0" marginheight="0" style=" border: 1px solid darkGray; max-width: 900px; max-height: 800px; aspect-ratio: 1 / 1.8;"></iframe>
 {% endset %}

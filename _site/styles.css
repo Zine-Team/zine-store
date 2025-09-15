@@ -9,8 +9,6 @@
       "Courier New", monospace;
     --spacing: 0.25rem;
     --breakpoint-md: 44rem;
-    --container-2xl: 40rem;
-    --container-3xl: 48rem;
     --text-sm: var(--text-sm);
     --text-sm--line-height: calc(1.25 / 0.875);
     --text-base: var(--text-base);
@@ -28,6 +26,9 @@
     --default-mono-font-family: var(--font-mono);
     --text-icon: var(--text-icon);
     --text-icon--line-height: 1;
+    --container-2xl: 40rem;
+    --container-3xl: 48rem;
+    --container-4xl: 52rem;
     --color-black: Black;
     --color-grey: Gray;
     --color-dark-grey: DarkGray;
@@ -286,8 +287,8 @@
     @media (width >= 44rem) {
       max-width: 44rem;
     }
-    @media (width >= 60rem) {
-      max-width: 60rem;
+    @media (width >= 56rem) {
+      max-width: 56rem;
     }
     @media (width >= 70rem) {
       max-width: 70rem;
@@ -338,9 +339,6 @@
   .inline-block {
     display: inline-block;
   }
-  .list-item {
-    display: list-item;
-  }
   .table {
     display: table;
   }
@@ -386,8 +384,17 @@
   .max-w-3xl {
     max-width: var(--container-3xl);
   }
+  .max-w-4xl {
+    max-width: var(--container-4xl);
+  }
+  .max-w-\[50ch\] {
+    max-width: 50ch;
+  }
   .max-w-\[300px\] {
     max-width: 300px;
+  }
+  .max-w-\[var\(--container-base\)\] {
+    max-width: var(--container-base);
   }
   .max-w-fit {
     max-width: fit-content;
@@ -419,6 +426,9 @@
   }
   .cursor-pointer {
     cursor: pointer;
+  }
+  .resize {
+    resize: both;
   }
   .snap-x {
     scroll-snap-type: x var(--tw-scroll-snap-strictness);
@@ -521,9 +531,6 @@
   }
   .overflow-y-hidden {
     overflow-y: hidden;
-  }
-  .overflow-y-visible {
-    overflow-y: visible;
   }
   .overscroll-x-contain {
     overscroll-behavior-x: contain;
@@ -707,6 +714,9 @@
   .opacity-0 {
     opacity: 0%;
   }
+  .opacity-50 {
+    opacity: 50%;
+  }
   .opacity-70 {
     opacity: 70%;
   }
@@ -856,12 +866,12 @@
     }
   }
   .max-lg\:hidden {
-    @media (width < 60rem) {
+    @media (width < 56rem) {
       display: none;
     }
   }
   .max-lg\:border-b {
-    @media (width < 60rem) {
+    @media (width < 56rem) {
       border-bottom-style: var(--tw-border-style);
       border-bottom-width: 1px;
     }
@@ -869,16 +879,6 @@
   .max-sm\:hidden {
     @media (width < 36rem) {
       display: none;
-    }
-  }
-  .max-sm\:list-item {
-    @media (width < 36rem) {
-      display: list-item;
-    }
-  }
-  .max-sm\:list-disc {
-    @media (width < 36rem) {
-      list-style-type: disc;
     }
   }
   .max-xs\:ml-\[1\.25ch\] {
@@ -889,11 +889,6 @@
   .max-xs\:hidden {
     @media (width < 28rem) {
       display: none;
-    }
-  }
-  .max-xs\:list-item {
-    @media (width < 28rem) {
-      display: list-item;
     }
   }
   .max-xs\:list-disc {
@@ -998,58 +993,63 @@
   }
   .md\:max-lg\:block {
     @media (width >= 44rem) {
-      @media (width < 60rem) {
+      @media (width < 56rem) {
         display: block;
       }
     }
   }
   .lg\:col-auto {
-    @media (width >= 60rem) {
+    @media (width >= 56rem) {
       grid-column: auto;
     }
   }
   .lg\:-ml-2 {
-    @media (width >= 60rem) {
+    @media (width >= 56rem) {
       margin-left: calc(var(--spacing) * -2);
     }
   }
   .lg\:block {
-    @media (width >= 60rem) {
+    @media (width >= 56rem) {
       display: block;
     }
   }
   .lg\:hidden {
-    @media (width >= 60rem) {
+    @media (width >= 56rem) {
       display: none;
     }
   }
   .lg\:grow-0 {
-    @media (width >= 60rem) {
+    @media (width >= 56rem) {
       flex-grow: 0;
     }
   }
+  .lg\:grid-cols-2 {
+    @media (width >= 56rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
   .lg\:flex-row {
-    @media (width >= 60rem) {
+    @media (width >= 56rem) {
       flex-direction: row;
     }
   }
   .lg\:justify-center {
-    @media (width >= 60rem) {
+    @media (width >= 56rem) {
       justify-content: center;
     }
   }
   .lg\:gap-10 {
-    @media (width >= 60rem) {
+    @media (width >= 56rem) {
       gap: calc(var(--spacing) * 10);
     }
   }
   .lg\:justify-self-center {
-    @media (width >= 60rem) {
+    @media (width >= 56rem) {
       justify-self: center;
     }
   }
   .lg\:max-xl\:block {
-    @media (width >= 60rem) {
+    @media (width >= 56rem) {
       @media (width < 70rem) {
         display: block;
       }
@@ -1264,165 +1264,169 @@
       }
     }
   }
-  .prose {
-    --prose-font-size: var(--text-lg);
-    --prose-primary-text-color: var(--color-green-900);
-    --prose-border-color: var(--color-gray-300);
-    --prose-background-color: var(--color-gray-200);
-    --prose-link-color: var(--color-green-600);
-    --space-half: calc(var(--prose-font-size) * 2 / 8);
-    --space-1: calc(var(--prose-font-size) * 4 / 8);
-    --space-2: calc(var(--prose-font-size) * 7 / 8);
-    --space-3: calc(var(--prose-font-size) * 11 / 8);
-    --space-4: calc(var(--prose-font-size) * 14 / 8);
-    --space-5: calc(var(--prose-font-size) * 18 / 8);
-    font-size: var(--prose-font-size);
+  .markdown {
+    --md-font-size: var(--text-base);
+    --md-line-height: var(--text-base--line-height);
+    --md-primary-text-color: black;
+    --md-border-color: color-mix(in oklab, black, transparent 75%);
+    --md-background-color: color-mix(in oklab, black, transparent 95%);
+    --md-link-color: #0000ee;
+    --md-radius: 8px;
+    --space-half: calc(var(--md-font-size) * 2 / 8);
+    --space-1: calc(var(--md-font-size) * 4 / 8);
+    --space-2: calc(var(--md-font-size) * 7 / 8);
+    --space-3: calc(var(--md-font-size) * 11 / 8);
+    --space-4: calc(var(--md-font-size) * 14 / 8);
+    --space-5: calc(var(--md-font-size) * 18 / 8);
+    font-size: var(--md-font-size);
   }
-  .prose > :first-child {
+  .markdown > :first-child {
     margin-block-start: 0;
   }
-  .prose > p {
+  .markdown > p {
     margin-block-start: var(--space-2);
-    color: var(--prose-primary-text-color);
-    line-height: var(--text-lg--line-height);
+    color: var(--md-primary-text-color);
+    line-height: var(--text-base--line-height);
   }
-  .prose h2, .prose h3 {
+  .markdown h2, .markdown h3 {
     font-weight: 600;
-    color: var(--prose-primary-text-color);
+    color: var(--md-primary-text-color);
   }
-  .prose h2 {
+  .markdown h2 {
     font-size: 1.35em;
     margin-block-start: var(--space-5);
     line-height: 1.35;
   }
-  .prose h3 {
+  .markdown h3 {
     font-size: 1.095em;
     margin-block-start: var(--space-4);
     line-height: 1.45;
   }
-  .prose ul, .prose ol {
+  .markdown ul, .markdown ol {
     margin-block-start: var(--space-1);
     padding-inline-start: var(--space-3);
   }
-  .prose ul {
+  .markdown ul {
     list-style: disc;
   }
-  .prose ul ul {
+  .markdown ul ul {
     list-style: circle;
   }
-  .prose ul ul ul {
+  .markdown ul ul ul {
     list-style: square;
   }
-  .prose ol {
+  .markdown ol {
     list-style: decimal;
   }
-  .prose ::marker {
-    color: var(--prose-tertiary-text-color);
-  }
-  .prose ol > li {
+  .markdown ol > li {
     padding-inline-start: 4px;
   }
-  .prose ul li {
+  .markdown ul li {
     padding-inline-start: var(--space-half);
   }
-  .prose ul li::marker {
+  .markdown ul li::marker {
     font-size: 0.8em;
   }
-  .prose li + li {
+  .markdown li + li {
     margin-block-start: var(--space-half);
   }
-  .prose ul ul, .prose ul ol, .prose ol ol, .prose ol ul {
+  .markdown ul ul, .markdown ul ol, .markdown ol ol, .markdown ol ul {
     margin-block-start: var(--space-half);
   }
-  .prose hr {
+  .markdown hr {
     margin-block: var(--space-4);
-    border-block-start: 1px solid var(--prose-border-color);
+    border-block-start: 1px solid var(--md-border-color);
   }
-  .prose blockquote {
+  .markdown blockquote {
     padding-inline-start: var(--space-2);
-    border-inline-start: 3px solid var(--prose-border-color);
-    color: var(--prose-secondary-text-color);
+    border-inline-start: 0.18em solid var(--md-border-color);
     margin-block-start: var(--space-3);
     position: relative;
+    &:empty {
+      display: none;
+    }
   }
-  .prose code {
+  .markdown code, .markdown kbd {
     font-family: "Source Code Pro", Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
-    border-radius: var(--radius-md);
+    border-radius: var(--md-radius);
     font-size: 0.875em;
     padding: 2px 4px;
     margin: 0;
-    background-color: var(--prose-background-color);
+    background-color: var(--md-background-color);
+    border: 1px dotted var(--md-border-color);
   }
-  .prose pre {
+  .markdown pre {
     margin-block-start: var(--space-3);
   }
-  .prose pre code {
+  .markdown pre code {
     display: block;
     padding: var(--space-1) var(--space-2);
     overflow: auto;
   }
-  .prose img, .prose iframe {
+  .markdown img, .markdown iframe {
     max-inline-size: 100%;
     margin-block: var(--space-3);
   }
-  .prose iframe {
-    border-radius: var(--radius-sm);
-    aspect-ratio: 16 / 9;
+  .markdown iframe {
+    border-radius: var(--md-radius);
     inline-size: 100%;
   }
-  .prose li img {
+  .markdown li img {
     margin-block: var(--space-2);
   }
-  .prose h2 + * {
+  .markdown h2 + * {
     margin-block-start: var(--space-1) !important;
   }
-  .prose h2 + h3 {
+  .markdown h2 + h3 {
     margin-block-start: var(--space-3) !important;
   }
-  .prose h3 + * {
+  .markdown h3 + * {
     margin-block-start: var(--space-1) !important;
   }
-  .prose b, .prose b *:not(a), .prose strong, .prose strong *:not(a) {
-    color: var(--color-green-600);
-    font-weight: inherit;
+  .markdown b, .markdown b *:not(a), .markdown strong, .markdown strong *:not(a) {
+    font-weight: 600;
+    color: var(--md-primary-text-color);
   }
-  .prose em {
+  .markdown em {
     font-style: italic;
   }
-  .prose a, .prose a * {
-    color: var(--prose-link-color);
+  .markdown a, .markdown a * {
+    color: var(--md-link-color);
     text-decoration: underline;
     text-decoration-thickness: 1px;
   }
-  .prose a:hover, .prose a:hover * {
+  .markdown a:hover, .markdown a:hover * {
     text-decoration: none;
   }
-  .prose table {
+  .markdown table {
     table-layout: fixed;
     inline-size: 100%;
-    border: 1px solid var(--prose-border-color);
+    font-size: 0.875em;
+    border: 1px solid var(--md-border-color);
+    margin-block: var(--space-3);
   }
-  .prose thead {
-    background-color: var(--prose-background-color);
+  .markdown thead {
+    background-color: var(--md-background-color);
   }
-  .prose thead:has(th:empty) {
+  .markdown thead:has(th:empty) {
     display: none;
   }
-  .prose tr {
-    border-block-end: 1px solid var(--prose-border-color);
+  .markdown tr {
+    border-block-end: 1px solid var(--md-border-color);
   }
-  .prose th {
+  .markdown th {
     font-weight: 600;
   }
-  .prose td, .prose th {
-    padding: var(--space-1);
+  .markdown td, .markdown th {
+    padding-block: var(--space-half);
+    padding-inline: var(--space-1);
     text-align: left;
   }
-  .prose td:first-child, .prose th:first-child {
+  .markdown td:first-child, .markdown th:first-child {
     inline-size: 33%;
   }
-  .prose td + td, .prose th + th {
-    border-inline-start: 1px solid var(--prose-border-color);
+  .markdown td + td, .markdown th + th {
+    border-inline-start: 1px solid var(--md-border-color);
   }
   :root {
     --breakpoint-xs: 28rem;
@@ -1430,6 +1434,8 @@
     --breakpoint-md: 44rem;
     --breakpoint-lg: 60rem;
     --breakpoint-xl: 70rem;
+    --container-sm: 56rem;
+    --container-base: 87.5rem;
     --text-sm: 17px;
     --text-base: 20px;
     --text-lg: 27px;

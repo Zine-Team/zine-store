@@ -12,6 +12,9 @@
     --breakpoint-lg: 60rem; /* 960px */
     --breakpoint-xl: 70rem; /* 1120px */
 
+    --container-sm: 56rem;
+    --container-base: 87.5rem;
+
     --text-sm: 17px;
     --text-base: 20px;
     --text-lg: 27px;

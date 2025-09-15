@@ -4,11 +4,11 @@
   "description": "It's a way to store zines, get it?",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all -p dev:*",
+    "start": "npm-run-all -p  dev:*",
     "build": "run-s build:*",
-    "dev:11ty": "eleventy --serve",
+    "dev:11ty": "cross-env ELEVENTY_ENV=dev eleventy --serve",
     "dev:css": "npx @tailwindcss/cli -i ./styles.css -o ./_site/styles.css --watch",
-    "build:11ty": "eleventy",
+    "build:11ty": "cross-env ELEVENTY_ENV=prod eleventy",
     "build:css": "npx @tailwindcss/cli -i ./styles.css -o ./_site/styles.css"
   },
   "keywords": [],
@@ -18,6 +18,7 @@
   "dependencies": {
     "@11ty/eleventy": "^3.1.2",
     "@tailwindcss/cli": "^4.1.11",
+    "cross-env": "^10.0.0",
     "markdown-it": "^14.1.0",
     "tailwindcss": "^4.1.11"
   },
