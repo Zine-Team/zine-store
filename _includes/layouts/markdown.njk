@@ -1,11 +1,10 @@
 ---
-layout: default
-
+layout: page
 ---
 {% from "components/button.njk" import button %}
-{% from "components/siteNav.njk" import siteNav %}
+{% from "components/siteNav.njk" import siteNav with context %}
 {% from "components/markdown.njk" import markdown %}
-{% from "components/blocks.njk" import section, container %}
+{% from "components/blocks.njk" import container %}
 
 {% set custom %}
     b, strong {
@@ -13,8 +12,7 @@ layout: default
     }
 {% endset %}
 
-{{ siteNav() }}
-{% call section({},{class:"py-section"}) %}
+<main class="py-section">
     {% call container({size:"sm"},{class:"flex flex-col gap-site"}) %}
         <header><h1 class="text-xl">{{ title }}</h1></header>
         {{ markdown({
@@ -26,4 +24,4 @@ layout: default
             customStyles: custom
         }) }}
     {% endcall %}
-{% endcall %}
+</main>

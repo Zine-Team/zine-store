@@ -1,25 +1,31 @@
-{#
-    copyToClipboard
+{% set copyToClipboardMeta = {
+    args: '{% call copyToClipboard(
+    props={
+        input: "",
+        copyRef: "",
+        toastMessage: "",
+        toasterId: ""
+    },
+    attrs={}
+) %}
+{% endcall %}',
+description: "
+- Use `input` or `copyRef`, not both. `copyRef` is the `x-ref` value of an element inside the caller() that you want to copy the `innerText` value of.
+- Give an element inside the caller() the attribute `@click: 'copy'` to trigger the copy event.
+- Must also have the `toast` component in your components folder.
+- Must have the `toaster` component somewhere on the page to work.
+"
+} %}
 
-    @param input = "" // what should be copied to the clipboard
-    @param toastMessage = "" // what the toast should say
-    @param toasterId = "" // where to transport the toast component to
-    @param attrs = {} // all other HTML attributes
-#}
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
 
 {% from "components/toast.njk" import toast %}
 
-{% macro copyToClipboard(
-    props = {
-        input: "",
-        toastMessage: "Copied to clipboard!",
-        toasterId: ""
-    },
-    attrs = {}
-) %}
+{% macro copyToClipboard(props={}, attrs={}) %}
 
     <span x-data="{
-        input: '{{ props.input }}',
+        input: {% if props.input %}'{{ props.input }}'{% else %}$refs.{{ props.copyRef }}.innerText{% endif %},
         copied: false,
         timeout: null,
         copy () {
@@ -31,9 +37,8 @@
             }, 2000)
         }
     }"
-    {% for key, value in attrs %}
-        {{ key }}="{{ value }}"
-    {% endfor %}
+    {% include "snippets/loopAttrs.njk" %}
+    class="{{ attrs.class }}"
     >
         {{ caller() | safe }}
         {{ toast({message: props.toastMessage, toasterId: toasterId, show: "copied"}) }}

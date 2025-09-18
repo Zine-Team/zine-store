@@ -1,31 +1,37 @@
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
+{% set sizeClasses =
+    {
+        "sm": "var(--container-sm)",
+        "base": "var(--container-base)",
+        "full": "full"
+    }
+ %}
 
-{% macro section(props={}, attrs={})%}
+{% set typeClasses =
+    {
+        "cols-1": "",
+        "cols-2": "",
+        "sidebar": "300px 1fr"
+    }
+ %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{# {% macro section(props={}, attrs={})%}
     <{% if props.tag %}{{ props.tag }}{% else %}section{% endif %}
-        {% for key, value in attrs %}
-            {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
-        {% endfor %}
+        {% include "snippets/loopAttrs.njk" %}
         class="w-full {{ attrs.class }}">
         {{ caller() | safe }}
     </{% if props.tag %}{{ props.tag }}{% else %}section{% endif %}>
-{% endmacro %}
+{% endmacro %} #}
 
+ {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-{% set containerWidths =
-    {
-        "sm": "var(--container-sm)",
-        "base": "var(--container-base)"
-    }
- %}
 {% macro container(props={}, attrs={})%}
     <div
-        {% for key, value in attrs %}
-            {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
-        {% endfor %}
-        class="zine-store-container mx-auto max-w-[{% if props.size %}{{containerWidths[props.size]}}{% else %}{{ containerWidths.base }}{% endif %}] grid
-            {% if props.cols %}lg:grid-cols-{{ props.cols }}{% endif%}
-            {{ attrs.class }}">
+        {% include "snippets/loopAttrs.njk" %}
+        class="zine-store-container mx-auto max-w-[{% if props.size %}{{sizeClasses[props.size]}}{% else %}{{ sizeClasses.base }}{% endif %}] {% if props.type %}grid-cols-[{{ typeClasses[props.type] | replace(" ", "_") }}]{% endif %} grid {{ attrs.class }}">
         {{ caller() | safe }}
     </div>
-    {# {{ containerWidths }} #}
 {% endmacro %}

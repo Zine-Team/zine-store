@@ -1,11 +1,12 @@
 ---
-layout: default
+layout: base
 ---
 {% from "components/button.njk" import button %}
+{% from "components/dropdown.njk" import dropdown %}
 {% from "components/carousel.njk" import carousel %}
 {% from "components/sectionHeader.njk" import sectionHeader %}
-{% from "components/siteNav.njk" import siteNav %}
-{% from "components/blocks.njk" import section, container %}
+{% from "components/siteNav.njk" import siteNav with context %}
+{% from "components/blocks.njk" import container %}
 
 {% call siteNav({
     links: [
@@ -16,8 +17,8 @@ layout: default
     {% include "components/submissionDialog.njk" %}
 {% endcall %}
 
-<main class="flex flex-col items-center gap-section py-section grow w-full">
-    {% call section({tag:"header"},{id:"hero"}) %}
+<main class="flex flex-col gap-section py-section grow w-full">
+    <header id="hero">
         {% call container({}, {class:"text-pretty flex flex-col gap-10"}) %}
             <h1 class="lg:-ml-2 text-2xl flex sm:flex-row justify-between flex-col gap-1 sm:gap-2 items-baseline">
                 <span class="shrink-0">Zine Store</span>
@@ -26,9 +27,9 @@ layout: default
             </h1>
             <p class="text-lg max-w-2xl">{{ global.siteDescription }}</p>
         {% endcall %}
-    {% endcall %}
+    </header>
 
-    {% call section({},{id:"recentZines"}) %}
+    <section id="recentZines">
         {% call container({}, {class:"flex flex-col gap-section-title"}) %}
             {% call sectionHeader({label: "Most recent zines"}) %}
                 <div class="hidden sm:block">
@@ -44,9 +45,9 @@ layout: default
                 {% endfor %}
             {% endcall %}
         {% endcall %}
-    {% endcall %}
+    </section>
 
-    {% call section({},{id:"allZines"}) %}
+    <section id="allZines">
         {% call container({}, {class:"flex flex-col gap-section-title"}) %}
             {% call sectionHeader({label: "All zines (A-Z)"}) %}
                 <div
@@ -57,7 +58,7 @@ layout: default
                             window.location.href = this.zines[Math.floor(Math.random() * this.zines.length)];
                         }
                     }"
-                    class="hidden xs:block">{{ button({label: "Read random zine", type: "button"}, {"@click": "chooseRandom", title:"Get a random zine"}) }}</div>
+                    class="hidden xs:block">{{ button({label: "Read random zine", type: "button", size:"base"}, {"@click": "chooseRandom"}) }}</div>
             {% endcall %}
             <ul class="grid gap-x-item-gap gap-y-section-title max-xs:list-disc" style="grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );">
                 {% for zine in collections.zine | sort(false, false, "data.title") %}
@@ -73,9 +74,9 @@ layout: default
                     </li>
                 {% endfor %}
             </ul>
-            {{ button({label: "Read random zine", type: "button"}, {"@click": "chooseRandom", title:"Read a random zine", class:"xs:hidden"}) }}
+            {{ button({label: "Read random zine", type: "button", size:"base"}, {"@click": "chooseRandom", title:"Read a random zine", class:"xs:hidden"}) }}
         {% endcall %}
-    {% endcall %}
+    </section>
 
 
 </main>

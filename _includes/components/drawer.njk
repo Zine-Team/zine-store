@@ -1,0 +1,37 @@
+{#
+    Drawer
+
+    @param triggerProps = {} // props for the button component that triggers the dropdown
+    @param drawerItems = [] // array of macros (objects) that should be rendered inside the dropdown panel
+#}
+
+{% from "components/button.njk" import button %}
+
+{% macro drawer(triggerProps={}, drawerItems=[]) %}
+    <div
+        x-data="{
+            open: false,
+            toggle() {
+                this.open = !this.open;
+                this.triggerLabel = this.open ? '{{ triggerProps.labelOpen }}' : '{{ triggerProps.labelClosed }}'
+            },
+            triggerLabel:'{{ triggerProps.labelClosed }}'
+        }"
+        class="flex flex-grow">
+        {% call button(triggerProps, {class:"flex-grow", "@click": "toggle()"}) %}
+            <span x-text="triggerLabel"></span>
+        {% endcall %}
+
+        <nav
+            @click="open = toggle"
+            class="absolute left-0 w-full z-10 top-full"
+            :class="open ? 'block' : 'hidden'">
+            <ul class="">
+                {% for item in drawerItems %}
+                    <li>{{ item.macro(item.props, item.attrs) }}</li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+
+{% endmacro %}

@@ -1,0 +1,10 @@
+---
+layout: base
+---
+{% from "components/dropdown.njk" import dropdown %}
+{% from "components/siteNav.njk" import siteNav with context %}
+{% from "components/button.njk" import button %}
+
+{% call siteNav({}) %}{% endcall %}
+
+{{ content | safe }}

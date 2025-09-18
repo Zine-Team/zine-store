@@ -51,7 +51,7 @@
 .markdown ul,
 .markdown ol {
   margin-block-start: var(--space-1);
-  padding-inline-start: var(--space-3);
+  padding-inline-start: var(--spacing-indent);
 }
 
 .markdown ul {
@@ -184,6 +184,11 @@
 .markdown a:hover,
 .markdown a:hover * {
   text-decoration: none;
+}
+
+.markdown a:active {
+  scale: 0.98;
+  display: inline-block;
 }
 
 /* tables */

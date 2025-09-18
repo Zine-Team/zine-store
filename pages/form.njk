@@ -1,10 +1,10 @@
 ---
-layout: default
+layout: page
 title: Form components
 ---
 {% from "components/fields.njk" import select, input, textarea, fieldset %}
 {% from "components/button.njk" import button %}
-{% from "components/siteNav.njk" import siteNav %}
+{% from "components/siteNav.njk" import siteNav with context %}
 
 {{ siteNav() }}
 <main
@@ -122,7 +122,7 @@ title: Form components
     </section>
     <section class="p-6 grid gap-item-gap border border-dotted border-grey bg-white-smoke">
         <h2 class="font-bold">Data</h2>
-        <ul class="list-disc ml-[1.5ch]">
+        <ul class="list-disc ml-indent">
             <li>Checkboxes: <span x-text="checkboxes"></span></li>
             <li>Radio: <span x-text="radio"></span></li>
             <li>Selected: <span x-text="selected"></span></li>

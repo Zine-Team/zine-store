@@ -44,9 +44,7 @@
 {% macro select(props={}, fieldAttrs={}, attrs={}) %}
     <div
         x-data="{value:'{% if not fieldAttrs.placeholder %}{{props.options[0]}}{% endif %}'}"
-        {% for key, value in attrs %}
-            {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
-        {% endfor %}
+        {% include "snippets/loopAttrs.njk" %}
         class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
 
         {% if props.label %}{{ fieldLabel({tag: "label"}, props, fieldAttrs) }}{% endif %}
@@ -56,9 +54,7 @@
             x-on:change="$dispatch('select-{{ props.name }}', value)"
             x-model="value"
             id="{{ props.name }}"
-            {% for key, value in fieldAttrs %}
-                {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
-            {% endfor %}
+            {% include "snippets/loopAttrs.njk" %}
             class="{{ fieldStyles }}">
 
             {% if fieldAttrs.placeholder %}<option value="" disabled>{{ fieldAttrs.placeholder}}</option>{% endif %}
@@ -91,9 +87,7 @@
 {% macro input(props={}, fieldAttrs={}, attrs={}) %}
     <div
         x-data="{value:'{% if fieldAttrs.value %}{{fieldAttrs.value}}{% endif %}'}"
-        {% for key, value in attrs %}
-            {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
-        {% endfor %}
+        {% include "snippets/loopAttrs.njk" %}
         class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
 
         {% if props.label %}{{ fieldLabel({tag: "label"}, props, fieldAttrs) }}{% endif %}
@@ -103,9 +97,7 @@
             x-on:input="$dispatch('input-{{ props.name }}', value)"
             x-model="value"
             id="{{ props.name }}"
-            {% for key, value in fieldAttrs %}
-                {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
-            {% endfor %}
+            {% include "snippets/loopAttrs.njk" %}
             class="{{ fieldStyles }} {{ fieldAttrs.class }}">
 
         {% if props.description %}{{ fieldDescription(props) }}{% endif %}
@@ -131,9 +123,7 @@
 {% macro textarea(props={}, fieldAttrs={}, attrs={}) %}
     <div
         x-data="{value:'{% if fieldAttrs.value %}{{fieldAttrs.value}}{% endif %}'}"
-        {% for key, value in attrs %}
-            {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
-        {% endfor %}
+        {% include "snippets/loopAttrs.njk" %}
         class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
 
         {% if props.label %}{{ fieldLabel({tag: "label"}, props, fieldAttrs) }}{% endif %}
@@ -143,9 +133,7 @@
             x-on:input="$dispatch('input-{{ props.name }}', value)"
             x-model="value"
             id="{{ props.name }}"
-            {% for key, value in fieldAttrs %}
-                {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
-            {% endfor %}
+            {% include "snippets/loopAttrs.njk" %}
             class="{{ fieldStyles }} {{ fieldAttrs.class }}"></textarea>
 
         {% if props.description %}{{ fieldDescription(props) }}{% endif %}

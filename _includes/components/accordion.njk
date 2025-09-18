@@ -1,0 +1,39 @@
+{% set accordionMeta = {
+args: '{{ accordion(
+    props={
+        accordionItems: [{
+            title: "",
+            description: "",
+            isOpen: false
+        }]
+    },
+    attrs={}
+) }}'
+} %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro accordion(props={}, attrs={}) %}
+
+<div data-accordion {% include "snippets/loopAttrs.njk" %} class="flex flex-col {{attrs.class}}">
+    {% for item in props.accordionItems %}
+        <details {% if item.isOpen %}open{% endif %} class="w-full group border-b border-dark-grey first:-mt-item-gap">
+            <summary class="flex text-base justify-between gap-item-gap py-item-gap cursor-pointer">
+                    <h2 class="font-semibold underline-offset-3 decoration-from-font">{{ item.title }}</h2>
+                    <span class="block group-open:hidden">&plus;</span>
+                    <span class="hidden group-open:block">&minus;</span>
+            </summary>
+
+            <section class="pb-item-gap text-sm">
+               {{ item.description | safe }}
+            </section>
+        </details>
+    {% endfor %}
+</div>
+<style>
+    summary:hover > h2 {
+        text-decoration: underline;
+    }
+</style>
+
+{% endmacro %}

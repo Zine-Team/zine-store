@@ -1,11 +1,5 @@
 {#
     Dialog
-
-    @param label = "" // what the button says. If omitted, use call() to define button HTML contents
-    @param href = "" // if omitted, it'll be rendered as a button element
-    @param type = "" // type styles
-    @param size = "" // size styles
-    @param attrs = {} // all other HTML attributes
 #}
 
 {% from "components/button.njk" import button %}
@@ -15,7 +9,7 @@
     attrs={},
     triggerProps={}
 ) %}
-    <div x-data>
+    <div x-data {% include "snippets/loopAttrs.njk" %}>
         {{ button(props=triggerProps, attrs={"@click": "$refs.dialog.showModal()"}) }}
 
         <dialog

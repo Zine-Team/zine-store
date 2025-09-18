@@ -1,0 +1,3 @@
+{% for key, value in attrs %}
+    {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
+{% endfor %}
