@@ -48,17 +48,18 @@ layout: base
     </section>
 
     <section id="allZines">
-        {% call container({}, {class:"flex flex-col gap-section-title"}) %}
+        {% set data %}
+            {
+                {% set comma = joiner() %}
+                zines: [{% for zine in collections.zine %} {{ comma() }} '{{ zine.url }}' {% endfor %}],
+                chooseRandom () {
+                    window.location.href = this.zines[Math.floor(Math.random() * this.zines.length)];
+                }
+            }
+        {% endset %}
+        {% call container({}, {class:"flex flex-col gap-section-title", "x-data": data }) %}
             {% call sectionHeader({label: "All zines (A-Z)"}) %}
-                <div
-                    {% set comma = joiner() %}
-                    x-data="{
-                        zines: [{% for zine in collections.zine %} {{ comma() }} '{{ zine.url }}' {% endfor %}],
-                        chooseRandom () {
-                            window.location.href = this.zines[Math.floor(Math.random() * this.zines.length)];
-                        }
-                    }"
-                    class="hidden xs:block">{{ button({label: "Read random zine", type: "button", size:"base"}, {"@click": "chooseRandom"}) }}</div>
+                <div class="hidden xs:block">{{ button({label: "Read random zine", type: "button", size:"base"}, {"@click": "chooseRandom"}) }}</div>
             {% endcall %}
             <ul class="grid gap-x-item-gap gap-y-section-title max-xs:list-disc" style="grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );">
                 {% for zine in collections.zine | sort(false, false, "data.title") %}
@@ -74,7 +75,7 @@ layout: base
                     </li>
                 {% endfor %}
             </ul>
-            {{ button({label: "Read random zine", type: "button", size:"base"}, {"@click": "chooseRandom", title:"Read a random zine", class:"xs:hidden"}) }}
+            {{ button({label: "Read random zine", type: "button", size:"base"}, {"@click": "chooseRandom", class:"xs:hidden"}) }}
         {% endcall %}
     </section>
 
