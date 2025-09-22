@@ -26,10 +26,14 @@
             @click="open = toggle"
             class="absolute left-0 w-full z-10 top-full"
             :class="open ? 'block' : 'hidden'">
-            <ul class="">
-                {% for item in drawerItems %}
-                    <li>{{ item.macro(item.props, item.attrs) }}</li>
-                {% endfor %}
+            <ul>
+                {% if caller %}
+                    {{ caller() | safe }}
+                {% else %}
+                    {% for item in drawerItems %}
+                        <li>{{ item.macro(item.props, item.attrs) }}</li>
+                    {% endfor %}
+                {% endif %}
             </ul>
         </nav>
     </div>

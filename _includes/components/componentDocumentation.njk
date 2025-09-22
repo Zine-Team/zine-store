@@ -3,6 +3,7 @@
 {% from "components/copyToClipboard.njk" import copyToClipboard, copyToClipboardMeta %}
 {% from "components/button.njk" import button %}
 {% from "components/accordion.njk" import accordion %}
+{% from "components/drawer.njk" import drawer %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -48,7 +49,7 @@
                 {% endset %}
                 {{ accordion({accordionItems:[
                     {"isOpen": false, title: "Example", description: htmlDescription}]
-                })}}
+                }) }}
             </div>
         </div>
 
