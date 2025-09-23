@@ -1,10 +1,9 @@
 ---
-eleventyExcludeFromCollections: true # remove when publishing
-title:
+title: Bombas de Calor
 description:
 seoImage: #defaults to og-image.jpg, no need to update
-date: # YYYY-MM-DD
-aspect: # 5.5 / 4.25 Minizine  #  11 / 8.5 Half page zine
+date: 2025-09-23
+aspect: 5.5 / 4.25
 pages:
   - image: page_FC
     altText: ""
@@ -22,5 +21,5 @@ pages:
     altText: ""
   - image: page_BC
     altText: ""
-pdf: # **.pdf
+pdf: bombas-de-calor.pdf
 ---
