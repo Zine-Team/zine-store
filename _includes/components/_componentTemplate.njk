@@ -1,13 +1,20 @@
 {# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
 
-{% set dialogMeta = {
-    args: '{% call dialog(
-    triggerProps={ button.props },
+{% set _componentTemplateMeta = {
+    args: '{% call _componentTemplate(
+    props={
+        input: "",
+        copyRef: "",
+        toastMessage: "",
+        toasterId: ""
+    },
     attrs={}
 ) %}
 {% endcall %}',
 description: "
-- triggerProps is the properties for the `button` element that opens the `dialog`.
+-
+-
+-
 "
 } %}
 
@@ -17,19 +24,20 @@ description: "
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
-{% macro dialog(attrs={},triggerProps={}) %}
+{% macro _componentTemplate(props={}, attrs={}) %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set value %}
+
+{% endset %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-<div x-data {% include "snippets/loopAttrs.njk" %} class="{{ attrs.class }}">
-    {{ button(props=triggerProps, attrs={"@click": "$refs.dialog.showModal()"}) }}
-
-    <dialog
-        closedby="any"
-        x-ref="dialog"
-        class="{{ attrs.class }} flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-gainsboro p-0 mt-dialog-block mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site))] border border-grey">
-        {{ caller() | safe }}
-    </dialog>
+<div
+    {% include "snippets/loopAttrs.njk" %}
+    class="{{ attrs.class }}">
+    {# content #}
 </div>
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}

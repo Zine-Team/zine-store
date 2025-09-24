@@ -1,25 +1,12 @@
-{% set buttonMeta = {
-    args: '{{ button(
-    props={
-        label: "",
-        href: "",
-        type: "button | link",
-        size: "base | lg | sm | inherit",
-        icon: ""
-    },
-    attrs={}
-) }}',
-description: "
-- Tag defaults to `button` unless you provide a `href`, then it'll be an `a` tag.
-- Optionally you can use `{% call %}` to give custom inner HTML.
-"
-} %}
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+{% macro button(props={},attrs={}) %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set types = {
     button: {
-        styles: "font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey shadow-2xs rounded",
+        styles: "text-black font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey shadow-2xs rounded",
         sizes: {
             base: "text-base min-w-15 min-h-tube py-3.5 px-3 sm:px-4",
             sm: "text-sm py-2.5 px-3 sm:px-2.5"
@@ -38,30 +25,50 @@ description: "
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-{%- macro button(props={},attrs={}) -%}
 
-    <{% if props.href %}a href="{{- props.href -}}"{% else %}button{% endif %}
-        class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer {{ attrs.class }} {% if attrs.disabled %}pointer-events-none{% endif %}
-        {{ types[props.type].styles }} {{ types[props.type].sizes[props.size] }}"
-        {# {{ typeClasses[props.type] }} {{ sizeClasses[props.size] }}" #}
+<{% if props.href %}a href="{{- props.href -}}"{% else %}button{% endif %}
+    class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer {{ attrs.class }} {% if attrs.disabled %}pointer-events-none{% endif %}
+    {{ types[props.type].styles }} {{ types[props.type].sizes[props.size] }}"
+    {# {{ typeClasses[props.type] }} {{ sizeClasses[props.size] }}" #}
 
-        {% include "snippets/loopAttrs.njk" %}
-    >
-        {% if props.icon or props.label %}
-            <span class="flex justify-center gap-2 items-center">
-                {% if props.icon %}
-                    <span class="text-icon">{{ props.icon }}</span>
-                {% endif %}
-                {% if props.label %}
-                    <span>{{ props.label }}</span>
-                {%- endif -%}
-            </span>
-        {% endif %}
+    {% include "snippets/loopAttrs.njk" %}
+>
+    {% if props.icon or props.label %}
+        <span class="flex justify-center gap-2 items-center">
+            {% if props.icon %}
+                <span class="text-icon">{{ props.icon }}</span>
+            {% endif %}
+            {% if props.label %}
+                <span>{{ props.label }}</span>
+            {%- endif -%}
+        </span>
+    {% endif %}
 
-        {%- if not props.label and not props.icon -%}
-            {{ caller() | safe }}
-        {%- endif -%}
+    {%- if not props.label and not props.icon -%}
+        {{ caller() | safe }}
+    {%- endif -%}
 
-    </{% if props.href %}a{% else %}button{% endif %}>
+</{% if props.href %}a{% else %}button{% endif %}>
 
-{%- endmacro -%}
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% endmacro %}
+
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set buttonMeta = {
+    args: '{{ button(
+    props={
+        label: "",
+        href: "",
+        type: "button | link",
+        size: "base | lg | sm | inherit",
+        icon: ""
+    },
+    attrs={}
+) }}',
+description: "
+- Tag defaults to `button` unless you provide a `href`, then it'll be an `a` tag.
+- Optionally you can use `{% call %}` to give custom inner HTML.
+"
+} %}

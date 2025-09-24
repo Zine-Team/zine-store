@@ -1,3 +1,5 @@
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
 {% set copyToClipboardMeta = {
     args: '{% call copyToClipboard(
     props={
@@ -12,35 +14,33 @@
 description: "
 - Use `input` or `copyRef`, not both. `copyRef` is the `x-ref` value of an element inside the caller() that you want to copy the `innerText` value of.
 - Give an element inside the caller() the attribute `@click: 'copy'` to trigger the copy event.
-- Must also have the `toast` component in your components folder.
-- Must have the `toaster` component somewhere on the page to work.
+- Must have the `toaster` component somewhere on the page for this component to work.
 "
 } %}
 
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-
-{% from "components/toast.njk" import toast %}
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% macro copyToClipboard(props={}, attrs={}) %}
 
-    <span x-data="{
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+<script defer src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script>
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<span
+    x-data="{
         input: {% if props.input %}'{{ props.input }}'{% else %}$refs.{{ props.copyRef }}.innerText{% endif %},
-        copied: false,
-        timeout: null,
         copy () {
             $clipboard(this.input)
-            this.copied = true
-            clearTimeout(this.timeout)
-            this.timeout = setTimeout(() => {
-                this.copied = false
-            }, 2000)
+            $dispatch('notify', { content:'{{props.toastMessage}}', toasterId:'{% if props.toasterId %}{{ props.toasterId }}{% else %}toaster{% endif %}' })
         }
     }"
     {% include "snippets/loopAttrs.njk" %}
-    class="{{ attrs.class }}"
-    >
-        {{ caller() | safe }}
-        {{ toast({message: props.toastMessage, toasterId: toasterId, show: "copied"}) }}
-    </span>
+    class="inline-block {{ attrs.class }}">
+    {{ caller() | safe }}
+</span>
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
 {% endmacro %}

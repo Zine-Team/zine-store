@@ -3,10 +3,23 @@ title: Testing
 ---
 {% from "components/button.njk" import button %}
 {% from "components/siteNav.njk" import siteNav with context %}
-{% from "components/blocks.njk" import container %}
+{% from "components/container.njk" import container %}
+{% from "components/carousel.njk" import carousel %}
 
 <main class="flex w-full flex-col gap-section-title py-section">
 
     <header class="gap-section-title grid">
         {% call container() %}<h1 class="text-xl">{{ title }}</h1>{% endcall %}
+        {% call container() %}
+            {% call carousel({},{class:""}) %}
+                {% for zine in collections.zine | reverse | slice(4) %}
+                    <a data-zine-shading class="relative shadow-zine w-[100cqi]" href="{{ zine.url }}">
+                        <img class="w-full h-40 shadow-page border border-dark-grey" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}"></a>
+                {% endfor %}
+                {% for zine in collections.zine | reverse | slice(4) %}
+                    <a data-zine-shading class="relative shadow-zine w-[100cqi]" href="{{ zine.url }}">
+                        <img class="w-full h-40 shadow-page border border-dark-grey" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}"></a>
+                {% endfor %}
+            {% endcall %}
+        {% endcall %}
     </header>

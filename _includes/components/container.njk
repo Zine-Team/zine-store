@@ -12,7 +12,7 @@
     {
         "cols-1": "",
         "cols-2": "",
-        "sidebar": "300px 1fr"
+        "sidebar": "lg:grid-cols-[300px_1fr]"
     }
  %}
 
@@ -31,7 +31,7 @@
 {% macro container(props={}, attrs={})%}
     <div
         {% include "snippets/loopAttrs.njk" %}
-        class="zine-store-container mx-auto max-w-[{% if props.size %}{{sizeClasses[props.size]}}{% else %}{{ sizeClasses.base }}{% endif %}] {% if props.type %}grid-cols-[{{ typeClasses[props.type] | replace(" ", "_") }}]{% endif %} grid {{ attrs.class }}">
+        class="zine-store-container mx-auto max-w-[{% if props.size %}{{sizeClasses[props.size]}}{% else %}{{ sizeClasses.base }}{% endif %}] {% if props.type %}{{ typeClasses[props.type] }}{% endif %} grid {{ attrs.class }}">
         {{ caller() | safe }}
     </div>
 {% endmacro %}

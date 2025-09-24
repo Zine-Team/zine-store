@@ -1,84 +1,137 @@
 ---
-title: Component Documentation
+title: Components
 ---
-{% from "components/siteNav.njk" import siteNav with context %}
-{% from "components/button.njk" import button, buttonMeta %}
-{% from "components/blocks.njk" import container %}
+{% from "components/_componentDocumentation.njk" import componentDocumentation %}
+{% from "components/container.njk" import container %}
 {% from "components/accordion.njk" import accordion, accordionMeta %}
+{% from "components/announcementBanner.njk" import announcementBanner, announcementBannerMeta %}
+{% from "components/button.njk" import button, buttonMeta %}
+{% from "components/carousel.njk" import carousel, carouselMeta %}
 {% from "components/copyToClipboard.njk" import copyToClipboard, copyToClipboardMeta %}
-{% from "components/componentDocumentation.njk" import componentDocumentation %}
+{% from "components/fields.njk" import select %}
+{% from "components/toaster.njk" import toaster, toasterMeta %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% set components = [
-    "accordion",
     "button",
-    "copyToClipboard"
+    "accordion",
+    "announcementBanner",
+    "copyToClipboard",
+    "carousel",
+    "toaster"
 ] %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <main class="flex w-full relative flex-col py-section">
-    {% call container({},{class:"border-b border-dark-grey border-dotted pb-section-title"}) %}<h1 class="text-xl">{{ title }}</h1>{% endcall %}
+    {% call container({},{class:"border-b border-dark-grey border-dotted pb-section-title"}) %}<h1 class="text-2xl wrap-anywhere">{{ title }}</h1>{% endcall %}
 
-    {% call container({type:"sidebar", size:"base"}) %}
+    {% call container({type:"sidebar", size:"base"},{
+        "x-data":"{}",
+        "@select-all-components.window":"document.getElementById($event.detail).scrollIntoView()",
+        "class":"@container"
+    }) %}
 
-        <aside class="flex sticky h-dvh border-r border-dotted border-dark-grey top-0 pt-dialog-block flex-col items-start gap-item-sm">
+        <aside class="hidden lg:flex sticky max-h-dvh h-fit top-0 pt-dialog-block flex-col items-start gap-item-sm">
             <h2 class="font-semibold">All components</h2>
             <ul class="grid gap-item-sm list-disc items-start ml-indent">
-            {% for component in components %}
+            {% for component in components | sort() %}
                 <li class="w-min">{{ button({label:component, href:"#"+ component, type: "link"}) }}</li>
             {% endfor %}
             </ul>
         </aside>
 
-        <div class="justify-items-center">
+        {{ select(
+            props={
+            "name": "all-components",
+            "options": components | sort()},
+            attrs={
+                "class": "lg:hidden py-section-title border-b border-dotted border-dark-grey sticky top-0 z-40 bg-gainsboro"
+            },
+            fieldAttrs={
+                placeholder: "Scroll to a component..."
+            })
+        }}
+
+        <div class="justify-items-center lg:pl-site lg:border-l border-dotted border-dark-grey">
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-            {% call componentDocumentation({
-                title: "accordion",
-                meta: accordionMeta
-            }) %}
-                {{ accordion({accordionItems:[
-                    {"isOpen": true, title: "Capitalists", description: "The very small ruling class upon whose interests and competition the system is based. Their massive wealths are obtained  through profiting off other people’s labor."},
-                    {title: "Managerial State", description: "The structures in place to maintain the functioning of The State and to protect it from economic crises, often caused by Capitalists acting in self-interested ways."},
-                    {title: "Armed State", description: "Violent force used by The State to maintainits power. Under Racial Capitalism, The State is the sole entity justified in using violence, violence it uses to dispossess The People of their land, resources, and labor to protectand serve the interests of the Capitalists. The Armed State promotes and relies on racist ideology to demonize and criminalize people of color in order to enforce a racial division of labor. Such divisions allow forthe extreme exploitation of selected groups’ labor and keep The People turned againstone another."},
-                    {title: "Concessions State", description: "Reforms to the system made by The State in response to the demands of The People. While crucial to improving the lives and conditions of the The People, reforms that don’t challenge the nature of the system are often co-opted to make Racial Capitalismfeel more acceptable and friendly without fundamentally changing its power dynamics. The Concessions State also prescribes theonly legitimate avenues to express dissent (voting and emailing your representatives) and suppresses and vilifies all others (organized labor strikes or squatting)."},
-                    {title: "Civil Society", description: "Ideas, beliefs, values, and culture that shape how we see ourselves, each other, and the wealthy. Although Civil Society is not controlled by The State, the institutions that constitute it are heavily influenced by the ideologies and forces of Racial Capitalism."},
-                    {title: "The People", description: "The humans whose labor Racial Capitalism exploits. When The People come together with a shared understanding of their conditions, they can build the power needed to transform the systems they live under."}
-                ]},{class:"w-full"}) }}
-            {% endcall %}
-
-            {% call componentDocumentation({
-                title: "button",
-                meta: buttonMeta
-            }) %}
-                    {{ button({label: "Button", type: "button", size: "base"}) }}
-                    {{ button({label: "Small", type: "button", size:"sm"}) }}
-                    {{ button({label: "Link", type: "link", size: "base"}) }}
-                    {{ button({label: "Large", type: "link", size:"lg"}) }}
+{% call componentDocumentation({
+    title: "accordion",
+    meta: accordionMeta
+}) %}
+    {{ accordion({accordionItems:[
+        {"isOpen": true, title: "Capitalists", description: "The very small ruling class upon whose interests and competition the system is based. Their massive wealths are obtained  through profiting off other people’s labor."},
+        {title: "Managerial State", description: "The structures in place to maintain the functioning of The State and to protect it from economic crises, often caused by Capitalists acting in self-interested ways."},
+        {title: "Armed State", description: "Violent force used by The State to maintainits power. Under Racial Capitalism, The State is the sole entity justified in using violence, violence it uses to dispossess The People of their land, resources, and labor to protectand serve the interests of the Capitalists. The Armed State promotes and relies on racist ideology to demonize and criminalize people of color in order to enforce a racial division of labor. Such divisions allow forthe extreme exploitation of selected groups’ labor and keep The People turned againstone another."},
+        {title: "Concessions State", description: "Reforms to the system made by The State in response to the demands of The People. While crucial to improving the lives and conditions of the The People, reforms that don’t challenge the nature of the system are often co-opted to make Racial Capitalismfeel more acceptable and friendly without fundamentally changing its power dynamics. The Concessions State also prescribes theonly legitimate avenues to express dissent (voting and emailing your representatives) and suppresses and vilifies all others (organized labor strikes or squatting)."},
+        {title: "Civil Society", description: "Ideas, beliefs, values, and culture that shape how we see ourselves, each other, and the wealthy. Although Civil Society is not controlled by The State, the institutions that constitute it are heavily influenced by the ideologies and forces of Racial Capitalism."},
+        {title: "The People", description: "The humans whose labor Racial Capitalism exploits. When The People come together with a shared understanding of their conditions, they can build the power needed to transform the systems they live under."}
+    ]},{class:"w-full"}) }}
+{% endcall %}
 
 
-            {% endcall %}
-
+{% call componentDocumentation({
+    title: "announcementBanner",
+    meta: announcementBannerMeta
+}) %}
+    <div class="grid grid-overlap">
+        {{ announcementBanner({content:"This is the banner content.", storageKey:"example-announcement-banner"}) }}
+        {{ button({label: "Click me, then refresh page to reset banner", type: "button", size: "base"},{"x-data":"{}", @click:"sessionStorage.setItem('example-announcement-banner', true);"}) }}
+    </div>
+{% endcall %}
 
 
 
-            {% call componentDocumentation({
-                title: "copyToClipboard",
-                meta: copyToClipboardMeta
-            }) %}
-                {% call copyToClipboard({
-                    input: 'hey!',
-                    toastMessage: "Paste to see that it worked :)"
-                }) %}
-                    {{ button({label: "Click me to copy 'hey!'", type: "button", size:"base"}, {@click: "copy"}) }}
-                {% endcall %}
-            {% endcall %}
-            </div>
+{% call componentDocumentation({
+    title: "button",
+    meta: buttonMeta
+}) %}
+    {{ button({label: "Button", type: "button", size: "base"}) }}
+    {{ button({label: "Small", type: "button", size:"sm"}) }}
+    {{ button({label: "Link", type: "link", size: "base"}) }}
+    {{ button({label: "Large", type: "link", size:"lg"}) }}
+{% endcall %}
+
+
+{% call componentDocumentation({
+    title: "carousel",
+    meta: carouselMeta
+}) %}
+    {% call carousel({},{class:"w-full h-40 gap-2"}) %}
+        <div class="w-[100cqi] grid place-items-center text-lg bg-dark-grey">Hehe</div>
+        <div class="w-[100cqi] grid place-items-center text-lg bg-dark-grey">Haha</div>
+        <div class="w-[100cqi] grid place-items-center text-lg bg-dark-grey">Hoohoo</div>
+    {% endcall %}
+{% endcall %}
+
+
+
+
+{% call componentDocumentation({
+    title: "copyToClipboard",
+    meta: copyToClipboardMeta
+}) %}
+    {% call copyToClipboard({
+        input: 'hey!',
+        toastMessage: "Paste to see that it worked :)"
+    }) %}
+        {{ button({label: "Click to copy 'hey!'", type: "button", size:"base"}, {@click: "copy"}) }}
+    {% endcall %}
+{% endcall %}
+
+{% call componentDocumentation({
+    title: "toaster",
+    meta: toasterMeta
+}) %}
+    {{ button({label: "Click to trigger a toast", type: "button", size:"base"}, {"@click": "$dispatch('notify', { content:`Hello! I am a toast!` })"}) }}
+{% endcall %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+        </div>
 
     {% endcall %}
 </div>

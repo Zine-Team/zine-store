@@ -1,0 +1,54 @@
+{% from "components/container.njk" import container %}
+{% from "components/markdown.njk" import markdown %}
+{% from "components/copyToClipboard.njk" import copyToClipboard %}
+{% from "components/button.njk" import button %}
+{% from "components/accordion.njk" import accordion %}
+{% from "components/drawer.njk" import drawer %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro componentDocumentation(props={}) %}
+        <div id="{{ props.title }}" class="grid w-full border-b border-dotted border-dark-grey py-dialog-block gap-section-title max-w-[var(--container-sm)]">
+            <h3 class="text-xl xl:list-disc xl:list-item truncate">{{ props.title }}.njk</h3>
+            <div class="flex flex-col gap-dialog-block overflow-hidden">
+                {% if props.meta.description %}
+                    <div class="flex flex-col gap-item-gap">
+                        {% call markdown() %}
+                            {{ props.meta.description | trim | markdownify | safe }}
+                        {% endcall %}
+                    </div>
+                {% endif %}
+                <div class="flex flex-col gap-item-sm">
+                    <h4 class="text-base font-semibold">Arguments</h4>
+                        {% call copyToClipboard({copyRef: "copyMe", toastMessage: "Copied instance to clipboard!"}, {class:"relative"}) %}
+                            {% call markdown({transfrom: true}) %}
+                                <pre><code x-ref="copyMe" class="leading-relaxed">{{ props.meta.args }}</code></pre>
+                            {% endcall %}
+                            {{ button({size:"sm", label: "Copy", type: "button"},{@click:"copy", class:"absolute top-2 right-2"}) }}
+                        {% endcall %}
+                </div>
+                <div class="flex flex-col gap-item-sm">
+                    <h4 class="text-base font-semibold">Import code</h4>
+                    {% call copyToClipboard({copyRef: "copyMe", toastMessage: "Copied import code to clipboard!"}, {class:"relative"}) %}
+                        {% call markdown({transfrom: true}) %}
+                            <pre><code x-ref="copyMe" class="leading-relaxed">{% raw %}{%{% endraw %} from "components/{{ props.title }}.njk" import {{ props.title}} {% raw %}%}{% endraw %}</code></pre>
+                        {% endcall %}
+                        {{ button({size:"sm", label: "Copy", type: "button"},{@click:"copy", class:"absolute top-1/2 -translate-y-1/2 right-2"}) }}
+                    {% endcall %}
+                </div>
+                {% if caller %}
+                    {% set example %}
+                        <div class="flex flex-col gap-item-sm">
+                            <div class="grid grid-cols-1 place-items-center place-content-center gap-item-gap border border-dark-grey rounded p-dialog-inline grow">
+                                {{ caller() | safe }}
+                            </div>
+                        </div>
+                    {% endset %}
+                    {{ accordion({accordionItems:[
+                        {"isOpen": false, title: "Example", description: example}]
+                    }) }}
+                {% endif %}
+            </div>
+        </div>
+
+{% endmacro %}

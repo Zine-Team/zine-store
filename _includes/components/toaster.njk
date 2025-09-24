@@ -1,0 +1,76 @@
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set toasterMeta = {
+    args: '{{ toaster(
+    props={id:""}
+) }}',
+description: "
+- Put this component somewhere in your base layout.
+- Trigger a new toast with the `$dispatch('notify', { content:'{{ message }}' })` function on an element.
+"
+} %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/button.njk" import button %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro toaster(props={}) %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set toasterStyleClasses = "gap-2 top-nav right-site left-site" %}
+{% set toastStyleClasses = "gap-item-gap bg-black border-grey border shadow-zine rounded text-white-smoke px-5 py-3 text-base" %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<div
+    id="{% if props.id %}{{ props.id }}{% else %}toaster{% endif %}"
+    x-data="{
+        toasts: [],
+        add(e) {
+            if ( e.detail.toasterId === '{% if props.id %}{{ props.id }}{% else %}toaster{% endif %}') {
+                this.toasts.push({
+                    id: e.timeStamp,
+                    content: e.detail.content
+                })
+            }
+        },
+        remove(toast) {
+            this.toasts = this.toasts.filter(i => i.id !== toast.id)
+        }
+    }"
+    @notify.window="add($event)"
+    data-toaster
+    role="status"
+    aria-live="polite"
+    class="fixed flex items-center flex-col-reverse justify-center z-50 pointer-events-none {{ toasterStyleClasses }}">
+
+    <template x-for="toast in toasts" :key="toast.id">
+        <div
+            x-data="{
+                show: false,
+                init() {
+                    this.$nextTick(() => this.show = true)
+                    setTimeout(() => this.transitionOut(), 2000)
+                },
+                transitionOut() {
+                    this.show = false
+                    setTimeout(() => this.remove(this.toast), 300)
+                }
+            }"
+            x-show="show"
+            x-transition:enter-start="opacity-0 -translate-y-2"
+            x-transition:leave-end="opacity-0 -translate-y-2"
+            class="flex items-center pointer-events-auto text-center duration-200 delay-100 transition {{ toastStyleClasses }}">
+            <span x-text="toast.content"></span>
+            {# {{button({icon:"×", type:"button", size:"sm"},{@click:"transitionOut()"})}} #}
+        </div>
+    </template>
+
+</div>
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% endmacro %}

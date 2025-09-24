@@ -11,7 +11,7 @@
         class="markdown {{ attrs.class }}">
         {% if props.content %}
             {% if props.transform === true %}
-                {{ props.content | markdownify }}
+                {{ props.content | markdownify | safe }}
             {% else %}
                 {{ props.content | safe }}
             {% endif %}

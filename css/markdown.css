@@ -124,6 +124,7 @@
 
 .markdown pre {
   margin-block-start: var(--space-3);
+  max-width: 100%;
 }
 
 .markdown pre code {

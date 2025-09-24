@@ -3,14 +3,14 @@
     Zine Store (Free)"><meta name="description" content="
      The Zine Store (Free) is a free place to store, share, and read zines online."><meta property="og:description" content="
      The Zine Store (Free) is a free place to store, share, and read zines online."><meta property="og:url" content="https://zinestorefree.com/markdown-test/"><meta property="og:image" content="https://zinestorefree.com/images/uploads/og-image.jpg
-"><meta property="og:type" content="website"><meta name="generator" content="Eleventy v3.1.2"><link rel="icon" type="image/x-icon" href="https://zinestorefree.com/images/uploads/favicon.png"><link rel="stylesheet" href="/styles.css"><script defer="defer" src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script><script defer="defer" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><script defer="defer" src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script></head><body class="font-sans text-base antialiased flex flex-col min-h-dvh items-center bg-gainsboro pb-[env(safe-area-inset-bottom)]"><div x-data="{
+"><meta property="og:type" content="website"><meta name="generator" content="Eleventy v3.1.2"><link rel="icon" type="image/x-icon" href="https://zinestorefree.com/images/uploads/favicon.png"><link rel="stylesheet" href="/styles.css"><script defer="defer" src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script></head><body class="font-sans text-base antialiased flex flex-col min-h-dvh items-center bg-gainsboro pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]"><div x-data="{
         windowWidth: window.innerWidth,
         getWidth() {
             window.addEventListener('resize', () => {
                 this.windowWidth = window.innerWidth
             })
         }
-    }" x-init="getWidth" class="fixed flex z-20 text-sm pt-1 opacity-50"><span class="xs:hidden">XS-</span> <span class="hidden xs:max-sm:block">XS-SM</span> <span class="hidden sm:max-md:block">SM-MD</span> <span class="hidden md:max-lg:block">MD-LG</span> <span class="hidden lg:max-xl:block">LG-XL</span> <span class="hidden xl:block">XL+</span> <span>&nbsp;•&nbsp;</span> <span x-text="windowWidth"></span> <span>px</span></div><nav class="w-full"><div class="zine-store-container mx-auto max-w-[var(--container-base)] grid"><div class="shrink-0 items-baseline justify-between py-nav border-dark-grey max-lg:border-b border-dotted flex"><span class="flex items-center justify-self-start gap-16"><a href="/" class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1 text-base font-bold decoration-from-font"><span class="flex justify-center gap-2 items-center"><span>Home</span></span> </a></span><span class="flex items-center justify-self-end gap-3"><div x-data="{
+    }" x-init="getWidth" class="fixed bottom-0 left-0 flex items-end z-50 text-sm p-1 m-1 bg-gainsboro/25 backdrop-blur-sm border-dotted border-grey border"><span><span class="xs:hidden">XS-</span> <span class="hidden xs:max-sm:block">XS-SM</span> <span class="hidden sm:max-md:block">SM-MD</span> <span class="hidden md:max-lg:block">MD-LG</span> <span class="hidden lg:max-xl:block">LG-XL</span> <span class="hidden xl:block">XL+</span> </span><span>&nbsp;•&nbsp;</span> <span><span x-text="windowWidth"></span> <span>px</span></span></div><nav class="w-full"><div class="zine-store-container mx-auto max-w-[var(--container-base)] grid"><div class="shrink-0 items-baseline justify-between py-nav border-dark-grey max-lg:border-b border-dotted flex"><span class="flex items-center justify-self-start gap-16"><a href="/" class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1 text-base font-bold decoration-from-font"><span class="flex justify-center gap-2 items-center"><span>Home</span></span> </a></span><span class="flex items-center justify-self-end gap-3"><div x-data="{
             open: false,
             toggle() {
                 if (this.open) {
@@ -24,7 +24,7 @@
                 this.open = false
                 focusAfter && focusAfter.focus()
             },
-        }" x-id="['dropdown']" x-on:keydown.escape.prevent.stop="close($refs.button)" x-on:focusin.window="! $refs.panel.contains($event.target) && close()" class="relative max-w-fit"><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey shadow-2xs rounded text-base min-w-15 min-h-tube py-3.5 px-3 sm:px-4" x-ref="button" @click="toggle()" :aria-expanded="open" :aria-controls="$id(&#39;dropdown&#39;)"><span class="flex justify-center gap-2 items-center"><span>Development</span></span></button><div x-ref="panel" x-show="open" x-on:click.outside="close($refs.button)" x-cloak :id="$id('dropdown')" class="absolute right-0 min-w-max bg-white-smoke border border-dark-grey px-5 py-3 shadow-zine mt-2 z-10 outline-none"><ul class="gap-item-sm list-disc flex flex-col items-start"><li class="ml-[1.25ch]"><a href="/components" class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1"><span class="flex justify-center gap-2 items-center"><span>Components</span></span></a></li><li class="ml-[1.25ch]"><a href="/markdown-test" class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1"><span class="flex justify-center gap-2 items-center"><span>Markdown</span></span></a></li><li class="ml-[1.25ch]"><a href="/testing" class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1"><span class="flex justify-center gap-2 items-center"><span>Testing</span></span></a></li></ul></div></div></span></div></div></nav><main class="py-section"><div class="zine-store-container mx-auto max-w-[var(--container-sm)] grid flex flex-col gap-site"><header><h1 class="text-xl">Markdown test</h1></header><div style="--md-font-size: var(--text-base);
+        }" x-id="['dropdown']" x-on:keydown.escape.prevent.stop="close($refs.button)" x-on:focusin.window="! $refs.panel.contains($event.target) && close()" class="relative max-w-fit"><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-black font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey shadow-2xs rounded text-base min-w-15 min-h-tube py-3.5 px-3 sm:px-4" x-ref="button" @click="toggle()" :aria-expanded="open" :aria-controls="$id(&#39;dropdown&#39;)"><span class="flex justify-center gap-2 items-center"><span>Development</span></span></button><div x-ref="panel" x-show="open" x-on:click.outside="close($refs.button)" x-cloak :id="$id('dropdown')" class="absolute right-0 min-w-max bg-white-smoke border border-dark-grey px-5 py-3 shadow-zine mt-2 z-10 outline-none"><ul class="gap-item-sm list-disc flex flex-col items-start"><li class="ml-[1.25ch]"><a href="/components" class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1"><span class="flex justify-center gap-2 items-center"><span>Components</span></span></a></li><li class="ml-[1.25ch]"><a href="/markdown-test" class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1"><span class="flex justify-center gap-2 items-center"><span>Markdown</span></span></a></li><li class="ml-[1.25ch]"><a href="/testing" class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1"><span class="flex justify-center gap-2 items-center"><span>Testing</span></span></a></li></ul></div></div></span></div></div></nav><main class="py-section"><div class="zine-store-container mx-auto max-w-[var(--container-sm)] grid flex flex-col gap-site"><header><h1 class="text-xl">Markdown test</h1></header><div style="--md-font-size: var(--text-base);
             --md-line-height: var(--text-base--line-height);
             --md-primary-text-color: var(--color-black);
             --md-link-color: var(--color-link);
@@ -38,4 +38,27 @@ picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
         color: red;
     }
 
-            }</style></div></main><div id="toaster" class="fixed top-nav right-site flex justify-center left-site z-50 pointer-events-none"></div><script defer="defer" src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script></body></html>
+            }</style></div></main><div id="toaster" x-data="{
+        toasts: [],
+        add(e) {
+            if ( e.detail.toasterId === 'toaster') {
+                this.toasts.push({
+                    id: e.timeStamp,
+                    content: e.detail.content
+                })
+            }
+        },
+        remove(toast) {
+            this.toasts = this.toasts.filter(i => i.id !== toast.id)
+        }
+    }" @notify.window="add($event)" data-toaster role="status" aria-live="polite" class="fixed flex items-center flex-col-reverse justify-center z-50 pointer-events-none gap-2 top-nav right-site left-site"><template x-for="toast in toasts" :key="toast.id"><div x-data="{
+                show: false,
+                init() {
+                    this.$nextTick(() => this.show = true)
+                    setTimeout(() => this.transitionOut(), 2000)
+                },
+                transitionOut() {
+                    this.show = false
+                    setTimeout(() => this.remove(this.toast), 300)
+                }
+            }" x-show="show" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:leave-end="opacity-0 -translate-y-2" class="flex items-center pointer-events-auto text-center duration-200 delay-100 transition gap-item-gap bg-black border-grey border shadow-zine rounded text-white-smoke px-5 py-3 text-base"><span x-text="toast.content"></span></div></template></div><script defer="defer" src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script></body></html>
