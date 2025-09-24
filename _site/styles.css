@@ -272,8 +272,8 @@
   .bottom-0 {
     bottom: calc(var(--spacing) * 0);
   }
-  .bottom-2 {
-    bottom: calc(var(--spacing) * 2);
+  .bottom-full {
+    bottom: 100%;
   }
   .left-0 {
     left: calc(var(--spacing) * 0);
@@ -326,20 +326,20 @@
       max-width: 96rem;
     }
   }
-  .m-1 {
-    margin: calc(var(--spacing) * 1);
-  }
   .mx-auto {
     margin-inline: auto;
   }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
-  .mt-\[calc\(var\(--spacing-dialog-block\)\+1dvh\)\] {
-    margin-top: calc(var(--spacing-dialog-block) + 1dvh);
-  }
   .mt-dialog-block {
     margin-top: var(--spacing-dialog-block);
+  }
+  .mr-1 {
+    margin-right: calc(var(--spacing) * 1);
+  }
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
   }
   .mb-auto {
     margin-bottom: auto;
@@ -389,17 +389,8 @@
   .h-\[max\(25dvh\,_72px\)\] {
     height: max(25dvh, 72px);
   }
-  .h-auto {
-    height: auto;
-  }
-  .h-dvh {
-    height: 100dvh;
-  }
   .h-fit {
     height: fit-content;
-  }
-  .h-min {
-    height: min-content;
   }
   .max-h-dvh {
     max-height: 100dvh;
@@ -418,9 +409,6 @@
   }
   .w-\[1\.1em\] {
     width: 1.1em;
-  }
-  .w-\[33cqi\] {
-    width: 33cqi;
   }
   .w-\[70cqi\] {
     width: 70cqi;
@@ -463,9 +451,6 @@
   }
   .min-w-15 {
     min-width: calc(var(--spacing) * 15);
-  }
-  .min-w-\[300px\] {
-    min-width: 300px;
   }
   .min-w-max {
     min-width: max-content;
@@ -538,9 +523,6 @@
   .items-center {
     align-items: center;
   }
-  .items-end {
-    align-items: flex-end;
-  }
   .items-start {
     align-items: flex-start;
   }
@@ -585,9 +567,6 @@
   }
   .gap-nav {
     gap: var(--spacing-nav);
-  }
-  .gap-px {
-    gap: 1px;
   }
   .gap-section {
     gap: var(--spacing-section);
@@ -642,6 +621,9 @@
   .rounded {
     border-radius: var(--radius);
   }
+  .rounded-tr {
+    border-top-right-radius: var(--radius);
+  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
@@ -665,10 +647,6 @@
   .border-b {
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 1px;
-  }
-  .border-l {
-    border-left-style: var(--tw-border-style);
-    border-left-width: 1px;
   }
   .border-dotted {
     --tw-border-style: dotted;
@@ -713,6 +691,9 @@
   .p-dialog-inline {
     padding: var(--spacing-dialog-inline);
   }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
   .px-3 {
     padding-inline: calc(var(--spacing) * 3);
   }
@@ -727,6 +708,9 @@
   }
   .px-site {
     padding-inline: var(--spacing-site);
+  }
+  .py-1 {
+    padding-block: calc(var(--spacing) * 1);
   }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
@@ -752,11 +736,14 @@
   .py-section {
     padding-block: var(--spacing-section);
   }
-  .py-section-title {
-    padding-block: var(--spacing-section-title);
-  }
   .pt-dialog-block {
     padding-top: var(--spacing-dialog-block);
+  }
+  .pr-1 {
+    padding-right: calc(var(--spacing) * 1);
+  }
+  .pr-2 {
+    padding-right: calc(var(--spacing) * 2);
   }
   .pb-\[calc\(env\(safe-area-inset-bottom\)\+var\(--announcementBannerBlockSize\)\)\] {
     padding-bottom: calc(env(safe-area-inset-bottom) + var(--announcementBannerBlockSize));
@@ -766,6 +753,9 @@
   }
   .pb-section-title {
     padding-bottom: var(--spacing-section-title);
+  }
+  .pl-2 {
+    padding-left: calc(var(--spacing) * 2);
   }
   .text-center {
     text-align: center;
@@ -890,16 +880,9 @@
   .delay-100 {
     transition-delay: 100ms;
   }
-  .delay-500 {
-    transition-delay: 500ms;
-  }
   .duration-200 {
     --tw-duration: 200ms;
     transition-duration: 200ms;
-  }
-  .duration-500 {
-    --tw-duration: 500ms;
-    transition-duration: 500ms;
   }
   .outline-none {
     --tw-outline-style: none;
@@ -1665,7 +1648,7 @@
     --text-sm: 17px;
     --text-base: 20px;
     --text-lg: 27px;
-    --text-icon: 28px;
+    --text-icon: 1.45em;
     --text-xl: 48px;
     --text-2xl: clamp(75px, 11vw, 10rem);
     --space-site: 1rem;
@@ -1682,7 +1665,6 @@
       --text-sm: 18px;
       --text-base: 22px;
       --text-lg: 32px;
-      --text-icon: 33px;
       --space-site: 2rem;
       --space-section: 6.5rem;
       --space-dialog-inline: 2rem;

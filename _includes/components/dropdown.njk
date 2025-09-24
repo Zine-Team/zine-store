@@ -5,9 +5,26 @@
     @param dropdownItems = [] // array of macros (objects) that should be rendered inside the dropdown panel
 #}
 
+
 {% from "components/button.njk" import button %}
 
-{% macro dropdown(triggerProps = {}, dropdownItems = []) %}
+{% macro dropdown(props={}, triggerProps = {}, dropdownItems = []) %}
+
+{% set position %}
+    {% if props.position.includes("top") %}
+        bottom-full mb-2
+    {% endif %}
+    {% if props.position.includes("bottom") %}
+        mt-2
+    {% endif %}
+    {% if props.position.includes("right") %}
+        right-0
+    {% endif %}
+    {% if props.position.includes("left") %}
+        left-0
+    {% endif %}
+{% endset %}
+
     <div
         x-data="{
             open: false,
@@ -44,7 +61,7 @@
             x-on:click.outside="close($refs.button)"
             x-cloak
             :id="$id('dropdown')"
-            class="absolute right-0 min-w-max bg-white-smoke border border-dark-grey px-5 py-3 shadow-zine mt-2 z-10 outline-none">
+            class="absolute min-w-max bg-white-smoke border border-dark-grey px-5 py-3 shadow-zine z-10 outline-none {{ position }}">
             <ul class="gap-item-sm list-disc flex flex-col items-start">
                 {% if caller %}
                     {{ caller() | safe }}

@@ -1,3 +1,19 @@
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set announcementBannerMeta = {
+    args: '{{ announcementBanner(
+    props={
+        content: "",
+        position: "top | bottom"
+    },
+    attrs={}
+) }}',
+description: "
+- Default to using `content` prop for markdownified text, but you can use `{% call %}` to insert custom content.
+- The banner's dismissed state currently resets when a new tab is opened.
+"
+} %}
+
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/button.njk" import button %}
@@ -27,6 +43,7 @@
         }
     </style>
 {% endif %}
+
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -54,19 +71,3 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% endmacro %}
-
-{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
-
-{% set announcementBannerMeta = {
-    args: '{{ announcementBanner(
-    props={
-        content: "",
-        position: "top | bottom"
-    },
-    attrs={}
-) }}',
-description: "
-- Default to using `content` prop for markdownified text, but you can use `{% call %}` to insert custom content.
-- The close button currently resets the hidden state when the tab is closed.
-"
-} %}

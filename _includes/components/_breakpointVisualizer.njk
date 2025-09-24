@@ -1,22 +1,37 @@
+{% from "components/dropdown.njk" import dropdown %}
+{% from "components/button.njk" import button %}
+
 <div x-data="{
+        show: true,
         windowWidth: window.innerWidth,
         getWidth() {
             window.addEventListener('resize', () => {
                 this.windowWidth = window.innerWidth
             })
         }
-    }" x-init="getWidth" class="fixed bottom-0 left-0 flex items-end z-50 text-sm p-1 m-1 bg-gainsboro/25 backdrop-blur-sm border-dotted border-grey border">
-    <span>
+    }"
+    x-init="getWidth"
+    x-show="show"
+    class="fixed rounded-tr bottom-0 left-0 flex items-center gap-1 z-50 text-sm py-1 pl-2 pr-1 bg-gainsboro/25 backdrop-blur-sm border-dark-grey border-t border-r">
+    <span class="flex w-full mr-1">
         <span class="xs:hidden">XS-</span>
         <span class="hidden xs:max-sm:block">XS-SM</span>
         <span class="hidden sm:max-md:block">SM-MD</span>
         <span class="hidden md:max-lg:block">MD-LG</span>
         <span class="hidden lg:max-xl:block">LG-XL</span>
         <span class="hidden xl:block">XL+</span>
-    </span>
-    <span>&nbsp;•&nbsp;</span>
-    <span>
+        <span>&nbsp;•&nbsp;</span>
         <span x-text="windowWidth"></span>
         <span>px</span>
     </span>
+    {{ dropdown(
+        props={position:["top", "left"]},
+        triggerProps={label: "Development", type: "button", size:"sm"},
+        dropdownItems=[
+            { macro: button, props:{label:"Components", href:"/components", type:"link", size:"base"}, attrs:{} },
+            { macro: button, props:{label:"Markdown", href:"/markdown-test", type:"link", size:"base"}, attrs:{} },
+            { macro: button, props:{label:"Testing", href:"/testing", type:"link", size:"base"}, attrs:{} }
+        ]
+    )}}
+    {{ button({icon:"×", type:"button", size:"sm"}, {@click:"show = false", title:"Close visualizer"}) }}
 </div>

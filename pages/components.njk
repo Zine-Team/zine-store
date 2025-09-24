@@ -47,7 +47,7 @@ title: Components
             "name": "all-components",
             "options": components | sort()},
             attrs={
-                "class": "lg:hidden py-section-title border-b border-dotted border-dark-grey sticky top-0 z-40 bg-gainsboro"
+                "class": "lg:hidden py-nav border-b border-dotted border-dark-grey sticky top-0 z-40 bg-gainsboro"
             },
             fieldAttrs={
                 placeholder: "Scroll to a component..."
@@ -78,7 +78,7 @@ title: Components
     meta: announcementBannerMeta
 }) %}
     <div class="grid grid-overlap">
-        {{ announcementBanner({content:"This is the banner content.", storageKey:"example-announcement-banner"}) }}
+        {{ announcementBanner({content:"This is the **banner content**.", storageKey:"example-announcement-banner"}) }}
         {{ button({label: "Click me, then refresh page to reset banner", type: "button", size: "base"},{"x-data":"{}", @click:"sessionStorage.setItem('example-announcement-banner', true);"}) }}
     </div>
 {% endcall %}
@@ -126,7 +126,7 @@ title: Components
     title: "toaster",
     meta: toasterMeta
 }) %}
-    {{ button({label: "Click to trigger a toast", type: "button", size:"base"}, {"@click": "$dispatch('notify', { content:`Hello! I am a toast!` })"}) }}
+    {{ button({label: "Click to trigger a toast", type: "button", size:"base"}, {"@click": "$dispatch('notify', { content:`Hello! I am a toast!`, toasterId:'toaster' })"}) }}
 {% endcall %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}

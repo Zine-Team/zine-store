@@ -23,6 +23,7 @@ layout: base
             "x-show": "!isEmbed()"
         }) %}
             {% call dropdown(
+                props={position:["bottom", "right"]},
                 triggerProps={label: "Share", type: "button", size:"base"})
             %}
                 <li class="ml-[1.25ch]">{{ button({label:"Download PDF", href:pdfUrl, type:"link", size:"base"}, {download: null}) }}</li>

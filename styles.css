@@ -28,7 +28,7 @@
     --text-sm: 17px;
     --text-base: 20px;
     --text-lg: 27px;
-    --text-icon: 28px;
+    --text-icon: 1.45em;
     --text-xl: 48px;
     --text-2xl: clamp(75px, 11vw, 10rem);
 
@@ -50,7 +50,7 @@
       --text-sm: 18px;
       --text-base: 22px;
       --text-lg: 32px;
-      --text-icon: 33px;
+      /* --text-icon: 33px; */
 
       --space-site: 2rem;
       --space-section: 6.5rem;
