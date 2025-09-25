@@ -67,7 +67,7 @@
                     {{ caller() | safe }}
                 {% else %}
                     {% for item in dropdownItems %}
-                        <li class="ml-[1.25ch]">{{ item.macro(item.props, item.attrs) }}</li>
+                        <li class="ml-[1.25ch] *:inline-block">{{ item.macro(item.props, item.attrs) }}</li>
                     {% endfor %}
                 {% endif %}
             </ul>

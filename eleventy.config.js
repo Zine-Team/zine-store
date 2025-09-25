@@ -23,11 +23,11 @@ export default async function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("markdownify", function (content) {
-    return md.render(content);
+    return md.render(String(content));
   });
 
   eleventyConfig.addTransform("htmlmin", (content, outputPath) => {
-    if (outputPath.endsWith(".html")) {
+    if (outputPath && outputPath.endsWith(".html")) {
       return htmlmin.minify(content, {
         collapseWhitespace: true,
         removeComments: true,

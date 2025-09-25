@@ -31,7 +31,7 @@
 {% macro container(props={}, attrs={})%}
     <div
         {% include "snippets/loopAttrs.njk" %}
-        class="zine-store-container mx-auto max-w-[{% if props.size %}{{sizeClasses[props.size]}}{% else %}{{ sizeClasses.base }}{% endif %}] {% if props.type %}{{ typeClasses[props.type] }}{% endif %} grid {{ attrs.class }}">
+        class="zine-store-container mx-auto grid max-w-[{% if props.size %}{{sizeClasses[props.size]}}{% else %}{{ sizeClasses.base }}{% endif %}] {% if props.type %}{{ typeClasses[props.type] }}{% endif %} {{ attrs.class }}">
         {{ caller() | safe }}
     </div>
 {% endmacro %}

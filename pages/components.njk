@@ -10,6 +10,7 @@ title: Components
 {% from "components/copyToClipboard.njk" import copyToClipboard, copyToClipboardMeta %}
 {% from "components/fields.njk" import select %}
 {% from "components/toaster.njk" import toaster, toasterMeta %}
+{% from "components/markdown.njk" import markdown %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -33,13 +34,21 @@ title: Components
         "class":"@container"
     }) %}
 
-        <aside class="hidden lg:flex sticky max-h-dvh h-fit top-0 pt-dialog-block flex-col items-start gap-item-sm">
-            <h2 class="font-semibold">All components</h2>
-            <ul class="grid gap-item-sm list-disc items-start ml-indent">
-            {% for component in components | sort() %}
-                <li class="w-min">{{ button({label:component, href:"#"+ component, type: "link"}) }}</li>
-            {% endfor %}
-            </ul>
+        <aside class="hidden lg:flex sticky max-h-dvh overflow-y-auto h-fit top-0 py-dialog-block flex-col items-start gap-section-title">
+            <section class="flex flex-col items-start gap-item-sm">
+                <h2 class="font-semibold">Guide</h2>
+                <ul class="grid gap-item-sm list-disc items-start ml-indent">
+                    <li class="w-min">{{ button({label:"Intro", href:"#intro", type: "link"}) }}</li>
+                </ul>
+            </section>
+            <section class="flex flex-col items-start gap-item-sm">
+                <h2 class="font-semibold">All components</h2>
+                <ul class="grid gap-item-sm list-disc items-start ml-indent">
+                {% for component in components | sort() %}
+                    <li class="w-min">{{ button({label:component, href:"#"+ component, type: "link"}) }}</li>
+                {% endfor %}
+                </ul>
+            </section>
         </aside>
 
         {{ select(
@@ -55,6 +64,25 @@ title: Components
         }}
 
         <div class="justify-items-center lg:pl-site lg:border-l border-dotted border-dark-grey">
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<section id="intro" class="grid w-full border-b border-dotted border-dark-grey mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section">
+    <h3 class="text-xl xl:list-disc xl:list-item truncate">Intro</h3>
+    <div class="flex flex-col gap-item-sm">
+        {# <h3 class="text-base font-semibold">Intro</h3> #}
+        {% call markdown({transform: true}, {class:"w-full max-w-[var(--container-sm)]"}) %}
+Welcome to the design system!
+
+Most components have a `props` argument and a `attrs` argument, both of which are objects.
+
+* `props` contains all the values needed to make the component function, like the label and style of a button.
+* `attrs` is for any HTML attributes that the instance of the component requires.
+
+Some components have other arguments too.
+        {% endcall %}
+    </div>
+</section>
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -77,9 +105,9 @@ title: Components
     title: "announcementBanner",
     meta: announcementBannerMeta
 }) %}
-    <div class="grid grid-overlap">
-        {{ announcementBanner({content:"This is the **banner content**.", storageKey:"example-announcement-banner"}) }}
-        {{ button({label: "Click me, then refresh page to reset banner", type: "button", size: "base"},{"x-data":"{}", @click:"sessionStorage.setItem('example-announcement-banner', true);"}) }}
+    <div class="grid grid-overlap place-self-stretch -mx-dialog-inline">
+        {{ announcementBanner({content:"This is the **banner content**.", storageKey:"example-announcement-banner"},{class:"w-full"}) }}
+        {{ button({label: "Click me, then refresh page to reset banner", type: "button", size: "base"},{"x-data":"{}", class:"max-w-fit justify-self-center", @click:"sessionStorage.setItem('example-announcement-banner', true);"}) }}
     </div>
 {% endcall %}
 

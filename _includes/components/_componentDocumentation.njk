@@ -8,7 +8,7 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% macro componentDocumentation(props={}) %}
-        <div id="{{ props.title }}" class="grid w-full border-b border-dotted border-dark-grey py-dialog-block gap-section-title max-w-[var(--container-sm)]">
+        <section id="{{ props.title }}" class="grid w-full border-b border-dotted border-dark-grey mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section">
             <h3 class="text-xl xl:list-disc xl:list-item truncate">{{ props.title }}.njk</h3>
             <div class="flex flex-col gap-dialog-block overflow-hidden">
                 {% if props.meta.description %}
@@ -21,7 +21,7 @@
                 <div class="flex flex-col gap-item-sm">
                     <h4 class="text-base font-semibold">Arguments</h4>
                         {% call copyToClipboard({copyRef: "copyMe", toastMessage: "Copied instance to clipboard!"}, {class:"relative"}) %}
-                            {% call markdown({transfrom: true}) %}
+                            {% call markdown() %}
                                 <pre><code x-ref="copyMe" class="leading-relaxed">{{ props.meta.args }}</code></pre>
                             {% endcall %}
                             {{ button({size:"sm", label: "Copy", type: "button"},{@click:"copy", class:"absolute top-2 right-2"}) }}
@@ -30,7 +30,7 @@
                 <div class="flex flex-col gap-item-sm">
                     <h4 class="text-base font-semibold">Import code</h4>
                     {% call copyToClipboard({copyRef: "copyMe", toastMessage: "Copied import code to clipboard!"}, {class:"relative"}) %}
-                        {% call markdown({transfrom: true}) %}
+                        {% call markdown() %}
                             <pre><code x-ref="copyMe" class="leading-relaxed">{% raw %}{%{% endraw %} from "components/{{ props.title }}.njk" import {{ props.title}} {% raw %}%}{% endraw %}</code></pre>
                         {% endcall %}
                         {{ button({size:"sm", label: "Copy", type: "button"},{@click:"copy", class:"absolute top-1/2 -translate-y-1/2 right-2"}) }}
@@ -44,11 +44,12 @@
                             </div>
                         </div>
                     {% endset %}
-                    {{ accordion({accordionItems:[
+                    {# {{ accordion({accordionItems:[
                         {"isOpen": false, title: "Example", description: example}]
-                    }) }}
+                    }) }} #}
+                    {{ example | safe }}
                 {% endif %}
             </div>
-        </div>
+        </section>
 
 {% endmacro %}

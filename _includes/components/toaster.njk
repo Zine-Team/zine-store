@@ -22,6 +22,7 @@ description: "
 
 {% set toasterStyleClasses = "gap-2 top-nav right-site left-site" %}
 {% set toastStyleClasses = "gap-item-gap bg-black border-grey border shadow-zine rounded text-white-smoke px-5 py-3 text-base" %}
+{# {% set fancyStackingClasses = "*:last-of-type:z-10 *:not-last-of-type:scale-95 *:not-last-of-type:translate-y-2 grid grid-overlap" %} #}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -45,7 +46,7 @@ description: "
     data-toaster
     role="status"
     aria-live="polite"
-    class="fixed flex items-center flex-col-reverse justify-center z-50 pointer-events-none {{ toasterStyleClasses }}">
+    class="fixed flex items-center flex-col-reverse justify-center z-50 pointer-events-none {{ toasterStyleClasses }} {{ fancyStackingClasses }}">
 
     <template x-for="toast in toasts" :key="toast.id">
         <div

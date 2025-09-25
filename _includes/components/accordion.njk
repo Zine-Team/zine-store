@@ -23,6 +23,7 @@ args: '{{ accordion(
     summary:hover > h2 {
         text-decoration: underline;
     }
+    summary::-webkit-details-marker { display: none }
 </style>
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -30,10 +31,10 @@ args: '{{ accordion(
 <div data-accordion {% include "snippets/loopAttrs.njk" %} class="flex flex-col {{attrs.class}}">
     {% for item in props.accordionItems %}
         <details {% if item.isOpen %}open{% endif %} class="w-full group border-b border-dark-grey first:-mt-item-gap">
-            <summary class="flex text-base justify-between gap-item-gap py-item-gap cursor-pointer">
+            <summary class="flex text-base justify-between gap-item-gap py-item-gap cursor-pointer appearance-none">
                     <h2 class="font-semibold underline-offset-3 decoration-from-font">{{ item.title }}</h2>
-                    <span class="block group-open:hidden">&plus;</span>
-                    <span class="hidden group-open:block">&minus;</span>
+                    <span class="block text-icon group-open:hidden">&plus;</span>
+                    <span class="hidden text-icon group-open:block">&minus;</span>
             </summary>
 
             <section class="pb-item-gap text-sm">

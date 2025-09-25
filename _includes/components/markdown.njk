@@ -17,7 +17,11 @@
             {% endif %}
         {% endif %}
         {% if caller %}
-            {{ caller() | safe }}
+            {% if props.transform === true %}
+                {{ caller() | markdownify | safe }}
+            {% else %}
+                {{ caller() | safe }}
+            {% endif %}
         {% endif %}
     </div>
 
