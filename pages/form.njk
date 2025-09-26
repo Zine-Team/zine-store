@@ -1,8 +1,10 @@
----
+{# ---
 layout: page
 title: Form components
 ---
-{% from "components/fields.njk" import select, input, textarea, fieldset %}
+{% from "components/fields.njk" import select, textarea, fieldset %}
+{% from "components/input.njk" import input %}
+
 {% from "components/button.njk" import button %}
 {% from "components/siteNav.njk" import siteNav with context %}
 
@@ -27,10 +29,10 @@ title: Form components
     @input-email.window="email = $event.detail"
     @input-number.window="number = $event.detail"
     @input-textarea.window="textarea = $event.detail"
-    class="grid grid-cols-2 zine-store-container items-start gap-site py-section grow w-full">
+    class="grid items-start w-full grid-cols-2 zine-store-container gap-site py-section grow">
     <header class="col-span-2"><h1 class="text-xl">{{ title }}</h1></header>
-    <section class="gap-section-title grid max-w-3xl">
-        <form class="gap-section-title grid">
+    <section class="grid max-w-3xl gap-section-title">
+        <form class="grid gap-section-title">
             {{ fieldset({
                     type: "checkbox",
                     name: "checkboxes",
@@ -52,7 +54,6 @@ title: Form components
                     ]
                 })
             }}
-
             {{ select(
                 props={
                 "name": "sort-by",
@@ -67,7 +68,6 @@ title: Form components
                     "required": true
                 })
             }}
-            {# text #}
             {{ input(
                 props={
                     "name": "name",
@@ -79,7 +79,6 @@ title: Form components
                     required: true
                 })
             }}
-            {# email #}
             {{ input(
                 props={
                     "name": "email",
@@ -91,7 +90,6 @@ title: Form components
                     "autocomplete": "off"
                 })
             }}
-            {# number #}
             {{ input(
                 props={
                     "name": "number",
@@ -105,7 +103,6 @@ title: Form components
                     "required": true
                 })
             }}
-
             {{ textarea(
                 {
                     name: "textarea",
@@ -120,7 +117,7 @@ title: Form components
             {{ button({label: "Submit", icon:"#", type: "button"}) }}
         </form>
     </section>
-    <section class="p-6 grid gap-item-gap border border-dotted border-grey bg-white-smoke">
+    <section class="grid p-6 border border-dotted gap-item-gap border-grey bg-white-smoke">
         <h2 class="font-bold">Data</h2>
         <ul class="list-disc ml-indent">
             <li>Checkboxes: <span x-text="checkboxes"></span></li>
@@ -133,4 +130,4 @@ title: Form components
             <li>Textarea: <span x-text="textarea"></span></li>
         </ul>
     </section>
-</main>
+</main> #}

@@ -1,0 +1,62 @@
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set selectMeta = {
+    args: '{{ select(
+    props={
+        name: "",
+        label: "",
+        description: "",
+        options: [],
+        direction: "column | row"
+    },
+    attrs={},
+    fieldAttrs={
+        placeholder: "",
+        required: boolean
+    }
+) }}',
+description: "
+- Dispatches event `select-{{ props.name }}` when the selected value is updated.
+- You can get this value with `@select-{{ props.name }}.window='{{ var }} = $event.detail'`
+"
+} %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses, fieldStyles %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro select(props={}, attrs={}, fieldAttrs={}) %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<div
+    x-data="{value:'{% if not fieldAttrs.placeholder %}{{props.options[0]}}{% endif %}'}"
+    {% include "snippets/loopAttrs.njk" %}
+    class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
+
+    {% if props.label %}{{ fieldLabel(props={tag: "label"}, fieldProps=props, fieldAttrs=fieldAttrs) }}{% endif %}
+
+    <select
+        {% if not fieldAttrs.placeholder %}x-init="$dispatch('select-{{ props.name }}', value)"{% endif %}
+        x-on:change="$dispatch('select-{{ props.name }}', value)"
+        x-model="value"
+        id="{{ props.name }}"
+        {% include "snippets/loopFieldAttrs.njk" %}
+        class="{{ fieldStyles }}">
+
+        {% if fieldAttrs.placeholder %}<option value="" disabled>{{ fieldAttrs.placeholder}}</option>{% endif %}
+        {% set comma = joiner() %}
+        <template x-for="option in [{% for option in props.options %}{{ comma() }} '{{ option }}'{% endfor%}]">
+            <option x-text="option"></option>
+        </template>
+
+    </select>
+
+    {% if props.description %}{{ fieldDescription(props) }}{% endif %}
+</div>
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% endmacro %}

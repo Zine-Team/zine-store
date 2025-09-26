@@ -1,0 +1,3 @@
+{% for key, value in fieldAttrs %}
+    {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
+{% endfor %}

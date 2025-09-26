@@ -9,8 +9,8 @@
 
 {% macro componentDocumentation(props={}) %}
         <section id="{{ props.title }}" class="grid w-full border-b border-dotted border-dark-grey mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section">
-            <h3 class="text-xl xl:list-disc xl:list-item truncate">{{ props.title }}.njk</h3>
-            <div class="flex flex-col gap-dialog-block overflow-hidden">
+            <h3 class="text-xl truncate xl:list-disc xl:list-item">{{ props.title }}.njk</h3>
+            <div class="flex flex-col overflow-hidden gap-dialog-block">
                 {% if props.meta.description %}
                     <div class="flex flex-col gap-item-gap">
                         {% call markdown() %}
@@ -39,7 +39,7 @@
                 {% if caller %}
                     {% set example %}
                         <div class="flex flex-col gap-item-sm">
-                            <div class="grid grid-cols-1 place-items-center place-content-center gap-item-gap border border-dark-grey rounded p-dialog-inline grow">
+                            <div class="grid grid-cols-1 border rounded place-items-center place-content-center gap-item-gap border-dark-grey p-dialog-inline grow">
                                 {{ caller() | safe }}
                             </div>
                         </div>

@@ -1,0 +1,57 @@
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set textareaMeta = {
+    args: '{{ textarea(
+    props={
+        name: "",
+        label: "",
+        description: "",
+        direction: "column | row"
+    },
+    attrs={},
+    fieldAttrs={
+        value: "",
+        placeholder: "",
+        required: boolean,
+        rows: ""
+    }
+) }}',
+description: "
+- Dispatches event `textarea-{{ props.name }}` when the value is updated.
+- You can get this value with `@textarea-{{ props.name }}.window='{{ var }} = $event.detail'`
+"
+} %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses, fieldStyles %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro textarea(props={}, attrs={}, fieldAttrs={}) %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<div
+    x-data="{value:'{% if fieldAttrs.value %}{{fieldAttrs.value}}{% endif %}'}"
+    {% include "snippets/loopAttrs.njk" %}
+    class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
+
+    {% if props.label %}{{ fieldLabel(props={tag: "label"}, fieldProps=props, fieldAttrs=fieldAttrs) }}{% endif %}
+
+    <textarea
+        {% if fieldAttrs.value %}x-init="$dispatch('input-{{ props.name }}', '{{ fieldAttrs.value }}')"{% endif %}
+        x-on:input="$dispatch('input-{{ props.name }}', value)"
+        x-model="value"
+        id="{{ props.name }}"
+        {% include "snippets/loopFieldAttrs.njk" %}
+        class="{{ fieldStyles }} {{ fieldAttrs.class }}">
+    </textarea>
+
+    {% if props.description %}{{ fieldDescription(props) }}{% endif %}
+
+</div>
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% endmacro %}

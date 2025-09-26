@@ -8,8 +8,11 @@ title: Documentation
 {% from "components/button.njk" import button, buttonMeta %}
 {% from "components/carousel.njk" import carousel, carouselMeta %}
 {% from "components/copyToClipboard.njk" import copyToClipboard, copyToClipboardMeta %}
-{% from "components/fields.njk" import select %}
 {% from "components/toaster.njk" import toaster, toasterMeta %}
+{% from "components/fieldset.njk" import fieldset, fieldsetMeta %}
+{% from "components/input.njk" import input, inputMeta %}
+{% from "components/select.njk" import select, selectMeta %}
+{% from "components/textarea.njk" import textarea, textareaMeta %}
 {% from "components/markdown.njk" import markdown %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -20,7 +23,11 @@ title: Documentation
     "announcementBanner",
     "copyToClipboard",
     "carousel",
-    "toaster"
+    "toaster",
+    "input",
+    "select",
+    "textarea",
+    "fieldset"
 ] %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -32,16 +39,16 @@ title: Documentation
     "class":"@container"
 }) %}
 
-    <aside class="hidden lg:flex sticky max-h-dvh overflow-y-auto h-fit top-0 py-dialog-block flex-col items-start gap-section-title">
+    <aside class="sticky top-0 flex-col items-start hidden overflow-y-auto lg:flex max-h-dvh h-fit py-dialog-block gap-section-title">
         <section class="flex flex-col items-start gap-item-sm">
             <h2 class="font-semibold">Guide</h2>
-            <ul class="grid gap-item-sm list-disc items-start ml-indent">
+            <ul class="grid items-start list-disc gap-item-sm ml-indent">
                 <li class="w-min">{{ button({label:"Intro", type: "link"},{href:"#intro"}) }}</li>
             </ul>
         </section>
         <section class="flex flex-col items-start gap-item-sm">
             <h2 class="font-semibold">All components</h2>
-            <ul class="grid gap-item-sm list-disc items-start ml-indent">
+            <ul class="grid items-start list-disc gap-item-sm ml-indent">
             {% for component in components | sort() %}
                 <li class="w-min">{{ button({label:component, type: "link"},{href:"#"+ component}) }}</li>
             {% endfor %}
@@ -61,12 +68,12 @@ title: Documentation
         })
     }}
 
-    <div class="justify-items-center lg:pl-site lg:border-l border-dotted border-dark-grey">
+    <div class="border-dotted justify-items-center lg:pl-site lg:border-l border-dark-grey">
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <section id="intro" class="grid w-full border-b border-dotted border-dark-grey mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section">
-    <h3 class="text-xl xl:list-disc xl:list-item truncate">Intro</h3>
+    <h3 class="text-xl truncate xl:list-disc xl:list-item">Intro</h3>
     <div class="flex flex-col gap-item-sm">
         {# <h3 class="text-base font-semibold">Intro</h3> #}
         {% call markdown({transform: true}, {class:"w-full max-w-[var(--container-sm)]"}) %}
@@ -135,7 +142,6 @@ Some components have other arguments too.
 
 
 
-
 {% call componentDocumentation({
     title: "copyToClipboard",
     meta: copyToClipboardMeta
@@ -146,6 +152,93 @@ Some components have other arguments too.
     }) %}
         {{ button({label: "Click to copy 'hey!'", type: "button", size:"base"}, {@click: "copy"}) }}
     {% endcall %}
+{% endcall %}
+{% call componentDocumentation({
+    title: "fieldset",
+    meta: fieldsetMeta
+}) %}
+    {{ fieldset({
+        type: "radio",
+        name: "radio",
+        label: "Radio",
+        options: ["option 1", "option 2", "option 3"]
+    },{class:"w-full"},{
+        required: true
+    }) }}
+    {{ fieldset({
+        type: "checkbox",
+        name: "checkbox",
+        label: "Checkbox",
+        options: ["option 1", "option 2", "option 3"]
+    },{class:"w-full"},{
+        required: true
+    }) }}
+{% endcall %}
+
+
+{% call componentDocumentation({
+    title: "input",
+    meta: inputMeta
+}) %}
+    {{ input({
+        name: "text",
+        label: "Text",
+        description: "Optional description"
+    },{class:"w-full"},{
+        type: "text",
+        placeholder: "Placeholder",
+        required: true
+    }) }}
+    {{ input({
+        name: "number",
+        label: "Number"
+    },{class:"w-full"},{
+        type: "number"
+    }) }}
+    {{ input({
+        name: "email",
+        label: "Email"
+    },{class:"w-full"},{
+        type: "email"
+    }) }}
+{% endcall %}
+
+
+{% call componentDocumentation({
+    title: "select",
+    meta: selectMeta
+}) %}
+    {{ select(
+        {
+        "name": "select",
+        "label": "Select",
+        "options": [
+            'Option 1',
+            'Option 2',
+            'Option 3'
+        ],
+        "description": "This area describes the field above!"
+        },{class:"w-full"}, {
+            "required": true
+        })
+    }}
+{% endcall %}
+
+{% call componentDocumentation({
+    title: "textarea",
+    meta: textareaMeta
+}) %}
+    {{ textarea(
+        {
+            name: "textarea",
+            label: "Textarea",
+            description: "Optional description"
+        }, {class:"w-full"}, {
+            rows: "5",
+            required: true,
+            placeholder: "Type something here..."
+        }
+    ) }}
 {% endcall %}
 
 {% call componentDocumentation({
