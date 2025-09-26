@@ -28,9 +28,9 @@
         props={position:["top", "left"]},
         triggerProps={label: "Development", type: "button", size:"sm"},
         dropdownItems=[
-            { macro: button, props:{label:"Components", href:"/components", type:"link", size:"base"}, attrs:{} },
-            { macro: button, props:{label:"Markdown", href:"/markdown-test", type:"link", size:"base"}, attrs:{} },
-            { macro: button, props:{label:"Testing", href:"/testing", type:"link", size:"base"}, attrs:{} }
+            { macro: button, props:{label:"Components", type:"link", size:"base"}, attrs:{href:"/components"} },
+            { macro: button, props:{label:"Markdown", type:"link", size:"base"}, attrs:{href:"/markdown-test"} },
+            { macro: button, props:{label:"Testing", type:"link", size:"base"}, attrs:{href:"/testing"} }
         ]
     )}}
     {{ button({icon:"×", type:"button", size:"sm"}, {@click:"show = false", title:"Close visualizer"}) }}

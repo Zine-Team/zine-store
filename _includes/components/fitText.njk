@@ -1,17 +1,8 @@
----
-title: Testing
----
-{% from "components/button.njk" import button %}
-{% from "components/siteNav.njk" import siteNav with context %}
-{% from "components/container.njk" import container %}
-{% from "components/carousel.njk" import carousel %}
-
-
-{% call container({},{class:"py-dialog-block"}) %}
-    <span class="text-fit">
-        <span><span>{{ title }}</span></span>
-        <span aria-hidden="true">{{ title }}</span>
-    </span>
+{% macro fitText(props={}) %}
+<{{ props.tag }} class="text-fit">
+        <span><span>{{ props.content }}</span></span>
+        <span aria-hidden="true">{{ props.content }}</span>
+    </{{ props.tag }}>
 
     <style>
         .text-fit {
@@ -80,4 +71,4 @@ title: Testing
         inherits: true;
         }
     </style>
-{% endcall %}
+{% endmacro %}

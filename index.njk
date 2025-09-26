@@ -10,8 +10,8 @@ layout: base
 
 {% call siteNav({
     links: [
-     { macro: button, props:{ label: "Most recent zines", href:"#recentZines", size:"lg", type:"link"}, attrs:{class:"max-lg:hidden"} },
-     { macro: button, props:{ label:"All zines", href:"#allZines", size:"lg", type:"link"}, attrs:{class:"max-lg:hidden"} }
+     { macro: button, props:{ label: "Most recent zines", size:"lg", type:"link"}, attrs:{href:"#recentZines", class:"max-lg:hidden"} },
+     { macro: button, props:{ label:"All zines", size:"lg", type:"link"}, attrs:{href:"#allZines", class:"max-lg:hidden"} }
     ]
 }) %}
     {% include "components/submissionDialog.njk" %}
@@ -67,11 +67,11 @@ layout: base
                         <div data-zine-shading class="max-xs:hidden relative shadow-zine">
                             <img class="w-full shadow-page border border-dark-grey" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}">
                         </div>
-                        {% call button({type:"link", href:zine.url, size:"sm"},{class: "text-left scale-none! max-xs:hidden"}) %}
+                        {% call button({type:"link", size:"sm"},{href:zine.url, class: "text-left scale-none! max-xs:hidden"}) %}
                             <span class="absolute inset-0"></span>
                             <span>{{ zine.data.title }}</span>
                         {% endcall %}
-                        {{ button({label:zine.data.title, type:"link", href:zine.url}, {class: "text-left xs:hidden"}) }}
+                        {{ button({label:zine.data.title, type:"link"}, {href:zine.url, class: "text-left xs:hidden"}) }}
                     </li>
                 {% endfor %}
             </ul>

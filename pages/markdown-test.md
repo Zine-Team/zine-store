@@ -1,9 +1,7 @@
 ---
-title: Markdown test
+title: Markdown
 layout: layouts/markdown.njk
 ---
-
-## GitHub Markdown
 
 GitHub uses its own Markdown processor, which is a variant of the CommonMark specification. This means that while it supports most of the standard Markdown syntax, there are some GitHub-specific extensions and features.
 You can use Markdown syntax, along with some additional HTML tags, to format your writing on GitHub, in places like

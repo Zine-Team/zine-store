@@ -26,7 +26,7 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 
-<{% if props.href %}a href="{{- props.href -}}"{% else %}button{% endif %}
+<{% if attrs.href %}a{% else %}button{% endif %}
     class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer {{ attrs.class }} {% if attrs.disabled %}pointer-events-none{% endif %}
     {{ types[props.type].styles }} {{ types[props.type].sizes[props.size] }}"
     {# {{ typeClasses[props.type] }} {{ sizeClasses[props.size] }}" #}
@@ -34,7 +34,7 @@
     {% include "snippets/loopAttrs.njk" %}
 >
     {% if props.icon or props.label %}
-        <span class="flex justify-center gap-2 items-center">
+        <span class="flex items-center justify-center gap-2">
             {% if props.icon %}
                 <span class="text-icon">{{ props.icon }}</span>
             {% endif %}
@@ -45,10 +45,12 @@
     {% endif %}
 
     {%- if not props.label and not props.icon -%}
-        {{ caller() | safe }}
+        {% if caller %}
+            {{ caller() | safe }}
+        {% endif %}
     {%- endif -%}
 
-</{% if props.href %}a{% else %}button{% endif %}>
+</{% if attrs.href %}a{% else %}button{% endif %}>
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -60,7 +62,6 @@
     args: '{{ button(
     props={
         label: "",
-        href: "",
         type: "button | link",
         size: "base | lg | sm | inherit",
         icon: ""

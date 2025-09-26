@@ -1,5 +1,5 @@
 ---
-title: Components
+title: Documentation
 ---
 {% from "components/_componentDocumentation.njk" import componentDocumentation %}
 {% from "components/container.njk" import container %}
@@ -25,45 +25,43 @@ title: Components
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-<main class="flex w-full relative flex-col py-section">
-    {% call container({},{class:"border-b border-dark-grey border-dotted pb-section-title"}) %}<h1 class="text-2xl wrap-anywhere">{{ title }}</h1>{% endcall %}
 
-    {% call container({type:"sidebar", size:"base"},{
-        "x-data":"{}",
-        "@select-all-components.window":"document.getElementById($event.detail).scrollIntoView()",
-        "class":"@container"
-    }) %}
+{% call container({type:"sidebar", size:"base"},{
+    "x-data":"{}",
+    "@select-all-components.window":"document.getElementById($event.detail).scrollIntoView()",
+    "class":"@container"
+}) %}
 
-        <aside class="hidden lg:flex sticky max-h-dvh overflow-y-auto h-fit top-0 py-dialog-block flex-col items-start gap-section-title">
-            <section class="flex flex-col items-start gap-item-sm">
-                <h2 class="font-semibold">Guide</h2>
-                <ul class="grid gap-item-sm list-disc items-start ml-indent">
-                    <li class="w-min">{{ button({label:"Intro", href:"#intro", type: "link"}) }}</li>
-                </ul>
-            </section>
-            <section class="flex flex-col items-start gap-item-sm">
-                <h2 class="font-semibold">All components</h2>
-                <ul class="grid gap-item-sm list-disc items-start ml-indent">
-                {% for component in components | sort() %}
-                    <li class="w-min">{{ button({label:component, href:"#"+ component, type: "link"}) }}</li>
-                {% endfor %}
-                </ul>
-            </section>
-        </aside>
+    <aside class="hidden lg:flex sticky max-h-dvh overflow-y-auto h-fit top-0 py-dialog-block flex-col items-start gap-section-title">
+        <section class="flex flex-col items-start gap-item-sm">
+            <h2 class="font-semibold">Guide</h2>
+            <ul class="grid gap-item-sm list-disc items-start ml-indent">
+                <li class="w-min">{{ button({label:"Intro", type: "link"},{href:"#intro"}) }}</li>
+            </ul>
+        </section>
+        <section class="flex flex-col items-start gap-item-sm">
+            <h2 class="font-semibold">All components</h2>
+            <ul class="grid gap-item-sm list-disc items-start ml-indent">
+            {% for component in components | sort() %}
+                <li class="w-min">{{ button({label:component, type: "link"},{href:"#"+ component}) }}</li>
+            {% endfor %}
+            </ul>
+        </section>
+    </aside>
 
-        {{ select(
-            props={
-            "name": "all-components",
-            "options": components | sort()},
-            attrs={
-                "class": "lg:hidden py-nav border-b border-dotted border-dark-grey sticky top-0 z-40 bg-gainsboro"
-            },
-            fieldAttrs={
-                placeholder: "Scroll to a component..."
-            })
-        }}
+    {{ select(
+        props={
+        "name": "all-components",
+        "options": components | sort()},
+        attrs={
+            "class": "lg:hidden py-nav border-b border-dotted border-dark-grey sticky top-0 z-40 bg-gainsboro"
+        },
+        fieldAttrs={
+            placeholder: "Scroll to a component..."
+        })
+    }}
 
-        <div class="justify-items-center lg:pl-site lg:border-l border-dotted border-dark-grey">
+    <div class="justify-items-center lg:pl-site lg:border-l border-dotted border-dark-grey">
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -159,7 +157,6 @@ Some components have other arguments too.
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-        </div>
+    </div>
 
-    {% endcall %}
-</div>
+{% endcall %}

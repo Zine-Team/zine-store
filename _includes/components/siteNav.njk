@@ -8,7 +8,7 @@
         {% call container({size: "base", cols: ""}) %}
             <div class="shrink-0 items-baseline justify-between py-nav flex">
                 <span class="flex items-center justify-self-start gap-16">
-                    {{ button(props={label:"Home", href:"/", size:"lg", type:"link"}) }}
+                    {{ button({label:"Home", size:"lg", type:"link"},{href:"/"}) }}
                     {% for item in props.links %}
                         {{ item.macro(item.props, item.attrs) }}
                     {% endfor %}
@@ -17,16 +17,6 @@
                     {% if caller %}
                         {{ caller() | safe }}
                     {% endif %}
-                    {# {% if environment.env == 'dev' %}
-                        {{ dropdown(
-                            triggerProps={label: "Development", type: "button", size:"base"},
-                            dropdownItems=[
-                                { macro: button, props:{label:"Components", href:"/components", type:"link"}, attrs:{} },
-                                { macro: button, props:{label:"Markdown", href:"/markdown-test", type:"link"}, attrs:{} },
-                                { macro: button, props:{label:"Testing", href:"/testing", type:"link"}, attrs:{} }
-                            ]
-                        )}}
-                    {% endif %} #}
                 </span>
             </div>
         {% endcall %}

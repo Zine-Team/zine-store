@@ -26,7 +26,7 @@ layout: base
                 props={position:["bottom", "right"]},
                 triggerProps={label: "Share", type: "button", size:"base"})
             %}
-                <li class="ml-[1.25ch]">{{ button({label:"Download PDF", href:pdfUrl, type:"link", size:"base"}, {download: null}) }}</li>
+                <li class="ml-[1.25ch]">{{ button({label:"Download PDF", type:"link", size:"base"}, {href:pdfUrl, download: null}) }}</li>
                 {% call copyToClipboard({
                     input: global.siteDomain + page.url ,
                     toastMessage: "URL copied to clipboard!"

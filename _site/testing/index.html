@@ -25,52 +25,71 @@
                 this.open = false
                 focusAfter && focusAfter.focus()
             },
-        }" x-id="['dropdown']" x-on:keydown.escape.prevent.stop="close($refs.button)" x-on:focusin.window="! $refs.panel.contains($event.target) && close()" class="relative max-w-fit"><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-black font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey shadow-2xs rounded text-sm py-2.5 px-3 sm:px-2.5" x-ref="button" @click="toggle()" :aria-expanded="open" :aria-controls="$id(&#39;dropdown&#39;)"><span class="flex justify-center gap-2 items-center"><span>Development</span></span></button><div x-ref="panel" x-show="open" x-on:click.outside="close($refs.button)" x-cloak :id="$id('dropdown')" class="absolute min-w-max bg-white-smoke border border-dark-grey px-5 py-3 shadow-zine z-10 outline-none bottom-full mb-2 left-0"><ul class="gap-item-sm list-disc flex flex-col items-start"><li class="ml-[1.25ch] *:inline-block"><a href="/components" class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1 text-base"><span class="flex justify-center gap-2 items-center"><span>Components</span></span></a></li><li class="ml-[1.25ch] *:inline-block"><a href="/markdown-test" class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1 text-base"><span class="flex justify-center gap-2 items-center"><span>Markdown</span></span></a></li><li class="ml-[1.25ch] *:inline-block"><a href="/testing" class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1 text-base"><span class="flex justify-center gap-2 items-center"><span>Testing</span></span></a></li></ul></div></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-black font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey shadow-2xs rounded text-sm py-2.5 px-3 sm:px-2.5" @click="show = false" title="Close visualizer"><span class="flex justify-center gap-2 items-center"><span class="text-icon">×</span></span></button></div><nav class="w-full border-dark-grey max-lg:border-b border-dotted"><div class="zine-store-container mx-auto grid max-w-[var(--container-base)]"><div class="shrink-0 items-baseline justify-between py-nav flex"><span class="flex items-center justify-self-start gap-16"><a href="/" class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1 text-base font-bold decoration-from-font"><span class="flex justify-center gap-2 items-center"><span>Home</span></span> </a></span><span class="flex items-center justify-self-end gap-3"></span></div></div></nav><main class="flex w-full flex-col gap-section-title py-section"><header class="gap-section-title grid"><div class="zine-store-container mx-auto grid max-w-[var(--container-base)]"><h1 class="text-xl">Testing</h1></div><div class="zine-store-container mx-auto grid max-w-[var(--container-base)]"><style>[data-carousel] {
-        anchor-name: --carousel;
+        }" x-id="['dropdown']" x-on:keydown.escape.prevent.stop="close($refs.button)" x-on:focusin.window="! $refs.panel.contains($event.target) && close()" class="relative max-w-fit"><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-black font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey shadow-2xs rounded text-sm py-2.5 px-3 sm:px-2.5" x-ref="button" @click="toggle()" :aria-expanded="open" :aria-controls="$id(&#39;dropdown&#39;)"><span class="flex items-center justify-center gap-2"><span>Development</span></span></button><div x-ref="panel" x-show="open" x-on:click.outside="close($refs.button)" x-cloak :id="$id('dropdown')" class="absolute min-w-max bg-white-smoke border border-dark-grey px-5 py-3 shadow-zine z-10 outline-none bottom-full mb-2 left-0"><ul class="gap-item-sm list-disc flex flex-col items-start"><li class="ml-[1.25ch] *:inline-block"><a class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1 text-base" href="/components"><span class="flex items-center justify-center gap-2"><span>Components</span></span></a></li><li class="ml-[1.25ch] *:inline-block"><a class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1 text-base" href="/markdown-test"><span class="flex items-center justify-center gap-2"><span>Markdown</span></span></a></li><li class="ml-[1.25ch] *:inline-block"><a class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1 text-base" href="/testing"><span class="flex items-center justify-center gap-2"><span>Testing</span></span></a></li></ul></div></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-black font-bold leading-none bg-white-smoke hover:bg-ghost-white border-1 border-dark-grey hover:border-grey shadow-2xs rounded text-sm py-2.5 px-3 sm:px-2.5" @click="show = false" title="Close visualizer"><span class="flex items-center justify-center gap-2"><span class="text-icon">×</span></span></button></div><nav class="w-full border-dark-grey max-lg:border-b border-dotted"><div class="zine-store-container mx-auto grid max-w-[var(--container-base)]"><div class="shrink-0 items-baseline justify-between py-nav flex"><span class="flex items-center justify-self-start gap-16"><a class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1 text-base font-bold decoration-from-font" href="/"><span class="flex items-center justify-center gap-2"><span>Home</span></span> </a></span><span class="flex items-center justify-self-end gap-3"></span></div></div></nav><main class="flex w-full relative flex-col py-section"><div class="zine-store-container mx-auto grid max-w-[var(--container-base)] border-b border-dark-grey border-dotted pb-section-title"><h1 class="text-2xl wrap-anywhere">Testing</h1></div><div class="zine-store-container mx-auto grid max-w-[var(--container-base)] py-dialog-block"><span class="text-fit"><span><span>Testing</span></span> <span aria-hidden="true">Testing</span></span><style>.text-fit {
+            display: flex;
+            container-type: inline-size;
 
-        > * {
-            scroll-snap-align: center;
-        }
+            --captured-length: initial;
+            --support-sentinel: var(--captured-length, 9999px);
+            --max-font-size: 10rem;
 
-        @media (prefers-reduced-motion: no-preference) {
-            scroll-behavior: smooth;
-        }
+            & > [aria-hidden] {
+                visibility: hidden;
+            }
 
-        &::scroll-button(*) {
-            position: fixed;
-            position-anchor: --carousel;
-            background: var(--color-white-smoke);
-            border: 1px solid var(--color-dark-grey);
-            box-shadow: var(--shadow-2xs);
-            border-radius: var(--radius);
-            min-height: var(--spacing-tube);
-            aspect-ratio: 1 / 1;
-            line-height: none;
-            font-weight: bold;
-            font-size: var(--text-icon);
-            font-family: var(--font-sans);
+            & > :not([aria-hidden]) {
+                flex-grow: 1;
+                container-type: inline-size;
 
-            &:hover {
-            background: var(--color-ghost-white);
+                --captured-length: 100cqi;
+                --available-space: var(--captured-length);
+
+                & > * {
+                --support-sentinel: inherit;
+                --captured-length: 100cqi;
+                --ratio: tan(atan2(
+                    var(--available-space),
+                    var(--available-space) - var(--captured-length)
+                ));
+                --font-size: clamp(
+                    1em,
+                    1em * var(--ratio),
+                    var(--max-font-size, infinity * 1px)
+                    -
+                    var(--support-sentinel)
+                );
+                inline-size: var(--available-space);
+
+                &:not(.text-fit) {
+                    display: block;
+                    font-size: var(--font-size);
+
+                    @container (inline-size > 0) {
+                    white-space: nowrap;
+                    }
+                }
+
+                &.text-fit {
+                    --captured-length2: var(--font-size);
+                    font-variation-settings:
+                    'opsz'
+                    tan(atan2(var(--captured-length2), 1px));
+                }
+                }
             }
         }
 
-        &::scroll-button(*):disabled {
-            opacity: 0;
+        @property --captured-length {
+        syntax: "<length>";
+        initial-value: 0px;
+        inherits: true;
         }
 
-        &::scroll-button(right) {
-            position-area: center span-inline-start;
-            content: "→";
-            margin-inline-end: calc(-0.5 * var(--spacing-site));
-        }
-
-        &::scroll-button(left) {
-            position-area: span-inline-end center;
-            content: "←";
-            margin-inline-start: calc(-0.5 * var(--spacing-site));
-        }
-    }</style><div data-carousel class="@container grid overflow-x-auto overflow-y-hidden overscroll-x-contain grid-flow-col snap-x snap-mandatory"><a data-zine-shading class="relative shadow-zine w-[100cqi]" href="/zine/heat-pumps/"><img class="w-full h-40 shadow-page border border-dark-grey" src="/images/uploads/heat-pumps/page_FC.jpg" alt="Heat Pumps"></a><a data-zine-shading class="relative shadow-zine w-[100cqi]" href="/zine/bombas-de-calor/"><img class="w-full h-40 shadow-page border border-dark-grey" src="/images/uploads/bombas-de-calor/page_FC.jpg" alt="Bombas de Calor"></a><a data-zine-shading class="relative shadow-zine w-[100cqi]" href="/zine/whiteness-rejecting-guilt-embracing-responsibility/"><img class="w-full h-40 shadow-page border border-dark-grey" src="/images/uploads/whiteness-rejecting-guilt-embracing-responsibility/page_FC.jpg" alt="Whiteness: Rejecting Guilt Embracing Responsibility"></a><a data-zine-shading class="relative shadow-zine w-[100cqi]" href="/zine/give-peace-a-chance/"><img class="w-full h-40 shadow-page border border-dark-grey" src="/images/uploads/give-peace-a-chance/page_FC.jpg" alt="Give Peace a Chance"></a><a data-zine-shading class="relative shadow-zine w-[100cqi]" href="/zine/heat-pumps/"><img class="w-full h-40 shadow-page border border-dark-grey" src="/images/uploads/heat-pumps/page_FC.jpg" alt="Heat Pumps"></a><a data-zine-shading class="relative shadow-zine w-[100cqi]" href="/zine/bombas-de-calor/"><img class="w-full h-40 shadow-page border border-dark-grey" src="/images/uploads/bombas-de-calor/page_FC.jpg" alt="Bombas de Calor"></a><a data-zine-shading class="relative shadow-zine w-[100cqi]" href="/zine/whiteness-rejecting-guilt-embracing-responsibility/"><img class="w-full h-40 shadow-page border border-dark-grey" src="/images/uploads/whiteness-rejecting-guilt-embracing-responsibility/page_FC.jpg" alt="Whiteness: Rejecting Guilt Embracing Responsibility"></a><a data-zine-shading class="relative shadow-zine w-[100cqi]" href="/zine/give-peace-a-chance/"><img class="w-full h-40 shadow-page border border-dark-grey" src="/images/uploads/give-peace-a-chance/page_FC.jpg" alt="Give Peace a Chance"></a></div></div></header><div x-data="{
+        @property --captured-length2 {
+        syntax: "<length>";
+        initial-value: 0px;
+        inherits: true;
+        }</style></div></main><div x-data="{
         toasts: [],
         add(e) {
             if ( e.detail.toasterId === 'toaster') {
@@ -93,4 +112,4 @@
                     this.show = false
                     setTimeout(() => this.remove(this.toast), 300)
                 }
-            }" x-show="show" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:leave-end="opacity-0 -translate-y-2" class="flex items-center pointer-events-auto text-center duration-200 delay-100 transition gap-item-gap bg-black border-grey border shadow-zine rounded text-white-smoke px-5 py-3 text-base"><span x-text="toast.content"></span></div></template></div><script defer="defer" src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script></main></body></html>
+            }" x-show="show" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:leave-end="opacity-0 -translate-y-2" class="flex items-center pointer-events-auto text-center duration-200 delay-100 transition gap-item-gap bg-black border-grey border shadow-zine rounded text-white-smoke px-5 py-3 text-base"><span x-text="toast.content"></span></div></template></div><script defer="defer" src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script></body></html>

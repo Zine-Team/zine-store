@@ -12,16 +12,13 @@ layout: page
     }
 {% endset %}
 
-<main class="py-section">
-    {% call container({size:"sm"},{class:"flex flex-col gap-site"}) %}
-        <header><h1 class="text-xl">{{ title }}</h1></header>
-        {{ markdown({
-            content: content,
-            fontSize: "text-base",
-            primaryColor: "color-black",
-            linkColor: "color-link",
-            radius: "radius",
-            customStyles: custom
-        }) }}
-    {% endcall %}
-</main>
+{% call container({size:"sm"},{class:"py-dialog-block"}) %}
+    {{ markdown({
+        content: content,
+        fontSize: "text-base",
+        primaryColor: "color-black",
+        linkColor: "color-link",
+        radius: "radius",
+        customStyles: custom
+    }) }}
+{% endcall %}
