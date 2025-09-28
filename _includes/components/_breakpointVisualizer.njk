@@ -12,7 +12,8 @@
     }"
     x-init="getWidth"
     x-show="show"
-    class="fixed rounded-tr bottom-0 left-0 flex items-center gap-1 z-50 text-sm py-1 pl-2 pr-1 bg-gainsboro/25 backdrop-blur-sm border-dark-grey border-t border-r">
+    x-transition:leave-end= "-translate-x-full"
+    class="fixed left-0 z-50 flex items-center gap-1 py-1 pl-2 pr-1 text-sm transition duration-500 border-t border-b border-r rounded shadow-zine bottom-1 bg-gainsboro/25 backdrop-blur-sm border-dark-grey">
     <span class="flex w-full mr-1">
         <span class="xs:hidden">XS-</span>
         <span class="hidden xs:max-sm:block">XS-SM</span>

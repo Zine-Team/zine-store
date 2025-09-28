@@ -4,19 +4,7 @@ title: Testing
 {% from "components/button.njk" import button %}
 {% from "components/siteNav.njk" import siteNav with context %}
 {% from "components/container.njk" import container %}
-{% from "components/carousel.njk" import carousel %}
-{% from "components/fieldset.njk" import fieldset %}
-
 
 {% call container({},{class:"py-dialog-block @container"}) %}
-    {{ fieldset({
-        type: "checkbox",
-        name: "radio",
-        label: "Radio",
-        options: ["option 1", "option 2"],
-        description: "This is a description"
-    },{},{
-        required: true
-    }) }}
 
 {% endcall %}
