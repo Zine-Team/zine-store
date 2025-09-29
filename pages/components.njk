@@ -14,6 +14,8 @@ title: Documentation
 {% from "components/select.njk" import select, selectMeta %}
 {% from "components/textarea.njk" import textarea, textareaMeta %}
 {% from "components/markdown.njk" import markdown %}
+{% from "components/marquee.njk" import marquee, marqueeMeta %}
+{% from "components/dropdown.njk" import dropdown, dropdownMeta %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -27,7 +29,9 @@ title: Documentation
     "input",
     "select",
     "textarea",
-    "fieldset"
+    "fieldset",
+    "marquee",
+    "dropdown"
 ] %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -141,6 +145,24 @@ Some components have other arguments too.
 {% endcall %}
 
 
+{% call componentDocumentation({
+    title: "dropdown",
+    meta: dropdownMeta
+}) %}
+    {{ dropdown(
+        props={
+            position:["top", "left"],
+            dropdownItems:[
+                { macro: button, props:{label:"Some", type:"link", size:"base"} },
+                { macro: button, props:{label:"Buttons", type:"link", size:"base"} },
+                { macro: button, props:{label:"Inside", type:"link", size:"base"} }
+            ]
+        },
+        triggerProps={label: "Dropdown", type: "button", size:"base"}
+    )}}
+{% endcall %}
+
+
 
 {% call componentDocumentation({
     title: "copyToClipboard",
@@ -203,6 +225,14 @@ Some components have other arguments too.
     }) }}
 {% endcall %}
 
+{% call componentDocumentation({
+    title: "marquee",
+    meta: marqueeMeta
+}) %}
+    {% call marquee({speed: "10", pauseOnHover: true}, {class:"w-full"}) %}
+        <div class="text-lg">This is a repeating message!</div>
+    {% endcall %}
+{% endcall %}
 
 {% call componentDocumentation({
     title: "select",

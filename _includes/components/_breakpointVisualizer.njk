@@ -26,13 +26,15 @@
         <span>px</span>
     </span>
     {{ dropdown(
-        props={position:["top", "left"]},
-        triggerProps={label: "Development", type: "button", size:"sm"},
-        dropdownItems=[
-            { macro: button, props:{label:"Components", type:"link", size:"base"}, attrs:{href:"/components"} },
-            { macro: button, props:{label:"Markdown", type:"link", size:"base"}, attrs:{href:"/markdown-test"} },
-            { macro: button, props:{label:"Testing", type:"link", size:"base"}, attrs:{href:"/testing"} }
-        ]
+        props={
+            position:["top", "left"],
+            dropdownItems:[
+                { macro: button, props:{label:"Components", type:"link", size:"base"}, attrs:{href:"/components"} },
+                { macro: button, props:{label:"Markdown", type:"link", size:"base"}, attrs:{href:"/markdown-test"} },
+                { macro: button, props:{label:"Testing", type:"link", size:"base"}, attrs:{href:"/testing"} }
+            ]
+        },
+        triggerProps={label: "Development", type: "button", size:"sm"}
     )}}
     {{ button({icon:"×", type:"button", size:"sm"}, {@click:"show = false", title:"Close visualizer"}) }}
 </div>

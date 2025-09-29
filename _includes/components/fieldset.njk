@@ -38,14 +38,14 @@ description: "
     name="{{ props.name }}"
     class="{{ attrs.class }}"
     {% include "snippets/loopAttrs.njk" %}>
-    <div class="{{ directionClasses["column"] }}">
+    <div class="{{ directionClasses["column"] }} @container">
 
         {% if props.label %}{{ fieldLabel(props={tag: "legend"}, fieldProps=props, fieldAttrs=fieldAttrs) }}{% endif %}
 
         <div class="{{ directionClasses["column"] }}">
             {% set comma = joiner() %}
             <template x-for="option in [{% for option in props.options %}{{ comma() }} '{{ option }}'{% endfor%}]">
-                <div x-id="[option]" class="{{ directionClasses["row"] }}">
+                <div x-id="[option]" class="flex items-center gap-2">
                     <input x-on:change="$dispatch('fieldset-{{ props.name }}', selected)" x-model="selected" class="accent-current w-[1.1em] h-[1.1em]" type="{{ props.type }}" :id="$id(option)" name="{{ props.name }}" :value="option"/>
                     <label :for="$id(option)" x-text="option"></label>
                 </div>

@@ -51,7 +51,6 @@ description: "
         <template x-for="option in [{% for option in props.options %}{{ comma() }} '{{ option }}'{% endfor%}]">
             <option x-text="option"></option>
         </template>
-
     </select>
 
     {% if props.description %}{{ fieldDescription(props) }}{% endif %}

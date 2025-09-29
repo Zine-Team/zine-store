@@ -4,7 +4,11 @@ title: Testing
 {% from "components/button.njk" import button %}
 {% from "components/siteNav.njk" import siteNav with context %}
 {% from "components/container.njk" import container %}
+{% from "components/marquee.njk" import marquee %}
+{% from "components/dropdown.njk" import dropdown %}
 
 {% call container({},{class:"py-dialog-block @container"}) %}
-
+    {% call marquee({speed: "25"}) %}
+        <div class="text-lg">This is a repeating message!</div>
+    {% endcall %}
 {% endcall %}

@@ -1,4 +1,4 @@
-@theme {
+@theme inline {
   --breakpoint-xs: 28rem; /* 448px */
   --breakpoint-sm: 36rem; /* 640px */
   --breakpoint-md: 44rem; /* 704px */
@@ -61,4 +61,18 @@
 
   --radius-*: initial;
   --radius: 3px;
+  --animate-marquee: marquee var(--animate-duration, 1s) infinite linear;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+@utility animate-duration-* {
+  --animate-duration: calc(--value(integer) * 1s);
 }

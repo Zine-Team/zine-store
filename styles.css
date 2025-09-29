@@ -81,8 +81,6 @@
 
   .zine-store-container {
     width: calc(100% - 2 * var(--spacing-site));
-    /* padding-inline-start: var(--spacing-site);
-    padding-inline-end: var(--spacing-site); */
   }
 
   [data-button-card]::before {

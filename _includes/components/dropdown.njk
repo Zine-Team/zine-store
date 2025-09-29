@@ -1,14 +1,36 @@
-{#
-    Dropdown
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
 
-    @param triggerProps = {} // props for the button component that triggers the dropdown
-    @param dropdownItems = [] // array of macros (objects) that should be rendered inside the dropdown panel
-#}
+{% set dropdownMeta = {
+    args: '{{ dropdown(
+    props={
+        position: ["top", "bottom", "left", "right"],
+        dropdownItems:[
+            { macro:"", props:{}, attrs:{} }
+        ]
+    },
+    attrs={},
+    triggerProps={}
+) }}',
+description: "
+- Defaults to displaying buttons in a list
+- Can use `{% caller() %} instead for more complex inner components
+- `position` is an array where you can set the relative positions to the trigger element.
+"
+} %}
 
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/button.njk" import button %}
 
-{% macro dropdown(props={}, triggerProps = {}, dropdownItems = []) %}
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro dropdown(props={}, attrs={}, triggerProps={}) %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set panelStyleClasses = "bg-white-smoke border border-dark-grey px-5 py-3 shadow-zine" %}
+
+{% set listStyleClasses = "list-disc gap-item-sm *:ml-[1.25ch]" %}
 
 {% set position %}
     {% if props.position.includes("top") %}
@@ -25,52 +47,58 @@
     {% endif %}
 {% endset %}
 
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<div
+    x-data="{
+        open: false,
+        toggle() {
+            if (this.open) {
+                return this.close()
+            }
+            this.$refs.button.focus()
+            this.open = true
+        },
+        close(focusAfter) {
+            if (! this.open) return
+            this.open = false
+            focusAfter && focusAfter.focus()
+        },
+    }"
+    x-id="['dropdown']"
+    x-on:keydown.escape.prevent.stop="close($refs.button)"
+    x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+    {% include "snippets/loopAttrs.njk" %}
+    class="relative max-w-fit {{ props.class }}"
+>
+    {{ button(
+        props=triggerProps,
+        attrs={
+            "x-ref": "button",
+            "@click": "toggle()",
+            ":aria-expanded": "open",
+            ":aria-controls":"$id('dropdown')"
+        })
+    }}
     <div
-        x-data="{
-            open: false,
-            toggle() {
-                if (this.open) {
-                    return this.close()
-                }
-                this.$refs.button.focus()
-                this.open = true
-            },
-            close(focusAfter) {
-                if (! this.open) return
-                this.open = false
-                focusAfter && focusAfter.focus()
-            },
-        }"
-        x-id="['dropdown']"
-        x-on:keydown.escape.prevent.stop="close($refs.button)"
-        x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
-        class="relative max-w-fit"
-    >
-        {{ button(
-            props=triggerProps,
-            attrs={
-                "x-ref": "button",
-                "@click": "toggle()",
-                ":aria-expanded": "open",
-                ":aria-controls":"$id('dropdown')"
-            })
-        }}
-        <div
-            x-ref="panel"
-            x-show="open"
-            x-on:click.outside="close($refs.button)"
-            x-cloak
-            :id="$id('dropdown')"
-            class="absolute min-w-max bg-white-smoke border border-dark-grey px-5 py-3 shadow-zine z-10 outline-none {{ position }}">
-            <ul class="gap-item-sm list-disc flex flex-col items-start">
-                {% if caller %}
-                    {{ caller() | safe }}
-                {% else %}
-                    {% for item in dropdownItems %}
-                        <li class="ml-[1.25ch] *:inline-block">{{ item.macro(item.props, item.attrs) }}</li>
-                    {% endfor %}
-                {% endif %}
-            </ul>
-        </div>
+        x-ref="panel"
+        x-show="open"
+        x-on:click.outside="close($refs.button)"
+        x-cloak
+        :id="$id('dropdown')"
+        class="absolute min-w-max z-20 outline-none {{ panelStyleClasses }} {{ position }}">
+        <ul class="flex flex-col items-start {{ listStyleClasses }}">
+            {% if caller %}
+                {{ caller() | safe }}
+            {% else %}
+                {% for item in props.dropdownItems %}
+                    <li class="*:inline-block">{{ item.macro(item.props, item.attrs) }}</li>
+                {% endfor %}
+            {% endif %}
+        </ul>
     </div>
+</div>
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
 {% endmacro %}

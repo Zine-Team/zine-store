@@ -1,5 +1,5 @@
-{% macro fitText(props={}) %}
-<{{ props.tag }} class="text-fit">
+{% macro fitText(props={}, attrs={}) %}
+<{{ props.tag }} class="text-fit {{ attrs.class }}" {% include "snippets/loopAttrs.njk" %}>
         <span><span>{{ props.content }}</span></span>
         <span aria-hidden="true">{{ props.content }}</span>
     </{{ props.tag }}>

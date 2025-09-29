@@ -5,13 +5,12 @@ layout: base
 {% from "components/siteNav.njk" import siteNav with context %}
 {% from "components/button.njk" import button %}
 {% from "components/container.njk" import container %}
-{% from "components/fitText.njk" import fitText %}
 
 {% call siteNav({}) %}{% endcall %}
-<main class="flex w-full relative flex-col py-section">
-    {% call container({},{class:"border-b border-dark-grey border-dotted pb-section-title"}) %}
-        <h1 class="text-2xl wrap-anywhere">{{ title }}</h1>
-        {# {{ fitText({content:title, tag:"h1"}) }} #}
-    {% endcall %}
+<main class="relative flex flex-col w-full py-section">
+    {% call container({},{class:"border-b border-dark-grey border-dotted pb-section-title"}) %}<h1 class="text-2xl wrap-anywhere">{{ title }}</h1>{% endcall %}
+    {# {% call container({},{class:"border-b border-dark-grey border-dotted pb-section-title"}) %}
+        {{ fitText({content:title, tag:"h1"}) }}
+    {% endcall %} #}
     {{ content | safe }}
 </main>
