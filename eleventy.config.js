@@ -1,6 +1,7 @@
 import format from "date-fns/format";
 import htmlmin from "html-minifier";
 import markdownIt from "markdown-it";
+import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 const md = markdownIt();
 
 export default async function (eleventyConfig) {
@@ -9,6 +10,8 @@ export default async function (eleventyConfig) {
   eleventyConfig.addLayoutAlias("zine", "layouts/zine.njk");
   eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
   eleventyConfig.addPassthroughCopy("images");
+
+  eleventyConfig.addPlugin(eleventyImageTransformPlugin);
 
   eleventyConfig.addFilter("slice", (array, number) => {
     return array.slice(0, number);

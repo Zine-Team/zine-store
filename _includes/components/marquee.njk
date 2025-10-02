@@ -24,9 +24,19 @@ description: "
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set value %}
+<style>
+    @property --100cqi {
+        syntax: "<length>";
+        initial-value: 0px;
+        inherits: true;
+    }
 
-{% endset %}
+    [data-marquee] > * {
+        --100cqi: 100cqi;
+        --px-width: tan(atan2(var(--100cqi), 1px));
+        --marquee-duration: calc(var(--px-width) / 1500 * {{ props.speed }})
+    }
+</style>
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -40,18 +50,18 @@ description: "
             });
         }
     }"
-    class="relative overflow-hidden {{ attrs.class }}"
+    class="relative @container overflow-hidden {{ attrs.class }}"
     {% include "snippets/loopAttrs.njk" %}
 >
-  <!-- Marquee overlay gradients -->
   <div aria-hidden="true" class="absolute inset-y-0 z-10 w-[5%] start-0 bg-linear-to-r from-gainsboro to-transparent"></div>
   <div aria-hidden="true" class="absolute inset-y-0 z-10 w-[5%] end-0 bg-linear-to-l from-gainsboro to-transparent"></div>
   <div
     x-ref="marqueeTrack"
-    class="relative flex w-full animate-marquee animate-duration-{{ props.speed }}"
+    style="--animate-duration: var(--marquee-duration)"
+    class="relative flex w-full animate-marquee"
     {% if props.pauseOnHover %}x-bind:class="{ 'hover:[animation-play-state:paused]': pauseOnHover }"{% endif %}
   >
-    <div x-ref="marqueeList" class="flex items-center justify-around w-full shrink-0 flex-nowrap">
+    <div x-ref="marqueeList" class="flex items-center justify-around min-w-full shrink-0 flex-nowrap">
         {{ caller() | safe }}
     </div>
   </div>

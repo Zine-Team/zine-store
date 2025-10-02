@@ -8,7 +8,7 @@ title: Testing
 {% from "components/dropdown.njk" import dropdown %}
 
 {% call container({},{class:"py-dialog-block @container"}) %}
-    {% call marquee({speed: "25"}) %}
+    {% call marquee({speed: "25s"}) %}
         <div class="text-lg">This is a repeating message!</div>
     {% endcall %}
 {% endcall %}
