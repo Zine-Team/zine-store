@@ -19,15 +19,6 @@
                     </div>
                 {% endif %}
                 <div class="flex flex-col gap-item-sm">
-                    <h4 class="text-base font-semibold">Arguments</h4>
-                        {% call copyToClipboard({copyRef: "copyMe", toastMessage: "Copied instance to clipboard!"}, {class:"relative"}) %}
-                            {% call markdown() %}
-                                <pre><code x-ref="copyMe" class="leading-relaxed">{{ props.meta.args }}</code></pre>
-                            {% endcall %}
-                            {{ button({size:"sm", label: "Copy", type: "button"},{@click:"copy", class:"absolute top-2 right-2"}) }}
-                        {% endcall %}
-                </div>
-                <div class="flex flex-col gap-item-sm">
                     <h4 class="text-base font-semibold">Import code</h4>
                     {% call copyToClipboard({copyRef: "copyMe", toastMessage: "Copied import code to clipboard!"}, {class:"relative"}) %}
                         {% call markdown() %}
@@ -36,6 +27,17 @@
                         {{ button({size:"sm", label: "Copy", type: "button"},{@click:"copy", class:"absolute top-1/2 -translate-y-1/2 right-2"}) }}
                     {% endcall %}
                 </div>
+
+                <div class="flex flex-col gap-item-sm">
+                    <h4 class="text-base font-semibold">Arguments</h4>
+                        {% call copyToClipboard({copyRef: "copyMe", toastMessage: "Copied instance to clipboard!"}, {class:"relative"}) %}
+                            {% call markdown() %}
+                                <pre><code x-ref="copyMe" class="leading-relaxed">{{ props.meta.args }}</code></pre>
+                            {% endcall %}
+                            {{ button({size:"sm", label: "Copy", type: "button"},{@click:"copy", class:"absolute top-2 right-2"}) }}
+                        {% endcall %}
+                </div>
+
                 {% if caller %}
                     {% set example %}
                         <div class="flex flex-col gap-item-sm">
@@ -44,9 +46,7 @@
                             </div>
                         </div>
                     {% endset %}
-                    {# {{ accordion({accordionItems:[
-                        {"isOpen": false, title: "Example", description: example}]
-                    }) }} #}
+
                     {{ example | safe }}
                 {% endif %}
             </div>

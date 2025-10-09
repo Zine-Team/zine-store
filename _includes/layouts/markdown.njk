@@ -15,10 +15,7 @@ layout: page
 {% call container({size:"sm"},{class:"py-dialog-block"}) %}
     {{ markdown({
         content: content,
-        fontSize: "text-base",
-        primaryColor: "color-black",
-        linkColor: "color-link",
-        radius: "radius",
+        overrides: {},
         customStyles: custom
     }) }}
 {% endcall %}

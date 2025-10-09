@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "./css/theme.css";
+@import "./theme.css";
 
 [x-cloak] {
   display: none !important;
@@ -15,8 +15,8 @@
 }
 
 @layer components {
-  @import "./css/zine.css";
-  @import "./css/markdown.css";
+  @import "./zine.css";
+  @import "./markdown.css";
 
   :root {
     --breakpoint-xs: 28rem; /* 448px */

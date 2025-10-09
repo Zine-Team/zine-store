@@ -1,12 +1,66 @@
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set markdownMeta = {
+    args: '{{ markdown(
+    props={
+        content: "",
+        transform: true | false,
+        overrides: {
+            fontSize: "",
+            primaryColor: "",
+            linkColor: "",
+            radius: "",
+            headingFont: "",
+            headingFontWeight: "",
+            scale: ""
+        },
+        customStyles: ""
+    },
+    attrs={}
+) }}',
+description: "
+- Use `props.content` to inject markdown from a data source. Use `{{ caller() }}` when you want to write the content directly inside the component.
+- `props.transform` can be turned off when the content will already be transformed by Eleventy, as is the case with .md file `content`.
+- `props.overrides` can set instance-specific overrides to the styles, such as using a smaller base font size or a different color.
+- `customStyles` takes in CSS to set instance-specific styles, such as making bolded text appear as a different color instead of bold.
+"
+} %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set themeDefaults = {
+    fontSize: "text-base",
+    textColor: "color-black",
+    linkColor: "color-link",
+    radius: "radius",
+    headingFont: "font-sans",
+    headingFontWeight: "500",
+    scale: "1.35"
+} %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
 {% macro markdown(props={}, attrs={}) %}
+
+    {% set mdFontSize %}--md-font-size: var(--{% if props.overrides.fontSize %}{{ props.overrides.fontSize }}{% else %}{{ themeDefaults.fontSize }}{% endif %});{% endset %}
+    {% set mdLineHeight %}--md-line-height: var(--{% if props.overrides.fontSize %}{{ props.overrides.fontSize }}{% else %}{{ themeDefaults.fontSize }}{% endif %}--line-height);{% endset %}
+    {% set mdTextColor %}--md-text-color: var(--{% if props.overrides.textColor %}{{ props.overrides.textColor }}{% else %}{{ themeDefaults.textColor }}{% endif %});{% endset %}
+    {% set mdLinkColor %}--md-link-color: var(--{% if props.overrides.linkColor %}{{ props.overrides.linkColor }}{% else %}{{ themeDefaults.linkColor }}{% endif %});{% endset %}
+    {% set mdRadius %}--md-radius: var(--{% if props.overrides.radius %}{{ props.overrides.radius }}{% else %}{{ themeDefaults.radius }}{% endif %});{% endset %}
+    {% set mdHeadingFont %}--md-heading-font: var(--{% if props.overrides.headingFont %}{{ props.overrides.headingFont }}{% else %}{{ themeDefaults.headingFont }}{% endif %});{% endset %}
+    {% set mdHeadingFontWeight %}--md-heading-font-weight: {% if props.overrides.headingFontWeight %}{{ props.overrides.headingFontWeight }}{% else %}{{ themeDefaults.headingFontWeight }}{% endif %};{% endset %}
+    {% set mdScale %}--md-scale: {% if props.overrides.scale %}{{ props.overrides.scale }}{% else %}{{ themeDefaults.scale }}{% endif %};{% endset %}
+
     <div
         {% include "snippets/loopAttrs.njk" %}
         style="
-            {% if props.fontSize %}--md-font-size: var(--{{ props.fontSize }});{% endif %}
-            {% if props.fontSize %}--md-line-height: var(--{{ props.fontSize }}--line-height);{% endif %}
-            {% if props.primaryColor %}--md-primary-text-color: var(--{{ props.primaryColor }});{% endif %}
-            {% if props.linkColor %}--md-link-color: var(--{{ props.linkColor }});{% endif %}
-            {% if props.radius %}--md-radius: var(--{{ props.radius }});{% endif %}
+            {{ mdFontSize }}
+            {{ mdTextColor }}
+            {{ mdLinkColor }}
+            {{ mdRadius }}
+            {{ mdHeadingFont }}
+            {{ mdHeadingFontWeight }}
+            {{ mdScale }}
         "
         class="markdown {{ attrs.class }}">
         {% if props.content %}
@@ -32,4 +86,7 @@
             }
         </style>
     {% endif %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
 {% endmacro %}

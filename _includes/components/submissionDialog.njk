@@ -21,7 +21,7 @@
     </main>
     <footer class="w-full flex gap-nav sticky bottom-0 bg-gainsboro justify-end py-nav px-nav border-dark-grey border-t border-dotted">
         {{ button(props={label:"Close", type: "button", size:"base"}, attrs={"@click": "$refs.dialog.close()"}) }}
-        {{ button(props={label:buttonText, type:"button", size:"base"},{href:mailtoHref}) }}
+        {{ button(props={label:buttonText, type:"button", size:"base"}, attrs={href:mailtoHref}) }}
     </footer>
     {{ toaster({id:"toaster-top-layer"}) }}
 {% endcall %}

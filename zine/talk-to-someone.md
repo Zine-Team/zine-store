@@ -1,5 +1,4 @@
 ---
-eleventyExcludeFromCollections: true # remove when publishing
 title: Talk to Someone About This Zine
 description:
 seoImage: #defaults to og-image.jpg, no need to update

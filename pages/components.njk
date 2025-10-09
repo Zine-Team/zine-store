@@ -13,7 +13,7 @@ title: Documentation
 {% from "components/input.njk" import input, inputMeta %}
 {% from "components/select.njk" import select, selectMeta %}
 {% from "components/textarea.njk" import textarea, textareaMeta %}
-{% from "components/markdown.njk" import markdown %}
+{% from "components/markdown.njk" import markdown, markdownMeta %}
 {% from "components/marquee.njk" import marquee, marqueeMeta %}
 {% from "components/dropdown.njk" import dropdown, dropdownMeta %}
 
@@ -31,7 +31,8 @@ title: Documentation
     "textarea",
     "fieldset",
     "marquee",
-    "dropdown"
+    "dropdown",
+    "markdown"
 ] %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -223,6 +224,26 @@ Some components have other arguments too.
     },{class:"w-full"},{
         type: "email"
     }) }}
+{% endcall %}
+
+{% call componentDocumentation({
+    title: "markdown",
+    meta: markdownMeta
+}) %}
+    {% call markdown({transform: true}) %}
+## Heading
+
+Body paragraph with a [link](#) and _italics_ and **bold**.
+
+```
+preformatted code
+```
+* an
+* unordered
+* list
+
+    {% endcall %}
+
 {% endcall %}
 
 {% call componentDocumentation({

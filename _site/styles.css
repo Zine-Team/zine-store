@@ -342,9 +342,6 @@
   .mb-auto {
     margin-bottom: auto;
   }
-  .ml-\[1\.25ch\] {
-    margin-left: 1.25ch;
-  }
   .ml-indent {
     margin-left: 1.5ch;
   }
@@ -646,9 +643,6 @@
   }
   .rounded {
     border-radius: 3px;
-  }
-  .rounded-tr {
-    border-top-right-radius: 3px;
   }
   .border {
     border-style: var(--tw-border-style);
@@ -1246,6 +1240,11 @@
       grid-column: auto;
     }
   }
+  .lg\:-ml-1\.5 {
+    @media (width >= 56rem) {
+      margin-left: calc(var(--spacing) * -1.5);
+    }
+  }
   .lg\:-ml-2 {
     @media (width >= 56rem) {
       margin-left: calc(var(--spacing) * -2);
@@ -1555,13 +1554,14 @@
     }
   }
   .markdown {
-    --md-font-size: var(--text-base);
-    --md-line-height: var(--text-base--line-height);
-    --md-primary-text-color: black;
-    --md-border-color: color-mix(in oklab, black, transparent 75%);
-    --md-background-color: color-mix(in oklab, black, transparent 95%);
-    --md-link-color: #0000ee;
-    --md-radius: 8px;
+    --md-border-color: var(--md-text-color);
+    @supports (color: color-mix(in lab, red, red)) {
+      --md-border-color: color-mix(in oklab, var(--md-text-color), transparent 75%);
+    }
+    --md-background-color: var(--md-text-color);
+    @supports (color: color-mix(in lab, red, red)) {
+      --md-background-color: color-mix(in oklab, var(--md-text-color), transparent 95%);
+    }
     --space-half: calc(var(--md-font-size) * 2 / 8);
     --space-1: calc(var(--md-font-size) * 4 / 8);
     --space-2: calc(var(--md-font-size) * 7 / 8);
@@ -1569,26 +1569,29 @@
     --space-4: calc(var(--md-font-size) * 14 / 8);
     --space-5: calc(var(--md-font-size) * 18 / 8);
     font-size: var(--md-font-size);
+    color: var(--md-text-color);
   }
   .markdown > :first-child {
     margin-block-start: 0;
   }
   .markdown > p {
     margin-block-start: var(--space-2);
-    color: var(--md-primary-text-color);
-    line-height: var(--text-base--line-height);
+    line-height: var(--md-line-height);
+    text-wrap: pretty;
   }
   .markdown h2, .markdown h3 {
-    font-weight: 600;
-    color: var(--md-primary-text-color);
+    color: var(--md-text-color);
+    font-family: var(--md-heading-font);
+    font-weight: var(--md-heading-font-weight);
+    text-wrap: balance;
   }
   .markdown h2 {
-    font-size: 1.35em;
+    font-size: calc(1em * var(--md-scale));
     margin-block-start: var(--space-5);
     line-height: 1.35;
   }
   .markdown h3 {
-    font-size: 1.095em;
+    font-size: calc(1em * ((var(--md-scale) - 1) / 3 + 1));
     margin-block-start: var(--space-4);
     line-height: 1.45;
   }
@@ -1676,7 +1679,7 @@
   }
   .markdown b, .markdown b *:not(a), .markdown strong, .markdown strong *:not(a) {
     font-weight: 600;
-    color: var(--md-primary-text-color);
+    color: var(--md-text-color);
   }
   .markdown em {
     font-style: italic;
