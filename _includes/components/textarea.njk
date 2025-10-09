@@ -43,6 +43,7 @@ description: "
         {% if fieldAttrs.value %}x-init="$dispatch('input-{{ props.name }}', '{{ fieldAttrs.value }}')"{% endif %}
         x-on:input="$dispatch('input-{{ props.name }}', value)"
         x-model="value"
+        name="{{ props.name }}"
         id="{{ props.name }}"
         {% include "snippets/loopFieldAttrs.njk" %}
         class="{{ fieldStyles }} {{ fieldAttrs.class }}">

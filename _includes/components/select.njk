@@ -42,6 +42,7 @@ description: "
         {% if not fieldAttrs.placeholder %}x-init="$dispatch('select-{{ props.name }}', value)"{% endif %}
         x-on:change="$dispatch('select-{{ props.name }}', value)"
         x-model="value"
+        name="{{ props.name }}"
         id="{{ props.name }}"
         {% include "snippets/loopFieldAttrs.njk" %}
         class="{{ fieldStyles }}">

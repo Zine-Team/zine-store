@@ -47,6 +47,7 @@ description: "
         x-on:input="$dispatch('input-{{ props.name }}', value)"
         x-model="value"
         id="{{ props.name }}"
+        name="{{ props.name }}"
         {% include "snippets/loopFieldAttrs.njk" %}
         class="{{ fieldStyles }} {{ fieldAttrs.class }}">
 
