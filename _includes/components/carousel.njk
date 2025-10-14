@@ -11,6 +11,10 @@ description: "
 "
 } %}
 
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% macro carousel(props={}, attrs={}) %}
@@ -56,13 +60,13 @@ description: "
         &::scroll-button(right) {
             position-area: center span-inline-start;
             content: "→";
-            margin-inline-end: calc(-0.5 * var(--spacing-site));
+            margin-inline-end: calc(-0.5 * var(--spacing-site-inline));
         }
 
         &::scroll-button(left) {
             position-area: span-inline-end center;
             content: "←";
-            margin-inline-start: calc(-0.5 * var(--spacing-site));
+            margin-inline-start: calc(-0.5 * var(--spacing-site-inline));
         }
     }
 </style>
@@ -70,7 +74,7 @@ description: "
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 <div
     data-carousel
-    {% include "snippets/loopAttrs.njk" %}
+    {{ loopAttrs(attrs) }}
     class="@container grid overflow-x-auto overflow-y-hidden overscroll-x-contain grid-flow-col snap-x snap-mandatory {{ attrs.class }}">
     {{ caller() | safe }}
 </div>

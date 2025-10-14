@@ -25,14 +25,15 @@
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --text-icon: var(--text-icon);
-    --container-sm: 48rem;
+    --container-narrow: 48rem;
     --container-base: 81.5rem;
+    --container-wide: 100vw;
     --color-black: Black;
     --color-dark-grey: DarkGray;
     --color-ghost-white: GhostWhite;
     --color-white-smoke: WhiteSmoke;
     --color-link: #0000ee;
-    --spacing-site: var(--space-site);
+    --spacing-site-inline: var(--space-site-inline);
     --spacing-tube: var(--space-tube);
     --spacing-indent: 1.5ch;
     --aspect-zine: 5.5 / 4.25;
@@ -255,8 +256,8 @@
   .right-2 {
     right: calc(var(--spacing) * 2);
   }
-  .right-site {
-    right: var(--space-site);
+  .right-site-inline {
+    right: var(--space-site-inline);
   }
   .bottom-0 {
     bottom: calc(var(--spacing) * 0);
@@ -270,8 +271,8 @@
   .left-0 {
     left: calc(var(--spacing) * 0);
   }
-  .left-site {
-    left: var(--space-site);
+  .left-site-inline {
+    left: var(--space-site-inline);
   }
   .z-10 {
     z-index: 10;
@@ -417,8 +418,17 @@
   .w-\[100vw\] {
     width: 100vw;
   }
-  .w-\[calc\(100\%-2\*var\(--spacing-site\)\)\] {
-    width: calc(100% - 2 * var(--spacing-site));
+  .w-\[calc\(100\%-2\*var\(--spacing-site-inline\)\)\] {
+    width: calc(100% - 2 * var(--spacing-site-inline));
+  }
+  .w-\[var\(--container-base\)\] {
+    width: var(--container-base);
+  }
+  .w-\[var\(--container-narrow\)\] {
+    width: var(--container-narrow);
+  }
+  .w-\[var\(--container-wide\)\] {
+    width: var(--container-wide);
   }
   .w-full {
     width: 100%;
@@ -435,6 +445,9 @@
   .max-w-\[312px\] {
     max-width: 312px;
   }
+  .max-w-\[calc\(100vw-2\*var\(--spacing-site-inline\)\)\] {
+    max-width: calc(100vw - 2 * var(--spacing-site-inline));
+  }
   .max-w-\[var\(--container-base\)\] {
     max-width: var(--container-base);
   }
@@ -446,6 +459,9 @@
   }
   .max-w-max {
     max-width: max-content;
+  }
+  .max-w-narrow {
+    max-width: 48rem;
   }
   .min-w-15 {
     min-width: calc(var(--spacing) * 15);
@@ -591,8 +607,8 @@
   .gap-section-title {
     gap: var(--space-section-title);
   }
-  .gap-site {
-    gap: var(--space-site);
+  .gap-site-inline {
+    gap: var(--space-site-inline);
   }
   .gap-x-item-gap {
     column-gap: calc(var(--space-section-title) / 1.5);
@@ -655,6 +671,10 @@
   .border-y {
     border-block-style: var(--tw-border-style);
     border-block-width: 1px;
+  }
+  .border-y-2 {
+    border-block-style: var(--tw-border-style);
+    border-block-width: 2px;
   }
   .border-t {
     border-top-style: var(--tw-border-style);
@@ -739,8 +759,8 @@
   .px-nav {
     padding-inline: var(--space-nav);
   }
-  .px-site {
-    padding-inline: var(--space-site);
+  .px-site-inline {
+    padding-inline: var(--space-site-inline);
   }
   .py-1 {
     padding-block: calc(var(--spacing) * 1);
@@ -1270,6 +1290,11 @@
       flex-grow: 0;
     }
   }
+  .lg\:grid-cols-2 {
+    @media (width >= 56rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
   .lg\:grid-cols-\[300px_1fr\] {
     @media (width >= 56rem) {
       grid-template-columns: 300px 1fr;
@@ -1301,9 +1326,9 @@
       border-left-width: 1px;
     }
   }
-  .lg\:pl-site {
+  .lg\:pl-site-inline {
     @media (width >= 56rem) {
-      padding-left: var(--space-site);
+      padding-left: var(--space-site-inline);
     }
   }
   .lg\:max-xl\:block {
@@ -1738,7 +1763,7 @@
     --text-icon: 1.45em;
     --text-xl: 48px;
     --text-2xl: clamp(75px, 11vw, 10rem);
-    --space-site: 1rem;
+    --space-site-inline: 1rem;
     --space-nav: 0.75rem;
     --space-section: 4.5rem;
     --space-section-title: 1.25rem;
@@ -1752,13 +1777,13 @@
       --text-sm: 18px;
       --text-base: 22px;
       --text-lg: 32px;
-      --space-site: 2rem;
+      --space-site-inline: 2rem;
       --space-section: 6.5rem;
       --space-dialog-inline: 2rem;
       --space-dialog-block: 3rem;
     }
     @media screen and (min-width: 960px) {
-      --space-site: 3rem;
+      --space-site-inline: 3rem;
       --space-nav: 1rem;
       --space-section: 8rem;
       --space-section-title: 1.75rem;
@@ -1770,9 +1795,6 @@
   .text-icon {
     text-box-trim: trim-both;
     text-box-edge: cap alphabetic;
-  }
-  .zine-store-container {
-    width: calc(100% - 2 * var(--spacing-site));
   }
   [data-button-card]::before {
     content: "";

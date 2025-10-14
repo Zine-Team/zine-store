@@ -1,37 +1,57 @@
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set containerMeta = {
+    args: '{% call container(
+    props={
+        size: "narrow | base | wide | full",
+        type: "cols-1 | cols-2 | sidebar"
+    },
+    attrs={}
+) %}
+{% endcall %}',
+description: "
+- Wrapper for most page content sections.
+- `props.size` to set max-width
+- `props.type` to define columns or sidebar layouts.
+"
+} %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set themeStyles = "" %}
 
 {% set sizeClasses =
     {
-        "sm": "var(--container-sm)",
-        "base": "var(--container-base)",
-        "full": "full"
+        "narrow": "w-[var(--container-narrow)] max-w-[calc(100vw-2*var(--spacing-site-inline))]",
+        "base": "w-[var(--container-base)] max-w-[calc(100vw-2*var(--spacing-site-inline))]",
+        "wide": "w-[var(--container-wide)] max-w-[calc(100vw-2*var(--spacing-site-inline))]",
+        "full": "w-[var(--container-wide)]"
     }
  %}
 
 {% set typeClasses =
     {
         "cols-1": "",
-        "cols-2": "",
+        "cols-2": "lg:grid-cols-2",
         "sidebar": "lg:grid-cols-[300px_1fr]"
     }
  %}
 
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{# {% macro section(props={}, attrs={})%}
-    <{% if props.tag %}{{ props.tag }}{% else %}section{% endif %}
-        {% include "snippets/loopAttrs.njk" %}
-        class="w-full {{ attrs.class }}">
-        {{ caller() | safe }}
-    </{% if props.tag %}{{ props.tag }}{% else %}section{% endif %}>
-{% endmacro %} #}
-
- {# ------------------------------------------------------------------------------------------------------------------------------------- #}
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% macro container(props={}, attrs={})%}
     <div
-        {% include "snippets/loopAttrs.njk" %}
-        class="zine-store-container mx-auto grid max-w-[{% if props.size %}{{sizeClasses[props.size]}}{% else %}{{ sizeClasses.base }}{% endif %}] {% if props.type %}{{ typeClasses[props.type] }}{% endif %} {{ attrs.class }}">
+        {{ loopAttrs(attrs) }}
+        class="mx-auto grid
+        {% if props.size %}{{sizeClasses[props.size]}}{% else %}{{ sizeClasses.base }}{% endif %}
+        {% if props.type %}{{ typeClasses[props.type] }}{% endif %}
+        {{ themeStyles }}
+        {{ attrs.class }}
+    ">
         {{ caller() | safe }}
     </div>
 {% endmacro %}

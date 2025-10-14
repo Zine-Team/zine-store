@@ -32,7 +32,7 @@
     --text-xl: 48px;
     --text-2xl: clamp(75px, 11vw, 10rem);
 
-    --space-site: 1rem;
+    --space-site-inline: 1rem;
     --space-nav: 0.75rem;
     --space-section: 4.5rem;
     --space-section-title: 1.25rem;
@@ -52,7 +52,7 @@
       --text-lg: 32px;
       /* --text-icon: 33px; */
 
-      --space-site: 2rem;
+      --space-site-inline: 2rem;
       --space-section: 6.5rem;
       --space-dialog-inline: 2rem;
       --space-dialog-block: 3rem;
@@ -60,7 +60,7 @@
 
     /* > lg */
     @media screen and (min-width: 960px) {
-      --space-site: 3rem;
+      --space-site-inline: 3rem;
       --space-nav: 1rem;
       --space-section: 8rem;
       --space-section-title: 1.75rem;
@@ -77,10 +77,6 @@
   .text-icon {
     text-box-trim: trim-both;
     text-box-edge: cap alphabetic;
-  }
-
-  .zine-store-container {
-    width: calc(100% - 2 * var(--spacing-site));
   }
 
   [data-button-card]::before {

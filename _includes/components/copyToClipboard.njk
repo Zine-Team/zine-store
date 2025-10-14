@@ -18,6 +18,10 @@ description: "
 "
 } %}
 
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% macro copyToClipboard(props={}, attrs={}) %}
@@ -36,7 +40,7 @@ description: "
             $dispatch('notify', { content:'{{props.toastMessage}}', toasterId:'{% if props.toasterId %}{{ props.toasterId }}{% else %}toaster{% endif %}' })
         }
     }"
-    {% include "snippets/loopAttrs.njk" %}
+    {{ loopAttrs(attrs) }}
     class="inline-block {{ attrs.class }}">
     {{ caller() | safe }}
 </span>

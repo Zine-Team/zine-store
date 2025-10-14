@@ -25,6 +25,9 @@ description: "
 - `customStyles` takes in CSS to set instance-specific styles, such as making bolded text appear as a different color instead of bold.
 "
 } %}
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -52,7 +55,7 @@ description: "
     {% set mdScale %}--md-scale: {% if props.overrides.scale %}{{ props.overrides.scale }}{% else %}{{ themeDefaults.scale }}{% endif %};{% endset %}
 
     <div
-        {% include "snippets/loopAttrs.njk" %}
+        {{ loopAttrs(attrs) }}
         style="
             {{ mdFontSize }}
             {{ mdTextColor }}

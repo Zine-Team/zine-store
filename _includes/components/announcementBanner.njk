@@ -19,6 +19,7 @@ description: "
 {% from "components/button.njk" import button %}
 {% from "components/container.njk" import container %}
 {% from "components/markdown.njk" import markdown %}
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
 
 {# Component --------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -49,20 +50,20 @@ description: "
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <template
-    x-data="{ showBanner: $persist(true).as('{% if props.storageKey %}{{ props.storageKey }}{% else %}announcementBanner{% endif %}').using(sessionStorage) }"
+    x-data="{ showBanner: $persist(true).as('ab-{{ global.bannerContent | slugify }}') }"
     x-if="showBanner">
     <div
         data-announcement-banner
-        {% include "snippets/loopAttrs.njk" %}
+        {{ loopAttrs(attrs) }}
         class="w-full {{ position }} z-40 {{ styleClasses }} {{ attrs.class }}">
-        {% call container() %}
-            <div class="flex justify-between items-center">
+        {% call container({size:"wide"}) %}
+            <div class="flex items-center justify-between">
                 {% if caller %}
                     {{ caller() | safe }}
                 {% else %}
-                    {{ markdown({content: props.content, transform: true},{class:"grow text-center line-clamp-1"}) }}
+                    {{ markdown({content: props.content, transform: true, primaryColor:"text-hue", fontSize:"text-sm"},{class:"grow text-center line-clamp-1"}) }}
                 {% endif %}
-                {{ button({icon:"×", type:"button", size:"sm"},{@click:"showBanner = !showBanner", title:"Close announcement banner"}) }}
+                {{ button({icon:"×", type:"button", size:"sm", variant:"hue"},{@click:"showBanner = !showBanner", title:"Close announcement banner"}) }}
             </div>
         {% endcall %}
     </div>

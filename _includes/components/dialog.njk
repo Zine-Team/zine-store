@@ -14,6 +14,7 @@ description: "
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/button.njk" import button %}
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -21,13 +22,13 @@ description: "
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-<div x-data {% include "snippets/loopAttrs.njk" %} class="{{ attrs.class }}">
+<div x-data {{ loopAttrs(attrs) }} class="{{ attrs.class }}">
     {{ button(props=triggerProps, attrs={"@click": "$refs.dialog.showModal()"}) }}
 
     <dialog
         closedby="any"
         x-ref="dialog"
-        class="{{ attrs.class }} flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-gainsboro p-0 mt-dialog-block mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site))] border border-grey">
+        class="{{ attrs.class }} flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-gainsboro p-0 mt-dialog-block mb-auto mx-auto inset-0 backdrop:bg-black/35 shadow-zine w-[calc(100%-2*var(--spacing-site-inline))] border border-grey">
         {{ caller() | safe }}
     </dialog>
 </div>

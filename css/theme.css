@@ -17,8 +17,9 @@
   --text-sm: var(--text-sm);
 
   --container-*: initial;
-  --container-sm: 48rem;
+  --container-narrow: 48rem;
   --container-base: 81.5rem;
+  --container-wide: 100vw;
   --container-2xl: 40rem;
   --container-3xl: 48rem;
   --container-4xl: 52rem;
@@ -39,7 +40,7 @@
   --color-link-visited: #551a8b;
   --color-fire-brick: FireBrick;
 
-  --spacing-site: var(--space-site);
+  --spacing-site-inline: var(--space-site-inline);
   --spacing-nav: var(--space-nav);
   --spacing-section: var(--space-section);
   --spacing-section-title: var(--space-section-title);

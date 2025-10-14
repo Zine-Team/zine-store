@@ -1,3 +1,25 @@
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set buttonMeta = {
+    args: '{{ button(
+    props={
+        label: "",
+        type: "button | link",
+        size: "base | lg | sm | inherit",
+        icon: ""
+    },
+    attrs={}
+) }}',
+description: "
+- Tag defaults to `button` unless you provide a `href`, then it'll be an `a` tag.
+- Optionally you can use `{% call %}` to give custom inner HTML.
+"
+} %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% macro button(props={},attrs={}) %}
@@ -31,7 +53,7 @@
     {{ types[props.type].styles }} {{ types[props.type].sizes[props.size] }}"
     {# {{ typeClasses[props.type] }} {{ sizeClasses[props.size] }}" #}
 
-    {% include "snippets/loopAttrs.njk" %}
+    {{ loopAttrs(attrs) }}
 >
     {% if props.icon or props.label %}
         <span class="flex items-center justify-center gap-2">
@@ -55,21 +77,3 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% endmacro %}
-
-{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
-
-{% set buttonMeta = {
-    args: '{{ button(
-    props={
-        label: "",
-        type: "button | link",
-        size: "base | lg | sm | inherit",
-        icon: ""
-    },
-    attrs={}
-) }}',
-description: "
-- Tag defaults to `button` unless you provide a `href`, then it'll be an `a` tag.
-- Optionally you can use `{% call %}` to give custom inner HTML.
-"
-} %}

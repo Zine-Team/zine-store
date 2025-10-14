@@ -23,6 +23,7 @@ description: "
 
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
 {% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses, fieldStyles %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
@@ -33,7 +34,7 @@ description: "
 
 <div
     x-data="{value:'{% if not fieldAttrs.placeholder %}{{props.options[0]}}{% endif %}'}"
-    {% include "snippets/loopAttrs.njk" %}
+    {{ loopAttrs(attrs) }}
     class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
 
     {% if props.label %}{{ fieldLabel(props={tag: "label"}, fieldProps=props, fieldAttrs=fieldAttrs) }}{% endif %}
@@ -44,7 +45,7 @@ description: "
         x-model="value"
         name="{{ props.name }}"
         id="{{ props.name }}"
-        {% include "snippets/loopFieldAttrs.njk" %}
+        {{ loopAttrs(fieldAttrs) }}
         class="{{ fieldStyles }}">
 
         {% if fieldAttrs.placeholder %}<option value="" disabled>{{ fieldAttrs.placeholder}}</option>{% endif %}

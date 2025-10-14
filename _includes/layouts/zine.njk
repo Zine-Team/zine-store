@@ -5,6 +5,7 @@ layout: base
 {% from "components/siteNav.njk" import siteNav with context %}
 {% from "components/dropdown.njk" import dropdown %}
 {% from "components/copyToClipboard.njk" import copyToClipboard %}
+{% from "components/container.njk" import container %}
 
 {% set pdfUrl = global.imagesFolder + "/" + page.fileSlug +"/" + pdf %}
 
@@ -46,7 +47,8 @@ layout: base
                 <h1>{{ title }}</h1>
             </div>
             <div class="flex flex-col items-center w-full grow">
-                <div data-zine-part="navigator" class="zine-store-container flex flex-col lg:flex-row lg:justify-center lg:gap-10 xl:gap-20 grow {% if aspect !== "5.5 / 4.25" %} pb-section-title{% endif %}">
+                {% call container({},{class:"grow"}) %}
+                <div data-zine-part="navigator" class="flex flex-col lg:flex-row lg:justify-center lg:gap-10 xl:gap-20 grow {% if aspect !== "5.5 / 4.25" %} pb-section-title{% endif %}">
                     {{ button(props={icon:"←", type: "button", size:"base"}, attrs={class:"h-[max(25dvh,_72px)] hidden lg:block self-center", "data-action": "prev-wide"}) }}
                     <div data-zine-part="root" class="flex flex-col items-center justify-center col-start-1 col-end-3 grow lg:grow-0 perspective-zine lg:col-auto">
                         <div data-zine-part="outer" class="relative inset-0 flex items-center w-full py-2 md:justify-center">
@@ -63,8 +65,9 @@ layout: base
                     </div>
                     {{ button(props={icon: "→", size: "base", type: "button" }, attrs={class: "h-[max(25dvh,_72px)] hidden lg:block self-center", "data-action": "next-wide"}) }}
                 </div>
+                {% endcall %}
             </div>
-            <div class="flex lg:hidden gap-site py-nav border-dark-grey border-t border-dotted px-site w-[100vw] bg-gainsboro sticky bottom-0">
+            <div class="flex lg:hidden gap-site-inline py-nav border-dark-grey border-t border-dotted px-site-inline w-[100vw] bg-gainsboro sticky bottom-0">
                 {{ button(props={icon: "←", type: "button", size:"base"}, attrs={class: "grow hidden md:block min-h-14", "data-action": "prev-wide"}) }}
                 {{ button(props={icon: "→", type: "button", size:"base"}, attrs={class: "grow hidden md:block min-h-14", "data-action": "next-wide"}) }}
                 {{ button(props={icon: "←", type: "button", size:"base"}, attrs={class: "grow md:hidden min-h-14", "data-action": "prev-narrow"}) }}

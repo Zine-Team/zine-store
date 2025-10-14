@@ -21,6 +21,7 @@ description: "
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/button.njk" import button %}
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -68,7 +69,7 @@ description: "
     x-id="['dropdown']"
     x-on:keydown.escape.prevent.stop="close($refs.button)"
     x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
-    {% include "snippets/loopAttrs.njk" %}
+    {{ loopAttrs(attrs) }}
     class="relative max-w-fit {{ props.class }}"
 >
     {{ button(

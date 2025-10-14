@@ -2,7 +2,7 @@
 title: Documentation
 ---
 {% from "components/_componentDocumentation.njk" import componentDocumentation %}
-{% from "components/container.njk" import container %}
+{% from "components/container.njk" import container, containerMeta %}
 {% from "components/accordion.njk" import accordion, accordionMeta %}
 {% from "components/announcementBanner.njk" import announcementBanner, announcementBannerMeta %}
 {% from "components/button.njk" import button, buttonMeta %}
@@ -32,7 +32,8 @@ title: Documentation
     "fieldset",
     "marquee",
     "dropdown",
-    "markdown"
+    "markdown",
+    "container"
 ] %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -73,7 +74,8 @@ title: Documentation
         })
     }}
 
-    <div class="border-dotted justify-items-center lg:pl-site lg:border-l border-dark-grey">
+    <div class="border-dotted justify-items-center lg:pl-site-inline lg:border-l border-dark-grey">
+        <div class="max-w-narrow">
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -145,6 +147,10 @@ Some components have other arguments too.
     {% endcall %}
 {% endcall %}
 
+{{ componentDocumentation({
+    title: "container",
+    meta: containerMeta
+}) }}
 
 {% call componentDocumentation({
     title: "dropdown",
@@ -301,6 +307,7 @@ preformatted code
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
+        </div>
     </div>
 
 {% endcall %}

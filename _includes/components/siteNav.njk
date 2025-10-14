@@ -5,7 +5,7 @@
 
 {% macro siteNav(props={}, attrs={}) %}
     <nav class="w-full border-dark-grey max-lg:border-b border-dotted {{ attrs.class }}">
-        {% call container({size: "base", cols: ""}) %}
+        {% call container({size: "base"}) %}
             <div class="shrink-0 items-baseline justify-between py-nav flex">
                 <span class="flex items-center justify-self-start gap-16">
                     {{ button({label:"Home", size:"lg", type:"link"},{href:"/"}) }}

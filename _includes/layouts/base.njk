@@ -1,11 +1,7 @@
----
-banner:
----
-
 {# Imports ----------------------------------------------------------------------------------------------------------------------------- #}
 
     {% from "components/toaster.njk" import toaster %}
-    {% from "components/announcementBanner.njk" import announcementBanner %}
+    {% from "components/announcementBanner.njk" import announcementBanner with context %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -51,9 +47,8 @@ banner:
 
     </head>
     <body class="font-sans text-base antialiased flex flex-col min-h-dvh items-center bg-gainsboro pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
-
-        {% if banner %}
-            {{ announcementBanner({content: banner }) }}
+        {% if global.bannerContent %}
+            {{ announcementBanner({content: global.bannerContent }) }}
         {% endif %}
 
         {% if environment.env == 'dev' %}

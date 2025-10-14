@@ -23,6 +23,7 @@ description: "
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses, fieldStyles %}
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -37,7 +38,7 @@ description: "
     id="{{ props.name }}"
     name="{{ props.name }}"
     class="{{ attrs.class }}"
-    {% include "snippets/loopAttrs.njk" %}>
+    {{ loopAttrs(attrs) }}>
     <div class="{{ directionClasses["column"] }} @container">
 
         {% if props.label %}{{ fieldLabel(props={tag: "legend"}, fieldProps=props, fieldAttrs=fieldAttrs) }}{% endif %}
