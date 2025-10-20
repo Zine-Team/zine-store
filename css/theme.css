@@ -27,24 +27,27 @@
   --shadow-*: initial;
   --shadow-zine: 0.5px 0.5px 1px lch(0% 0 0 / 0.1), 1px 1px 12px -4px lch(0% 0 0 / 0.2);
   --shadow-page: 0.33px 0.33px 1px lch(0% 0 0 / 0.1), 0.75px 0.75px 0.75px lch(0% 0 0 / 0.1);
+  --shadow-button: 0 1px rgb(0 0 0 / 0.05);
 
   --color-*: initial;
+  --color-inherit: inherit;
   --color-transparent: transparent;
-  --color-black: Black;
-  --color-grey: Gray;
-  --color-dark-grey: DarkGray;
-  --color-gainsboro: Gainsboro;
-  --color-ghost-white: GhostWhite;
-  --color-white-smoke: WhiteSmoke;
+
+  --color-neutral: Black;
+  --color-neutral-light: color-mix(in oklab, var(--color-neutral), white 50%);
+  --color-neutral-lighter: color-mix(in oklab, var(--color-neutral), white 66%);
+  --color-surface: Gainsboro;
+  --color-surface-light: color-mix(in oklab, var(--color-surface), white 70%);
+  --color-surface-lighter: color-mix(in oklab, var(--color-surface), white 86%);
   --color-link: #0000ee;
   --color-link-visited: #551a8b;
-  --color-fire-brick: FireBrick;
+  --color-validation: FireBrick;
 
   --spacing-site-inline: var(--space-site-inline);
   --spacing-nav: var(--space-nav);
   --spacing-section: var(--space-section);
   --spacing-section-title: var(--space-section-title);
-  --spacing-item-gap: calc(var(--space-section-title) / 1.5);
+  --spacing-item: calc(var(--space-section-title) / 1.5);
   --spacing-item-sm: calc(var(--space-section-title) / 3);
   --spacing-dialog-inline: var(--space-dialog-inline);
   --spacing-dialog-block: var(--space-dialog-block);

@@ -38,10 +38,10 @@ layout: base
                     {% endfor %}
                 </div>
             {% endcall %}
-            {% call carousel({},{class:"gap-item-gap py-2"}) %}
+            {% call carousel({},{class:"gap-item py-2"}) %}
                 {% for zine in collections.zine | reverse | slice(4) %}
                     <a data-zine-shading class="relative hover:scale-[1.01] shadow-zine w-[70cqi] max-w-[312px]" href="{{ zine.url }}">
-                        <img class="w-full border shadow-page border-dark-grey" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}"></a>
+                        <img class="w-full border shadow-page border-neutral-lighter" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}"></a>
                 {% endfor %}
             {% endcall %}
         {% endcall %}
@@ -61,11 +61,11 @@ layout: base
             {% call sectionHeader({label: "All zines (A-Z)"}) %}
                 <div class="hidden xs:block">{{ button({label: "Read random zine", type: "button", size:"base"}, {"@click": "chooseRandom"}) }}</div>
             {% endcall %}
-            <ul class="grid gap-x-item-gap gap-y-section-title max-xs:list-disc" style="grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );">
+            <ul class="grid gap-x-item gap-y-section-title max-xs:list-disc" style="grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );">
                 {% for zine in collections.zine | sort(false, false, "data.title") %}
                     <li class="xs:flex flex-col gap-item-sm relative items-start max-w-max max-xs:ml-[1.25ch]">
                         <div data-zine-shading class="relative max-xs:hidden shadow-zine">
-                            <img class="w-full border shadow-page border-dark-grey" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}">
+                            <img class="w-full border shadow-page border-neutral-lighter" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}">
                         </div>
                         {% call button({type:"link", size:"sm"},{href:zine.url, class: "text-left scale-none! max-xs:hidden"}) %}
                             <span class="absolute inset-0"></span>

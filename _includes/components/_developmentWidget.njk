@@ -1,0 +1,53 @@
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/dropdown.njk" import dropdown %}
+{% from "components/button.njk" import button %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set developmentLinks = [
+    { macro: button, props:{label:"Components", type:"link", size:"sm"}, attrs:{href:"/components"} },
+    { macro: button, props:{label:"Markdown", type:"link", size:"sm"}, attrs:{href:"/markdown-test"} },
+    { macro: button, props:{label:"Testing", type:"link", size:"sm"}, attrs:{href:"/testing"} }
+] %}
+
+{% set themeStyles = "border-1 border-hue/75 bg-surface/75" %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+<div x-data="{
+        expanded: $persist(false).as('developmentWidget'),
+        windowWidth: window.innerWidth,
+        getWidth() {
+            window.addEventListener('resize', () => {
+                this.windowWidth = window.innerWidth
+            })
+        }
+    }"
+    x-init="getWidth"
+    :class="expanded && 'translate-0!'"
+    class="fixed left-0 bottom-1 z-50 -translate-x-[80%] flex items-center gap-1 py-1 pl-2 pr-1 text-sm transition duration-500 border-l-0 rounded-r-lg backdrop-blur-sm {{ themeStyles }}">
+    <span class="flex w-full mr-1">
+        <span class="xs:hidden">XS-</span>
+        <span class="hidden xs:max-sm:block">XS-SM</span>
+        <span class="hidden sm:max-md:block">SM-MD</span>
+        <span class="hidden md:max-lg:block">MD-LG</span>
+        <span class="hidden lg:max-xl:block">LG-XL</span>
+        <span class="hidden xl:block">XL+</span>
+        <span>&nbsp;•&nbsp;</span>
+        <span x-text="windowWidth"></span>
+        <span>px</span>
+    </span>
+    {% if developmentLinks.length > 0 %}
+    {{ dropdown(
+        props={
+            position:["top", "left"],
+            dropdownItems: developmentLinks
+        },
+        triggerProps={label: "Dev", type: "button", size:"sm", variant:"hue"}
+    )}}
+    {% endif %}
+    {% call button({type:"button", size:"sm"}, {@click:"expanded = !expanded", ":title":"expanded ? 'Minimize widget' : 'Expand widget'"}) %}
+        <span x-show="!expanded" class="text-icon">›</span>
+        <span x-show="expanded" class="text-icon">‹</span>
+    {% endcall%}
+</div>

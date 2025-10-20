@@ -54,7 +54,7 @@ layout: base
                         <div data-zine-part="outer" class="relative inset-0 flex items-center w-full py-2 md:justify-center">
                             <div data-zine-part="spread" style="--aspect-zine: {{ aspect }}" class="relative grid grid-cols-2 justify-self-start shrink-0 lg:justify-self-center aspect-zine md:w-full {% if aspect === "5.5 / 4.25" %}max-w-3xl{% endif %} pointer-events-none perspective-zine front-cover">
                                 {% for pg in pages %}
-                                    <div data-zine-part="page" class="relative row-start-1 row-end-2 border border-dark-grey not-first:odd:border-l-0 not-last:even:border-r-0 backface-hidden even:col-start-1 odd:col-start-2 even:origin-right odd:origin-left">
+                                    <div data-zine-part="page" class="relative row-start-1 row-end-2 border border-neutral-lighter not-first:odd:border-l-0 not-last:even:border-r-0 backface-hidden even:col-start-1 odd:col-start-2 even:origin-right odd:origin-left">
                                         <img src="{{ global.imagesFolder }}/{{ page.fileSlug }}/{{ pg.image }}.jpg" alt="{{ pg.altText }}">
                                     </div>
                                 {% endfor %}
@@ -67,7 +67,7 @@ layout: base
                 </div>
                 {% endcall %}
             </div>
-            <div class="flex lg:hidden gap-site-inline py-nav border-dark-grey border-t border-dotted px-site-inline w-[100vw] bg-gainsboro sticky bottom-0">
+            <div class="flex lg:hidden gap-site-inline py-nav border-neutral-lighter border-t border-dotted px-site-inline w-[100vw] bg-surface sticky bottom-0">
                 {{ button(props={icon: "←", type: "button", size:"base"}, attrs={class: "grow hidden md:block min-h-14", "data-action": "prev-wide"}) }}
                 {{ button(props={icon: "→", type: "button", size:"base"}, attrs={class: "grow hidden md:block min-h-14", "data-action": "next-wide"}) }}
                 {{ button(props={icon: "←", type: "button", size:"base"}, attrs={class: "grow md:hidden min-h-14", "data-action": "prev-narrow"}) }}

@@ -1,0 +1,59 @@
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set radioMeta = {
+    args: '{{ radio(
+    props={
+        name: "",
+        label: "",
+        description: "",
+        options: [{label: "", value: ""}],
+        fieldAttrs: {}
+    },
+    attrs={}
+) }}',
+description: "
+- If you want access to the selected radio, define a `x-data` value in a parent element with the key as the `props.name` of this component.
+    - `{{ props.name }}.index` will give you the index of the selected radio
+    - `{{ props.name }}.value` will give you the value of the selected radio (what will show up in the form submission.)
+"
+} %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses, fieldStyles, fieldsetOptionStyles %}
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro radio(props={}, attrs={}) %}
+
+    <fieldset
+        name="{{ props.name }}"
+        class="{{ attrs.class }}"
+        {{ loopAttrs(attrs) }}
+    >
+        <div class="{{ directionClasses["column"] }}">
+
+    {% if props.label %}{{ fieldLabel({tag: "legend", fieldProps:props}) }}{% endif %}
+    {% if props.description %}{{ fieldDescription(props) }}{% endif %}
+
+            {% for option in props.options %}
+                <div x-data="{ id: $id('{{ option.value }}')}" class="flex gap-2">
+                    <input
+                        :checked="{{ props.name }}.index === {{ loop.index }}"
+                        x-on:change="{{ props.name }} = {index: {{ loop.index }}, value: '{{ option.value }}'}"
+                        :id="id"
+                        type="radio"
+                        name="{{ props.name }}"
+                        value="{{ option.value }}"
+                        {{ loopAttrs(props.fieldAttrs) }}
+                        class="accent-current w-[1.1em] h-[1.5em] shrink-0"/>
+                    <label class="{{ fieldsetOptionStyles }}" :for="id">{{ option.label }}</label>
+                </div>
+            {% endfor %}
+        </div>
+    </fieldset>
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% endmacro %}

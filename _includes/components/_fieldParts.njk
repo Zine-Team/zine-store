@@ -1,23 +1,6 @@
+{# Nested components ------------------------------------------------------------------------------------------------------------------- #}
+
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
-
-{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
-
-{% macro fieldLabel(props={}, attrs={}, fieldProps={}, fieldAttrs={}) %}
-    <{{ props.tag }}
-        {% if props.tag === "label" %}for="{{ fieldProps.name }}"{% endif %}
-        class="font-bold {{ attrs.class }}"
-        {{ loopAttrs(attrs) }}
-    >
-        {{ fieldProps.label }} {% if fieldAttrs.required %}<span class="text-fire-brick">*</span>{% endif %}
-    </{{ props.tag }}>
-{% endmacro %}
-
-{% macro fieldDescription(props={}, attrs={}) %}
-    <small
-        {{ loopAttrs(attrs) }}
-        class="text-sm opacity-70 {{ attrs.class }}">{{ props.description }}
-    </small>
-{% endmacro %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -26,4 +9,30 @@
     column: "flex flex-col gap-1.5"
 } %}
 
-{% set fieldStyles = "leading-none grow bg-white-smoke not-disabled:hover:bg-ghost-white border-1 border-dark-grey disabled:opacity-60 not-disabled:hover:border-grey min-h-tube rounded p-2.5" %}
+{% set fieldLabelStyles = "text-neutral font-bold text-pretty" %}
+{% set fieldLabelRequiredStyles = "text-[firebrick]" %}
+{% set fieldDescriptionStyles = "text-neutral/70 text-sm text-pretty" %}
+{% set fieldsetOptionStyles = "text-neutral" %}
+
+{% set fieldWrapperStyles = "grow flex" %}
+{% set fieldStyles = "leading-none grow bg-surface-light not-disabled:hover:bg-surface-lighter border-1 border-neutral-lighter disabled:opacity-60 not-disabled:hover:border-neutral-light min-h-tube rounded p-2.5" %}
+
+{# Macros ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% macro fieldLabel(props={}, attrs={}) %}
+    <{{ props.tag }}
+        {% if props.tag === "label" %}for="{{ props.fieldProps.name }}"{% endif %}
+        class="{{ fieldLabelStyles }} {{ attrs.class }}"
+        {{ loopAttrs(attrs) }}
+    >
+        {{ props.fieldProps.label }} {% if props.fieldProps.fieldAttrs.required %}<sup class="{{ fieldLabelRequiredStyles }}">*</sup>{% endif %}
+    </{{ props.tag }}>
+{% endmacro %}
+
+{% macro fieldDescription(props={}, attrs={}) %}
+    <small
+        {{ loopAttrs(attrs) }}
+        class="{{ fieldDescriptionStyles }} {{ attrs.class }}">
+        {{ props.description }}
+    </small>
+{% endmacro %}

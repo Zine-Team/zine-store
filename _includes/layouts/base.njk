@@ -43,22 +43,24 @@
         <link rel="icon" type="image/x-icon" href="{{ global.siteDomain }}{{ global.imagesFolder }}/{{ global.favicon }}">
         <link rel="stylesheet" href="/styles.css">
 
-        <script defer src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
 
     </head>
-    <body class="font-sans text-base antialiased flex flex-col min-h-dvh items-center bg-gainsboro pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
+    <body class="font-sans text-base antialiased flex flex-col min-h-dvh items-center bg-surface pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
         {% if global.bannerContent %}
             {{ announcementBanner({content: global.bannerContent }) }}
         {% endif %}
 
         {% if environment.env == 'dev' %}
-            {% include "components/_breakpointVisualizer.njk" %}
+            {% include "components/_developmentWidget.njk" %}
         {% endif %}
 
         {{ content | safe }}
 
         {{ toaster() }}
 
+
+        <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
         <script defer src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script>
+        <script defer src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
     </body>
 </html>

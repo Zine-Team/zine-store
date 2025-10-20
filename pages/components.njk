@@ -1,5 +1,5 @@
 ---
-title: Documentation
+title: Components
 ---
 {% from "components/_componentDocumentation.njk" import componentDocumentation %}
 {% from "components/container.njk" import container, containerMeta %}
@@ -9,13 +9,14 @@ title: Documentation
 {% from "components/carousel.njk" import carousel, carouselMeta %}
 {% from "components/copyToClipboard.njk" import copyToClipboard, copyToClipboardMeta %}
 {% from "components/toaster.njk" import toaster, toasterMeta %}
-{% from "components/fieldset.njk" import fieldset, fieldsetMeta %}
 {% from "components/input.njk" import input, inputMeta %}
 {% from "components/select.njk" import select, selectMeta %}
 {% from "components/textarea.njk" import textarea, textareaMeta %}
 {% from "components/markdown.njk" import markdown, markdownMeta %}
 {% from "components/marquee.njk" import marquee, marqueeMeta %}
 {% from "components/dropdown.njk" import dropdown, dropdownMeta %}
+{% from "components/radio.njk" import radio, radioMeta %}
+{% from "components/checkbox.njk" import checkbox, checkboxMeta %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -29,15 +30,15 @@ title: Documentation
     "input",
     "select",
     "textarea",
-    "fieldset",
     "marquee",
     "dropdown",
     "markdown",
-    "container"
+    "container",
+    "radio",
+    "checkbox"
 ] %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
 
 {% call container({type:"sidebar", size:"base"},{
     "x-data":"{}",
@@ -45,7 +46,7 @@ title: Documentation
     "class":"@container"
 }) %}
 
-    <aside class="sticky top-0 flex-col items-start hidden overflow-y-auto lg:flex max-h-dvh h-fit py-dialog-block gap-section-title">
+    <aside class="sticky top-0 flex-col items-start hidden overflow-y-auto overscroll-contain lg:flex max-h-dvh h-fit py-dialog-block gap-section-title">
         <section class="flex flex-col items-start gap-item-sm">
             <h2 class="font-semibold">Guide</h2>
             <ul class="grid items-start list-disc gap-item-sm ml-indent">
@@ -67,31 +68,31 @@ title: Documentation
         "name": "all-components",
         "options": components | sort()},
         attrs={
-            "class": "lg:hidden py-nav border-b border-dotted border-dark-grey sticky top-0 z-40 bg-gainsboro"
+            "class": "lg:hidden py-nav border-b border-dotted border-neutral-lighter sticky top-0 z-40 bg-surface"
         },
         fieldAttrs={
             placeholder: "Scroll to a component..."
         })
     }}
 
-    <div class="border-dotted justify-items-center lg:pl-site-inline lg:border-l border-dark-grey">
+    <div class="border-dotted justify-items-center lg:pl-site-inline lg:border-l border-neutral-lighter">
         <div class="max-w-narrow">
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-<section id="intro" class="grid w-full border-b border-dotted border-dark-grey mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section">
+<section id="intro" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section">
     <h3 class="text-xl truncate xl:list-disc xl:list-item">Intro</h3>
     <div class="flex flex-col gap-item-sm">
         {# <h3 class="text-base font-semibold">Intro</h3> #}
         {% call markdown({transform: true}, {class:"w-full max-w-[var(--container-sm)]"}) %}
 Welcome to the design system!
 
-Most components have a `props` argument and a `attrs` argument, both of which are objects.
+This component system is made with macros from [Nunjucks](https://mozilla.github.io/nunjucks/templating.html).
+
+All components have a `props` argument and a `attrs` argument, both of which are objects.
 
 * `props` contains all the values needed to make the component function, like the label and style of a button.
 * `attrs` is for any HTML attributes that the instance of the component requires.
-
-Some components have other arguments too.
         {% endcall %}
     </div>
 </section>
@@ -112,6 +113,7 @@ Some components have other arguments too.
     ]},{class:"w-full"}) }}
 {% endcall %}
 
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% call componentDocumentation({
     title: "announcementBanner",
@@ -123,7 +125,7 @@ Some components have other arguments too.
     </div>
 {% endcall %}
 
-
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% call componentDocumentation({
     title: "button",
@@ -135,22 +137,57 @@ Some components have other arguments too.
     {{ button({label: "Large", type: "link", size:"lg"}) }}
 {% endcall %}
 
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% call componentDocumentation({
     title: "carousel",
     meta: carouselMeta
 }) %}
     {% call carousel({},{class:"w-full h-40 gap-2"}) %}
-        <div class="w-[100cqi] grid place-items-center text-lg bg-dark-grey">Hehe</div>
-        <div class="w-[100cqi] grid place-items-center text-lg bg-dark-grey">Haha</div>
-        <div class="w-[100cqi] grid place-items-center text-lg bg-dark-grey">Hoohoo</div>
+        <div class="w-[100cqi] grid place-items-center text-lg bg-neutral-lighter">Hehe</div>
+        <div class="w-[100cqi] grid place-items-center text-lg bg-neutral-lighter">Haha</div>
+        <div class="w-[100cqi] grid place-items-center text-lg bg-neutral-lighter">Hoohoo</div>
     {% endcall %}
 {% endcall %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call componentDocumentation({
+    title: "checkbox",
+    meta: checkboxMeta
+}) %}
+    <div
+        x-data="{checkboxes: []}"
+        class="w-full flex flex-col gap-section-title">
+        {{ checkbox(
+            props={
+                name: "checkboxes",
+                label: "Checkboxes",
+                description: "Optional description",
+                options: [{label: "Option 1", value: "You selected option 1!"},{label: "Option 2", value: "You selected option 2!"},{label: "Option 3", value: "You selected option 3!"}],
+                fieldAttrs: {}
+            },
+            attrs={}
+        ) }}
+        {% call markdown(
+            props={transform: false},
+            attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
+        ) %}
+        <pre>
+<code>checkboxes: <span x-show="checkboxes"><span x-text="checkboxes"></span></span>
+</code></pre>
+        {% endcall %}
+    </div>
+{% endcall %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {{ componentDocumentation({
     title: "container",
     meta: containerMeta
 }) }}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% call componentDocumentation({
     title: "dropdown",
@@ -169,7 +206,7 @@ Some components have other arguments too.
     )}}
 {% endcall %}
 
-
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% call componentDocumentation({
     title: "copyToClipboard",
@@ -182,55 +219,64 @@ Some components have other arguments too.
         {{ button({label: "Click to copy 'hey!'", type: "button", size:"base"}, {@click: "copy"}) }}
     {% endcall %}
 {% endcall %}
-{% call componentDocumentation({
-    title: "fieldset",
-    meta: fieldsetMeta
-}) %}
-    {{ fieldset({
-        type: "radio",
-        name: "radio",
-        label: "Radio",
-        options: ["option 1", "option 2", "option 3"]
-    },{class:"w-full"},{
-        required: true
-    }) }}
-    {{ fieldset({
-        type: "checkbox",
-        name: "checkbox",
-        label: "Checkbox",
-        options: ["option 1", "option 2", "option 3"]
-    },{class:"w-full"},{
-        required: true
-    }) }}
-{% endcall %}
 
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% call componentDocumentation({
     title: "input",
     meta: inputMeta
 }) %}
-    {{ input({
-        name: "text",
-        label: "Text",
-        description: "Optional description"
-    },{class:"w-full"},{
-        type: "text",
-        placeholder: "Placeholder",
-        required: true
-    }) }}
-    {{ input({
-        name: "number",
-        label: "Number"
-    },{class:"w-full"},{
-        type: "number"
-    }) }}
-    {{ input({
-        name: "email",
-        label: "Email"
-    },{class:"w-full"},{
-        type: "email"
-    }) }}
+    <div
+        x-data="{
+            text: '',
+            email: '',
+            number: null}"
+        class="w-full flex flex-col gap-section-title">
+
+        {{ input(props={
+            name: "text",
+            label: "Text",
+            description: "Optional description",
+            fieldAttrs:{
+                type: "text",
+                placeholder: "Placeholder",
+                required: true
+            }
+        },
+        attrs={
+            class:"w-full"
+        }) }}
+
+        {{ input({
+            name: "number",
+            label: "Number",
+            fieldAttrs: {
+                type: "number"
+            }
+        },{class:"w-full"}) }}
+
+        {{ input({
+            name: "email",
+            label: "Email",
+            fieldAttrs: {
+                type: "email"
+            }
+        },{class:"w-full"}) }}
+
+        {% call markdown(
+            props={transform: false},
+            attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
+        ) %}
+        <pre>
+<code>text: <span x-text="text"></span>
+number: <span x-text="number"></span>
+email: <span x-text="email"></span>
+</code></pre>
+        {% endcall %}
+    </div>
 {% endcall %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% call componentDocumentation({
     title: "markdown",
@@ -249,8 +295,9 @@ preformatted code
 * list
 
     {% endcall %}
-
 {% endcall %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% call componentDocumentation({
     title: "marquee",
@@ -260,6 +307,38 @@ preformatted code
         <div class="text-lg">This is a repeating message!</div>
     {% endcall %}
 {% endcall %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call componentDocumentation({
+    title: "radio",
+    meta: radioMeta
+}) %}
+    <div
+        x-data="{radio: ''}"
+        class="w-full flex flex-col gap-section-title">
+        {{ radio(
+            props={
+                name: "radio",
+                label: "Radio",
+                description: "Optional description",
+                options: [{label: "Option 1", value: "You selected option 1!"},{label: "Option 2", value: "You selected option 2!"},{label: "Option 3", value: "You selected option 3!"}],
+                fieldAttrs: {}
+            },
+            attrs={}
+        ) }}
+        {% call markdown(
+            props={transform: false},
+            attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
+        ) %}
+        <pre>
+<code>radio: <span x-show="radio"><span x-text="radio.index"></span>, <span x-text="radio.value"></span></span>
+</code></pre>
+        {% endcall %}
+    </div>
+{% endcall %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% call componentDocumentation({
     title: "select",
@@ -281,22 +360,39 @@ preformatted code
     }}
 {% endcall %}
 
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
 {% call componentDocumentation({
     title: "textarea",
     meta: textareaMeta
 }) %}
-    {{ textarea(
-        {
-            name: "textarea",
-            label: "Textarea",
-            description: "Optional description"
-        }, {class:"w-full"}, {
-            rows: "5",
-            required: true,
-            placeholder: "Type something here..."
-        }
-    ) }}
+    <div
+        x-data="{textarea: ''}"
+        class="w-full flex flex-col gap-section-title">
+        {{ textarea(
+            {
+                name: "textarea",
+                label: "Textarea",
+                description: "Optional description",
+                fieldAttrs: {
+                    rows: "5",
+                    required: true,
+                    placeholder: "Type something here..."
+                }
+            }, {class:"w-full"}
+        ) }}
+        {% call markdown(
+            props={transform: false},
+            attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
+        ) %}
+        <pre>
+<code>textarea: <span x-text="textarea"></span>
+</code></pre>
+        {% endcall %}
+    </div>
 {% endcall %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% call componentDocumentation({
     title: "toaster",
