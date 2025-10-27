@@ -6,18 +6,17 @@
         name: "",
         label: "",
         description: "",
-        options: [],
-        direction: "column | row"
+        options: [{label:"", value: ""}],
+        direction: "column | row",
+        fieldAttrs: {
+            placeholder: "",
+            required: boolean
+        }
     },
-    attrs={},
-    fieldAttrs={
-        placeholder: "",
-        required: boolean
-    }
+    attrs={}
 ) }}',
 description: "
-- Dispatches event `select-{{ props.name }}` when the selected value is updated.
-- You can get this value with `@select-{{ props.name }}.window='{{ var }} = $event.detail'`
+- If you want access to the selected option, define a `x-data` value in a parent element with the key as the `props.name` of this component.
 "
 } %}
 
@@ -28,31 +27,27 @@ description: "
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
-{% macro select(props={}, attrs={}, fieldAttrs={}) %}
+{% macro select(props={}, attrs={}) %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <div
-    x-data="{value:'{% if not fieldAttrs.placeholder %}{{props.options[0]}}{% endif %}'}"
     {{ loopAttrs(attrs) }}
     class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
 
-    {% if props.label %}{{ fieldLabel(props={tag: "label"}, fieldProps=props, fieldAttrs=fieldAttrs) }}{% endif %}
+    {% if props.label %}{{ fieldLabel({tag: "label", fieldProps:props}) }}{% endif %}
 
     <select
-        {% if not fieldAttrs.placeholder %}x-init="$dispatch('select-{{ props.name }}', value)"{% endif %}
-        x-on:change="$dispatch('select-{{ props.name }}', value)"
-        x-model="value"
+        x-model="{{ props.name }}"
         name="{{ props.name }}"
         id="{{ props.name }}"
-        {{ loopAttrs(fieldAttrs) }}
-        class="{{ fieldStyles }}">
-
-        {% if fieldAttrs.placeholder %}<option value="" disabled>{{ fieldAttrs.placeholder}}</option>{% endif %}
-        {% set comma = joiner() %}
-        <template x-for="option in [{% for option in props.options %}{{ comma() }} '{{ option }}'{% endfor%}]">
-            <option x-text="option"></option>
-        </template>
+        {{ loopAttrs(props.fieldAttrs) }}
+        class="{{ fieldStyles }} {{ props.fieldAttrs.class }}"
+    >
+        {% if props.fieldAttrs.placeholder %}<option value="" disabled>{{ props.fieldAttrs.placeholder}}</option>{% endif %}
+        {% for option in props.options %}
+            <option value="{{ option.value }}">{{ option.label }}</option>
+        {% endfor %}
     </select>
 
     {% if props.description %}{{ fieldDescription(props) }}{% endif %}

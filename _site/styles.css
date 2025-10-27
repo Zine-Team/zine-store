@@ -656,9 +656,6 @@
   .self-center {
     align-self: center;
   }
-  .justify-self-center {
-    justify-self: center;
-  }
   .justify-self-end {
     justify-self: flex-end;
   }

@@ -18,7 +18,7 @@ title: Components
 {% from "components/radio.njk" import radio, radioMeta %}
 {% from "components/checkbox.njk" import checkbox, checkboxMeta %}
 
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set components = [
     "button",
@@ -38,11 +38,17 @@ title: Components
     "checkbox"
 ] %}
 
+{% set componentSelect = [] %}
+{% for component in components | sort() %}
+    {% set componentSelect = (componentSelect.push({value: component, label: component}), componentSelect) %}
+{% endfor %}
+
+
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% call container({type:"sidebar", size:"base"},{
-    "x-data":"{}",
-    "@select-all-components.window":"document.getElementById($event.detail).scrollIntoView()",
+    "x-data":"{allComponents: ''}",
+    "x-init":"$watch('allComponents', value => document.getElementById(value).scrollIntoView())",
     "class":"@container"
 }) %}
 
@@ -65,13 +71,14 @@ title: Components
 
     {{ select(
         props={
-        "name": "all-components",
-        "options": components | sort()},
+            "name": "allComponents",
+            "options": componentSelect,
+            fieldAttrs:{
+                placeholder: "Scroll to a component..."
+            }
+        },
         attrs={
             "class": "lg:hidden py-nav border-b border-dotted border-neutral-lighter sticky top-0 z-40 bg-surface"
-        },
-        fieldAttrs={
-            placeholder: "Scroll to a component..."
         })
     }}
 
@@ -343,20 +350,34 @@ preformatted code
     title: "select",
     meta: selectMeta
 }) %}
-    {{ select(
-        {
-        "name": "select",
-        "label": "Select",
-        "options": [
-            'Option 1',
-            'Option 2',
-            'Option 3'
-        ],
-        "description": "This area describes the field above!"
-        },{class:"w-full"}, {
-            "required": true
-        })
-    }}
+    <div
+        x-data="{select: ''}"
+        class="w-full flex flex-col gap-section-title">
+        {{ select(
+            {
+            "name": "select",
+            "label": "Select",
+            "options": [
+                {label: 'Option 1', value: 'You selected option 1!'},
+                {label: 'Option 2', value: 'You selected option 2!'},
+                {label: 'Option 3', value: 'You selected option 3!'}
+            ],
+            fieldAttrs: {
+                "required": true,
+                "placeholder": "Placeholder"
+            },
+            "description": "This area describes the field above!"
+            },{class:"w-full"})
+        }}
+        {% call markdown(
+                props={transform: false},
+                attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
+            ) %}
+            <pre>
+<code>select: <span x-show="select" x-text="select"></span>
+</code></pre>
+        {% endcall %}
+    </div>
 {% endcall %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
