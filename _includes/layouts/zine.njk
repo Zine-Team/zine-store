@@ -24,10 +24,9 @@ layout: base
             "x-show": "!isEmbed()"
         }) %}
             {% call dropdown(
-                props={position:["bottom", "right"]},
+                props={position:["bottom", "left"]},
                 triggerProps={label: "Share", type: "button", size:"base"})
             %}
-                <li>{{ button({label:"Download PDF", type:"link", size:"base"}, {href:pdfUrl, download: null}) }}</li>
                 {% call copyToClipboard({
                     input: global.siteDomain + page.url ,
                     toastMessage: "URL copied to clipboard!"
@@ -41,6 +40,8 @@ layout: base
                     <li>{{ button({label:"Copy embed code", type:"link", size:"base"}, {@click: "copy"}) }}</li>
                 {% endcall %}
             {% endcall %}
+                        {{ button({label:"Download PDF", type:"button", size:"base"}, {href:pdfUrl, download: null}) }}
+
         {% endcall %}
         <main class="relative flex flex-col items-center w-full grow">
             <div class="sr-only">

@@ -48,7 +48,7 @@ title: Components
 
 {% call container({type:"sidebar", size:"base"},{
     "x-data":"{allComponents: ''}",
-    "x-init":"$watch('allComponents', value => document.getElementById(value).scrollIntoView())",
+    "x-init":"$watch('allComponents', selected => document.getElementById(selected.value).scrollIntoView())",
     "class":"@container"
 }) %}
 
@@ -338,7 +338,7 @@ preformatted code
             attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
         ) %}
         <pre>
-<code>radio: <span x-show="radio">Index - <span x-text="radio.index"></span>, Value - <span x-text="radio.value"></span></span>
+<code>radio: {<span x-show="radio">index: <span x-text="radio.index"></span>, value: <span x-text="radio.value"></span></span>}
 </code></pre>
         {% endcall %}
     </div>
@@ -374,7 +374,7 @@ preformatted code
                 attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
             ) %}
             <pre>
-<code>select: <span x-show="select" x-text="select"></span>
+<code>select: {<span x-show="select">index: <span x-text="select.index"></span>, value: <span x-text="select.value"></span></span>}
 </code></pre>
         {% endcall %}
     </div>
@@ -418,7 +418,7 @@ preformatted code
     title: "toaster",
     meta: toasterMeta
 }) %}
-    {{ button({label: "Click to trigger a toast", type: "button", size:"base"}, {"@click": "$dispatch('notify', { content:`Hello! I am a toast!`, toasterId:'toaster' })"}) }}
+    {{ button({label: "Click to trigger a toast", type: "button", size:"base"}, {"@click": "$dispatch('notify', { content:`Hello! I am Toast!`, toasterId:'toaster' })"}) }}
 {% endcall %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}

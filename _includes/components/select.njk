@@ -29,6 +29,13 @@ description: "
 
 {% macro select(props={}, attrs={}) %}
 
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set newArr = [] %}
+{% for option in props.options %}
+    {% set newArr = (newArr.push(option.value), newArr) %}
+{% endfor %}
+
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <div
@@ -38,15 +45,16 @@ description: "
     {% if props.label %}{{ fieldLabel({tag: "label", fieldProps:props}) }}{% endif %}
 
     <select
-        x-model="{{ props.name }}"
         name="{{ props.name }}"
         id="{{ props.name }}"
         {{ loopAttrs(props.fieldAttrs) }}
         class="{{ fieldStyles }} {{ props.fieldAttrs.class }}"
+        x-on:change="{{ props.name }} = {index: {{ newArr | dump }}.indexOf($event.target.value) + 1, value: $event.target.value}"
     >
-        {% if props.fieldAttrs.placeholder %}<option value="" disabled>{{ props.fieldAttrs.placeholder}}</option>{% endif %}
+        {% if props.fieldAttrs.placeholder %}<option value="" selected disabled>{{ props.fieldAttrs.placeholder}}</option>{% endif %}
         {% for option in props.options %}
-            <option value="{{ option.value }}">{{ option.label }}</option>
+            <option
+            value="{{ option.value }}">{{ option.label }}</option>
         {% endfor %}
     </select>
 
