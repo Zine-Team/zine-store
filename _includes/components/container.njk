@@ -1,21 +1,3 @@
-{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
-
-{% set containerMeta = {
-    args: '{% call container(
-    props={
-        size: "narrow | base | wide | full",
-        type: "cols-1 | cols-2 | sidebar"
-    },
-    attrs={}
-) %}
-{% endcall %}',
-description: "
-- Wrapper for most page content sections.
-- `props.size` to set max-width
-- `props.type` to define columns or sidebar layouts.
-"
-} %}
-
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
@@ -44,6 +26,7 @@ description: "
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% macro container(props={}, attrs={})%}
+
     <div
         {{ loopAttrs(attrs) }}
         class="mx-auto grid
@@ -54,4 +37,23 @@ description: "
     ">
         {{ caller() | safe }}
     </div>
+
 {% endmacro %}
+
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set containerMeta = {
+    args: '{% call container(
+    props={
+        size: "narrow | base | wide | full",
+        type: "cols-1 | cols-2 | sidebar"
+    },
+    attrs={}
+) %}
+{% endcall %}',
+description: "
+- Wrapper for most page content sections.
+- `props.size` to set max-width
+- `props.type` to define columns or sidebar layouts.
+"
+} %}

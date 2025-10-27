@@ -1,16 +1,3 @@
-{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
-
-{% set carouselMeta = {
-    args: '{% call carousel(
-    attrs={}
-) %}
-{% endcall %}',
-description: "
-- Use `{% caller() %}` to insert the content.
-- Use `width` properties and `cqi` units on the content items to determine how many are shown at a time. i.e. `100cqi` would show one item at a time.
-"
-} %}
-
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
@@ -72,12 +59,25 @@ description: "
 </style>
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
 <div
     data-carousel
     {{ loopAttrs(attrs) }}
     class="@container grid overflow-x-auto overflow-y-hidden overscroll-x-contain grid-flow-col snap-x snap-mandatory {{ attrs.class }}">
     {{ caller() | safe }}
 </div>
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% endmacro %}
+
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set carouselMeta = {
+    args: '{% call carousel(
+    attrs={}
+) %}
+{% endcall %}',
+description: "
+- Use `{% caller() %}` to insert the content.
+- Use `width` properties and `cqi` units on the content items to determine how many are shown at a time. i.e. `100cqi` would show one item at a time.
+"
+} %}

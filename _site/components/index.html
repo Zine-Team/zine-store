@@ -31,7 +31,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown w-full max-w-[var(--container-sm)]"><p>Welcome to the design system!</p><p>This component system is made with macros from <a href="https://mozilla.github.io/nunjucks/templating.html">Nunjucks</a>.</p><p>All components have a <code>props</code> argument and a <code>attrs</code> argument, both of which are objects.</p><ul><li><code>props</code> contains all the values needed to make the component function, like the label and style of a button.</li><li><code>attrs</code> is for any HTML attributes that the instance of the component requires.</li></ul></div></div></section><section id="accordion" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-xl truncate xl:list-disc xl:list-item">accordion.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown w-full max-w-[var(--container-sm)]"><p>Welcome to the design system!</p><p>This component system is made with macros from <a href="https://mozilla.github.io/nunjucks/templating.html">Nunjucks</a>.</p><p>All components have a <code>props</code> argument and a <code>attrs</code> argument, both of which are objects.</p><ul><li><code>props</code> contains all the values needed to make the component function, like the label and style of a button.</li><li><code>attrs</code> is for any HTML attributes that the instance of the component requires.</li></ul></div></div></section><section id="accordion" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-xl truncate xl:list-disc xl:list-item">accordion.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -43,7 +43,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/accordion.njk" import accordion %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/accordion.njk" import accordion %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -73,7 +73,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><ul><li>Default to using <code>content</code> prop for markdownified text, but you can use <code>{% call %}</code> to insert custom content.</li><li>The banner's dismissed state currently resets when a new tab is opened.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><ul><li>Default to using <code>content</code> prop for markdownified text, but you can use <code>{% call %}</code> to insert custom content.</li><li>The banner's dismissed state currently resets when a new tab is opened.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -85,7 +85,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/announcementBanner.njk" import announcementBanner %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/announcementBanner.njk" import announcementBanner %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -115,7 +115,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><ul><li>Tag defaults to <code>button</code> unless you provide a <code>href</code>, then it'll be an <code>a</code> tag.</li><li>Optionally you can use <code>{% call %}</code> to give custom inner HTML.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><ul><li>Tag defaults to <code>button</code> unless you provide a <code>href</code>, then it'll be an <code>a</code> tag.</li><li>Optionally you can use <code>{% call %}</code> to give custom inner HTML.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -127,7 +127,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/button.njk" import button %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/button.njk" import button %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -153,7 +153,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><ul><li>Use <code>{% caller() %}</code> to insert the content.</li><li>Use <code>width</code> properties and <code>cqi</code> units on the content items to determine how many are shown at a time. i.e. <code>100cqi</code> would show one item at a time.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><ul><li>Use <code>{% caller() %}</code> to insert the content.</li><li>Use <code>width</code> properties and <code>cqi</code> units on the content items to determine how many are shown at a time. i.e. <code>100cqi</code> would show one item at a time.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -165,7 +165,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/carousel.njk" import carousel %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/carousel.njk" import carousel %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -232,7 +232,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><ul><li>If you want access to an array of the selected checkboxes, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><ul><li>If you want access to an array of the selected checkboxes, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -244,7 +244,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/checkbox.njk" import checkbox %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/checkbox.njk" import checkbox %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -303,7 +303,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><ul><li>Wrapper for most page content sections.</li><li><code>props.size</code> to set max-width</li><li><code>props.type</code> to define columns or sidebar layouts.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><ul><li>Wrapper for most page content sections.</li><li><code>props.size</code> to set max-width</li><li><code>props.type</code> to define columns or sidebar layouts.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -315,7 +315,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/container.njk" import container %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/container.njk" import container %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -340,7 +340,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><ul><li>Use <code>input</code> or <code>copyRef</code>, not both. <code>copyRef</code> is the <code>x-ref</code> value of an element inside the caller() that you want to copy the <code>innerText</code> value of.</li><li>Give an element inside the caller() the attribute <code>@click: 'copy'</code> to trigger the copy event.</li><li>Must have the <code>toaster</code> component somewhere on the page for this component to work.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><ul><li>Use <code>input</code> or <code>copyRef</code>, not both. <code>copyRef</code> is the <code>x-ref</code> value of an element inside the caller() that you want to copy the <code>innerText</code> value of.</li><li>Give an element inside the caller() the attribute <code>@click: 'copy'</code> to trigger the copy event.</li><li>Must have the <code>toaster</code> component somewhere on the page for this component to work.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -352,7 +352,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/copyToClipboard.njk" import copyToClipboard %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/copyToClipboard.njk" import copyToClipboard %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -373,7 +373,7 @@
     },
     attrs={}
 ) %}
-{% endcall %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-dialog-inline grow"><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+{% endcall %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-dialog-inline grow"><span x-data="{
         input: 'hey!',
         copy () {
             $clipboard(this.input)
@@ -385,7 +385,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><ul><li>Defaults to displaying buttons in a list</li><li>Can use `{% caller() %} instead for more complex inner components</li><li><code>position</code> is an array where you can set the relative positions to the trigger element.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><ul><li>Defaults to displaying buttons in a list</li><li>Can use `{% caller() %} instead for more complex inner components</li><li><code>position</code> is an array where you can set the relative positions to the trigger element.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -397,7 +397,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/dropdown.njk" import dropdown %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/dropdown.njk" import dropdown %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -438,7 +438,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><ul><li><code>props.fieldAttrs.type</code> can be most of the types listed <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#input_types">here</a>.</li><li>If you want access to the value, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><ul><li><code>props.fieldAttrs.type</code> can be most of the types listed <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#input_types">here</a>.</li><li>If you want access to the value, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -450,7 +450,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/input.njk" import input %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/input.njk" import input %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -492,7 +492,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><ul><li>Use <code>props.content</code> to inject markdown from a data source. Use <code>{{ caller() }}</code> when you want to write the content directly inside the component.</li><li><code>props.transform</code> can be turned off when the content will already be transformed by Eleventy, as is the case with .md file <code>content</code>.</li><li><code>props.overrides</code> can set instance-specific overrides to the styles, such as using a smaller base font size or a different color.</li><li><code>customStyles</code> takes in CSS to set instance-specific styles, such as making bolded text appear as a different color instead of bold.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><ul><li>Use <code>props.content</code> to inject markdown from a data source. Use <code>{{ caller() }}</code> when you want to write the content directly inside the component.</li><li><code>props.transform</code> can be turned off when the content will already be transformed by Eleventy, as is the case with .md file <code>content</code>.</li><li><code>props.overrides</code> can set instance-specific overrides to the styles, such as using a smaller base font size or a different color.</li><li><code>customStyles</code> takes in CSS to set instance-specific styles, such as making bolded text appear as a different color instead of bold.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -504,7 +504,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/markdown.njk" import markdown %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/markdown.njk" import markdown %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -545,7 +545,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><ul><li>Put elements you want repeated inside the <code>{{ caller() }}</code></li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><ul><li>Put elements you want repeated inside the <code>{{ caller() }}</code></li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -557,7 +557,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/marquee.njk" import marquee %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/marquee.njk" import marquee %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -599,7 +599,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><ul><li>If you want access to the selected radio, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.<ul><li><code>{{ props.name }}.index</code> will give you the index of the selected radio</li><li><code>{{ props.name }}.value</code> will give you the value of the selected radio (what will show up in the form submission.)</li></ul></li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><ul><li>If you want access to the selected radio, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.<ul><li><code>{{ props.name }}.index</code> will give you the index of the selected radio</li><li><code>{{ props.name }}.value</code> will give you the value of the selected radio (what will show up in the form submission.)</li></ul></li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -611,7 +611,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/radio.njk" import radio %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/radio.njk" import radio %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -646,7 +646,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><ul><li>If you want access to the selected option, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><ul><li>If you want access to the selected option, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -658,7 +658,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/select.njk" import select %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/select.njk" import select %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -698,7 +698,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><ul><li>If you want access to the value, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><ul><li>If you want access to the value, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -710,7 +710,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/textarea.njk" import textarea %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/textarea.njk" import textarea %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -750,7 +750,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><ul><li>Put this component somewhere in your base layout.</li><li>Trigger a new toast with the <code>$dispatch('notify', { content:'{{ message }}' })</code> function on an element.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><ul><li>Put this component somewhere in your base layout.</li><li>Trigger a new toast with the <code>$dispatch('notify', { content:'{{ message }}' })</code> function on an element.</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -762,7 +762,7 @@
             --md-radius: var(--radius);
             --md-heading-font: var(--font-sans);
             --md-heading-font-weight: 500;
-            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/toaster.njk" import toaster %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><span x-data="{
+            --md-scale: 1.35;" class="markdown"><pre><code x-ref="copyMe" class="leading-relaxed">{% from "components/toaster.njk" import toaster %}</code></pre></div><button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="copy"><span class="flex items-center justify-center gap-2"><span>Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -799,4 +799,4 @@
                     this.show = false
                     setTimeout(() => this.remove(this.toast), 300)
                 }
-            }" x-show="show" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:leave-end="opacity-0 -translate-y-2" class="flex items-center pointer-events-auto text-center duration-200 delay-100 transition gap-item bg-neutral border-neutral-light border shadow-zine rounded text-surface-light px-5 py-3 text-base"><span x-text="toast.content"></span></div></template></div><script defer="" src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script><script defer="" src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script><script defer="" src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script></body></html>
+            }" x-show="show" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:leave-end="opacity-0 -translate-y-2" class="flex items-center pointer-events-auto text-center duration-200 delay-100 transition gap-item bg-neutral border-neutral-light border shadow-zine rounded text-surface-light px-5 py-3 text-base"><span x-text="toast.content"></span> <button class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm py-2.5 px-3 sm:px-2.5" @click="transitionOut()"><span class="flex items-center justify-center gap-2"><span class="text-icon">×</span></span></button></div></template></div><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><script defer="" src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script><script defer="" src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script><script defer="" src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script></body></html>

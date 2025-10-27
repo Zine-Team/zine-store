@@ -1,3 +1,26 @@
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro copyToClipboard(props={}, attrs={}) %}
+
+<span
+    x-data="{
+        input: {% if props.input %}'{{ props.input }}'{% else %}$refs.{{ props.copyRef }}.innerText{% endif %},
+        copy () {
+            $clipboard(this.input)
+            $dispatch('notify', { content:'{{props.toastMessage}}', toasterId:'{% if props.toasterId %}{{ props.toasterId }}{% else %}toaster{% endif %}' })
+        }
+    }"
+    {{ loopAttrs(attrs) }}
+    class="inline-block {{ attrs.class }}">
+    {{ caller() | safe }}
+</span>
+
+{% endmacro %}
+
 {# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
 
 {% set copyToClipboardMeta = {
@@ -17,34 +40,3 @@ description: "
 - Must have the `toaster` component somewhere on the page for this component to work.
 "
 } %}
-
-{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
-
-{% from "snippets/loopAttrs.njk" import loopAttrs %}
-
-{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% macro copyToClipboard(props={}, attrs={}) %}
-
-{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
-
-<script defer src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script>
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-<span
-    x-data="{
-        input: {% if props.input %}'{{ props.input }}'{% else %}$refs.{{ props.copyRef }}.innerText{% endif %},
-        copy () {
-            $clipboard(this.input)
-            $dispatch('notify', { content:'{{props.toastMessage}}', toasterId:'{% if props.toasterId %}{{ props.toasterId }}{% else %}toaster{% endif %}' })
-        }
-    }"
-    {{ loopAttrs(attrs) }}
-    class="inline-block {{ attrs.class }}">
-    {{ caller() | safe }}
-</span>
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% endmacro %}

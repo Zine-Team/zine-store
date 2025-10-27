@@ -1,16 +1,3 @@
-{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
-
-{% set dialogMeta = {
-    args: '{% call dialog(
-    triggerProps={ button.props },
-    attrs={}
-) %}
-{% endcall %}',
-description: "
-- triggerProps is the properties for the `button` element that opens the `dialog`.
-"
-} %}
-
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/button.njk" import button %}
@@ -19,8 +6,6 @@ description: "
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% macro dialog(attrs={},triggerProps={}) %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <div x-data {{ loopAttrs(attrs) }} class="{{ attrs.class }}">
     {{ button(props=triggerProps, attrs={"@click": "$refs.dialog.showModal()"}) }}
@@ -33,6 +18,17 @@ description: "
     </dialog>
 </div>
 
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
 {% endmacro %}
+
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set dialogMeta = {
+    args: '{% call dialog(
+    triggerProps={ button.props },
+    attrs={}
+) %}
+{% endcall %}',
+description: "
+- triggerProps is the properties for the `button` element that opens the `dialog`.
+"
+} %}

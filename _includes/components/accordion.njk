@@ -1,18 +1,3 @@
-{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
-
-{% set accordionMeta = {
-args: '{{ accordion(
-    props={
-        accordionItems: [{
-            title: "",
-            description: "",
-            isOpen: false
-        }]
-    },
-    attrs={}
-) }}'
-} %}
-
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
@@ -48,6 +33,19 @@ args: '{{ accordion(
     {% endfor %}
 </div>
 
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
 {% endmacro %}
+
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set accordionMeta = {
+args: '{{ accordion(
+    props={
+        accordionItems: [{
+            title: "",
+            description: "",
+            isOpen: false
+        }]
+    },
+    attrs={}
+) }}'
+} %}

@@ -1,25 +1,3 @@
-{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
-
-{% set fieldsetMeta = {
-    args: '{{ fieldset(
-    props={
-        type: "radio | checkbox",
-        name: "",
-        label: "",
-        options: [],
-        description: ""
-    },
-    attrs={},
-    fieldAttrs={
-        required: boolean
-    }
-) }}',
-description: "
-- Dispatches event `fieldset-{{ props.name }}` when the value is updated.
-- You can get this value with `@fieldset-{{ props.name }}.window='{{ var }} = $event.detail'`
-"
-} %}
-
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses, fieldStyles %}
@@ -28,8 +6,6 @@ description: "
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% macro fieldset(props={}, attrs={}, fieldAttrs={}) %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <fieldset
     x-data="{
@@ -56,6 +32,26 @@ description: "
     </div>
 </fieldset>
 
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
 {% endmacro %}
+
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set fieldsetMeta = {
+    args: '{{ fieldset(
+    props={
+        type: "radio | checkbox",
+        name: "",
+        label: "",
+        options: [],
+        description: ""
+    },
+    attrs={},
+    fieldAttrs={
+        required: boolean
+    }
+) }}',
+description: "
+- Dispatches event `fieldset-{{ props.name }}` when the value is updated.
+- You can get this value with `@fieldset-{{ props.name }}.window='{{ var }} = $event.detail'`
+"
+} %}

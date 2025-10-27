@@ -1,3 +1,34 @@
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses, fieldStyles, fieldWrapperStyles %}
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro input(props={}, attrs={}) %}
+
+<div
+    {% if props.fieldAttrs.value %}x-init="{{ props.name }} = '{{ props.fieldAttrs.value }}'"{% endif %}
+    {{ loopAttrs(attrs) }}
+    class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
+
+    {% if props.label %}{{ fieldLabel({tag: "label", fieldProps:props}) }}{% endif %}
+
+    <span class="{{ fieldWrapperStyles }}">
+        <input
+            x-model="{{ props.name }}"
+            name="{{ props.name }}"
+            id="{{ props.name }}"
+            {{ loopAttrs(props.fieldAttrs) }}
+            class="{{ fieldStyles }} {{ props.fieldAttrs.class }}"
+        >
+    </span>
+
+    {% if props.description %}{{ fieldDescription(props) }}{% endif %}
+</div>
+
+{% endmacro %}
+
 {# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
 
 {% set inputMeta = {
@@ -23,37 +54,3 @@ description: "
 - If you want access to the value, define a `x-data` value in a parent element with the key as the `props.name` of this component.
 "
 } %}
-
-{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
-
-{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses, fieldStyles, fieldWrapperStyles %}
-{% from "snippets/loopAttrs.njk" import loopAttrs %}
-
-{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% macro input(props={}, attrs={}) %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-<div
-    {% if props.fieldAttrs.value %}x-init="{{ props.name }} = '{{ props.fieldAttrs.value }}'"{% endif %}
-    {{ loopAttrs(attrs) }}
-    class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
-
-    {% if props.label %}{{ fieldLabel({tag: "label", fieldProps:props}) }}{% endif %}
-
-    <span class="{{ fieldWrapperStyles }}">
-        <input
-            x-model="{{ props.name }}"
-            name="{{ props.name }}"
-            id="{{ props.name }}"
-            {{ loopAttrs(props.fieldAttrs) }}
-            class="{{ fieldStyles }} {{ props.fieldAttrs.class }}"
-        >
-    </span>
-
-    {% if props.description %}{{ fieldDescription(props) }}{% endif %}
-</div>
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% endmacro %}
