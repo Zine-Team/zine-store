@@ -45,12 +45,10 @@ description: "
     </style>
 {% endif %}
 
-<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
-
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <template
-    x-data="{ showBanner: $persist(true).as('ab-{{ global.bannerContent | slugify }}') }"
+    x-data="{ showBanner: $persist(true).as('ab-{{ props.content | slugify }}') }"
     x-if="showBanner">
     <div
         data-announcement-banner

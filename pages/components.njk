@@ -119,9 +119,8 @@ All components have a `props` argument and a `attrs` argument, both of which are
     title: "announcementBanner",
     meta: announcementBannerMeta
 }) %}
-    <div class="grid grid-overlap place-self-stretch -mx-dialog-inline">
-        {{ announcementBanner({content:"This is the **banner content**.", storageKey:"example-announcement-banner"},{class:"w-full"}) }}
-        {{ button({label: "Click me, then refresh page to reset banner", type: "button", size: "base"},{"x-data":"{}", class:"max-w-fit justify-self-center", @click:"sessionStorage.setItem('example-announcement-banner', true);"}) }}
+    <div class="grid grid-overlap place-self-stretch -mx-dialog-inline overflow-hidden">
+        {{ announcementBanner({content:"This is the **bannner content**.", storageKey:"example-announcement-banner"}) }}
     </div>
 {% endcall %}
 
@@ -332,7 +331,7 @@ preformatted code
             attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
         ) %}
         <pre>
-<code>radio: <span x-show="radio"><span x-text="radio.index"></span>, <span x-text="radio.value"></span></span>
+<code>radio: <span x-show="radio">Index - <span x-text="radio.index"></span>, Value - <span x-text="radio.value"></span></span>
 </code></pre>
         {% endcall %}
     </div>
