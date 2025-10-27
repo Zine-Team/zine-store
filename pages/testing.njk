@@ -1,14 +1,23 @@
 ---
 title: Testing
 ---
-{% from "components/button.njk" import button %}
-{% from "components/siteNav.njk" import siteNav with context %}
 {% from "components/container.njk" import container %}
-{% from "components/marquee.njk" import marquee %}
-{% from "components/dropdown.njk" import dropdown %}
+{% from "components/incrementer.njk" import incrementer %}
 
-{% call container({},{class:"py-dialog-block @container"}) %}
-    {% call marquee({speed: "25s"}) %}
-        <div class="text-lg">This is a repeating message!</div>
-    {% endcall %}
+
+{% call container({},{class:"py-dialog-block @container","x-data":"{incrementer: 0}"}) %}
+            {{ incrementer(props={
+            name: "incrementer",
+            label: "Incrementer",
+            description: "Optional description",
+            fieldAttrs:{
+                placeholder: "Placeholder",
+                required: true,
+                min: 0,
+                max: 5
+            }
+        },
+        attrs={
+            class:"w-full"
+        }) }}
 {% endcall %}
