@@ -126,9 +126,7 @@ All components have a `props` argument and a `attrs` argument, both of which are
     title: "announcementBanner",
     meta: announcementBannerMeta
 }) %}
-    <div class="grid grid-overlap place-self-stretch -mx-dialog-inline overflow-hidden">
-        {{ announcementBanner({content:"This is the **bannner content**.", storageKey:"example-announcement-banner"}) }}
-    </div>
+    {{ announcementBanner({content:"This is the banner contents. [markdown!](/)", storageKey:"example-announcement-banner"}) }}
 {% endcall %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -137,10 +135,12 @@ All components have a `props` argument and a `attrs` argument, both of which are
     title: "button",
     meta: buttonMeta
 }) %}
-    {{ button({label: "Button", type: "button", size: "base"}) }}
-    {{ button({label: "Small", type: "button", size:"sm"}) }}
-    {{ button({label: "Link", type: "link", size: "base"}) }}
-    {{ button({label: "Large", type: "link", size:"lg"}) }}
+    <div class="grid grid-cols-2 gap-item place-items-center">
+        {{ button({label: "Button", type: "button", size: "base"}) }}
+        {{ button({label: "Small", type: "button", size:"sm"}) }}
+        {{ button({label: "Link", type: "link", size: "base"}) }}
+        {{ button({label: "Large", type: "link", size:"lg"}) }}
+    </div>
 {% endcall %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -180,7 +180,7 @@ All components have a `props` argument and a `attrs` argument, both of which are
             attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
         ) %}
         <pre>
-<code>checkboxes: <span x-show="checkboxes"><span x-text="checkboxes"></span></span>
+<code>output: <span x-show="!checkboxes">[]</span><span x-show="checkboxes"><span x-text="JSON.stringify(checkboxes)"></span></span>
 </code></pre>
         {% endcall %}
     </div>
@@ -192,6 +192,20 @@ All components have a `props` argument and a `attrs` argument, both of which are
     title: "container",
     meta: containerMeta
 }) }}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call componentDocumentation({
+    title: "copyToClipboard",
+    meta: copyToClipboardMeta
+}) %}
+    {% call copyToClipboard({
+        input: 'hey!',
+        toastMessage: "Paste to see that it worked :)"
+    }) %}
+        {{ button({label: "Click to copy 'hey!'", type: "button", size:"base"}, {@click: "copy"}) }}
+    {% endcall %}
+{% endcall %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -215,33 +229,16 @@ All components have a `props` argument and a `attrs` argument, both of which are
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% call componentDocumentation({
-    title: "copyToClipboard",
-    meta: copyToClipboardMeta
-}) %}
-    {% call copyToClipboard({
-        input: 'hey!',
-        toastMessage: "Paste to see that it worked :)"
-    }) %}
-        {{ button({label: "Click to copy 'hey!'", type: "button", size:"base"}, {@click: "copy"}) }}
-    {% endcall %}
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
     title: "input",
     meta: inputMeta
 }) %}
     <div
-        x-data="{
-            text: '',
-            email: '',
-            number: null}"
+        x-data="{input: ''}"
         class="w-full flex flex-col gap-section-title">
 
         {{ input(props={
-            name: "text",
-            label: "Text",
+            name: "input",
+            label: "Input",
             description: "Optional description",
             fieldAttrs:{
                 type: "text",
@@ -253,30 +250,12 @@ All components have a `props` argument and a `attrs` argument, both of which are
             class:"w-full"
         }) }}
 
-        {{ input({
-            name: "number",
-            label: "Number",
-            fieldAttrs: {
-                type: "number"
-            }
-        },{class:"w-full"}) }}
-
-        {{ input({
-            name: "email",
-            label: "Email",
-            fieldAttrs: {
-                type: "email"
-            }
-        },{class:"w-full"}) }}
-
         {% call markdown(
             props={transform: false},
             attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
         ) %}
         <pre>
-<code>text: <span x-text="text"></span>
-number: <span x-text="number"></span>
-email: <span x-text="email"></span>
+<code>output: <span x-show="!input">""</span><span x-show="input"><span x-text="JSON.stringify(input)"></span></span>
 </code></pre>
         {% endcall %}
     </div>
@@ -338,7 +317,7 @@ preformatted code
             attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
         ) %}
         <pre>
-<code>radio: {<span x-show="radio">index: <span x-text="radio.index"></span>, value: <span x-text="radio.value"></span></span>}
+<code>output: <span x-show="!radio">{}</span><span x-show="radio"><span x-text="JSON.stringify(radio)"></span></span>
 </code></pre>
         {% endcall %}
     </div>
@@ -374,7 +353,8 @@ preformatted code
                 attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
             ) %}
             <pre>
-<code>select: {<span x-show="select">index: <span x-text="select.index"></span>, value: <span x-text="select.value"></span></span>}
+{# <code>output: {<span x-show="select">index: <span x-text="select.index"></span>, value: <span x-text="select.value"></span></span>} #}
+<code>output: <span x-show="!select">{}</span><span x-show="select"><span x-text="JSON.stringify(select)"></span></span>
 </code></pre>
         {% endcall %}
     </div>
@@ -406,7 +386,7 @@ preformatted code
             attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
         ) %}
         <pre>
-<code>textarea: <span x-text="textarea"></span>
+<code>output: <span x-show="!textarea">""</span><span x-show="textarea"><span x-text="JSON.stringify(textarea)"></span></span>
 </code></pre>
         {% endcall %}
     </div>

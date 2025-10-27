@@ -36,18 +36,22 @@ description: "
             {% if props.description %}{{ fieldDescription(props) }}{% endif %}
 
             {% for option in props.options %}
+                {# {% set inputData = { index: loop.index, value: option.value } %}
+                {{ inputData | dump }} #}
                 <div
                     x-data="{
+                        data: {index: {{ loop.index}}, value: '{{ option.value }}' },
                         id: $id('{{ option.value }}'),
                         setChecked () {
-                            const arr = {{ props.name }}
-                            i = {{ loop.index }}
-                            return arr.includes(i) ? arr.splice(arr.indexOf(i), 1) : arr.push(i)
+                            const arr = {{ props.name }} {# the array is handled by the alpine state in form #}
+                            {# const i = { index: {{ loop.index }} , value: '{{ option.value }}' } #}
+                            return arr.includes(this.data) ? arr.splice(arr.indexOf(this.data), 1) : arr.push(this.data)
                         }
                     }"
                     class="flex gap-2">
                     <input
-                        :checked="{{ props.name }}.includes({{ loop.index }})"
+                        {# :checked="{{ props.name }}.includes({ index: {{ loop.index }}, value: '{{ option.value }}' }, 0)" #}
+                        :checked="{{ props.name }}.includes(data)"
                         x-on:change="setChecked"
                         :id="id"
                         type="checkbox"

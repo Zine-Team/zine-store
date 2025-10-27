@@ -15,7 +15,7 @@
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 <div x-data="{
-        expanded: $persist(false).as('developmentWidget'),
+        expanded: false,
         windowWidth: window.innerWidth,
         getWidth() {
             window.addEventListener('resize', () => {

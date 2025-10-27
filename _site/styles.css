@@ -341,9 +341,6 @@
       max-width: 96rem;
     }
   }
-  .-mx-dialog-inline {
-    margin-inline: calc(var(--space-dialog-inline) * -1);
-  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -470,8 +467,8 @@
   .max-w-\[312px\] {
     max-width: 312px;
   }
-  .max-w-\[calc\(100vw-2\*var\(--spacing-site-inline\)\)\] {
-    max-width: calc(100vw - 2 * var(--spacing-site-inline));
+  .max-w-\[calc\(100cqi-2\*var\(--spacing-site-inline\)\)\] {
+    max-width: calc(100cqi - 2 * var(--spacing-site-inline));
   }
   .max-w-\[var\(--container-base\)\] {
     max-width: var(--container-base);
@@ -649,9 +646,6 @@
   }
   .gap-y-section-title {
     row-gap: var(--space-section-title);
-  }
-  .place-self-stretch {
-    place-self: stretch;
   }
   .self-center {
     align-self: center;
