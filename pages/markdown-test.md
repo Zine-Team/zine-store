@@ -1,231 +1,145 @@
 ---
-title: Markdown
+title: Chicago Design Cooperative Work Agreement
 layout: layouts/markdown.njk
 ---
 
-GitHub uses its own Markdown processor, which is a variant of the CommonMark specification. This means that while it supports most of the standard Markdown syntax, there are some GitHub-specific extensions and features.
-You can use Markdown syntax, along with some additional HTML tags, to format your writing on GitHub, in places like
-repository READMEs and comments on pull requests and issues.
-
-For more examples, see the [GitHub Flavored Markdown Spec](https://github.github.com/gfm/).
-
-See [Writing on GitHub](https://docs.github.com/en/get-started/writing-on-github) for more details.
-
-## Basic writing and formatting syntax
-
-### Headings
-
-To create a heading, add one to six # symbols before your heading text. The number of # you use
-will determine the hierarchy level and typeface size of the heading.
-
-###### This is the smallest heading
-
-### Styling text
-
-**This text is bold**
-**This text is bold and [this](/) is a link**
-
-_This text is italic_
-
-~~This text is strikethrough~~
-
-**This text is bold with _nested italic_**
-
-**_This text is bold and italic_**
-
-This text is <sub>subscript</sub>
-
-This text is <sup>superscript</sup>
-
-This text is <ins>underlined</ins>
-
-This is a <kbd>keyboard shortcut</kbd>
-
-### Quoting text
-
-> This is a blockquote.
-
-### Empty Quotes
-
->
-
-### Quoting code
-
-This is a `inline code` example.
-
-```python3
-print("This is a Python3 code block")
-```
-
-### Supported color models
-
-In issues, pull requests, and discussions, you can call out colors within a sentence by using backticks. A supported
-color model within backticks will display a visualization of the color.
-
-The background color is `#ffffff` for light mode and `#000000` for dark mode, also `rgb(9, 105, 218)`.
-
-### Links
-
-This site was built using [GitHub Pages](https://pages.github.com/).
-
-### Section links
-
-You can link to a section of a page by using the section's heading text, with spaces replaced by hyphens and all
-lowercase.
-
-Link to the previous section: [Links](#links).
-
-### Relative links
-
-Link to a file in the same repository: [README.md](./README.md).
-
-### Custom anchors
-
-Some body text of this section.
-
-<a name="my-custom-anchor-point"></a>
-Some text I want to provide a direct link to, but which doesn't have its own heading.
-
-(… more content…)
-
-[A link to that custom anchor](#my-custom-anchor-point)
-
-### Line breaks
-
-To create a line break, end a line with two or more spaces, and then type return.
-
-Line one.
-
-Line two.
-
-or use the HTML `<br>` tag.
-
-Line one.<br/>Line two.
-
-### Images
-
-#### Hosted images
-
-![This is a hosted image](https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png)
-
-### Lists
-
-You can make an unordered list by preceding one or more lines of text with -, \*, or +.
-
-- George Washington
-
-* John Adams
-
-- Thomas Jefferson
-
-To order your list, precede each line with a number.
-
-1. James Madison
-2. James Monroe
-3. John Quincy Adams
-
-### Nested Lists
-
-1. First list item
-   - First nested list item
-     - Second nested list item
-
-### Ignoring Markdown formatting
-
-You can tell GitHub to ignore (or escape) Markdown formatting by using \ before the Markdown character.
-
-Let's rename \*our-new-project\* to \*our-old-project\*.
-
-### Adding an image to suit your visitors
-
-#### Example of a responsive image
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/25423296/163456776-7f95b81a-f1ed-45f7-b7ab-8fa810d529fa.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
-  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
-</picture>
-
-### Adding a table
-
-Hi, I'm Mona. You might recognize me as GitHub's mascot.
-
-| Rank | Languages  |
-| ---: | ---------- |
-|    1 | JavaScript |
-|    2 | Python     |
-|    3 | SQL        |
-
-### Adding a collapsed section
-
-<details>
-<summary>My top languages</summary>
-
-| Rank | Languages  |
-| ---: | ---------- |
-|    1 | JavaScript |
-|    2 | Python     |
-|    3 | SQL        |
-
-</details>
-
-### Adding a divider
+The following is a Work Agreement ("Agreement") between the Cooperative Worker and Hiring Party named below.
+
+## 1. Parties
+
+|               | **Cooperative Worker**     | **Hiring Party**             |
+| ------------- | -------------------------- | ---------------------------- |
+| First name    | Steph                      | Mustafa                      |
+| Last name     | Barkan                     | Anwar                        |
+| Business name | Chicago Design Cooperative |                              |
+| Address       | 2839 W Lyndale St #3       | 6030 N Sheridan Rd           |
+| City          | Chicago                    | Chicago                      |
+| State         | Illinois                   | Illinois                     |
+| Zip           | 60647                      | 60660                        |
+| Phone         | 512-922-1715               | 847-532-8017                 |
+| Email         | stephbarkan@protonmail.com | mustafamahdi.anwar@gmail.com |
+
+Hiring Party will be available and respond to Cooperative Worker in a reasonable manner and within 3 days of contact.
 
 ---
 
-### Adding a video
+## 2. Scope of work
 
-We can't use an `<iframe>` tag to embed a video, but we can link to a video on YouTube or another site and display a
-thumbnail image that links to the video.
+### Deliverables
 
-[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtu.be/T-D1KVIuvjA)
+A custom website for the Hiring Party to use as an online portfolio for their art forms.
 
-### Adding a quote
+- The website will include pages for each of the Hiring Party's art forms, and a pages for learning about and contacting the artist.
+- The website will communicate the Hiring Party's personality, knowledge, and skills.
+- The website will accept contact form submissions.
+- The Hiring Party will be able to add and update the content and assets displayed on the website.
 
-#### Example of a quote
+### **Timeline**
 
-> If we pull together and commit ourselves, then we can push through anything.
+|                     |            |
+| ------------------- | ---------- |
+| Expected Start Date | 11-01-2025 |
+| Expected End Date   | 12-31-2025 |
 
-— Mona the Octocat
+### Services
 
-## Work with advanced formatting
+Cooperative Worker will provide the following services to Hiring Party in exchange for payment.
 
-### Creating a table
+| Service                    | Rates (USD)                                                               | Qty                           | Total                                        |
+| -------------------------- | ------------------------------------------------------------------------- | ----------------------------- | -------------------------------------------- |
+| Web design and development | Community rate: $60/hr<br> Reduced rate: $80/hr<br> Standard rate: 100/hr | Minimum 40hr<br> Maximum 60hr | $2,400-$6,000                                |
+| Graphic design             | The price of licensing fonts for the website                              | Estimated 0-1                 | The price of licensing fonts for the website |
 
-| Left-aligned | Center-aligned | Right-aligned |
-| :----------- | :------------: | ------------: |
-| git status   |   git status   |    git status |
-| git diff     |    git diff    |      git diff |
-| Pipe         |       \|       |               |
+### Rates
 
-| Command      | Description                                        |
-| ------------ | -------------------------------------------------- |
-| `git status` | List all _new or modified_ files                   |
-| `git diff`   | Show file differences that **haven't been** staged |
+Hiring Party should choose one of the three hourly rates to calculate payment to Cooperative Worker.
 
-### Creating a collapsed section
+Hiring Party will consider the estimated financial value the Deliverables will provide for the Hiring Party as well as their financial situation and relationship with the Cooperative Worker when choosing a Rate.
 
-<details open>
+---
 
-<summary>Tips for collapsed sections</summary>
+## 3. Payment
 
-#### You can add a header
+Total amount to be paid to Cooperative Worker for work under the Agreement will be calculated based on the agreed upon Rate and the quantity of hours worked by the Cooperative Worker to complete the Deliverables.
 
-You can add text within a collapsed section.
+### Payment schedule
 
-You can add an image or a code block, too.
+| Timing                                                                             | Estimated date | Amount Due                                                          | Calculation                                           |
+| ---------------------------------------------------------------------------------- | -------------- | ------------------------------------------------------------------- | ----------------------------------------------------- |
+| Contract signing                                                                   | 11-01-2025     | Community rate: $600 <br>Reduced rate: $800<br>Standard rate: $1000 | `1/4 Minimum Hours`× `Rate` <br>                      |
+| Mockups review meeting                                                             | 11-30-2025     | Community rate: $600 <br>Reduced rate: $800<br>Standard rate: $1000 | `1/4 Minimum Hours`× `Rate`                           |
+| Pre-launch website review meeting (Website launched upon receipt of final payment) | 12-30-2025     | $1200-$4000                                                         | (`Total Hours` × `Rate` ) –`Previous Payments amount` |
 
-```ruby
-   puts "Hello World"
-```
+### Payment method
 
-</details>
+Venmo @stephbarkan
 
-### iframe tag
+---
 
-The `<iframe>` tag is not supported in GitHub Markdown. You can link to an external site instead.
+## 4. Ownership
 
-<iframe width="100%" style="aspect-ratio: 16 / 9"
-src="https://www.youtube.com/embed/T-D1KVIuvjA?si=VdBgta3ALERtul4u" title="YouTube
-video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
-picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+Upon final payment, ownership of Deliverables will pass onto Hiring Party. By making this transfer, Cooperative Worker gives Hiring Party permission to use the final product.
+
+Cooperative Worker retains the right to reproduce, publish and display the Deliverables in portfolios, galleries, design periodicals and other media or exhibits for the purposes of recognition of creative excellence or professional advancement, to the extent they do not contain Hiring Party's Confidential Information.
+
+Cooperative Worker agrees to describe the Hiring Party's role in relation to the Deliverables unless such opportunity is declined by the other Party. Such mention should include, if appropriate, a link to the other Party’s website.
+
+---
+
+## 5. Clauses
+
+### Confidential Information
+
+Both parties acknowledge that during the term of this Agreement, they may have access to confidential information, including but not limited to business strategies, customer information, and proprietary materials. Both parties agree to keep such information confidential and not to disclose it to any third party without the prior written consent of the other party, except as required by law. This obligation shall survive the termination of this Agreement for a period of  years.
+
+### Late fee
+
+If Hiring Party fails to submit payment on time, Cooperative Worker may impose a late fee in the amount of 10% of the total amount unpaid every month.
+
+### Kill fee
+
+In the event that the Hiring Party decides not to publish or otherwise use the commissioned work from the Cooperative Worker, despite the Cooperative Worker completing the assignment in accordance with the agreed-upon specifications and deadlines, the Client agrees to pay a Kill Fee to the Cooperative Worker. This fee is to acknowledge the effort, time, and professional expertise invested by the Cooperative Worker, in fulfilling the commission.
+
+The Kill Fee will be set at the remainder of 50% of the originally agreed-upon total payment for the completed article. This payment is due within 7 days of the Hiring Party’s notification to the Cooperative Worker of the decision not to use the commissioned work.
+
+The payment of this Kill Fee entitles the Hiring Party to no rights over the completed article, and the Cooperative Worker retains full rights to the work, including the right to publish, sell, or use their work elsewhere.
+
+### Expense reimbursement
+
+The Client agrees to reimburse the Cooperative Worker for all reasonable and necessary expenses incurred in the performance of the Services, and have been authorized in writing by Client in advance. The Cooperative Worker shall submit an itemized invoice for all reimbursable expenses. Reimbursement shall be made within 15 days of the receipt of the invoice.
+
+### Indemnification
+
+The Hiring Party shall defend, indemnify and hold harmless Cooperative Worker and its employees, agents and subcontractors from all liabilities, claims and expenses, including all reasonable legal fees that may arise or result from any service provided or performed or agreed to be performed or any product sold by the Hiring Party, its agents, employees or assigns; any injury to person or property caused by any products or services sold or otherwise distributed in connection with Cooperative Worker; the Hiring Party’s use of electronic commerce; and any defective product which the Hiring Party has provided via the Services.
+
+### Dispute resolution
+
+The Parties will attempt to resolve any dispute relating to this Agreement or the Project amicably between the Parties. Any claim that is not resolved amicably will be decided through mediation in  performed by a mutually agreed upon industry expert. In no event shall the request for mediation be made after the date when institution of legal proceedings based upon such claim would be barred by the applicable statute of limitations or repose.
+
+### Relationship of parties
+
+The Cooperative Worker is an independent contractor and not an employee of the Client. Nothing contained in this Agreement shall be construed to create an employer-employee relationship, partnership, or joint venture between the parties.
+
+The Cooperative Worker shall be solely responsible for determining the means and methods for performing the Services and for the satisfactory completion of the Services. The Client shall have no right to control or direct the manner or method by which the Services are performed, except as specifically provided in this Agreement.
+
+---
+
+## 6. **Freelance Worker Protections Ordinance**
+
+### **Freelance Worker Protection Act Compliance**
+
+In accordance with the Freelance Worker Protection Act, contracts are mandatory for freelance work with a value equal to or greater than $500, either in a single contract or when aggregated with all contracts for products or services between the same contracting entity and the Cooperative Worker during the immediately preceding 120 days. Payment must be made by the date specified in the contract or within 30 days after the completion of work if no date is specified. The Client is prohibited from retaliating against the Cooperative Worker for exercising their rights. The Cooperative Worker has the right to file a complaint with the Illinois Department of Labor for any violations and may recover double the amount not paid, damages for retaliation, and attorneys’ fees and costs.
+
+### **Applicable Law**
+
+This Agreement shall be governed by and construed in accordance with the laws of Illinois. Any disputes arising out of or in connection with this Agreement shall be subject to the exclusive jurisdiction of the courts of Illinois. However, if the Cooperative Worker is legally qualified under the Freelance Worker Protection Act, the Cooperative Worker is covered by the law regardless of the governing law state.
+
+---
+
+## 7. General
+
+This Agreement, including any attachments, represents the entire agreement between Hiring Party and Cooperative Worker. Both parties’ performance is limited to only those items that are listed in the Agreement.
+
+---
+
+## 8. Signatures

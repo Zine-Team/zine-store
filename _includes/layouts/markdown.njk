@@ -5,17 +5,78 @@ layout: page
 {% from "components/siteNav.njk" import siteNav with context %}
 {% from "components/markdown.njk" import markdown %}
 {% from "components/container.njk" import container %}
+{% from "components/input.njk" import input %}
 
-{% set custom %}
-    b, strong {
-        color: red;
-    }
-{% endset %}
 
-{% call container({size:"narrow"},{class:"py-dialog-block"}) %}
-    {{ markdown({
-        content: content,
-        overrides: {},
-        customStyles: custom
-    }) }}
+
+{% call container(
+    {size:"narrow"},
+    {class:"py-dialog-block", "x-data":"{
+        hiringPartyName:'',
+        cooperativeWorkerName: ''
+    }" }
+) %}
+
+{% call markdown({transform: false}) %}
+    {{ content | safe }}
+    <h3> Hiring Party</h3>
+    <div class="grid grid-cols-[max-content_1fr] gap-item">
+        {{ input(
+            props={
+                name: "hiringPartyName",
+                label: "Name",
+                description: "",
+                fieldAttrs: {
+                    type: "text",
+                    required: true
+                },
+                direction: "row"
+            },
+            attrs={"class":"grid-cols-subgrid col-span-full"}
+        ) }}
+        {{ input(
+            props={
+                name: "hiringPartyDate",
+                label: "Date",
+                description: "",
+                fieldAttrs: {
+                    type: "date",
+                    required: true
+                },
+                direction: "row"
+            },
+            attrs={"class":"grid-cols-subgrid col-span-full"}
+        ) }}
+    </div>
+
+    <h3> Cooperative Worker</h3>
+    <div class="grid grid-cols-[max-content_1fr] gap-item">
+        {{ input(
+            props={
+                name: "cooperativeWorkerName",
+                label: "Name",
+                description: "",
+                fieldAttrs: {
+                    type: "text",
+                    required: true
+                },
+                direction: "row"
+            },
+            attrs={"class":"grid-cols-subgrid col-span-full"}
+        ) }}
+        {{ input(
+            props={
+                name: "cooperativeWorkerDate",
+                label: "Date",
+                description: "",
+                fieldAttrs: {
+                    type: "date",
+                    required: true
+                },
+                direction: "row"
+            },
+            attrs={"class":"grid-cols-subgrid col-span-full"}
+        ) }}
+    </div>
+    {% endcall %}
 {% endcall %}

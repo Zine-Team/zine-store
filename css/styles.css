@@ -30,7 +30,8 @@
     --text-lg: 27px;
     --text-icon: 1.45em;
     --text-xl: 48px;
-    --text-2xl: clamp(75px, 11vw, 10rem);
+    --text-2xl: 60px;
+    --text-3xl: clamp(75px, 11vw, 10rem);
 
     --space-site-inline: 1rem;
     --space-nav: 0.75rem;
@@ -50,6 +51,7 @@
       --text-sm: 18px;
       --text-base: 22px;
       --text-lg: 32px;
+      --text-2xl: 72px;
       /* --text-icon: 33px; */
 
       --space-site-inline: 2rem;

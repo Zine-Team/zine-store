@@ -221,14 +221,19 @@
   padding-block: var(--space-half);
   padding-inline: var(--space-1);
   text-align: left;
+  overflow-x: auto;
 }
 
 .markdown td:first-child,
 .markdown th:first-child {
-  inline-size: 33%;
+  inline-size: 25%;
 }
 
 .markdown td + td,
 .markdown th + th {
   border-inline-start: 1px solid var(--md-border-color);
+}
+
+.markdown > div {
+  margin-block: var(--space-3);
 }
