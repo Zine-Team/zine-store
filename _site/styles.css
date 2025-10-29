@@ -472,9 +472,6 @@
   .max-w-\[calc\(100cqi-2\*var\(--spacing-site-inline\)\)\] {
     max-width: calc(100cqi - 2 * var(--spacing-site-inline));
   }
-  .max-w-\[var\(--container-base\)\] {
-    max-width: var(--container-base);
-  }
   .max-w-\[var\(--container-sm\)\] {
     max-width: var(--container-sm);
   }
