@@ -60,12 +60,14 @@ title: Components
             </ul>
         </section>
         <section class="flex flex-col items-start gap-item-sm">
-            <h2 class="font-semibold">All components</h2>
-            <ul class="grid items-start list-disc gap-item-sm ml-indent">
-            {% for component in components | sort() %}
-                <li class="w-min">{{ button({label:component, type: "link"},{href:"#"+ component}) }}</li>
-            {% endfor %}
-            </ul>
+            {% call markdown({transform: false}) %}
+                <h4 class="font-semibold">All components</h4>
+                <ul>
+                    {% for component in components | sort() %}
+                        <li><a href="#{{ component }}">{{ component }}</li>
+                    {% endfor %}
+                </ul>
+            {% endcall %}
         </section>
     </aside>
 
@@ -288,7 +290,7 @@ preformatted code
     title: "marquee",
     meta: marqueeMeta
 }) %}
-    {% call marquee({speed: "10s", pauseOnHover: true}, {class:"w-full"}) %}
+    {% call marquee({speed: "10s", pauseOnHover: true, fadeEdges: true}, {class:"w-full"}) %}
         <div class="text-lg">This is a repeating message!</div>
     {% endcall %}
 {% endcall %}

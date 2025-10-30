@@ -38,8 +38,10 @@
     class="relative @container overflow-hidden {{ attrs.class }}"
     {{ loopAttrs(attrs) }}
 >
-  <div aria-hidden="true" class="absolute inset-y-0 z-10 w-[5%] start-0 bg-linear-to-r from-surface to-transparent"></div>
-  <div aria-hidden="true" class="absolute inset-y-0 z-10 w-[5%] end-0 bg-linear-to-l from-surface to-transparent"></div>
+    {% if props.fadeEdges %}
+        <div aria-hidden="true" class="absolute inset-y-0 z-10 w-[5%] start-0 bg-linear-to-r from-surface to-transparent"></div>
+        <div aria-hidden="true" class="absolute inset-y-0 z-10 w-[5%] end-0 bg-linear-to-l from-surface to-transparent"></div>
+    {% endif %}
   <div
     x-ref="marqueeTrack"
     style="--animate-duration: var(--marquee-duration)"
@@ -60,7 +62,8 @@
     args: '{% call marquee(
     props={
         speed: "25s",
-        pauseOnHover: boolean
+        pauseOnHover: boolean,
+        fadeEdges: boolean
     },
     attrs={}
 ) %}
