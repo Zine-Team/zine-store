@@ -7,7 +7,7 @@ The following is a Work Agreement ("Agreement") between the Cooperative Worker a
 
 ## 1. Parties
 
-|               | **Cooperative Worker**     | **Hiring Party**             |
+|               | Cooperative Worker         | Hiring Party                 |
 | ------------- | -------------------------- | ---------------------------- |
 | First name    | Steph                      | Mustafa                      |
 | Last name     | Barkan                     | Anwar                        |
@@ -34,7 +34,7 @@ A custom website for the Hiring Party to use as an online portfolio for their ar
 - The website will accept contact form submissions.
 - The Hiring Party will be able to add and update the content and assets displayed on the website.
 
-### **Timeline**
+### Timeline
 
 |                     |            |
 | ------------------- | ---------- |
@@ -45,16 +45,22 @@ A custom website for the Hiring Party to use as an online portfolio for their ar
 
 Cooperative Worker will provide the following services to Hiring Party in exchange for payment.
 
-| Service                    | Rates (USD)                                                               | Qty                           | Total                                        |
-| -------------------------- | ------------------------------------------------------------------------- | ----------------------------- | -------------------------------------------- |
-| Web design and development | Community rate: $60/hr<br> Reduced rate: $80/hr<br> Standard rate: 100/hr | Minimum 40hr<br> Maximum 60hr | $2,400-$6,000                                |
-| Graphic design             | The price of licensing fonts for the website                              | Estimated 0-1                 | The price of licensing fonts for the website |
+| Service                    | Rates (USD)                                                                 | Qty                           | Total                                        |
+| -------------------------- | --------------------------------------------------------------------------- | ----------------------------- | -------------------------------------------- |
+| Web design and development | Community rate: $60/hr\*<br> Reduced rate: $80/hr<br> Standard rate: 100/hr | Minimum 40hr<br> Maximum 60hr | $2,400-$6,000                                |
+| Graphic design             | The price of licensing fonts for the website                                | Estimated 0-1                 | The price of licensing fonts for the website |
 
 ### Rates
 
 Hiring Party should choose one of the three hourly rates to calculate payment to Cooperative Worker.
 
 Hiring Party will consider the estimated financial value the Deliverables will provide for the Hiring Party as well as their financial situation and relationship with the Cooperative Worker when choosing a Rate.
+
+\*The price for the Community Rate can be negotiated or supplemented through bartering as agreed upon by both parties.
+
+### Hour estimates
+
+Cooperative Worker will work a minimum of 40 hours to complete the deliverable. The work is not expected to exceed 60 hours, but if it seems like it might, the Cooperative Worker will communicate this to the Hiring Party and a discussion will take place to either reduce the scope of work or provide a new estimate for the maximum hours Cooperative Worker will work for the Deliverables.
 
 ---
 
@@ -124,13 +130,13 @@ The Cooperative Worker shall be solely responsible for determining the means and
 
 ---
 
-## 6. **Freelance Worker Protections Ordinance**
+## 6. Freelance Worker Protections Ordinance
 
-### **Freelance Worker Protection Act Compliance**
+### Freelance Worker Protection Act Compliance
 
 In accordance with the Freelance Worker Protection Act, contracts are mandatory for freelance work with a value equal to or greater than $500, either in a single contract or when aggregated with all contracts for products or services between the same contracting entity and the Cooperative Worker during the immediately preceding 120 days. Payment must be made by the date specified in the contract or within 30 days after the completion of work if no date is specified. The Client is prohibited from retaliating against the Cooperative Worker for exercising their rights. The Cooperative Worker has the right to file a complaint with the Illinois Department of Labor for any violations and may recover double the amount not paid, damages for retaliation, and attorneys’ fees and costs.
 
-### **Applicable Law**
+### Applicable Law
 
 This Agreement shall be governed by and construed in accordance with the laws of Illinois. Any disputes arising out of or in connection with this Agreement shall be subject to the exclusive jurisdiction of the courts of Illinois. However, if the Cooperative Worker is legally qualified under the Freelance Worker Protection Act, the Cooperative Worker is covered by the law regardless of the governing law state.
 
@@ -143,3 +149,5 @@ This Agreement, including any attachments, represents the entire agreement betwe
 ---
 
 ## 8. Signatures
+
+The Hiring Party and Collective Worker formalize this Work Agreement by typing their name and logging the current date.

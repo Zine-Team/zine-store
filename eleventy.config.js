@@ -2,6 +2,8 @@ import format from "date-fns/format";
 import htmlmin from "html-minifier";
 import markdownIt from "markdown-it";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
+import * as toc from "eleventy-plugin-toc-util";
+
 const md = markdownIt();
 
 export default async function (eleventyConfig) {
@@ -28,6 +30,10 @@ export default async function (eleventyConfig) {
   eleventyConfig.addFilter("markdownify", function (content) {
     return md.render(String(content));
   });
+
+  eleventyConfig.addFilter("attachId", (html) => toc.attachId(html, "h2"));
+  eleventyConfig.addFilter("attachAnchor", (html) => toc.attachIdAnchor(html, "h2"));
+  eleventyConfig.addFilter("toc", (html) => toc.createToc(html, "h2"));
 
   eleventyConfig.addTransform("htmlmin", (content, outputPath) => {
     if (outputPath && outputPath.endsWith(".html")) {

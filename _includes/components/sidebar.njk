@@ -1,0 +1,38 @@
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro sidebar(props={}, attrs={}) %}
+
+{# Values ----------- #}
+
+{% set themeStyles = "py-dialog-block pr-site-inline gap-section-title" %}
+
+{# ------------------ #}
+
+    <aside
+        {{ loopAttrs(attrs) }}
+        class="sticky top-0 flex-col items-start hidden overflow-y-auto overscroll-contain lg:flex max-h-dvh h-fit {{ themeStyles }} {{ attrs.class }}">
+        {{ caller() | safe }}
+    </aside>
+
+{% endmacro %}
+
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set sidebarMeta = {
+    args: '{% call sidebar(
+    props={
+        input: "",
+    },
+    attrs={}
+) %}
+{% endcall %}',
+description: "
+-
+-
+-
+"
+} %}

@@ -1,5 +1,6 @@
 .markdown {
   --md-border-color: color-mix(in oklab, var(--md-text-color), transparent 75%);
+  --md-border-width: 1px;
   --md-background-color: color-mix(in oklab, var(--md-text-color), transparent 95%);
 
   --space-half: calc(var(--md-font-size) * 2 / 8);
@@ -93,7 +94,7 @@
 /* horizontal ruler */
 .markdown hr {
   margin-block: var(--space-4);
-  border-block-start: 1px solid var(--md-border-color);
+  border-block-start: var(--md-border-width) solid var(--md-border-color);
 }
 
 /* blockquote */
@@ -117,7 +118,7 @@
   padding: 2px 4px;
   margin: 0;
   background-color: var(--md-background-color);
-  border: 1px dotted var(--md-border-color);
+  border: var(--md-border-width) dotted var(--md-border-color);
 }
 
 .markdown pre {
@@ -196,20 +197,21 @@
   table-layout: fixed;
   inline-size: 100%;
   font-size: 0.875em;
-  border: 1px solid var(--md-border-color);
+  border: var(--md-border-width) solid var(--md-border-color);
   margin-block: var(--space-3);
 }
 
 .markdown thead {
   background-color: var(--md-background-color);
-}
-
-.markdown thead:has(th:empty) {
   display: none;
 }
 
+.markdown thead:has(th:not(:empty)) {
+  display: table-header-group;
+}
+
 .markdown tr {
-  border-block-end: 1px solid var(--md-border-color);
+  border-block-end: var(--md-border-width) solid var(--md-border-color);
 }
 
 .markdown th {
@@ -231,9 +233,30 @@
 
 .markdown td + td,
 .markdown th + th {
-  border-inline-start: 1px solid var(--md-border-color);
+  border-inline-start: var(--md-border-width) solid var(--md-border-color);
 }
 
 .markdown > div {
   margin-block: var(--space-3);
+}
+
+@media print {
+  @page {
+    margin: 1in;
+  }
+  .markdown {
+    --md-border-width: 0.5px;
+    --md-font-size: 11px !important;
+  }
+
+  .markdown h2,
+  .markdown h3 {
+    break-after: avoid;
+  }
+
+  .markdown table,
+  .markdown img,
+  .markdown svg {
+    break-inside: avoid;
+  }
 }

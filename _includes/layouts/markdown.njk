@@ -6,77 +6,104 @@ layout: page
 {% from "components/markdown.njk" import markdown %}
 {% from "components/container.njk" import container %}
 {% from "components/input.njk" import input %}
+{% from "components/sidebar.njk" import sidebar %}
 
-
+{% set anchoredContent = content | attachId | attachAnchor %}
 
 {% call container(
-    {size:"narrow"},
-    {class:"py-dialog-block", "x-data":"{
-        hiringPartyName:'',
-        cooperativeWorkerName: ''
-    }" }
+    {size:"base", type:"sidebar"},
+    {class:"" }
 ) %}
 
-{% call markdown({transform: false}) %}
-    {{ content | safe }}
-    <h3> Hiring Party</h3>
-    <div class="grid grid-cols-[max-content_1fr] gap-item">
-        {{ input(
-            props={
-                name: "hiringPartyName",
-                label: "Name",
-                description: "",
-                fieldAttrs: {
-                    type: "text",
-                    required: true
-                },
-                direction: "row"
-            },
-            attrs={"class":"grid-cols-subgrid col-span-full"}
-        ) }}
-        {{ input(
-            props={
-                name: "hiringPartyDate",
-                label: "Date",
-                description: "",
-                fieldAttrs: {
-                    type: "date",
-                    required: true
-                },
-                direction: "row"
-            },
-            attrs={"class":"grid-cols-subgrid col-span-full"}
-        ) }}
-    </div>
-
-    <h3> Cooperative Worker</h3>
-    <div class="grid grid-cols-[max-content_1fr] gap-item">
-        {{ input(
-            props={
-                name: "cooperativeWorkerName",
-                label: "Name",
-                description: "",
-                fieldAttrs: {
-                    type: "text",
-                    required: true
-                },
-                direction: "row"
-            },
-            attrs={"class":"grid-cols-subgrid col-span-full"}
-        ) }}
-        {{ input(
-            props={
-                name: "cooperativeWorkerDate",
-                label: "Date",
-                description: "",
-                fieldAttrs: {
-                    type: "date",
-                    required: true
-                },
-                direction: "row"
-            },
-            attrs={"class":"grid-cols-subgrid col-span-full"}
-        ) }}
-    </div>
+    {% call sidebar() %}
+            <section class="flex flex-col items-start gap-item-sm">
+            <h2 class="font-semibold">Table of Contents</h2>
+                {{ markdown({content: anchoredContent | toc | safe })}}
+        </section>
     {% endcall %}
+    <div class="border-dotted justify-items-center lg:pl-site-inline py-dialog-block lg:border-l border-neutral-lighter">
+        <form
+            x-data="{
+                hiringPartyName:'',
+                hiringPartyDate:'',
+                cooperativeWorkerName: 'Steph Barkan',
+                cooperativeWorkerDate: new Date().toISOString().slice(0, 10),
+                printContract() {
+                    if (this.hiringPartyName && this.hiringPartyDate && this.cooperativeWorkerName && this.cooperativeWorkerDate) {
+                        print()
+                    } else {
+                        console.log('complete!')
+                    }
+                }
+            }"
+            class="max-w-narrow"
+            >
+            {% call markdown({transform: false}) %}
+                {{ anchoredContent | safe }}
+                <h3> Hiring Party</h3>
+                <div class="grid grid-cols-[max-content_1fr] gap-item">
+                    {{ input(
+                        props={
+                            name: "hiringPartyName",
+                            label: "Name",
+                            description: "",
+                            fieldAttrs: {
+                                type: "text",
+                                required: true
+                            },
+                            direction: "row"
+                        },
+                        attrs={"class":"grid-cols-subgrid col-span-full"}
+                    ) }}
+                    {{ input(
+                        props={
+                            name: "hiringPartyDate",
+                            label: "Date",
+                            description: "",
+                            fieldAttrs: {
+                                type: "date",
+                                required: true
+                            },
+                            direction: "row"
+                        },
+                        attrs={"class":"grid-cols-subgrid col-span-full"}
+                    ) }}
+                </div>
+
+                <h3> Cooperative Worker</h3>
+                <div class="grid grid-cols-[max-content_1fr] gap-item">
+                    {{ input(
+                        props={
+                            name: "cooperativeWorkerName",
+                            label: "Name",
+                            description: "",
+                            fieldAttrs: {
+                                type: "text",
+                                disabled: true,
+                                required: true
+                            },
+                            direction: "row"
+                        },
+                        attrs={"class":"grid-cols-subgrid col-span-full"}
+                    ) }}
+                    {{ input(
+                        props={
+                            name: "cooperativeWorkerDate",
+                            label: "Date",
+                            description: "",
+                            fieldAttrs: {
+                                type: "date",
+                                required: true,
+                                disabled: true
+                            },
+                            direction: "row"
+                        },
+                        attrs={"class":"grid-cols-subgrid col-span-full"}
+                    ) }}
+                </div>
+                <hr>
+            {% endcall %}
+            {{ button({label:"Sign and print", type: "button", size:"base"},{"@click":"printContract", class:"print:hidden w-full"}) }}
+        </form>
+    </div>
 {% endcall %}
