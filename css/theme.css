@@ -56,6 +56,7 @@
 
   --perspective-zine: 2000px;
   --aspect-zine: 5.5 / 4.25;
+  --aspect-square: 1;
 
   --duration-*: initial;
   --duration-zine: 1000ms;

@@ -116,9 +116,9 @@ All components have a `props` argument and a `attrs` argument, both of which are
     title: "accordion",
     meta: accordionMeta
 }) %}
+        {# {"isOpen": true, title: "Capitalists", description: "The very small ruling class upon whose interests and competition the system is based. Their massive wealths are obtained  through profiting off other people’s labor."},
+        {title: "Managerial State", description: "The structures in place to maintain the functioning of The State and to protect it from economic crises, often caused by Capitalists acting in self-interested ways."}, #}
     {{ accordion({accordionItems:[
-        {"isOpen": true, title: "Capitalists", description: "The very small ruling class upon whose interests and competition the system is based. Their massive wealths are obtained  through profiting off other people’s labor."},
-        {title: "Managerial State", description: "The structures in place to maintain the functioning of The State and to protect it from economic crises, often caused by Capitalists acting in self-interested ways."},
         {title: "Armed State", description: "Violent force used by The State to maintainits power. Under Racial Capitalism, The State is the sole entity justified in using violence, violence it uses to dispossess The People of their land, resources, and labor to protectand serve the interests of the Capitalists. The Armed State promotes and relies on racist ideology to demonize and criminalize people of color in order to enforce a racial division of labor. Such divisions allow forthe extreme exploitation of selected groups’ labor and keep The People turned againstone another."},
         {title: "Concessions State", description: "Reforms to the system made by The State in response to the demands of The People. While crucial to improving the lives and conditions of the The People, reforms that don’t challenge the nature of the system are often co-opted to make Racial Capitalismfeel more acceptable and friendly without fundamentally changing its power dynamics. The Concessions State also prescribes theonly legitimate avenues to express dissent (voting and emailing your representatives) and suppresses and vilifies all others (organized labor strikes or squatting)."},
         {title: "Civil Society", description: "Ideas, beliefs, values, and culture that shape how we see ourselves, each other, and the wealthy. Although Civil Society is not controlled by The State, the institutions that constitute it are heavily influenced by the ideologies and forces of Racial Capitalism."},
@@ -141,7 +141,7 @@ All components have a `props` argument and a `attrs` argument, both of which are
     title: "button",
     meta: buttonMeta
 }) %}
-    <div class="grid grid-cols-2 gap-item place-items-center">
+    <div class="flex flex-wrap gap-item justify-around w-full items-center">
         {{ button({label: "Button", type: "button", size: "base"}) }}
         {{ button({label: "Small", type: "button", size:"sm"}) }}
         {{ button({label: "Link", type: "link", size: "base"}) }}
@@ -170,7 +170,7 @@ All components have a `props` argument and a `attrs` argument, both of which are
 }) %}
     <div
         x-data="{checkboxes: []}"
-        class="w-full flex flex-col gap-section-title">
+        class="w-full flex flex-col items-center">
         {{ checkbox(
             props={
                 name: "checkboxes",
@@ -179,11 +179,11 @@ All components have a `props` argument and a `attrs` argument, both of which are
                 options: [{label: "Option 1", value: "You selected option 1!"},{label: "Option 2", value: "You selected option 2!"},{label: "Option 3", value: "You selected option 3!"}],
                 fieldAttrs: {}
             },
-            attrs={}
+            attrs={class:"w-max"}
         ) }}
         {% call markdown(
             props={transform: false},
-            attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
+            attrs={class:"relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"}
         ) %}
         <pre>
 <code>output: <span x-show="!checkboxes">[]</span><span x-show="checkboxes"><span x-text="JSON.stringify(checkboxes)"></span></span>
@@ -265,7 +265,7 @@ All components have a `props` argument and a `attrs` argument, both of which are
 }) %}
     <div
         x-data="{incrementer: 0}"
-        class="w-full flex flex-col gap-section-title">
+        class="w-full flex flex-col items-center">
 
         {{ incrementer(props={
             name: "incrementer",
@@ -281,7 +281,7 @@ All components have a `props` argument and a `attrs` argument, both of which are
 
         {% call markdown(
             props={transform: false},
-            attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
+            attrs={class:"relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"}
         ) %}
         <pre>
 <code>output: <span x-text="JSON.stringify(incrementer)"></span>
@@ -298,7 +298,7 @@ All components have a `props` argument and a `attrs` argument, both of which are
 }) %}
     <div
         x-data="{input: ''}"
-        class="w-full flex flex-col gap-section-title">
+        class="w-full flex flex-col items-center">
 
         {{ input(props={
             name: "input",
@@ -316,7 +316,7 @@ All components have a `props` argument and a `attrs` argument, both of which are
 
         {% call markdown(
             props={transform: false},
-            attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
+            attrs={class:"relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"}
         ) %}
         <pre>
 <code>output: <span x-show="!input">""</span><span x-show="input"><span x-text="JSON.stringify(input)"></span></span>
@@ -365,7 +365,7 @@ preformatted code
 }) %}
     <div
         x-data="{radio: ''}"
-        class="w-full flex flex-col gap-section-title">
+        class="w-full flex flex-col items-center">
         {{ radio(
             props={
                 name: "radio",
@@ -378,7 +378,7 @@ preformatted code
         ) }}
         {% call markdown(
             props={transform: false},
-            attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
+            attrs={class:"relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"}
         ) %}
         <pre>
 <code>output: <span x-show="!radio">{}</span><span x-show="radio"><span x-text="JSON.stringify(radio)"></span></span>
@@ -395,7 +395,7 @@ preformatted code
 }) %}
     <div
         x-data="{select: ''}"
-        class="w-full flex flex-col gap-section-title">
+        class="w-full flex flex-col items-center">
         {{ select(
             {
             "name": "select",
@@ -414,7 +414,7 @@ preformatted code
         }}
         {% call markdown(
                 props={transform: false},
-                attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
+                attrs={class:"relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"}
             ) %}
             <pre>
 {# <code>output: {<span x-show="select">index: <span x-text="select.index"></span>, value: <span x-text="select.value"></span></span>} #}
@@ -432,7 +432,7 @@ preformatted code
 }) %}
     <div
         x-data="{textarea: ''}"
-        class="w-full flex flex-col gap-section-title">
+        class="w-full flex flex-col items-center">
         {{ textarea(
             {
                 name: "textarea",
@@ -447,7 +447,7 @@ preformatted code
         ) }}
         {% call markdown(
             props={transform: false},
-            attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
+            attrs={class:"relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"}
         ) %}
         <pre>
 <code>output: <span x-show="!textarea">""</span><span x-show="textarea"><span x-text="JSON.stringify(textarea)"></span></span>
