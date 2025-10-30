@@ -2,10 +2,9 @@
 layout: base
 ---
 {% from "components/button.njk" import button %}
-{% from "components/dropdown.njk" import dropdown %}
 {% from "components/carousel.njk" import carousel %}
-{% from "components/sectionHeader.njk" import sectionHeader %}
-{% from "components/siteNav.njk" import siteNav with context %}
+{% from "components/local/sectionHeader.njk" import sectionHeader %}
+{% from "components/local/siteNav.njk" import siteNav with context %}
 {% from "components/container.njk" import container %}
 
 {% call siteNav({
@@ -14,7 +13,7 @@ layout: base
      { macro: button, props:{ label:"All zines", size:"lg", type:"link"}, attrs:{href:"#allZines", class:"max-lg:hidden"} }
     ]
 }) %}
-    {% include "components/submissionDialog.njk" %}
+    {% include "components/local/submissionDialog.njk" %}
 {% endcall %}
 
 <main class="flex flex-col w-full gap-section py-section grow">
@@ -25,7 +24,7 @@ layout: base
                 <span class="max-sm:hidden">•</span>
                 <span class="text-xl sm:text-3xl">(Free)</span>
             </h1>
-            <p class="max-w-2xl text-lg">{{ global.siteDescription }}</p>
+            <p class="max-w-content text-lg">{{ global.siteDescription }}</p>
         {% endcall %}
     </header>
 

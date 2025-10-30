@@ -11,7 +11,7 @@
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set styleClasses = "bg-neutral-lighter py-2 border-y border-dotted border-neutral-light" %}
+{% set bannerStyles = "bg-neutral-lighter py-2 border-y border-dotted border-neutral-light" %}
 
 {% set position %}
     {% if props.position === "bottom" %}
@@ -37,13 +37,13 @@
     <div
         data-announcement-banner
         {{ loopAttrs(attrs) }}
-        class="w-full {{ position }} z-40 {{ styleClasses }} {{ attrs.class }}">
+        class="w-full {{ position }} z-40 {{ bannerStyles }} {{ attrs.class }}">
         {% call container({size:"wide"}) %}
             <div class="flex items-center justify-between">
                 {% if caller %}
                     {{ caller() | safe }}
                 {% else %}
-                    {{ markdown({content: props.content, transform: true, primaryColor:"text-hue", fontSize:"text-sm"},{class:"grow text-center line-clamp-1"}) }}
+                    {{ markdown({content: props.content, transform: true, fontSize:"text-sm"},{class:"grow text-center line-clamp-1"}) }}
                 {% endif %}
                 {{ button({icon:"×", type:"button", size:"sm", variant:"hue"},{@click:"showBanner = !showBanner", title:"Close announcement banner"}) }}
             </div>
@@ -65,6 +65,6 @@
 ) }}',
 description: "
 - Default to using `content` prop for markdownified text, but you can use `{% call %}` to insert custom content.
-- The banner's dismissed state currently resets when a new tab is opened.
+- The banner's dismissed state resets when the `global.bannerContent` property is updated.
 "
 } %}

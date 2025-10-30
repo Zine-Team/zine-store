@@ -3,6 +3,7 @@ title: Components
 ---
 {% from "components/_componentDocumentation.njk" import componentDocumentation %}
 {% from "components/container.njk" import container, containerMeta %}
+{% from "components/sidebar.njk" import sidebar %}
 {% from "components/accordion.njk" import accordion, accordionMeta %}
 {% from "components/announcementBanner.njk" import announcementBanner, announcementBannerMeta %}
 {% from "components/button.njk" import button, buttonMeta %}
@@ -17,6 +18,8 @@ title: Components
 {% from "components/dropdown.njk" import dropdown, dropdownMeta %}
 {% from "components/radio.njk" import radio, radioMeta %}
 {% from "components/checkbox.njk" import checkbox, checkboxMeta %}
+{% from "components/dialog.njk" import dialog, dialogMeta %}
+{% from "components/incrementer.njk" import incrementer, incrementerMeta %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -35,7 +38,9 @@ title: Components
     "markdown",
     "container",
     "radio",
-    "checkbox"
+    "checkbox",
+    "dialog",
+    "incrementer"
 ] %}
 
 {% set componentSelect = [] %}
@@ -51,8 +56,7 @@ title: Components
     "x-init":"$watch('allComponents', selected => document.getElementById(selected.value).scrollIntoView())",
     "class":"@container"
 }) %}
-
-    <aside class="sticky top-0 flex-col items-start hidden overflow-y-auto overscroll-contain lg:flex max-h-dvh h-fit py-dialog-block gap-section-title">
+    {% call sidebar() %}
         <section class="flex flex-col items-start gap-item-sm">
             <h2 class="font-semibold">Guide</h2>
             <ul class="grid items-start list-disc gap-item-sm ml-indent">
@@ -69,7 +73,7 @@ title: Components
                 </ul>
             {% endcall %}
         </section>
-    </aside>
+    {% endcall %}
 
     {{ select(
         props={
@@ -212,20 +216,78 @@ All components have a `props` argument and a `attrs` argument, both of which are
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% call componentDocumentation({
+    title: "dialog",
+    meta: dialogMeta
+}) %}
+    {% call dialog({
+        triggerProps: {
+            label: "Click me to open dialog!",
+            type: "button",
+            size: "base"
+        }
+    },attrs={class:"max-w-narrow"}) %}
+    <main class="w-full px-dialog-inline py-dialog-block grow flex flex-col justify-center gap-section-title">
+        <h2 class="text-lg w-full text-pretty">Hey, it's a Dialog!</h2>
+        <p class="w-full text-pretty">The design can be whatever you want!</p>
+    </main>
+    <footer class="w-full flex gap-nav sticky bottom-0 bg-surface justify-end py-nav px-nav border-neutral-lighter border-t border-dotted">
+        {{ button(props={label:"Close", type: "button", size:"base"}, attrs={"@click": "close()"}) }}
+    </footer>
+
+    {% endcall %}
+{% endcall %}
+
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call componentDocumentation({
     title: "dropdown",
     meta: dropdownMeta
 }) %}
     {{ dropdown(
         props={
             position:["top", "left"],
+            triggerProps:{label: "Dropdown", type: "button", size:"base"},
             dropdownItems:[
                 { macro: button, props:{label:"Some", type:"link", size:"base"} },
                 { macro: button, props:{label:"Buttons", type:"link", size:"base"} },
                 { macro: button, props:{label:"Inside", type:"link", size:"base"} }
             ]
-        },
-        triggerProps={label: "Dropdown", type: "button", size:"base"}
+        }
     )}}
+{% endcall %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call componentDocumentation({
+    title: "incrementer",
+    meta: incrementerMeta
+}) %}
+    <div
+        x-data="{incrementer: 0}"
+        class="w-full flex flex-col gap-section-title">
+
+        {{ incrementer(props={
+            name: "incrementer",
+            label: "Incrementer",
+            description: "Optional description",
+            fieldAttrs:{
+                required: true
+            }
+        },
+        attrs={
+            class:"w-full"
+        }) }}
+
+        {% call markdown(
+            props={transform: false},
+            attrs={class:"relative w-[calc(100%+2*var(--space-dialog-inline))] -bottom-[var(--space-dialog-inline)] -left-[var(--space-dialog-inline)] -right-[var(--space-dialog-inline)]"}
+        ) %}
+        <pre>
+<code>output: <span x-text="JSON.stringify(incrementer)"></span>
+</code></pre>
+        {% endcall %}
+    </div>
 {% endcall %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}

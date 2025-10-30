@@ -4,7 +4,7 @@
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set directionClasses = {
+{% set directionStyles = {
     row: "grid gap-2 items-center",
     column: "flex flex-col gap-1.5"
 } %}
@@ -12,7 +12,9 @@
 {% set fieldLabelStyles = "text-neutral font-bold text-pretty" %}
 {% set fieldLabelRequiredStyles = "text-[firebrick]" %}
 {% set fieldDescriptionStyles = "text-neutral/70 text-sm text-pretty" %}
-{% set fieldsetOptionStyles = "text-neutral" %}
+
+{% set fieldsetOptionStyles = "gap-2" %}
+{% set fieldsetOptionLabelStyles = "text-neutral" %}
 
 {% set fieldWrapperStyles = "grow flex" %}
 {% set fieldStyles = "leading-none grow bg-surface-light not-disabled:hover:bg-surface-lighter border-1 border-neutral-lighter disabled:opacity-60 not-disabled:hover:border-neutral-light min-h-tube rounded p-2.5" %}

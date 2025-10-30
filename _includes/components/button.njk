@@ -6,7 +6,7 @@
 
 {% macro button(props={},attrs={}) %}
 
-{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+{# Values ----------- #}
 
 {% set types = {
     button: {
@@ -14,7 +14,8 @@
         sizes: {
             base: "text-base min-w-15 min-h-tube py-3.5 px-3 sm:px-4",
             sm: "text-sm py-2.5 px-3 sm:px-2.5"
-        }
+        },
+        variants: {}
     },
     link: {
         styles: "text-link underline hover:no-underline underline-offset-3 decoration-1",
@@ -23,17 +24,16 @@
             base: "text-base",
             sm: "text-sm",
             lg: "text-base font-bold decoration-from-font"
-        }
+        },
+        variants: {}
     }
 } %}
 
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+{# ------------------ #}
 
 <{% if attrs.href %}a{% else %}button{% endif %}
     class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer {{ attrs.class }} {% if attrs.disabled %}pointer-events-none{% endif %}
-    {{ types[props.type].styles }} {{ types[props.type].sizes[props.size] }}"
-    {# {{ typeClasses[props.type] }} {{ sizeClasses[props.size] }}" #}
-
+    {{ types[props.type].styles }} {{ types[props.type].sizes[props.size] }} {{ types[props.type].variants[props.variant] }}"
     {{ loopAttrs(attrs) }}
 >
     {% if props.icon or props.label %}

@@ -1,6 +1,6 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
-{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses, fieldStyles, fieldWrapperStyles %}
+{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionStyles, fieldStyles, fieldWrapperStyles %}
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
 {% from "components/button.njk" import button %}
 
@@ -33,7 +33,7 @@ if
     }"
     {% if props.fieldAttrs.value %}x-init="{{ props.name }} = '{{ props.fieldAttrs.value }}'"{% endif %}
     {{ loopAttrs(attrs) }}
-    class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
+    class="{% if props.direction %}{{ directionStyles[props.direction] }}{% else %}{{ directionStyles['column'] }}{% endif %} {{ attrs.class }}">
 
     {% if props.label %}{{ fieldLabel({tag: "label", fieldProps:props}) }}{% endif %}
 
@@ -41,13 +41,12 @@ if
         {{ button(
             props={
                 type: "button",
-                variant: "hue",
+                variant: "outline",
                 size: "sm",
                 icon: "−"
             },
             attrs={
                 "@click": "decrement",
-                "class": "h-full",
                 "type": "button"
             }
         ) }}
@@ -57,18 +56,17 @@ if
             id="{{ props.name }}"
             {{ loopAttrs(props.fieldAttrs) }}
             type="number"
-            class="{{ fieldStyles }} {{ props.fieldAttrs.class }}"
+            class="{{ fieldStyles }} {{ props.fieldAttrs.class }} text-center"
         >
         {{ button(
             props={
                 type: "button",
-                variant: "hue",
+                variant: "outline",
                 size: "sm",
                 icon: "+"
             },
             attrs={
                 "@click": "increment",
-                "class": "h-full",
                 "type": "button"
             }
         ) }}
@@ -79,6 +77,7 @@ if
 
 {% endmacro %}
 
+
 {# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
 
 {% set incrementerMeta = {
@@ -88,12 +87,10 @@ if
         label: "",
         description: "",
         fieldAttrs={
-            type: "",
             placeholder: "",
             required: boolean,
             min: "",
             max: ""
-            autocomplete: "on | off"
         },
         direction: "column | row"
     },

@@ -41,9 +41,9 @@
     {{ dropdown(
         props={
             position:["top", "left"],
-            dropdownItems: developmentLinks
-        },
-        triggerProps={label: "Dev", type: "button", size:"sm", variant:"hue"}
+            dropdownItems: developmentLinks,
+            triggerProps:{label: "Dev", type: "button", size:"sm", variant:"hue"}
+        }
     )}}
     {% endif %}
     {% call button({type:"button", size:"sm"}, {@click:"expanded = !expanded", ":title":"expanded ? 'Minimize widget' : 'Expand widget'"}) %}

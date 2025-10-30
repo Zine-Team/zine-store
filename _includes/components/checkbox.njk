@@ -1,18 +1,24 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
-{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses, fieldStyles, fieldsetOptionStyles %}
+{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionStyles, fieldStyles, fieldsetOptionStyles, fieldsetOptionLabelStyles %}
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% macro checkbox(props={}, attrs={}) %}
 
+{# Values ----------- #}
+
+{% set checkboxStyles = "accent-current w-[1.1em]" %}
+
+{# ------------------ #}
+
     <fieldset
         name="{{ props.name }}"
         class="{{ attrs.class }}"
         {{ loopAttrs(attrs) }}
     >
-        <div class="{{ directionClasses["column"] }}">
+        <div class="{{ directionStyles["column"] }}">
 
             {% if props.label %}{{ fieldLabel({tag: "legend", fieldProps:props}) }}{% endif %}
             {% if props.description %}{{ fieldDescription(props) }}{% endif %}
@@ -26,13 +32,11 @@
                         id: $id('{{ option.value }}'),
                         setChecked () {
                             const arr = {{ props.name }} {# the array is handled by the alpine state in form #}
-                            {# const i = { index: {{ loop.index }} , value: '{{ option.value }}' } #}
                             return arr.includes(this.data) ? arr.splice(arr.indexOf(this.data), 1) : arr.push(this.data)
                         }
                     }"
-                    class="flex gap-2">
+                    class="flex {{ fieldsetOptionStyles }}">
                     <input
-                        {# :checked="{{ props.name }}.includes({ index: {{ loop.index }}, value: '{{ option.value }}' }, 0)" #}
                         :checked="{{ props.name }}.includes(data)"
                         x-on:change="setChecked"
                         :id="id"
@@ -40,8 +44,8 @@
                         name="{{ props.name }}"
                         value="{{ option.value }}"
                         {{ loopAttrs(props.fieldAttrs) }}
-                        class="accent-current w-[1.1em] h-[1.5em] shrink-0"/>
-                    <label class="{{ fieldsetOptionStyles }}" :for="id">{{ option.label }}</label>
+                        class="{{ checkboxStyles }} shrink-0"/>
+                    <label class="{{ fieldsetOptionLabelStyles }}" :for="id">{{ option.label }}</label>
                 </div>
             {% endfor %}
         </div>

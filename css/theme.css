@@ -22,9 +22,7 @@
   --container-narrow: 48rem;
   --container-base: 81.5rem;
   --container-wide: 100vw;
-  --container-2xl: 40rem;
-  --container-3xl: 48rem;
-  --container-4xl: 52rem;
+  --container-content: 32ch;
 
   --shadow-*: initial;
   --shadow-zine: 0.5px 0.5px 1px lch(0% 0 0 / 0.1), 1px 1px 12px -4px lch(0% 0 0 / 0.2);

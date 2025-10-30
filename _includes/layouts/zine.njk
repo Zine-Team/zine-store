@@ -2,7 +2,7 @@
 layout: base
 ---
 {% from "components/button.njk" import button %}
-{% from "components/siteNav.njk" import siteNav with context %}
+{% from "components/local/siteNav.njk" import siteNav with context %}
 {% from "components/dropdown.njk" import dropdown %}
 {% from "components/copyToClipboard.njk" import copyToClipboard %}
 {% from "components/container.njk" import container %}
@@ -24,8 +24,9 @@ layout: base
             "x-show": "!isEmbed()"
         }) %}
             {% call dropdown(
-                props={position:["bottom", "left"]},
-                triggerProps={label: "Share", type: "button", size:"base"})
+                props={position:["bottom", "left"],
+                triggerProps:{label: "Share", type: "button", size:"base"}
+                })
             %}
                 {% call copyToClipboard({
                     input: global.siteDomain + page.url ,
@@ -53,7 +54,7 @@ layout: base
                     {{ button(props={icon:"←", type: "button", size:"base"}, attrs={class:"h-[max(25dvh,_72px)] hidden lg:block self-center", "data-action": "prev-wide"}) }}
                     <div data-zine-part="root" class="flex flex-col items-center justify-center col-start-1 col-end-3 grow lg:grow-0 perspective-zine lg:col-auto">
                         <div data-zine-part="outer" class="relative inset-0 flex items-center w-full py-2 md:justify-center">
-                            <div data-zine-part="spread" style="--aspect-zine: {{ aspect }}" class="relative grid grid-cols-2 justify-self-start shrink-0 lg:justify-self-center aspect-zine md:w-full {% if aspect === "5.5 / 4.25" %}max-w-3xl{% endif %} pointer-events-none perspective-zine front-cover">
+                            <div data-zine-part="spread" style="--aspect-zine: {{ aspect }}" class="relative grid grid-cols-2 justify-self-start shrink-0 lg:justify-self-center aspect-zine md:w-full {% if aspect === "5.5 / 4.25" %}max-w-narrow{% endif %} pointer-events-none perspective-zine front-cover">
                                 {% for pg in pages %}
                                     <div data-zine-part="page" class="relative row-start-1 row-end-2 border border-neutral-lighter not-first:odd:border-l-0 not-last:even:border-r-0 backface-hidden even:col-start-1 odd:col-start-2 even:origin-right odd:origin-left">
                                         <img src="{{ global.imagesFolder }}/{{ page.fileSlug }}/{{ pg.image }}.jpg" alt="{{ pg.altText }}">

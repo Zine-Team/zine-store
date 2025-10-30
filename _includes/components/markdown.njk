@@ -31,7 +31,7 @@
 
     {% if props.customStyles %}
         <style>
-            .markdown {
+            {{ attrs.id }} {
                 {{ props.customStyles }}
             }
         </style>
@@ -91,8 +91,8 @@
 ) }}',
 description: "
 - Use `props.content` to inject markdown from a data source. Use `{{ caller() }}` when you want to write the content directly inside the component.
-- `props.transform` can be turned off when the content will already be transformed by Eleventy, as is the case with .md file `content`.
+- `props.transform` can be turned off when the content will already be transformed by Eleventy, as is the case with .md file `content`, or when the content you're injecting is already written in HTML.
 - `props.overrides` can set instance-specific overrides to the styles, such as using a smaller base font size or a different color.
-- `customStyles` takes in CSS to set instance-specific styles, such as making bolded text appear as a different color instead of bold.
+- `customStyles` takes in CSS to set instance-specific styles, such as making bolded text appear as a different color instead of bold, but note that you'll need to give the instance an `id` for it to work.
 "
 } %}

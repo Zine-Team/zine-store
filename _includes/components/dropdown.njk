@@ -10,7 +10,6 @@
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set panelStyleClasses = "bg-surface-light border border-neutral-lighter px-5 py-3 shadow-zine" %}
-
 {% set listStyleClasses = "list-disc gap-item-sm *:ml-[1.25ch]" %}
 
 {% set position %}
@@ -31,6 +30,7 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <div
+    data-dropdown
     x-data="{
         open: false,
         toggle() {
@@ -50,10 +50,10 @@
     x-on:keydown.escape.prevent.stop="close($refs.button)"
     x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
     {{ loopAttrs(attrs) }}
-    class="relative max-w-fit {{ props.class }}"
+    class="relative w-fit max-w-full {{ attrs.class }}"
 >
     {{ button(
-        props=triggerProps,
+        props=props.triggerProps,
         attrs={
             "x-ref": "button",
             "@click": "toggle()",
@@ -67,7 +67,7 @@
         x-on:click.outside="close($refs.button)"
         x-cloak
         :id="$id('dropdown')"
-        class="absolute min-w-max z-20 outline-none {{ panelStyleClasses }} {{ position }}">
+        class="absolute min-w-max max-w-full z-20 outline-none {{ panelStyleClasses }} {{ position }}">
         <ul class="flex flex-col items-start {{ listStyleClasses }}">
             {% if caller %}
                 {{ caller() | safe }}
@@ -90,10 +90,10 @@
         position: ["top", "bottom", "left", "right"],
         dropdownItems:[
             { macro:"", props:{}, attrs:{} }
-        ]
+        ],
+        triggerProps: {}
     },
-    attrs={},
-    triggerProps={}
+    attrs={}
 ) }}',
 description: "
 - Defaults to displaying buttons in a list

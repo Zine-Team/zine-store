@@ -5,15 +5,25 @@
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
-{% macro dialog(attrs={},triggerProps={}) %}
+{% macro dialog(props={}, attrs={}) %}
 
-<div x-data {{ loopAttrs(attrs) }} class="{{ attrs.class }}">
-    {{ button(props=triggerProps, attrs={"@click": "$refs.dialog.showModal()"}) }}
+{# Values ----------- #}
+
+{% set dialogStyles = "bg-surface mt-dialog-block mb-auto backdrop:bg-neutral/35 shadow-zine w-[calc(100%-2*var(--spacing-site-inline))] border border-neutral-light" %}
+
+{# ------------------ #}
+
+<div
+    data-dialog
+    x-data="{close() {$refs.dialog.close()}}"
+    {{ loopAttrs(attrs) }}
+    class="{{ attrs.class }}">
+    {{ button(props=props.triggerProps, attrs={"@click": "$refs.dialog.showModal()"}) }}
 
     <dialog
-        closedby="any"
+        closedby={% if props.closedBy %}{{ props.closedBy }}{% else %}"any"{% endif %}
         x-ref="dialog"
-        class="{{ attrs.class }} flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center bg-surface p-0 mt-dialog-block mb-auto mx-auto inset-0 backdrop:bg-neutral/35 shadow-zine w-[calc(100%-2*var(--spacing-site-inline))] border border-neutral-light">
+        class="{{ attrs.class }} {{ dialogStyles }} flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center p-0 mb-auto mx-auto inset-0">
         {{ caller() | safe }}
     </dialog>
 </div>
@@ -24,11 +34,16 @@
 
 {% set dialogMeta = {
     args: '{% call dialog(
-    triggerProps={ button.props },
+    props={
+        closedBy: "any" | "none",
+        triggerProps: {}
+    },
     attrs={}
 ) %}
 {% endcall %}',
 description: "
-- triggerProps is the properties for the `button` element that opens the `dialog`.
+- `props.triggerProps` is the props object for the `button` component that opens the `dialog`.
+-  Give an element inside the `dialog` the `close()` event to make it close the `dialog`.
+- `props.closedBy: 'none'` makes it so the escape key won't close the `dialog`.
 "
 } %}

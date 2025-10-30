@@ -1,7 +1,7 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
-{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses, fieldStyles %}
+{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionStyles, fieldStyles %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -10,7 +10,7 @@
 <div
     {% if props.fieldAttrs.value %}x-init="{{ props.name }} = '{{ props.fieldAttrs.value }}'"{% endif %}
     {{ loopAttrs(attrs) }}
-    class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
+    class="{% if props.direction %}{{ directionStyles[props.direction] }}{% else %}{{ directionStyles['column'] }}{% endif %} {{ attrs.class }}">
 
     {% if props.label %}{{ fieldLabel({tag: "label", fieldProps:props}) }}{% endif %}
 

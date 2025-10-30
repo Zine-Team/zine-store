@@ -8,8 +8,9 @@
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set toasterStyleClasses = "gap-2 top-nav right-site-inline left-site-inline" %}
-{% set toastStyleClasses = "gap-item bg-neutral border-neutral-light border shadow-zine rounded text-surface-light px-5 py-3 text-base" %}
+{% set toasterStyles = "gap-2 top-nav right-site-inline left-site-inline" %}
+{% set toastStyles = "gap-item-sm bg-neutral border-neutral-light border shadow-zine rounded text-surface-light p-item-sm min-h-tube" %}
+{% set toastContentStyles = "text-base px-item-sm" %}
 {# {% set fancyStackingClasses = "*:last-of-type:z-10 *:not-last-of-type:scale-95 *:not-last-of-type:translate-y-2 grid grid-overlap" %} #}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -34,7 +35,7 @@
     data-toaster
     role="status"
     aria-live="polite"
-    class="fixed flex items-center flex-col-reverse justify-center z-50 pointer-events-none {{ toasterStyleClasses }} {{ fancyStackingClasses }}">
+    class="fixed flex items-center flex-col-reverse justify-center z-50 pointer-events-none {{ toasterStyles }} {{ fancyStackingClasses }}">
 
     <template x-for="toast in toasts" :key="toast.id">
         <div
@@ -52,8 +53,8 @@
             x-show="show"
             x-transition:enter-start="opacity-0 -translate-y-2"
             x-transition:leave-end="opacity-0 -translate-y-2"
-            class="flex items-center pointer-events-auto text-center duration-200 delay-100 transition {{ toastStyleClasses }}">
-            <span x-text="toast.content"></span>
+            class="flex items-center pointer-events-auto text-center duration-200 delay-100 transition {{ toastStyles }}">
+            <span class="{{ toastContentStyles }}" x-text="toast.content"></span>
             {{button({icon:"×", type:"button", size:"sm"},{@click:"transitionOut()"})}}
         </div>
     </template>

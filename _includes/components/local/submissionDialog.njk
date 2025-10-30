@@ -11,11 +11,11 @@
 {% set buttonText = "Submit a zine" %}
 
 {% call dialog(
-    attrs={class:"max-w-2xl"},
-    triggerProps={
-        label:buttonText, size:"base", type: "button"
+    attrs={class:"max-w-narrow"},
+    props={
+        triggerProps:{label:buttonText, size:"base", type: "button"}
 }) %}
-    <main class="w-full px-dialog-inline py-dialog-block grow flex flex-col justify-center gap-section-title max-w-3xl">
+    <main class="w-full px-dialog-inline py-dialog-block grow flex flex-col justify-center gap-section-title">
         <h2 class="text-lg w-full text-pretty">Submit a zine to the Zine Store (Free)</h2>
             <p class="w-full text-pretty">Please send a PDF of your zine to&nbsp;{{ email | safe }}, and we'll get it added as soon as we can! ❤️</p>
     </main>
