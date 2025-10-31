@@ -348,6 +348,12 @@
   .mt-dialog-block {
     margin-top: var(--space-dialog-block);
   }
+  .mt-item {
+    margin-top: calc(var(--space-section-title) / 1.5);
+  }
+  .mt-section {
+    margin-top: var(--space-section);
+  }
   .mr-1 {
     margin-right: calc(var(--spacing) * 1);
   }
