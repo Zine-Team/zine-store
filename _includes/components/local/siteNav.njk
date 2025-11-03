@@ -3,9 +3,26 @@
 
 
 {% macro siteNav(props={}, attrs={}) %}
-    <nav class="w-full border-neutral-lighter max-lg:border-b border-dotted {{ attrs.class }}">
-        {% call container({size: "base"}) %}
-            <div class="shrink-0 items-baseline justify-between py-nav flex">
+    <nav
+        x-data="{
+            isHidden: false,
+            setIsHidden() {
+                const currentScrollY = window.scrollY;
+
+                if (currentScrollY > lastScrollY && currentScrollY > 88) {
+                    this.isHidden = true
+                } else if (currentScrollY < lastScrollY + 88) {
+                    this.isHidden = false
+                }
+
+                lastScrollY = currentScrollY
+            }
+        }"
+        {# :class="isHidden && '-translate-y-full'" #}
+        :class="{'-translate-y-full' : isHidden, 'border-b' : hasScrolled }"
+        @scroll.window="setIsHidden(); setHasScrolled()"
+        class="sticky top-0 bg-surface z-50 w-full transition-transform flex flex-col h-block-size-nav border-neutral-lighter max-lg:border-b border-dotted {{ attrs.class }}">
+        {% call container({size: "base", type:"flex"},{class:"grow w-full items-center justify-between py-nav flex max-h-full"}) %}
                 <span class="flex items-center justify-self-start gap-16">
                     {{ button({label:"Home", size:"lg", type:"link"},{href:"/"}) }}
                     {% for item in props.links %}
@@ -17,7 +34,7 @@
                         {{ caller() | safe }}
                     {% endif %}
                 </span>
-            </div>
+
         {% endcall %}
     </nav>
 {% endmacro %}

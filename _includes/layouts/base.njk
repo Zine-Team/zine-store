@@ -28,7 +28,20 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth scroll-p-section-title">
+<html
+    x-data="{
+        hasScrolled: false,
+        lastScrollY: window.scrollY,
+        setHasScrolled() {
+            if (this.lastScrollY > 0) {
+                this.hasScrolled = true
+            } else {
+                this.hasScrolled = false
+            }
+        },
+    }"
+    lang="en"
+    class="scroll-smooth scroll-p-section-title">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">

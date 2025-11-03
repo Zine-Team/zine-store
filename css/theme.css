@@ -1,8 +1,8 @@
 @theme inline {
   --breakpoint-xs: 28rem; /* 448px */
-  --breakpoint-sm: 36rem; /* 640px */
+  --breakpoint-sm: 36rem; /* 576px */
   --breakpoint-md: 44rem; /* 704px */
-  --breakpoint-lg: 56rem; /* 960px */
+  --breakpoint-lg: 56rem; /* 896px */
   --breakpoint-xl: 70rem; /* 1120px */
 
   --text-icon: var(--text-icon);
@@ -53,6 +53,8 @@
   --spacing-dialog-block: var(--space-dialog-block);
   --spacing-tube: var(--space-tube);
   --spacing-indent: 1.5ch;
+
+  --spacing-block-size-nav: var(--block-size-nav);
 
   --perspective-zine: 2000px;
   --aspect-zine: 5.5 / 4.25;

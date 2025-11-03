@@ -6,7 +6,7 @@
 
 {% set themeStyles = "" %}
 
-{% set sizeClasses =
+{% set sizeStyles =
     {
         "narrow": "w-[var(--container-narrow)] max-w-[calc(100cqi-2*var(--spacing-site-inline))]",
         "base": "w-[var(--container-base)] max-w-[calc(100cqi-2*var(--spacing-site-inline))]",
@@ -15,11 +15,12 @@
     }
  %}
 
-{% set typeClasses =
+{% set typeStyles =
     {
-        "cols-1": "",
-        "cols-2": "lg:grid-cols-2",
-        "sidebar": "lg:grid-cols-[300px_1fr]"
+        "flex": "flex",
+        "cols-1": "grid",
+        "cols-2": "grid lg:grid-cols-2",
+        "sidebar": "grid lg:grid-cols-[300px_1fr]"
     }
  %}
 
@@ -28,10 +29,12 @@
 {% macro container(props={}, attrs={})%}
 
     <div
+        data-container
         {{ loopAttrs(attrs) }}
-        class="mx-auto grid
-        {% if props.size %}{{sizeClasses[props.size]}}{% else %}{{ sizeClasses.base }}{% endif %}
-        {% if props.type %}{{ typeClasses[props.type] }}{% endif %}
+        class="mx-auto
+        {% if props.size %}{{sizeStyles[props.size]}}{% else %}{{ sizeStyles.base }}{% endif %}
+        {% if props.type %}{{typeStyles[props.type]}}{% else %}{{ typeStyles["cols-1"] }}{% endif %}
+        {# {% if props.type %}{{ typeStyles[props.type] }}{% endif %} #}
         {{ themeStyles }}
         {{ attrs.class }}
     ">

@@ -41,9 +41,18 @@
     --space-dialog-block: 2.5rem;
     --space-tube: 3rem;
 
+    @property --block-size-nav {
+      syntax: "<length>";
+      inherits: true;
+      initial-value: 0px;
+    }
+
+    --block-size-nav: 4.5rem;
+
     /* > md */
-    @media screen and (min-width: 640px) {
+    @media screen and (min-width: 576px) {
       --space-tube: 3.25rem;
+      --block-size-nav: 5.5rem;
     }
 
     /* > md */
@@ -61,7 +70,7 @@
     }
 
     /* > lg */
-    @media screen and (min-width: 960px) {
+    @media screen and (min-width: 896px) {
       --space-site-inline: 3rem;
       --space-nav: 1rem;
       --space-section: 8rem;

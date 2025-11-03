@@ -84,7 +84,7 @@ title: Components
             }
         },
         attrs={
-            "class": "lg:hidden py-nav border-b border-dotted border-neutral-lighter sticky top-0 z-40 bg-surface"
+            "class": "lg:hidden py-nav border-b border-dotted border-neutral-lighter sticky top-block-size-nav z-40 bg-surface"
         })
     }}
 
@@ -132,7 +132,7 @@ All components have a `props` argument and a `attrs` argument, both of which are
     title: "announcementBanner",
     meta: announcementBannerMeta
 }) %}
-    {{ announcementBanner({content:"This is the banner contents. [markdown!](/)", storageKey:"example-announcement-banner"}) }}
+    {{ announcementBanner({content:"This is the banner contents. [markdown!](/)", storageKey:"example-announcement-banner"},{class:"z-10!"}) }}
 {% endcall %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}

@@ -255,6 +255,9 @@
   .top-2 {
     top: calc(var(--spacing) * 2);
   }
+  .top-block-size-nav {
+    top: var(--block-size-nav);
+  }
   .top-full {
     top: 100%;
   }
@@ -294,6 +297,9 @@
   .z-10 {
     z-index: 10;
   }
+  .z-10\! {
+    z-index: 10 !important;
+  }
   .z-20 {
     z-index: 20;
   }
@@ -302,6 +308,9 @@
   }
   .z-50 {
     z-index: 50;
+  }
+  .z-60 {
+    z-index: 60;
   }
   .col-span-full {
     grid-column: 1 / -1;
@@ -345,11 +354,11 @@
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
+  .mt-block-size-nav {
+    margin-top: var(--block-size-nav);
+  }
   .mt-dialog-block {
     margin-top: var(--space-dialog-block);
-  }
-  .mt-item {
-    margin-top: calc(var(--space-section-title) / 1.5);
   }
   .mt-section {
     margin-top: var(--space-section);
@@ -387,12 +396,6 @@
   .inline-block {
     display: inline-block;
   }
-  .aspect-square {
-    aspect-ratio: 1 / 1;
-  }
-  .aspect-square {
-    aspect-ratio: 1;
-  }
   .aspect-zine {
     aspect-ratio: 5.5 / 4.25;
   }
@@ -402,11 +405,20 @@
   .h-\[max\(25dvh\,_72px\)\] {
     height: max(25dvh, 72px);
   }
+  .h-block-size-nav {
+    height: var(--block-size-nav);
+  }
+  .h-dvh {
+    height: 100dvh;
+  }
   .h-fit {
     height: fit-content;
   }
   .max-h-dvh {
     max-height: 100dvh;
+  }
+  .max-h-full {
+    max-height: 100%;
   }
   .min-h-14 {
     min-height: calc(var(--spacing) * 14);
@@ -519,6 +531,10 @@
   }
   .-translate-y-2 {
     --tw-translate-y: calc(var(--spacing) * -2);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .-translate-y-full {
+    --tw-translate-y: -100%;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .scale-none\! {
@@ -681,6 +697,9 @@
   }
   .overflow-y-hidden {
     overflow-y: hidden;
+  }
+  .overflow-y-scroll {
+    overflow-y: scroll;
   }
   .overscroll-contain {
     overscroll-behavior: contain;
@@ -993,6 +1012,11 @@
   }
   .transition {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-transform {
+    transition-property: transform, translate, scale, rotate;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
@@ -1874,8 +1898,15 @@
     --space-dialog-inline: 1.25rem;
     --space-dialog-block: 2.5rem;
     --space-tube: 3rem;
-    @media screen and (min-width: 640px) {
+    @property --block-size-nav {
+      syntax: "<length>";
+      inherits: true;
+      initial-value: 0px;
+    }
+    --block-size-nav: 4.5rem;
+    @media screen and (min-width: 576px) {
       --space-tube: 3.25rem;
+      --block-size-nav: 5.5rem;
     }
     @media screen and (min-width: 704px) {
       --text-sm: 18px;
@@ -1887,7 +1918,7 @@
       --space-dialog-inline: 2rem;
       --space-dialog-block: 3rem;
     }
-    @media screen and (min-width: 960px) {
+    @media screen and (min-width: 896px) {
       --space-site-inline: 3rem;
       --space-nav: 1rem;
       --space-section: 8rem;
