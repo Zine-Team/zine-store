@@ -16,12 +16,12 @@ layout: page
 ) %}
 
     {% call sidebar() %}
-            <section class="flex flex-col items-start gap-item-sm">
+            <section class="flex flex-col items-start gap-item-sm w-full">
             <h2 class="font-semibold">Table of Contents</h2>
                 {{ markdown({content: anchoredContent | toc | safe })}}
         </section>
     {% endcall %}
-    <div class="border-dotted justify-items-center lg:pl-site-inline py-dialog-block lg:border-l border-neutral-lighter">
+    <div class="border-dotted overflow-hidden justify-items-center lg:pl-site-inline py-dialog-block lg:border-l border-neutral-lighter">
         <form
             x-data="{
                 hiringPartyName:'',
@@ -36,7 +36,7 @@ layout: page
                     }
                 }
             }"
-            class="max-w-narrow"
+            class="max-w-full w-narrow"
             >
             {% call markdown({transform: false}) %}
                 {{ anchoredContent | safe }}

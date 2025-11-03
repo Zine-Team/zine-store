@@ -354,9 +354,6 @@
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
-  .mt-block-size-nav {
-    margin-top: var(--block-size-nav);
-  }
   .mt-dialog-block {
     margin-top: var(--space-dialog-block);
   }
@@ -407,9 +404,6 @@
   }
   .h-block-size-nav {
     height: var(--block-size-nav);
-  }
-  .h-dvh {
-    height: 100dvh;
   }
   .h-fit {
     height: fit-content;
@@ -473,6 +467,9 @@
   }
   .w-min {
     width: min-content;
+  }
+  .w-narrow {
+    width: 48rem;
   }
   .max-w-\[312px\] {
     max-width: 312px;
@@ -697,12 +694,6 @@
   }
   .overflow-y-hidden {
     overflow-y: hidden;
-  }
-  .overflow-y-scroll {
-    overflow-y: scroll;
-  }
-  .overscroll-contain {
-    overscroll-behavior: contain;
   }
   .overscroll-x-contain {
     overscroll-behavior-x: contain;
@@ -1831,9 +1822,14 @@
   .markdown table {
     table-layout: fixed;
     inline-size: 100%;
+    overflow-x: auto;
     font-size: 0.875em;
     border: var(--md-border-width) solid var(--md-border-color);
     margin-block: var(--space-3);
+    @container (width < 576px) {
+      display: block;
+      overflow-x: auto;
+    }
   }
   .markdown thead {
     background-color: var(--md-background-color);

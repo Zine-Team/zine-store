@@ -57,13 +57,13 @@ title: Components
     "class":"@container"
 }) %}
     {% call sidebar() %}
-        <section class="flex flex-col items-start gap-item-sm">
+        <section class="flex flex-col items-start gap-item-sm w-full">
             <h2 class="font-semibold">Guide</h2>
             <ul class="grid items-start list-disc gap-item-sm ml-indent">
                 <li class="w-min">{{ button({label:"Intro", type: "link"},{href:"#intro"}) }}</li>
             </ul>
         </section>
-        <section class="flex flex-col items-start gap-item-sm">
+        <section class="flex flex-col items-start gap-item-sm w-full">
             {% call markdown({transform: false}) %}
                 <h4 class="font-semibold">All components</h4>
                 <ul>
@@ -89,7 +89,7 @@ title: Components
     }}
 
     <div class="border-dotted justify-items-center lg:pl-site-inline lg:border-l border-neutral-lighter">
-        <div class="max-w-narrow">
+        <div class="w-full max-w-narrow">
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 

@@ -40,6 +40,7 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
     <div
+        data-markdown
         {{ loopAttrs(attrs) }}
         style="
             {{ mdFontSize }}
@@ -50,7 +51,7 @@
             {{ mdHeadingFontWeight }}
             {{ mdScale }}
         "
-        class="markdown {{ attrs.class }}">
+        class="markdown @container w-full max-w-full {{ attrs.class }}">
         {% if props.content %}
             {% if props.transform === true %}
                 {{ props.content | markdownify | safe }}
