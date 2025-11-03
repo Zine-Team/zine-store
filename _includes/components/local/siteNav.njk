@@ -8,20 +8,19 @@
             isHidden: false,
             setIsHidden() {
                 const currentScrollY = window.scrollY;
-
-                if (currentScrollY > lastScrollY && currentScrollY > 88) {
+                if (currentScrollY > lastScrollY && hasScrolled) {
                     this.isHidden = true
-                } else if (currentScrollY < lastScrollY + 88) {
+                } else if (currentScrollY < lastScrollY + 100  && hasScrolled) {
                     this.isHidden = false
                 }
 
                 lastScrollY = currentScrollY
             }
         }"
-        {# :class="isHidden && '-translate-y-full'" #}
         :class="{'-translate-y-full' : isHidden, 'border-b' : hasScrolled }"
-        @scroll.window="setIsHidden(); setHasScrolled()"
-        class="sticky top-0 bg-surface z-50 w-full transition-transform flex flex-col h-block-size-nav border-neutral-lighter max-lg:border-b border-dotted {{ attrs.class }}">
+        @scroll.window="setIsHidden()"
+        class="bg-surface z-50 w-full transition-transform flex flex-col border-neutral-lighter max-lg:border-b border-dotted {{ attrs.class }}
+        {% if props.sticky %}sticky top-0{% endif %}">
         {% call container({size: "base", type:"flex"},{class:"grow w-full items-center justify-between py-nav flex max-h-full"}) %}
                 <span class="flex items-center justify-self-start gap-16">
                     {{ button({label:"Home", size:"lg", type:"link"},{href:"/"}) }}

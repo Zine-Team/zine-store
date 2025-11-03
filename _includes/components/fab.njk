@@ -5,7 +5,7 @@
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
-{% macro _componentTemplate(props={}, attrs={}) %}
+{% macro fab(props={}, attrs={}) %}
 
 {# Values ----------- #}
 
@@ -14,17 +14,20 @@
 {# ------------------ #}
 
 <div
+    x-show="hasScrolled"
+    x-transition:enter-start="translate-x-full opacity-0"
+    x-transition:leave-end="translate-x-full opacity-0"
     {{ loopAttrs(attrs) }}
-    class="{{ attrs.class }} {{ themeStyles }}">
-    {# content #}
+    class="fixed bottom-[calc(var(--spacing-site-inline)/2)] right-[calc(var(--spacing-site-inline)/2)] transition {{ attrs.class }} {{ themeStyles }}">
+    {{ button({icon:"⇪",type:"button", size:"sm"},{title:"Scroll to top", "@click": "window.scrollTo({top: 0})", class:"rounded-full p-4! aspect-square shadow-zine"}) }}
 </div>
 
 {% endmacro %}
 
 {# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
 
-{% set _componentTemplateMeta = {
-    args: '{% call _componentTemplate(
+{% set fabMeta = {
+    args: '{% call fab(
     props={
         input: "",
     },

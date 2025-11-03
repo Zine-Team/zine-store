@@ -55,7 +55,7 @@
             x-transition:leave-end="opacity-0 -translate-y-2"
             class="flex items-center pointer-events-auto text-center duration-200 delay-100 transition {{ toastStyles }}">
             <span class="{{ toastContentStyles }}" x-text="toast.content"></span>
-            {{button({icon:"×", type:"button", size:"sm"},{@click:"transitionOut()"})}}
+            {# {{button({icon:"×", type:"button", size:"sm"},{@click:"transitionOut()"})}} #}
         </div>
     </template>
 

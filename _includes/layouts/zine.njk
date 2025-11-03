@@ -20,7 +20,7 @@ layout: base
         }
     }"
         class="flex flex-col w-full grow">
-        {% call siteNav({}, {
+        {% call siteNav({sticky: false}, {
             "x-show": "!isEmbed()"
         }) %}
             {% call dropdown(

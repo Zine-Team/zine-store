@@ -8,6 +8,7 @@ layout: base
 {% from "components/container.njk" import container %}
 
 {% call siteNav({
+    sticky: true,
     links: [
      { macro: button, props:{ label: "Most recent zines", size:"lg", type:"link"}, attrs:{href:"#recentZines", class:"max-lg:hidden"} },
      { macro: button, props:{ label:"All zines", size:"lg", type:"link"}, attrs:{href:"#allZines", class:"max-lg:hidden"} }

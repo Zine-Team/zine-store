@@ -2,6 +2,7 @@
 
     {% from "components/toaster.njk" import toaster %}
     {% from "components/announcementBanner.njk" import announcementBanner with context %}
+    {% from "components/fab.njk" import fab %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -33,13 +34,14 @@
         hasScrolled: false,
         lastScrollY: window.scrollY,
         setHasScrolled() {
-            if (this.lastScrollY > 0) {
+            if (this.lastScrollY > 100) {
                 this.hasScrolled = true
             } else {
                 this.hasScrolled = false
             }
         },
     }"
+    @scroll.window="setHasScrolled"
     lang="en"
     class="scroll-smooth scroll-p-section-title">
     <head>
@@ -70,6 +72,7 @@
         {{ content | safe }}
 
         {{ toaster() }}
+        {{ fab() }}
 
         <script defer src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
