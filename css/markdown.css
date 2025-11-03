@@ -236,6 +236,11 @@
   inline-size: 25%;
 }
 
+.markdown td:not(first-child),
+.markdown th:not(first-child) {
+  min-inline-size: 200px;
+}
+
 .markdown td + td,
 .markdown th + th {
   border-inline-start: var(--md-border-width) solid var(--md-border-color);
