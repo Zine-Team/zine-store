@@ -2,7 +2,7 @@
 layout: page
 ---
 {% from "components/button.njk" import button %}
-{% from "components/local/siteNav.njk" import siteNav with context %}
+{% from "components/local/navbar.njk" import navbar with context %}
 {% from "components/markdown.njk" import markdown %}
 {% from "components/container.njk" import container %}
 {% from "components/input.njk" import input %}
@@ -18,7 +18,7 @@ layout: page
     {% call sidebar() %}
             <section class="flex flex-col items-start gap-item-sm w-full">
             <h2 class="font-semibold">Table of Contents</h2>
-                {{ markdown({content: anchoredContent | toc | safe })}}
+                {{ markdown({content: anchoredContent | toc | safe },{class:"w-full"})}}
         </section>
     {% endcall %}
     <div class="border-dotted overflow-hidden justify-items-center lg:pl-site-inline py-dialog-block lg:border-l border-neutral-lighter">

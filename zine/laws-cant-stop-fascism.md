@@ -1,4 +1,5 @@
 ---
+eleventyExcludeFromCollections: true # remove when publishing
 title: Laws Can't Stop Fascism
 description: Why pursuing only legal means to stopping the fascist takeover won't succeed.
 seoImage: #defaults to og-image.jpg, no need to update

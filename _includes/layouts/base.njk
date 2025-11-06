@@ -2,7 +2,7 @@
 
     {% from "components/toaster.njk" import toaster %}
     {% from "components/announcementBanner.njk" import announcementBanner with context %}
-    {% from "components/fab.njk" import fab %}
+    {% from "components/toTopFab.njk" import toTopFab %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -58,6 +58,10 @@
         <link rel="icon" type="image/x-icon" href="{{ global.siteDomain }}{{ global.imagesFolder }}/{{ global.favicon }}">
         <link rel="stylesheet" href="/styles.css">
 
+        {% set comma = joiner() %}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names={% for icon in icons | sort() %}{{ comma() }}{{ icon }}{% endfor %}" />
+
+
 
     </head>
     <body class="font-sans text-base antialiased flex flex-col min-h-dvh items-center bg-surface pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
@@ -72,7 +76,7 @@
         {{ content | safe }}
 
         {{ toaster() }}
-        {{ fab() }}
+        {{ toTopFab() }}
 
         <script defer src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>

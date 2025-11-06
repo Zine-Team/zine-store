@@ -42,12 +42,12 @@
         props={
             position:["top", "left"],
             dropdownItems: developmentLinks,
-            triggerProps:{label: "Dev", type: "button", size:"sm", variant:"hue"}
+            triggerProps:{label: "Dev", icon:"bug_report", type: "button", size:"sm", variant:"hue"}
         }
     )}}
     {% endif %}
     {% call button({type:"button", size:"sm"}, {@click:"expanded = !expanded", ":title":"expanded ? 'Minimize widget' : 'Expand widget'"}) %}
-        <span x-show="!expanded" class="text-icon">›</span>
-        <span x-show="expanded" class="text-icon">‹</span>
+        <span x-show="!expanded" class="text-icon">chevron_forward</span>
+        <span x-show="expanded" class="text-icon">chevron_backward</span>
     {% endcall%}
 </div>

@@ -30,8 +30,8 @@
             class="w-full flex flex-col group {{ accordionStyles }} {{ item.attrs.class }}">
             <summary class="flex items-center justify-between appearance-none cursor-pointer">
                     <h2 class="{{ summaryStyles }}">{{ item.title }}</h2>
-                    <span class="block text-icon group-open:hidden">+</span>
-                    <span class="hidden text-icon group-open:block">–</span>
+                    <span class="block text-icon group-open:hidden">add</span>
+                    <span class="hidden text-icon group-open:block">remove</span>
             </summary>
 
             {{ markdown({content: item.description, transform: true },{class: contentStyles }) }}

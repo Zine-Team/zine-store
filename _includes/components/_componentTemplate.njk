@@ -7,15 +7,19 @@
 
 {% macro _componentTemplate(props={}, attrs={}) %}
 
-{# Values ----------- #}
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set themeStyles = "" %}
+{# Theme styles ----------- #}
 
-{# ------------------ #}
+{% set  _componentTemplateStyles = "" %}
+
+{# Other ------------------ #}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <div
     {{ loopAttrs(attrs) }}
-    class="{{ attrs.class }} {{ themeStyles }}">
+    class="{{ attrs.class }} {{ _componentTemplateStyles }}">
     {# content #}
 </div>
 

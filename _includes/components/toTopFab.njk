@@ -5,7 +5,7 @@
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
-{% macro fab(props={}, attrs={}) %}
+{% macro toTopFab(props={}, attrs={}) %}
 
 {# Values ----------- #}
 
@@ -14,20 +14,21 @@
 {# ------------------ #}
 
 <div
+    x-cloak
     x-show="hasScrolled"
-    x-transition:enter-start="translate-x-full opacity-0"
-    x-transition:leave-end="translate-x-full opacity-0"
+    x-transition:enter-start="translate-y-4 opacity-0"
+    x-transition:leave-end="-translate-y-2 opacity-0"
     {{ loopAttrs(attrs) }}
-    class="fixed bottom-[calc(var(--spacing-site-inline)/2)] right-[calc(var(--spacing-site-inline)/2)] transition {{ attrs.class }} {{ themeStyles }}">
-    {{ button({icon:"⇪",type:"button", size:"sm"},{title:"Scroll to top", "@click": "window.scrollTo({top: 0})", class:"rounded-full p-4! aspect-square shadow-zine"}) }}
+    class="fixed bottom-[calc(var(--spacing-site-inline)/2)] right-[calc(var(--spacing-site-inline)/2)] transition duration-300 {{ attrs.class }} {{ themeStyles }}">
+    {{ button({icon:"vertical_align_top",type:"button", size:"fab"},{title:"Scroll to top", "@click": "window.scrollTo({top: 0})"}) }}
 </div>
 
 {% endmacro %}
 
 {# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
 
-{% set fabMeta = {
-    args: '{% call fab(
+{% set toTopFabMeta = {
+    args: '{% call toTopFab(
     props={
         input: "",
     },

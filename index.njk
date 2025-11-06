@@ -4,10 +4,10 @@ layout: base
 {% from "components/button.njk" import button %}
 {% from "components/carousel.njk" import carousel %}
 {% from "components/local/sectionHeader.njk" import sectionHeader %}
-{% from "components/local/siteNav.njk" import siteNav with context %}
+{% from "components/local/navbar.njk" import navbar with context %}
 {% from "components/container.njk" import container %}
 
-{% call siteNav({
+{% call navbar({
     sticky: true,
     links: [
      { macro: button, props:{ label: "Most recent zines", size:"lg", type:"link"}, attrs:{href:"#recentZines", class:"max-lg:hidden"} },

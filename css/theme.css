@@ -24,6 +24,8 @@
   --container-wide: 100vw;
   --container-content: 32ch;
 
+  --z-nav: 50;
+
   --shadow-*: initial;
   --shadow-zine: 0.5px 0.5px 1px lch(0% 0 0 / 0.1), 1px 1px 12px -4px lch(0% 0 0 / 0.2);
   --shadow-page: 0.33px 0.33px 1px lch(0% 0 0 / 0.1), 0.75px 0.75px 0.75px lch(0% 0 0 / 0.1);

@@ -43,11 +43,12 @@ if
                 type: "button",
                 variant: "outline",
                 size: "sm",
-                icon: "−"
+                icon: "remove"
             },
             attrs={
                 "@click": "decrement",
-                "type": "button"
+                "type": "button",
+                "class": "min-h-tube"
             }
         ) }}
         <input
@@ -63,11 +64,12 @@ if
                 type: "button",
                 variant: "outline",
                 size: "sm",
-                icon: "+"
+                icon: "add"
             },
             attrs={
                 "@click": "increment",
-                "type": "button"
+                "type": "button",
+                "class": "min-h-tube"
             }
         ) }}
     </span>

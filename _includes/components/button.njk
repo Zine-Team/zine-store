@@ -12,8 +12,9 @@
     button: {
         styles: "text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded",
         sizes: {
-            base: "text-base min-w-15 min-h-tube py-3.5 px-3 sm:px-4",
-            sm: "text-sm py-2.5 px-3 sm:px-2.5"
+            base: "text-base min-w-15 min-h-tube py-3.5 px-[var(--button-space)]",
+            sm: "text-sm h-10 px-[var(--button-space)]",
+            fab: "text-base rounded-full p-4 aspect-square shadow-zine"
         },
         variants: {}
     },
@@ -31,18 +32,19 @@
 
 {# ------------------ #}
 
-<{% if attrs.href %}a{% else %}button{% endif %}
+<{% if attrs.href %}a{% else %}button{% endif %} data-button
     class="shrink-0 disabled:opacity-60 active:scale-[.98] active:inline-block cursor-pointer {{ attrs.class }} {% if attrs.disabled %}pointer-events-none{% endif %}
     {{ types[props.type].styles }} {{ types[props.type].sizes[props.size] }} {{ types[props.type].variants[props.variant] }}"
     {{ loopAttrs(attrs) }}
+    style="--button-space: {% if props.size === "sm" %}4px{% elseif props.size === "base" %}8px{% endif %}"
 >
     {% if props.icon or props.label %}
-        <span class="flex items-center justify-center gap-2">
+        <span class="flex items-center justify-center">
             {% if props.icon %}
                 <span class="text-icon">{{ props.icon }}</span>
             {% endif %}
             {% if props.label %}
-                <span>{{ props.label }}</span>
+                <span class="px-[var(--button-space)]">{{ props.label }}</span>
             {%- endif -%}
         </span>
     {% endif %}

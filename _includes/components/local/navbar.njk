@@ -1,0 +1,112 @@
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+{% from "components/button.njk" import button %}
+{% from "components/container.njk" import container %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro navbar(props={}, attrs={}) %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{# Theme styles ----------- #}
+
+{% set navbarStyles = "" %}
+{% set onScrollStyles = "border-b border-neutral-lighter border-dotted" %}
+{% set itemGap = "gap-x-16 gap-y-2" %}
+{% set themeAlignment = "left" %}
+
+{# Other ------------------ #}
+
+{% set alignment %}
+{% if props.alignment %}
+{{ props.alignment }}
+{% else %}
+{{ themeAlignment }}
+{% endif %}
+{% endset %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<nav
+    x-data="{
+        isHidden: false,
+        setIsHidden() {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && hasScrolled) {
+                this.isHidden = true
+            } else if (currentScrollY < lastScrollY + 100  && hasScrolled) {
+                this.isHidden = false
+            }
+
+            lastScrollY = currentScrollY
+        }
+    }"
+    :class="{'-translate-y-full' : isHidden, '{{ onScrollStyles }}' : hasScrolled }"
+    @scroll.window="setIsHidden()"
+    {{ loopAttrs(attrs) }}
+    class="bg-surface z-(--z-nav) w-full transition-transform duration-300 flex flex-col {{ attrs.class }} {{ navbarStyles }}
+    {% if props.sticky %}sticky top-0{% endif %}">
+    {% call container({size: "base", type:"flex"},{class:"grow w-full items-center justify-between py-nav flex max-h-full"}) %}
+
+        <div data-slot="left"
+            class="grow flex items-center justify-start flex-wrap
+            {% if alignment === "left" %}{% elseif alignment === "center" %}basis-1/2 shrink{% endif %} {{ itemGap }}">
+
+                {{ button({label:"Home", size:"lg", type:"link"},{href:"/"}) }}
+                {% for item in props.links %}
+                    {{ item.macro(item.props, item.attrs) }}
+                {% endfor %}
+
+        </div>
+        {% if alignment === "center" %}
+            <div data-slot="center" class="grow flex items-center justify-center flex-wrap shrink-0 {{ itemGap }}">
+                {# Center content #}
+            </div>
+        {% endif %}
+        <div data-slot="right"
+            class="grow flex items-center justify-end flex-wrap
+            {% if alignment === "left" %}shrink-0 {% elseif alignment === "center" %}basis-1/2 shrink{% endif %} {{ itemGap }}">
+
+                {% if caller %}
+                    {{ caller() | safe }}
+                {% endif %}
+
+        </div>
+
+
+
+            {# <span class="flex items-center justify-self-start gap-16">
+                {{ button({label:"Home", size:"lg", type:"link"},{href:"/"}) }}
+                {% for item in props.links %}
+                    {{ item.macro(item.props, item.attrs) }}
+                {% endfor %}
+            </span>
+            <span class="flex items-center justify-self-end gap-3">
+                {% if caller %}
+                    {{ caller() | safe }}
+                {% endif %}
+            </span> #}
+
+    {% endcall %}
+</nav>
+
+{% endmacro %}
+
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set navbarMeta = {
+    args: '{% call navbar(
+    props={
+        input: "",
+    },
+    attrs={}
+) %}
+{% endcall %}',
+description: "
+-
+-
+-
+"
+} %}

@@ -64,7 +64,7 @@ title: Components
             </ul>
         </section>
         <section class="flex flex-col items-start gap-item-sm w-full">
-            {% call markdown({transform: false}) %}
+            {% call markdown({transform: false}, {class:"w-full"}) %}
                 <h4 class="font-semibold">All components</h4>
                 <ul>
                     {% for component in components | sort() %}
@@ -331,7 +331,7 @@ All components have a `props` argument and a `attrs` argument, both of which are
     title: "markdown",
     meta: markdownMeta
 }) %}
-    {% call markdown({transform: true}) %}
+    {% call markdown({transform: true},{class:"w-full"}) %}
 ## Heading
 
 Body paragraph with a [link](#) and _italics_ and **bold**.

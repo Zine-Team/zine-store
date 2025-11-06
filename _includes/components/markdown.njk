@@ -51,7 +51,7 @@
             {{ mdHeadingFontWeight }}
             {{ mdScale }}
         "
-        class="markdown @container w-full max-w-full {{ attrs.class }}">
+        class="markdown @container {{ attrs.class }}">
         {% if props.content %}
             {% if props.transform === true %}
                 {{ props.content | markdownify | safe }}
