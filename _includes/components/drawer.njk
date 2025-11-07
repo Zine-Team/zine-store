@@ -11,28 +11,22 @@
     <div
         data-drawer
         x-data="{
-            open: false,
-            toggle() {
-                this.open = !this.open;
-                {% if triggerProps.label %}this.triggerLabel = this.open ? '{{ triggerProps.label.open }}' : '{{ triggerProps.label.closed }}',{% endif %}
-                {% if triggerProps.icon %}this.triggerIcon = this.open ? '{{ triggerProps.icon.open }}' : '{{ triggerProps.icon.closed }}'{% endif %}
+            drawerOpen: false,
+            toggleDrawer() {
+                this.drawerOpen = !this.drawerOpen;
             },
-            triggerLabel:'{{ triggerProps.label.closed | safe }}',
-            triggerIcon:'{{ triggerProps.icon.closed | safe }}'
+
         }"
         class="flex {{ attrs.class }}">
-        {% set newProps = {type:triggerProps.type, size:triggerProps.size} %}
-        {% call button(props=newProps, attrs={class:"flex-grow", "@click": "toggle()"}) %}
-            <span class="flex items-center justify-center">
-                {% if triggerProps.icon %}<span class="px-[calc(var(--button-space)*1/3)] text-icon" x-text="triggerIcon"></span>{% endif %}
-                {% if triggerProps.label %}<span class="px-[calc(var(--button-space)*2/3)]" x-text="triggerLabel"></span>{% endif %}
-            </span>
-        {% endcall %}
+
+        {% set newProps = {toggleValue:"drawerOpen", label:triggerProps.label, icon:triggerProps.icon, size:triggerProps.size, type:triggerProps.type}  %}
+        {{ button(props=newProps, attrs={class:"flex-grow", "@click": "toggleDrawer()"}) }}
 
         <nav
-            @click="open = toggle"
+            x-cloak
+            {# @click="drawerOpen = toggleDrawer" #}
             class="absolute left-0 z-10 w-full top-full bg-surface"
-            :class="open ? 'block' : 'hidden'">
+            :class="drawerOpen ? 'block' : 'hidden'">
             <ul>
                 {% if caller %}
                     {{ caller() | safe }}

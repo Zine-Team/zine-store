@@ -82,7 +82,7 @@
             {% call container({size: "base", type:"flex"},{class:"items-center justify-between py-nav flex"}) %}
                 {{ logo | safe }}
                 {% if props.leftSide or props.rightSide %}
-                    {% call drawer(triggerProps={label:{open:"Close", closed:"Menu"}, icon:{closed:"menu", open:"close"}, type:"button", size:"base"}) %}
+                    {% call drawer(triggerProps={label:{on:"Close", off:"Menu"}, icon:{off:"menu", on:"close"}, type:"button", size:"base"}) %}
                         {{ props.leftSide | safe }}
                         {{ props.rightSide | safe }}
                     {% endcall %}

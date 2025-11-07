@@ -17,7 +17,7 @@
 }) %}
     <main class="w-full px-dialog-inline py-dialog-block grow flex flex-col justify-center gap-section-title">
         <h2 class="text-lg w-full text-pretty">Submit a zine to the Zine Store (Free)</h2>
-            <p class="w-full text-pretty">Please send a PDF of your zine to&nbsp;{{ email | safe }}, and we'll get it added as soon as we can! ❤️</p>
+            <p class="w-full text-pretty">Please send a PDF of your zine to{{ email | safe }}, and we'll get it added as soon as we can! ❤️</p>
     </main>
     <footer class="w-full flex gap-nav sticky bottom-0 bg-surface justify-end py-nav px-nav border-neutral-lighter border-t border-dotted">
         {{ button(props={label:"Close", type: "button", size:"base"}, attrs={"@click": "$refs.dialog.close()"}) }}
