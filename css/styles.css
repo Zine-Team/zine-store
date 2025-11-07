@@ -89,12 +89,11 @@
     text-box-trim: trim-both;
     text-box-edge: cap alphabetic;
     font-family: "Material Symbols Outlined";
-    /* font-weight: 600; */
     font-style: normal;
     line-height: 1;
     letter-spacing: normal;
     text-transform: none;
-    display: inline-block;
+    display: block;
     white-space: nowrap;
     word-wrap: normal;
     direction: ltr;

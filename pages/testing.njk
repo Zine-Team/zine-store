@@ -1,23 +1,21 @@
 ---
 title: Testing
 ---
-{% from "components/container.njk" import container %}
-{% from "components/incrementer.njk" import incrementer %}
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
+{% from "components/container.njk" import container %}
+{% from "components/copyToClipboard.njk" import copyToClipboard %}
+{% from "components/button.njk" import button %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% call container({},{class:"py-dialog-block @container","x-data":"{incrementer: 0}"}) %}
-        {{ incrementer(props={
-            name: "incrementer",
-            label: "Incrementer",
-            description: "Optional description",
-            fieldAttrs:{
-                placeholder: "Placeholder",
-                required: true,
-                min: 0,
-                max: 5
-            }
+    {{ copyToClipboard(
+        props={
+            input: "hehe",
+            toastMessage: "copied!",
+            trigger: { macro:button, props:{label:"copy", type:"button", size:"base"}, attrs:{"@click":"copy"} }
         },
-        attrs={
-            class:"w-full"
-        }) }}
+        attrs={}
+    ) }}
 {% endcall %}

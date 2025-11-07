@@ -119,6 +119,7 @@
   margin: 0;
   background-color: var(--md-background-color);
   border: var(--md-border-width) dotted var(--md-border-color);
+  line-height: var(--leading-relaxed);
 }
 
 .markdown pre {

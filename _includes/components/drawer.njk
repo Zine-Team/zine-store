@@ -7,24 +7,31 @@
 
 {% from "components/button.njk" import button %}
 
-{% macro drawer(triggerProps={}, drawerItems=[]) %}
+{% macro drawer(triggerProps={}, drawerItems=[],attrs={}) %}
     <div
+        data-drawer
         x-data="{
             open: false,
             toggle() {
                 this.open = !this.open;
-                this.triggerLabel = this.open ? '{{ triggerProps.labelOpen }}' : '{{ triggerProps.labelClosed }}'
+                {% if triggerProps.label %}this.triggerLabel = this.open ? '{{ triggerProps.label.open }}' : '{{ triggerProps.label.closed }}',{% endif %}
+                {% if triggerProps.icon %}this.triggerIcon = this.open ? '{{ triggerProps.icon.open }}' : '{{ triggerProps.icon.closed }}'{% endif %}
             },
-            triggerLabel:'{{ triggerProps.labelClosed }}'
+            triggerLabel:'{{ triggerProps.label.closed | safe }}',
+            triggerIcon:'{{ triggerProps.icon.closed | safe }}'
         }"
-        class="flex flex-grow">
-        {% call button(triggerProps, {class:"flex-grow", "@click": "toggle()"}) %}
-            <span x-text="triggerLabel"></span>
+        class="flex {{ attrs.class }}">
+        {% set newProps = {type:triggerProps.type, size:triggerProps.size} %}
+        {% call button(props=newProps, attrs={class:"flex-grow", "@click": "toggle()"}) %}
+            <span class="flex items-center justify-center">
+                {% if triggerProps.icon %}<span class="px-[calc(var(--button-space)*1/3)] text-icon" x-text="triggerIcon"></span>{% endif %}
+                {% if triggerProps.label %}<span class="px-[calc(var(--button-space)*2/3)]" x-text="triggerLabel"></span>{% endif %}
+            </span>
         {% endcall %}
 
         <nav
             @click="open = toggle"
-            class="absolute left-0 z-10 w-full top-full"
+            class="absolute left-0 z-10 w-full top-full bg-surface"
             :class="open ? 'block' : 'hidden'">
             <ul>
                 {% if caller %}

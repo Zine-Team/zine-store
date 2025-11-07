@@ -16,7 +16,11 @@
     }"
     {{ loopAttrs(attrs) }}
     class="inline-block {{ attrs.class }}">
-    {{ caller() | safe }}
+    {% if caller %}
+        {{ caller() | safe }}
+    {% else %}
+        {{ props.trigger.macro(props.trigger.props, props.trigger.attrs) }}</li>
+    {% endif %}
 </span>
 
 {% endmacro %}
@@ -24,19 +28,18 @@
 {# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
 
 {% set copyToClipboardMeta = {
-    args: '{% call copyToClipboard(
+    args: '{{ copyToClipboard(
     props={
-        input: "",
-        copyRef: "",
+        input: "" | copyRef: "",
+        trigger: { macro:button, props:{}, attrs:{"@click":"copy"} },
         toastMessage: "",
         toasterId: ""
     },
     attrs={}
-) %}
-{% endcall %}',
+) }}',
 description: "
 - Use `input` or `copyRef`, not both. `copyRef` is the `x-ref` value of an element inside the caller() that you want to copy the `innerText` value of.
-- Give an element inside the caller() the attribute `@click: 'copy'` to trigger the copy event.
+- Use `props.trigger` to define the trigger element, or give an element inside the caller() the attribute `@click: 'copy'` to trigger the copy event.
 - Must have the `toaster` component somewhere on the page for this component to work.
 "
 } %}

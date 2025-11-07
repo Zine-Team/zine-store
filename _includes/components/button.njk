@@ -12,7 +12,7 @@
     button: {
         styles: "text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded",
         sizes: {
-            base: "text-base min-w-15 min-h-tube py-3.5 px-[var(--button-space)]",
+            base: "text-base min-w-15 h-tube px-[var(--button-space)]",
             sm: "text-sm h-10 px-[var(--button-space)]",
             fab: "text-base rounded-full p-4 aspect-square shadow-zine"
         },
@@ -41,10 +41,10 @@
     {% if props.icon or props.label %}
         <span class="flex items-center justify-center">
             {% if props.icon %}
-                <span class="text-icon">{{ props.icon }}</span>
+                <span class="px-[calc(var(--button-space)*1/3)] text-icon">{{ props.icon }}</span>
             {% endif %}
             {% if props.label %}
-                <span class="px-[var(--button-space)]">{{ props.label }}</span>
+                <span class="px-[calc(var(--button-space)*2/3)]">{{ props.label }}</span>
             {%- endif -%}
         </span>
     {% endif %}

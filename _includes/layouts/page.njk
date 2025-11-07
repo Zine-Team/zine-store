@@ -4,8 +4,9 @@ layout: base
 {% from "components/local/navbar.njk" import navbar with context %}
 {% from "components/button.njk" import button %}
 {% from "components/container.njk" import container %}
+{% set right %}{% include "components/local/submissionDialog.njk" %}{% endset %}
 
-{% call navbar({sticky: true},{class:"print:hidden"}) %}{% endcall %}
+{{ navbar({sticky: true},{class:"print:hidden"}) }}
 
 <main class="relative flex flex-col w-full pt-section">
     {% call container({},{class:"border-b border-neutral-lighter border-dotted pb-section-title"}) %}

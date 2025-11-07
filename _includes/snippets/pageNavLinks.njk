@@ -1,0 +1,17 @@
+{% from "components/dropdown.njk" import dropdown %}
+{% from "components/button.njk" import button %}
+
+{% set pageNavLinks =
+[
+    {macro: dropdown,
+        props:{
+            position: ["bottom", "left"],
+            triggerProps: {label:"hehe", type:"link", size:"base"},
+            dropdownItems:[
+                { macro:button, props:{label:"ff", type:"link", size:"base"}, attrs:{href:"/"} }
+            ]
+        },
+        attrs:{}
+    }
+]
+%}

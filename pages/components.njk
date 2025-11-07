@@ -205,12 +205,12 @@ All components have a `props` argument and a `attrs` argument, both of which are
     title: "copyToClipboard",
     meta: copyToClipboardMeta
 }) %}
-    {% call copyToClipboard({
+    {{ copyToClipboard({
         input: 'hey!',
+        trigger: {macro:button, props:{label: "Click to copy 'hey!'", type: "button", size:"base"}, attrs:{@click: "copy"} },
         toastMessage: "Paste to see that it worked :)"
-    }) %}
-        {{ button({label: "Click to copy 'hey!'", type: "button", size:"base"}, {@click: "copy"}) }}
-    {% endcall %}
+    }) }}
+
 {% endcall %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
