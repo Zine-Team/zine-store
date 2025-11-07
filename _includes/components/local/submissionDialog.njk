@@ -10,18 +10,18 @@
 {% set mailtoHref = "mailto:zinestorefree@proton.me?subject=Zine%20Store%20submission&body=(Attach%20a%20print-ready%20PDF%20of%20your%20zine.%20If%20you'd%20like%20to%20be%20extra%20awesome%2C%20please%20also%20include%20any%20alt-text%20you'd%20like%20to%20have%20for%20each%20page%20of%20the%20zine.%20Thank%20you!)" %}
 {% set buttonText = "Submit a zine" %}
 
-{% call dialog(
-    attrs={class:"max-w-narrow"},
-    props={
-        triggerProps:{label:buttonText, size:"base", type: "button"}
-}) %}
-    <main class="w-full px-dialog-inline py-dialog-block grow flex flex-col justify-center gap-section-title">
-        <h2 class="text-lg w-full text-pretty">Submit a zine to the Zine Store (Free)</h2>
-            <p class="w-full text-pretty">Please send a PDF of your zine to{{ email | safe }}, and we'll get it added as soon as we can! ❤️</p>
-    </main>
-    <footer class="w-full flex gap-nav sticky bottom-0 bg-surface justify-end py-nav px-nav border-neutral-lighter border-t border-dotted">
-        {{ button(props={label:"Close", type: "button", size:"base"}, attrs={"@click": "$refs.dialog.close()"}) }}
-        {{ button(props={label:buttonText, type:"button", size:"base"}, attrs={href:mailtoHref}) }}
-    </footer>
-    {{ toaster({id:"toaster-top-layer"}) }}
-{% endcall %}
+    {% call dialog(
+        attrs={class:"max-w-narrow"},
+        props={
+            triggerProps:{label:buttonText, size:"base", type: "button"}
+    }) %}
+        <main class="w-full px-dialog-inline py-dialog-block grow flex flex-col justify-center gap-section-title">
+            <h2 class="text-lg w-full text-pretty">Submit a zine to the Zine Store (Free)</h2>
+                <p class="w-full text-pretty">Please send a PDF of your zine to{{ email | safe }}, and we'll get it added as soon as we can! ❤️</p>
+        </main>
+        <footer class="w-full flex gap-nav sticky bottom-0 bg-surface justify-end py-nav px-nav border-neutral-lighter border-t border-dotted">
+            {{ button(props={label:"Close", type: "button", size:"base"}, attrs={"@click": "$refs.dialog.close()"}) }}
+            {{ button(props={label:buttonText, type:"button", size:"base"}, attrs={href:mailtoHref}) }}
+        </footer>
+        {{ toaster({id:"toaster-top-layer"}) }}
+    {% endcall %}

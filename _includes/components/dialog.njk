@@ -1,6 +1,7 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/button.njk" import button %}
+{% from "components/container.njk" import container %}
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
@@ -18,14 +19,17 @@
     x-data="{close() {$refs.dialog.close()}}"
     {{ loopAttrs(attrs) }}
     class="{{ attrs.class }}">
-    {{ button(props=props.triggerProps, attrs={"@click": "$refs.dialog.showModal()"}) }}
-
-    <dialog
+    {{ button(props=props.triggerProps, attrs={"@click": "$refs.dialog.showModal()", class:"w-full"}) }}
+    <template x-teleport="body">
+        <dialog
         closedby={% if props.closedBy %}{{ props.closedBy }}{% else %}"any"{% endif %}
         x-ref="dialog"
         class="{{ attrs.class }} {{ dialogStyles }} flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center p-0 mb-auto mx-auto inset-0">
-        {{ caller() | safe }}
-    </dialog>
+            {% call container({size: "narrow"}) %}
+                {{ caller() | safe }}
+            {% endcall %}
+        </dialog>
+    </template>
 </div>
 
 {% endmacro %}

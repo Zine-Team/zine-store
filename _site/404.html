@@ -1,4 +1,5 @@
 <!doctype html><html x-data="{
+        scrollable: true,
         hasScrolled: false,
         lastScrollY: window.scrollY,
         setHasScrolled() {
@@ -8,7 +9,7 @@
                 this.hasScrolled = false
             }
         },
-    }" @scroll.window="setHasScrolled" lang="en" class="scroll-smooth scroll-p-section-title"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Zine Store (Free)</title><meta property="og:title" content="Zine Store (Free)"><meta name="description" content="
+    }" @scroll.window="setHasScrolled" lang="en" :class="!scrollable && 'h-dvh overflow-hidden'" class="scroll-smooth scroll-p-section-title"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Zine Store (Free)</title><meta property="og:title" content="Zine Store (Free)"><meta name="description" content="
      The Zine Store (Free) is a free place to store, share, and read zines online."><meta property="og:description" content="
      The Zine Store (Free) is a free place to store, share, and read zines online."><meta property="og:url" content="https://zinestorefree.com/404.html"><meta property="og:image" content="https://zinestorefree.com/images/uploads/og-image.jpg
 "><meta property="og:type" content="website"><meta name="generator" content="Eleventy v3.1.2"><link rel="icon" type="image/x-icon" href="https://zinestorefree.com/images/uploads/favicon.png"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=add,arrow_back,arrow_forward,bug_report,chevron_backward,chevron_forward,close,close_small,downloading,menu,remove,vertical_align_top"></head><body class="font-sans text-base antialiased flex flex-col min-h-dvh items-center bg-surface pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]"><div x-data="{

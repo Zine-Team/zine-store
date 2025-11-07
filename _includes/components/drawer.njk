@@ -13,29 +13,44 @@
         x-data="{
             drawerOpen: false,
             toggleDrawer() {
-                this.drawerOpen = !this.drawerOpen;
+                if (this.drawerOpen) {
+                    return this.close()
+                }
+                this.$refs.trigger.focus()
+                this.drawerOpen = true;
+                scrollable = false;
             },
-
+            close(focusAfter) {
+                if (! this.drawerOpen) return
+                this.drawerOpen = false
+                scrollable = !scrollable;
+                focusAfter && focusAfter.focus()
+            },
         }"
+        x-on:resize.window.debounce="close()"
+        x-on:keydown.escape.prevent.stop="close($refs.button)"
+        x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
         class="flex {{ attrs.class }}">
 
         {% set newProps = {toggleValue:"drawerOpen", label:triggerProps.label, icon:triggerProps.icon, size:triggerProps.size, type:triggerProps.type}  %}
-        {{ button(props=newProps, attrs={class:"flex-grow", "@click": "toggleDrawer()"}) }}
+        {{ button(props=newProps, attrs={class:"flex-grow", "@click": "toggleDrawer()", "x-ref":"trigger"}) }}
 
         <nav
+            x-ref="panel"
             x-cloak
-            {# @click="drawerOpen = toggleDrawer" #}
-            class="absolute left-0 z-10 w-full top-full bg-surface"
-            :class="drawerOpen ? 'block' : 'hidden'">
-            <ul>
-                {% if caller %}
-                    {{ caller() | safe }}
-                {% else %}
+            x-show="drawerOpen"
+            @click="$event.target != $refs.panel && toggleDrawer"
+            @click.outside="close"
+            class="absolute left-0 -z-10 w-full top-[calc(100%+1px)] bg-surface px-site-inline py-dialog-block border-b border-neutral-lighter border-dotted grid gap-section-title">
+            {% if caller %}
+                {{ caller() | safe }}
+            {% else %}
+                <ul>
                     {% for item in drawerItems %}
                         <li>{{ item.macro(item.props, item.attrs) }}</li>
                     {% endfor %}
-                {% endif %}
-            </ul>
+                </ul>
+            {% endif %}
         </nav>
     </div>
 
