@@ -1270,6 +1270,11 @@
       opacity: 60%;
     }
   }
+  .max-lg\:hidden {
+    @media (width < 56rem) {
+      display: none;
+    }
+  }
   .max-lg\:hidden\! {
     @media (width < 56rem) {
       display: none !important;
