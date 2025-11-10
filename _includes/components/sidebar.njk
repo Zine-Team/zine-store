@@ -12,12 +12,12 @@
 
 {# ------------------ #}
 
-    <aside
-        data-sidebar
-        {{ loopAttrs(attrs) }}
-        class="sticky top-0 flex-col items-start hidden overflow-y-auto lg:flex max-h-dvh h-fit {{ themeStyles }} {{ attrs.class }}">
-        {{ caller() | safe }}
-    </aside>
+<aside
+    data-sidebar
+    {{ loopAttrs(attrs) }}
+    class="sticky top-0 flex-col items-start hidden overflow-y-auto lg:flex max-h-dvh h-fit {{ themeStyles }} {{ attrs.class }}">
+    {{ caller() | safe }}
+</aside>
 
 {% endmacro %}
 

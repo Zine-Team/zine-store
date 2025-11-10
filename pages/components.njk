@@ -84,7 +84,7 @@ title: Components
             }
         },
         attrs={
-            "class": "lg:hidden py-nav border-b border-dotted border-neutral-lighter sticky top-block-size-nav z-40 bg-surface"
+            "class": "lg:hidden py-nav border-b border-dotted border-neutral-lighter sticky top-[var(--navbar-height)] transition-all duration-300 z-40 bg-surface"
         })
     }}
 
@@ -244,6 +244,7 @@ All components have a `props` argument and a `attrs` argument, both of which are
     title: "dropdown",
     meta: dropdownMeta
 }) %}
+<div class="flex flex-col justify-end min-h-[200px]">
     {{ dropdown(
         props={
             position:["top", "left"],
@@ -255,6 +256,7 @@ All components have a `props` argument and a `attrs` argument, both of which are
             ]
         }
     )}}
+    </div>
 {% endcall %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}

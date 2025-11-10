@@ -13,11 +13,11 @@
 
 {# Theme styles ----------- #}
 
-{% set navbarStyles = " z-(--z-nav)" %}
-{% set onScrollStyles = "border-b border-neutral-lighter border-dotted bg-surface" %}
+{% set navbarStyles = " z-(--z-nav) border-b border-transparent" %}
+{% set onScrollStyles = "border-neutral-lighter! border-dotted bg-surface" %}
 {% set itemGap = "gap-x-16 gap-y-2" %}
 {% set themeAlignment = "left" %}
-{% set drawerOnNarrow = false %}
+{% set drawerOnNarrow = true %}
 
 {% set logo %}
     {{ button({label:"Home", size:"lg", type:"link"},{href:"/"}) }}
@@ -30,21 +30,21 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <nav
+    x-ref="navbar"
     x-data="{
-        isHidden: false,
-        setIsHidden() {
+        setNavbarHidden() {
             const currentScrollY = window.scrollY;
             if (currentScrollY > lastScrollY && hasScrolled) {
-                this.isHidden = true
+                navbarHidden = true
             } else if (currentScrollY < lastScrollY + 100  && hasScrolled) {
-                this.isHidden = false
+                navbarHidden = false
             }
 
             lastScrollY = currentScrollY
         }
     }"
-    :class="{'-translate-y-full' : isHidden, '{{ onScrollStyles }}' : hasScrolled | !scrollable }"
-    @scroll.window="setIsHidden()"
+    :class="{'-translate-y-full' : navbarHidden, '{{ onScrollStyles }}' : hasScrolled | !scrollable }"
+    @scroll.window="setNavbarHidden()"
     {{ loopAttrs(attrs) }}
     class="w-full transition-transform duration-300 flex flex-col relative {{ attrs.class }} {{ navbarStyles }}
     {% if props.sticky %}sticky top-0{% endif %}">
@@ -77,12 +77,13 @@
 
         {% endcall %}
     </div>
+
     {% if drawerOnNarrow %}
         <div class="lg:hidden">
             {% call container({size: "base", type:"flex"},{class:"items-center justify-between py-nav flex"}) %}
                 {{ logo | safe }}
                 {% if props.leftSide or props.rightSide %}
-                    {% call drawer(triggerProps={label:{on:"Close", off:"Menu"}, icon:{off:"menu", on:"close"}, type:"button", size:"base"}) %}
+                    {% call drawer(triggerProps={ icon:{off:"menu", on:"close"}, type:"button", size:"base"}) %}
                         {{ props.leftSide | safe }}
                         {{ props.rightSide | safe }}
                     {% endcall %}
@@ -90,6 +91,7 @@
             {% endcall %}
         </div>
     {% endif %}
+
 </nav>
 
 {% endmacro %}

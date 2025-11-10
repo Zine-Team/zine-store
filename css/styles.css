@@ -41,13 +41,13 @@
     --space-dialog-block: 2.5rem;
     --space-tube: 3rem;
 
-    @property --block-size-nav {
+    /* @property --block-size-nav {
       syntax: "<length>";
       inherits: true;
       initial-value: 0px;
     }
 
-    --block-size-nav: 4.5rem;
+    --block-size-nav: 4.5rem; */
 
     /* > md */
     @media screen and (min-width: 576px) {

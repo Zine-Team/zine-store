@@ -9,8 +9,13 @@
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
+{# Theme styles ----------- #}
+
 {% set panelStyleClasses = "bg-surface-light border border-neutral-lighter px-5 py-3 shadow-zine" %}
+{% set dropdownOpenStyleClasses = "" %}
 {% set listStyleClasses = "list-disc gap-item-sm *:ml-[1.25ch]" %}
+
+{# Other ------------------ #}
 
 {% set position %}
     {% if props.position.includes("top") %}
@@ -50,7 +55,8 @@
     x-on:keydown.escape.prevent.stop="close($refs.button)"
     x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
     {{ loopAttrs(attrs) }}
-    class="relative w-fit max-w-full {{ attrs.class }}"
+    :class="open && '{{ dropdownOpenStyleClasses }}'"
+    class="relative max-w-full {{ attrs.class }}"
 >
     {{ button(
         props=props.triggerProps,
@@ -58,7 +64,8 @@
             "x-ref": "button",
             "@click": "toggle()",
             ":aria-expanded": "open",
-            ":aria-controls":"$id('dropdown')"
+            ":aria-controls":"$id('dropdown')",
+            "class": "w-full"
         })
     }}
     <div

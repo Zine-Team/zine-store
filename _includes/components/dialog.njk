@@ -10,7 +10,7 @@
 
 {# Values ----------- #}
 
-{% set dialogStyles = "bg-surface mt-section mb-auto backdrop:bg-neutral/35 shadow-zine w-[calc(100%-2*var(--spacing-site-inline))] border border-neutral-light" %}
+{% set dialogStyles = "bg-surface mt-section mb-auto backdrop:bg-neutral/35 shadow-zine border border-neutral-light" %}
 
 {# ------------------ #}
 
@@ -24,7 +24,7 @@
         <dialog
         closedby={% if props.closedBy %}{{ props.closedBy }}{% else %}"any"{% endif %}
         x-ref="dialog"
-        class="{{ attrs.class }} {{ dialogStyles }} flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center p-0 mb-auto mx-auto inset-0">
+        class="{{ attrs.class }} {{ dialogStyles }} flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center p-0 mb-auto mx-auto inset-0 max-w-none">
             {% call container({size: "narrow"}) %}
                 {{ caller() | safe }}
             {% endcall %}

@@ -34,24 +34,29 @@
 
         {% set newProps = {toggleValue:"drawerOpen", label:triggerProps.label, icon:triggerProps.icon, size:triggerProps.size, type:triggerProps.type}  %}
         {{ button(props=newProps, attrs={class:"flex-grow", "@click": "toggleDrawer()", "x-ref":"trigger"}) }}
-
-        <nav
-            x-ref="panel"
+        <div
             x-cloak
             x-show="drawerOpen"
-            @click="$event.target != $refs.panel && toggleDrawer"
-            @click.outside="close"
-            class="absolute left-0 -z-10 w-full top-[calc(100%+1px)] bg-surface px-site-inline py-dialog-block border-b border-neutral-lighter border-dotted grid gap-section-title">
-            {% if caller %}
-                {{ caller() | safe }}
-            {% else %}
-                <ul>
-                    {% for item in drawerItems %}
-                        <li>{{ item.macro(item.props, item.attrs) }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        </nav>
+            x-transition:enter-start="opacity-0 -translate-y-4"
+            x-transition:leave-end="opacity-0 -translate-y-4"
+            class="flex flex-col grow absolute left-0 h-dvh -z-10 w-full top-[calc(100%+1px)] transition">
+            <nav
+                x-ref="panel"
+                @click="if($event.target !== $refs.panel && $event.target.tagName.toLowerCase() === 'a') { close($refs.button) }"
+                @click.outside="close($refs.trigger)"
+                class="bg-surface px-site-inline py-[max(var(--spacing-section-title),var(--spacing-site-inline))] border-b border-neutral-lighter border-dotted grid content-center items-stretch gap-section-title">
+                {% if caller %}
+                    {{ caller() | safe }}
+                {% else %}
+                    <ul>
+                        {% for item in drawerItems %}
+                            <li>{{ item.macro(item.props, item.attrs) }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </nav>
+            <div class="bg-neutral/35 grow"></div>
+        </div>
     </div>
 
 {% endmacro %}

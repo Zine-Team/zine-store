@@ -55,6 +55,7 @@
   --spacing-dialog-block: var(--space-dialog-block);
   --spacing-tube: var(--space-tube);
   --spacing-indent: 1.5ch;
+  --spacing-navbar-height: var(--navbar-height);
 
   --spacing-block-size-nav: var(--block-size-nav);
 

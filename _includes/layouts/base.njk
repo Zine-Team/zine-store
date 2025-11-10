@@ -31,6 +31,7 @@
 <!DOCTYPE html>
 <html
     x-data="{
+        navbarHidden: false,
         scrollable: true,
         hasScrolled: false,
         lastScrollY: window.scrollY,
@@ -41,10 +42,18 @@
                 this.hasScrolled = false
             }
         },
+        getNavbarHeight() {
+            let navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
+            if (this.navbarHidden) {
+                navbarHeight = 0;
+            }
+            return {'--navbar-height': navbarHeight+'px'}
+        }
     }"
     @scroll.window="setHasScrolled"
     lang="en"
     :class="!scrollable && 'h-dvh overflow-hidden'"
+    :style="getNavbarHeight"
     class="scroll-smooth scroll-p-section-title">
     <head>
         <meta charset="UTF-8">
