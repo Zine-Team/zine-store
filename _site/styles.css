@@ -47,7 +47,6 @@
     --color-link: #0000ee;
     --spacing-site-inline: var(--space-site-inline);
     --spacing-section-title: var(--space-section-title);
-    --spacing-dialog-block: var(--space-dialog-block);
     --spacing-tube: var(--space-tube);
     --spacing-indent: 1.5ch;
     --aspect-zine: 5.5 / 4.25;
@@ -267,12 +266,6 @@
   .top-nav {
     top: var(--space-nav);
   }
-  .top-navbar-height {
-    top: var(--navbar-height);
-  }
-  .-right-1\/2 {
-    right: calc(calc(1/2 * 100%) * -1);
-  }
   .-right-\[var\(--space-site-inline\)\] {
     right: calc(var(--space-site-inline) * -1);
   }
@@ -285,9 +278,6 @@
   .right-2 {
     right: calc(var(--spacing) * 2);
   }
-  .right-\[calc\(var\(--spacing-site-inline\)\/2\)\] {
-    right: calc(var(--spacing-site-inline) / 2);
-  }
   .right-site-inline {
     right: var(--space-site-inline);
   }
@@ -299,6 +289,9 @@
   }
   .bottom-1 {
     bottom: calc(var(--spacing) * 1);
+  }
+  .bottom-\[calc\(env\(safe-area-inset-bottom\)\+var\(--spacing-site-inline\)\/2\)\] {
+    bottom: calc(env(safe-area-inset-bottom) + var(--spacing-site-inline) / 2);
   }
   .bottom-\[calc\(var\(--spacing-site-inline\)\/2\)\] {
     bottom: calc(var(--spacing-site-inline) / 2);
@@ -381,9 +374,6 @@
   .mt-dialog-block {
     margin-top: var(--space-dialog-block);
   }
-  .mt-navbar-height {
-    margin-top: var(--navbar-height);
-  }
   .mt-section {
     margin-top: var(--space-section);
   }
@@ -438,6 +428,9 @@
   .h-40 {
     height: calc(var(--spacing) * 40);
   }
+  .h-\[1\.1em\] {
+    height: 1.1em;
+  }
   .h-\[max\(25dvh\,_72px\)\] {
     height: max(25dvh, 72px);
   }
@@ -458,15 +451,6 @@
   }
   .min-h-\[200px\] {
     min-height: 200px;
-  }
-  .min-h-\[350-px\] {
-    min-height: 350-px;
-  }
-  .min-h-\[350px\] {
-    min-height: 350px;
-  }
-  .min-h-\[500px\] {
-    min-height: 500px;
   }
   .min-h-dvh {
     min-height: 100dvh;
@@ -619,9 +603,6 @@
   }
   .snap-mandatory {
     --tw-scroll-snap-strictness: mandatory;
-  }
-  .scroll-p-\[calc\(var\(--spacing-section-title\)\+var\(--navbar-height\)\)\] {
-    scroll-padding: calc(var(--spacing-section-title) + var(--navbar-height));
   }
   .scroll-p-section-title {
     scroll-padding: var(--space-section-title);
@@ -798,10 +779,6 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
-  .border-2 {
-    border-style: var(--tw-border-style);
-    border-width: 2px;
-  }
   .border-y {
     border-block-style: var(--tw-border-style);
     border-block-width: 1px;
@@ -842,9 +819,6 @@
   }
   .border-transparent {
     border-color: transparent;
-  }
-  .border-r-link-visited {
-    border-right-color: #551a8b;
   }
   .bg-neutral {
     background-color: Black;
@@ -1109,10 +1083,6 @@
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
   }
-  .outline-2 {
-    outline-style: var(--tw-outline-style);
-    outline-width: 2px;
-  }
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
@@ -1154,10 +1124,6 @@
   .outline-none {
     --tw-outline-style: none;
     outline-style: none;
-  }
-  .select-none {
-    -webkit-user-select: none;
-    user-select: none;
   }
   .backface-hidden {
     backface-visibility: hidden;
@@ -1341,6 +1307,11 @@
       opacity: 60%;
     }
   }
+  .max-lg\:hidden {
+    @media (width < 56rem) {
+      display: none;
+    }
+  }
   .max-lg\:hidden\! {
     @media (width < 56rem) {
       display: none !important;
@@ -1498,11 +1469,6 @@
       @media (width < 56rem) {
         display: block;
       }
-    }
-  }
-  .lg\:right-\[calc\(var\(--spacing-site-inline\)\/2\)\] {
-    @media (width >= 56rem) {
-      right: calc(var(--spacing-site-inline) / 2);
     }
   }
   .lg\:col-auto {
@@ -2042,8 +2008,8 @@
     --text-base: 20px;
     --text-lg: 27px;
     --text-icon: 1.45em;
-    --text-xl: 48px;
-    --text-2xl: 60px;
+    --text-xl: 42px;
+    --text-2xl: 56px;
     --text-3xl: clamp(75px, 11vw, 10rem);
     --space-site-inline: 1rem;
     --space-nav: 0.75rem;

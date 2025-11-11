@@ -19,7 +19,7 @@
     x-transition:enter-start="translate-y-4 opacity-0"
     x-transition:leave-end="-translate-y-2 opacity-0"
     {{ loopAttrs(attrs) }}
-    class="fixed bottom-[calc(var(--spacing-site-inline)/2)] right-1/2 max-md:translate-x-1/2 md:right-[calc(var(--spacing-site-inline)/2)] transition duration-300 {{ attrs.class }} {{ themeStyles }}">
+    class="fixed bottom-[calc(env(safe-area-inset-bottom)+var(--spacing-site-inline)/2)] right-1/2 max-md:translate-x-1/2 md:right-[calc(var(--spacing-site-inline)/2)] transition duration-300 {{ attrs.class }} {{ themeStyles }}">
     {{ button({icon:"vertical_align_top",type:"button", size:"fab"},{title:"Scroll to top", "@click": "window.scrollTo({top: 0})"}) }}
 </div>
 
