@@ -293,9 +293,6 @@
   .bottom-\[calc\(env\(safe-area-inset-bottom\)\+var\(--spacing-site-inline\)\/2\)\] {
     bottom: calc(env(safe-area-inset-bottom) + var(--spacing-site-inline) / 2);
   }
-  .bottom-\[calc\(var\(--spacing-site-inline\)\/2\)\] {
-    bottom: calc(var(--spacing-site-inline) / 2);
-  }
   .bottom-full {
     bottom: 100%;
   }
@@ -770,6 +767,10 @@
   }
   .rounded-full {
     border-radius: calc(infinity * 1px);
+  }
+  .rounded-l-none {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
   .border {
     border-style: var(--tw-border-style);
@@ -1941,7 +1942,7 @@
     display: inline-block;
   }
   .markdown table {
-    table-layout: fixed;
+    table-layout: auto;
     inline-size: 100%;
     overflow-x: auto;
     font-size: 0.875em;

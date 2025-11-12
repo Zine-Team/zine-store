@@ -195,7 +195,7 @@
 /* tables */
 
 .markdown table {
-  table-layout: fixed;
+  table-layout: auto;
   inline-size: 100%;
   overflow-x: auto;
   font-size: 0.875em;

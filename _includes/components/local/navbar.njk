@@ -14,7 +14,8 @@
 {# Theme styles ----------- #}
 
 {% set navbarStyles = " z-(--z-nav) border-b border-transparent" %}
-{% set onScrollStyles = "border-neutral-lighter! border-dotted bg-surface" %}
+{% set stickyStyles = "sticky top-0 bg-surface" %}
+{% set onScrollStyles = "border-neutral-lighter! border-dotted" %}
 {% set itemGap = "gap-x-16 gap-y-2" %}
 {% set themeAlignment = "left" %}
 {% set drawerOnNarrow = false %}
@@ -47,7 +48,7 @@
     @scroll.window="setNavbarHidden()"
     {{ loopAttrs(attrs) }}
     class="w-full transition-transform duration-300 flex flex-col relative {{ attrs.class }} {{ navbarStyles }}
-    {% if props.sticky %}sticky top-0{% endif %}">
+    {% if props.sticky %}{{ stickyStyles }}{% endif %}">
 
     <div class="{%if drawerOnNarrow %}hidden lg:block{% endif %}">
         {% call container({size: "base", type:"flex"},{class:"items-center justify-between py-nav flex"}) %}

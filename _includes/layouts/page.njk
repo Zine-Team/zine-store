@@ -4,6 +4,9 @@ layout: base
 {% from "components/local/navbar.njk" import navbar with context %}
 {% from "components/button.njk" import button %}
 {% from "components/container.njk" import container %}
+{% from "components/toTopFab.njk" import toTopFab %}
+
+
 {% set right %}{% include "components/local/submissionDialog.njk" %}{% endset %}
 
 {{ navbar({sticky: true},{class:"print:hidden"}) }}
