@@ -7,7 +7,7 @@ title: Components
 {% from "components/accordion.njk" import accordion, accordionMeta %}
 {% from "components/announcementBanner.njk" import announcementBanner, announcementBannerMeta %}
 {% from "components/button.njk" import button, buttonMeta %}
-{% from "components/carousel.njk" import carousel, carouselMeta %}
+{% from "components/slider.njk" import slider, sliderMeta %}
 {% from "components/copyToClipboard.njk" import copyToClipboard, copyToClipboardMeta %}
 {% from "components/toaster.njk" import toaster, toasterMeta %}
 {% from "components/input.njk" import input, inputMeta %}
@@ -20,6 +20,8 @@ title: Components
 {% from "components/checkbox.njk" import checkbox, checkboxMeta %}
 {% from "components/dialog.njk" import dialog, dialogMeta %}
 {% from "components/incrementer.njk" import incrementer, incrementerMeta %}
+{% from "components/drawer.njk" import drawer, drawerMeta %}
+{% from "components/carousel.njk" import carousel, carouselMeta %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -28,7 +30,7 @@ title: Components
     "accordion",
     "announcementBanner",
     "copyToClipboard",
-    "carousel",
+    "slider",
     "toaster",
     "input",
     "select",
@@ -40,7 +42,9 @@ title: Components
     "radio",
     "checkbox",
     "dialog",
-    "incrementer"
+    "incrementer",
+    "drawer",
+    "carousel"
 ] %}
 
 {% set componentSelect = [] %}
@@ -84,7 +88,7 @@ title: Components
             }
         },
         attrs={
-            "class": "lg:hidden py-nav border-b border-dotted border-neutral-lighter sticky top-[var(--navbar-height)] transition-all duration-300 z-40 bg-surface"
+            "class": "lg:hidden py-nav border-b border-dotted border-neutral-lighter sticky top-[var(--navbar-height)] transition-all duration-300 z-(--z-sticky) bg-surface"
         })
     }}
 
@@ -155,11 +159,37 @@ All components have a `props` argument and a `attrs` argument, both of which are
     title: "carousel",
     meta: carouselMeta
 }) %}
-    {% call carousel({},{class:"w-full h-40 gap-2"}) %}
-        <div class="w-[100cqi] grid place-items-center text-lg bg-neutral-lighter">Hehe</div>
-        <div class="w-[100cqi] grid place-items-center text-lg bg-neutral-lighter">Haha</div>
-        <div class="w-[100cqi] grid place-items-center text-lg bg-neutral-lighter">Hoohoo</div>
+
+    {% set slides = [
+        {
+            imgSrc: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-1.webp',
+            imgAlt: 'Vibrant abstract painting with swirling blue and light pink hues on a canvas.'
+        },
+        {
+            imgSrc: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-2.webp',
+            imgAlt: 'Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas.'
+        },
+        {
+            imgSrc: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-3.webp',
+            imgAlt: 'Vibrant abstract painting with swirling blue and purple hues on a canvas.'
+        }
+    ] %}
+
+    {% call carousel({
+        slides: slides,
+        indicators: true
+    }) %}
+        {% from "components/carousel.njk" import carouselSlide %}
+        {% for slide in slides %}
+            {% call carouselSlide({loop:loop}) %}
+                <img
+                src="{{ slide.imgSrc }}"
+                alt="{{ slide.imgAlt }}"
+                class="w-full h-full object-cover"/>
+            {% endcall %}
+        {% endfor %}
     {% endcall %}
+
 {% endcall %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -234,6 +264,26 @@ All components have a `props` argument and a `attrs` argument, both of which are
         {{ button(props={label:"Close", type: "button", size:"base"}, attrs={"@click": "close()"}) }}
     </footer>
 
+    {% endcall %}
+{% endcall %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call componentDocumentation({
+    title: "drawer",
+    meta: drawerMeta
+}) %}
+    {% call drawer(
+    props={
+        alignment: "bottom",
+        triggerProps: {label:{off:"Open drawer", on:"Close drawer"}, type:"button", size:"base"}
+    },
+    attrs={}
+    ) %}
+    <div>Some</div>
+    <div>content</div>
+    <div>inside</div>
+    <div>the drawer</div>
     {% endcall %}
 {% endcall %}
 
@@ -424,6 +474,19 @@ preformatted code
 </code></pre>
         {% endcall %}
     </div>
+{% endcall %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call componentDocumentation({
+    title: "slider",
+    meta: sliderMeta
+}) %}
+    {% call slider({},{class:"w-full h-40 gap-2"}) %}
+        <div class="w-[40cqi] grid place-items-center text-lg bg-neutral-lighter">Hehe</div>
+        <div class="w-[40cqi] grid place-items-center text-lg bg-neutral-lighter">Haha</div>
+        <div class="w-[40cqi] grid place-items-center text-lg bg-neutral-lighter">Hoohoo</div>
+    {% endcall %}
 {% endcall %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}

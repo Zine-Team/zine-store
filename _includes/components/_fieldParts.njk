@@ -13,11 +13,13 @@
 {% set fieldLabelRequiredStyles = "text-[firebrick]" %}
 {% set fieldDescriptionStyles = "text-neutral/70 text-sm text-pretty" %}
 
-{% set fieldsetOptionStyles = "gap-2" %}
+{% set fieldsetOptionLabelSize = "text-base" %}
+{% set fieldsetOptionStyles %} gap-2 {{ fieldsetOptionLabelSize }} {% endset %}
+{% set fieldsetInputStyles %} accent-current w-[1.1em] h-[calc(var(--{{ fieldsetOptionLabelSize }})*var(--{{ fieldsetOptionLabelSize }}--line-height))] {% endset %}
 {% set fieldsetOptionLabelStyles = "text-neutral" %}
 
 {% set fieldWrapperStyles = "grow flex" %}
-{% set fieldStyles = "leading-none grow bg-surface-light not-disabled:hover:bg-surface-lighter border-1 border-neutral-lighter disabled:opacity-60 not-disabled:hover:border-neutral-light min-h-tube rounded p-2.5" %}
+{% set fieldStyles = "leading-none grow bg-surface-light min-w-px not-disabled:hover:bg-surface-lighter border-1 border-neutral-lighter disabled:opacity-60 not-disabled:hover:border-neutral-light min-h-tube rounded p-2.5" %}
 
 {# Macros ------------------------------------------------------------------------------------------------------------------------------ #}
 

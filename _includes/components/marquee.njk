@@ -39,8 +39,8 @@
     {{ loopAttrs(attrs) }}
 >
     {% if props.fadeEdges %}
-        <div aria-hidden="true" class="absolute inset-y-0 z-10 w-[5%] start-0 bg-linear-to-r from-surface to-transparent"></div>
-        <div aria-hidden="true" class="absolute inset-y-0 z-10 w-[5%] end-0 bg-linear-to-l from-surface to-transparent"></div>
+        <div aria-hidden="true" class="absolute inset-y-0 z-(--z-elevated) w-[5%] start-0 bg-linear-to-r from-surface to-transparent"></div>
+        <div aria-hidden="true" class="absolute inset-y-0 z-(--z-elevated) w-[5%] end-0 bg-linear-to-l from-surface to-transparent"></div>
     {% endif %}
   <div
     x-ref="marqueeTrack"

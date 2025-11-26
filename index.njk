@@ -5,7 +5,7 @@ layout: base
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/button.njk" import button %}
-{% from "components/carousel.njk" import carousel %}
+{% from "components/slider.njk" import slider %}
 {% from "components/local/sectionHeader.njk" import sectionHeader %}
 {% from "components/local/navbar.njk" import navbar with context %}
 {% from "components/container.njk" import container %}
@@ -51,7 +51,7 @@ layout: base
                     {% endfor %}
                 </div>
             {% endcall %}
-            {% call carousel({},{class:"gap-item py-2"}) %}
+            {% call slider({},{class:"gap-item py-2"}) %}
                 {% for zine in collections.zine | reverse | slice(4) %}
                     <a data-zine-shading class="relative hover:scale-[1.01] shadow-zine w-[70cqi] max-w-[312px]" href="{{ zine.url }}">
                         <img class="w-full border shadow-page border-neutral-lighter" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}"></a>

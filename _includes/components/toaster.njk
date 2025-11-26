@@ -35,7 +35,7 @@
     data-toaster
     role="status"
     aria-live="polite"
-    class="fixed flex items-center flex-col-reverse justify-center z-50 pointer-events-none {{ toasterStyles }} {{ fancyStackingClasses }}">
+    class="fixed flex items-center flex-col-reverse justify-center z-(--z-top-elevated) pointer-events-none {{ toasterStyles }} {{ fancyStackingClasses }}">
 
     <template x-for="toast in toasts" :key="toast.id">
         <div

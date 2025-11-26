@@ -15,7 +15,7 @@
         sizes: {
             base: "text-base min-w-15 min-h-tube px-[var(--button-space)]",
             sm: "text-sm h-10 px-[var(--button-space)]",
-            fab: "text-base rounded-full p-4 aspect-square shadow-zine"
+            fab: "text-sm rounded-full h-14 min-w-14 shadow-zine px-[var(--button-space)]"
         },
         variants: {}
     },
@@ -32,11 +32,18 @@
     }
 } %}
 
+{% set buttonSpace %}
+    {% if props.size === "sm" %}4px
+    {% elseif props.size === "base" %}8px
+    {% elseif props.size === "fab" %}8px
+    {% endif %}
+{% endset %}
+
 {# ------------------ #}
 
 <{% if attrs.href %}a{% else %}button{% endif %} data-button
     {{ loopAttrs(attrs) }}
-    style="--button-space: {% if props.size === "sm" %}4px{% elseif props.size === "base" %}8px{% endif %}"
+    style="--button-space: {{ buttonSpace }}"
     {% if props.toggleValue %}
 
          {% if types[props.type].on %}

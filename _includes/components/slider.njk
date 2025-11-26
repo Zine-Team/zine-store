@@ -1,0 +1,83 @@
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro slider(props={}, attrs={}) %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+<style>
+    [data-slider] {
+        anchor-name: --slider;
+
+        > * {
+            scroll-snap-align: center;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            scroll-behavior: smooth;
+        }
+
+        &::scroll-button(*) {
+            position: fixed;
+            position-anchor: --slider;
+            background: var(--color-surface-light);
+            border: 1px solid var(--color-neutral-lighter);
+            box-shadow: var(--shadow-2xs);
+            border-radius: var(--radius);
+            min-height: var(--spacing-tube);
+            aspect-ratio: 1 / 1;
+            z-index: 11;
+            line-height: none;
+            font-weight: bold;
+            font-size: var(--text-icon);
+            font-family: var(--font-sans);
+
+            &:hover {
+            background: var(--color-surface-lighter);
+            }
+        }
+
+        &::scroll-button(*):disabled {
+            opacity: 0;
+        }
+
+        &::scroll-button(right) {
+            position-area: center span-inline-start;
+            content: "→";
+            margin-inline-end: calc(-0.5 * var(--spacing-site-inline));
+        }
+
+        &::scroll-button(left) {
+            position-area: span-inline-end center;
+            content: "←";
+            margin-inline-start: calc(-0.5 * var(--spacing-site-inline));
+        }
+    }
+</style>
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<div
+    data-slider
+    {{ loopAttrs(attrs) }}
+    class="@container grid overflow-x-auto overflow-y-hidden overscroll-x-contain grid-flow-col snap-x snap-mandatory {{ attrs.class }}">
+    {{ caller() | safe }}
+</div>
+
+{% endmacro %}
+
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set sliderMeta = {
+    args: '{% call slider(
+    attrs={}
+) %}
+{% endcall %}',
+description: "
+- Use `{% caller() %}` to insert the content.
+- Use `width` properties and `cqi` units on the content items to determine how many are shown at a time. i.e. `100cqi` would show one item at a time.
+"
+} %}

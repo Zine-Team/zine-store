@@ -79,13 +79,14 @@
             {{ announcementBanner({content: global.bannerContent }) }}
         {% endif %}
 
-        {% if environment.env == 'dev' %}
-            {% include "components/_developmentWidget.njk" %}
-        {% endif %}
 
         {{ content | safe }}
 
         {{ toaster() }}
+
+        {% if environment.env == 'dev' %}
+            {% include "components/_developmentWidget.njk" %}
+        {% endif %}
 
         <script defer src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>

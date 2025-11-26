@@ -1,15 +1,9 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
-{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionStyles, fieldStyles, fieldsetOptionStyles, fieldsetOptionLabelStyles %}
+{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionStyles, fieldStyles, fieldsetOptionStyles, fieldsetInputStyles, fieldsetOptionLabelStyles %}
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
-
-{# Values ----------- #}
-
-{% set radioStyles = "accent-current w-[1.1em]" %}
-
-{# ------------------ #}
 
 {% macro radio(props={}, attrs={}) %}
 
@@ -33,7 +27,7 @@
                         name="{{ props.name }}"
                         value="{{ option.value }}"
                         {{ loopAttrs(props.fieldAttrs) }}
-                        class="{{ radioStyles }} shrink-0"/>
+                        class="{{ fieldsetInputStyles }} shrink-0"/>
                     <label class="{{ fieldsetOptionLabelStyles }}" :for="id">{{ option.label }}</label>
                 </div>
             {% endfor %}

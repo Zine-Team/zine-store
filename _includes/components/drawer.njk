@@ -1,62 +1,103 @@
-{#
-    Drawer
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
-    @param triggerProps = {} // props for the button component that triggers the dropdown
-    @param drawerItems = [] // array of macros (objects) that should be rendered inside the dropdown panel
-#}
-
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
 {% from "components/button.njk" import button %}
 
-{% macro drawer(triggerProps={}, drawerItems=[],attrs={}) %}
-    <div
-        data-drawer
-        x-data="{
-            drawerOpen: false,
-            toggleDrawer() {
-                if (this.drawerOpen) {
-                    return this.close()
-                }
-                this.$refs.trigger.focus()
-                this.drawerOpen = true;
-                scrollable = false;
-            },
-            close(focusAfter) {
-                if (! this.drawerOpen) return
-                this.drawerOpen = false
-                scrollable = !scrollable;
-                focusAfter && focusAfter.focus()
-            },
-        }"
-        x-on:resize.window.debounce="close()"
-        x-on:keydown.escape.prevent.stop="close($refs.button)"
-        x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
-        class="flex {{ attrs.class }}">
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
-        {% set newProps = {toggleValue:"drawerOpen", label:triggerProps.label, icon:triggerProps.icon, size:triggerProps.size, type:triggerProps.type}  %}
-        {{ button(props=newProps, attrs={class:"flex-grow", "@click": "toggleDrawer()", "x-ref":"trigger"}) }}
-        <div
-            x-cloak
-            x-show="drawerOpen"
+{% macro drawer(props={}, attrs={}) %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{# Theme styles ----------- #}
+
+{% set panelStyles %} bg-surface px-site-inline py-[max(var(--spacing-section-title),var(--spacing-site-inline))] border-neutral-lighter border-dotted gap-section-title {% if props.alignment === "bottom" %}border-t{% else %}border-b{% endif %}{% endset %}
+{% set panelAlignmentStyles %}
+    {% if props.alignment === "bottom" %}bottom-0 flex-col-reverse
+    {% elseif props.alignment === "top" %}top-navbar-height
+    {% elseif props.alignment === "right" %}top-0 right-0
+    {% endif %}
+{% endset %}
+
+{# Other ------------------ #}
+
+
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<div data-drawer
+    x-data="{
+        drawerOpen: false,
+        toggleDrawer() {
+            if (this.drawerOpen) {
+                return this.close()
+            }
+            this.$refs.trigger.focus()
+            this.drawerOpen = true;
+            scrollable = false;
+        },
+        close(focusAfter) {
+            if (! this.drawerOpen) return
+            this.drawerOpen = false
+            scrollable = !scrollable;
+            focusAfter && focusAfter.focus()
+        },
+    }"
+    x-on:resize.window.debounce="close()"
+    x-on:keydown.escape.prevent.stop="close($refs.trigger)"
+    x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+    class="flex {{ attrs.class }}">
+
+    {% set newProps = {toggleValue:"drawerOpen", label:props.triggerProps.label, icon:props.triggerProps.icon, size:props.triggerProps.size, type:props.triggerProps.type}  %}
+    {{ button(props=newProps, attrs={class:"grow", "@click": "toggleDrawer()", "x-ref":"trigger"}) }}
+    <div
+        x-cloak
+        x-show="drawerOpen"
+        {% if props.alignment === "top" %}
             x-transition:enter-start="opacity-0 -translate-y-4"
             x-transition:leave-end="opacity-0 -translate-y-4"
-            class="flex flex-col grow absolute left-0 h-dvh -z-10 w-full top-[calc(100%+1px)] transition">
-            <nav
-                x-ref="panel"
-                @click="if($event.target !== $refs.panel && $event.target.tagName.toLowerCase() === 'a') { close($refs.button) }"
-                @click.outside="close($refs.trigger)"
-                class="bg-surface px-site-inline py-[max(var(--spacing-section-title),var(--spacing-site-inline))] border-b border-neutral-lighter border-dotted grid content-center items-stretch gap-section-title">
-                {% if caller %}
-                    {{ caller() | safe }}
-                {% else %}
-                    <ul>
-                        {% for item in drawerItems %}
-                            <li>{{ item.macro(item.props, item.attrs) }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            </nav>
-            <div class="bg-neutral/35 grow"></div>
-        </div>
+        {% elseif props.alignment === "bottom" %}
+            x-transition:enter-start="opacity-0 translate-y-4"
+            x-transition:leave-end="opacity-0 translate-y-4"
+        {% elseif props.alignment === "right" %}
+            x-transition:enter-start="opacity-0 translate-x-4"
+            x-transition:leave-end="opacity-0 translate-x-4"
+        {% endif %}
+        class="flex z-(--z-top) flex-col grow fixed {{ panelAlignmentStyles }} left-0 h-[200dvh] w-full transition">
+        <nav
+            x-ref="panel"
+            @click="if($event.target !== $refs.panel && $event.target.tagName.toLowerCase() === 'a') { close($refs.button) }"
+            @click.outside="close($refs.trigger)"
+            class="grid content-center items-stretch {{ panelStyles }}">
+            {% if caller %}
+                {{ caller() | safe }}
+            {% else %}
+                <ul>
+                    {% for item in props.drawerItems %}
+                        <li>{{ item.macro(item.props, item.attrs) }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </nav>
+        <div class="bg-neutral/35 grow"></div>
     </div>
+</div>
 
 {% endmacro %}
+
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set drawerMeta = {
+    args: '{% call drawer(
+    props={
+        alignment: "top | bottom",
+        triggerProps: {},
+        drawerItems: []
+    },
+    attrs={}
+) %}
+{% endcall %}',
+description: "
+-  `props.drawerItems` is optional, if you want to use the `caller()` instead.
+"
+} %}

@@ -4,18 +4,42 @@ title: Testing
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/container.njk" import container %}
-{% from "components/copyToClipboard.njk" import copyToClipboard %}
+{% from "components/carousel.njk" import carousel, carouselSlide %}
 {% from "components/button.njk" import button %}
+
+{% set slides = [
+    {
+        imgSrc: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-1.webp',
+        imgAlt: 'Vibrant abstract painting with swirling blue and light pink hues on a canvas.'
+    },
+    {
+        imgSrc: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-2.webp',
+        imgAlt: 'Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas.'
+    },
+    {
+        imgSrc: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-3.webp',
+        imgAlt: 'Vibrant abstract painting with swirling blue and purple hues on a canvas.'
+    }
+] %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-{% call container({},{class:"py-dialog-block @container","x-data":"{incrementer: 0}"}) %}
-    {{ copyToClipboard(
-        props={
-            input: "hehe",
-            toastMessage: "copied!",
-            trigger: { macro:button, props:{label:"copy", type:"button", size:"base"}, attrs:{"@click":"copy"} }
-        },
-        attrs={}
-    ) }}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call container({},{class:"py-dialog-block @container"}) %}
+
+    {% call carousel({
+        slides: slides,
+        indicators: true
+    }) %}
+        {% for slide in slides %}
+            {% call carouselSlide({loop:loop}) %}
+                <img
+                src="{{ slide.imgSrc }}"
+                alt="{{ slide.imgAlt }}"
+                class="w-full h-[100dvh] object-cover"/>
+            {% endcall %}
+        {% endfor %}
+    {% endcall %}
 {% endcall %}

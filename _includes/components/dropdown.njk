@@ -74,7 +74,7 @@
         x-on:click.outside="close($refs.button)"
         x-cloak
         :id="$id('dropdown')"
-        class="absolute min-w-max max-w-full z-20 outline-none {{ panelStyleClasses }} {{ position }}">
+        class="absolute min-w-max max-w-full z-(--z-elevated) outline-none {{ panelStyleClasses }} {{ position }}">
         <ul class="flex flex-col items-start {{ listStyleClasses }}">
             {% if caller %}
                 {{ caller() | safe }}
