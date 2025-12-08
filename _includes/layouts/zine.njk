@@ -13,6 +13,7 @@ layout: base
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set pdfUrl = global.imagesFolder + "/" + page.fileSlug +"/" + pdf %}
+{% set printPdf = "printJS('" + pdfUrl + "')" %}
 
 {% set embed %}
     <iframe name="{{title | lower | replace(' ', '-')}}" width="100%" height="100%" src="{{global.siteDomain}}{{page.url}}?embed=true" allow="clipboard-write" marginwidth="0" marginheight="0" style=" border: 1px solid darkGray; max-width: 900px; max-height: 800px; aspect-ratio: 1 / 1.8;"></iframe>
@@ -24,7 +25,8 @@ layout: base
         triggerProps:{label: "Share", type: "button", size:"base"}
         })
     %}
-        <li>{{ button({label:"Download PDF", type:"link", size:"base"}, {href:pdfUrl, download: null}) }}</li>
+        <li>{{ button({label:"Print", type:"link", size:"base"}, {"@click":printPdf, download: null}) }}</li>
+        <li>{{ button({label:"Download", type:"link", size:"base"}, {href:pdfUrl, download: null}) }}</li>
 
         {% call copyToClipboard({
             input: global.siteDomain + page.url ,
