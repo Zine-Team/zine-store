@@ -51,7 +51,7 @@
                 this.windowWidth = window.innerWidth
             })
         }
-    }" x-init="getWidth" :class="expanded && 'translate-0!'" class="fixed print:hidden left-0 bottom-1 z-(--z-elevated) -translate-x-[80%] flex items-center gap-1 py-1 pl-2 pr-1 text-sm transition duration-500 border-l-0 rounded-l-none border-1 border-neutral-lighter bg-surface rounded shadow-zine"><span class="flex w-full mr-1"><span class="xs:hidden">XS-</span> <span class="hidden xs:max-sm:block">XS-SM</span> <span class="hidden sm:max-md:block">SM-MD</span> <span class="hidden md:max-lg:block">MD-LG</span> <span class="hidden lg:max-xl:block">LG-XL</span> <span class="hidden xl:block">XL+</span> <span>&nbsp;•&nbsp;</span> <span x-text="windowWidth"></span> <span>px</span></span><div data-dropdown="" x-data="{
+    }" x-init="getWidth" :class="expanded && 'translate-0!'" class="fixed print:hidden left-0 bottom-1 z-(--z-elevated) -translate-x-[80%] flex items-center transition duration-500 border-l-0 rounded-l-none gap-1 py-1 pl-2 pr-1 text-sm border-1 border-neutral-lighter bg-surface rounded shadow-zine"><span class="flex w-full mr-1"><span class="xs:hidden">XS-</span> <span class="hidden xs:max-sm:block">XS-SM</span> <span class="hidden sm:max-md:block">SM-MD</span> <span class="hidden md:max-lg:block">MD-LG</span> <span class="hidden lg:max-xl:block">LG-XL</span> <span class="hidden xl:block">XL+</span> <span>&nbsp;•&nbsp;</span> <span x-text="windowWidth"></span> <span>px</span></span><div data-dropdown="" x-data="{
         open: false,
         toggle() {
             if (this.open) {

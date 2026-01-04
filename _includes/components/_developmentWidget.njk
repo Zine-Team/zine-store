@@ -11,7 +11,7 @@
     { macro: button, props:{label:"Testing", type:"link", size:"sm"}, attrs:{href:"/testing"} }
 ] %}
 
-{% set themeStyles = "border-1 border-neutral-lighter bg-surface rounded shadow-zine" %}
+{% set themeStyles = "gap-1 py-1 pl-2 pr-1 text-sm border-1 border-neutral-lighter bg-surface rounded shadow-zine" %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 <div x-data="{
@@ -25,7 +25,7 @@
     }"
     x-init="getWidth"
     :class="expanded && 'translate-0!'"
-    class="fixed print:hidden left-0 bottom-1 z-(--z-elevated) -translate-x-[80%] flex items-center gap-1 py-1 pl-2 pr-1 text-sm transition duration-500 border-l-0 rounded-l-none {{ themeStyles }}">
+    class="fixed print:hidden left-0 bottom-1 z-(--z-elevated) -translate-x-[80%] flex items-center transition duration-500 border-l-0 rounded-l-none {{ themeStyles }}">
     <span class="flex w-full mr-1">
         <span class="xs:hidden">XS-</span>
         <span class="hidden xs:max-sm:block">XS-SM</span>
