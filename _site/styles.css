@@ -1089,6 +1089,9 @@
       color: color-mix(in oklab, var(--color-surface), white 70%);
     }
   }
+  .text-validation {
+    color: FireBrick;
+  }
   .underline {
     text-decoration-line: underline;
   }
