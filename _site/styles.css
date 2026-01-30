@@ -24,7 +24,6 @@
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
-    --text-icon: var(--text-icon);
     --container-narrow: 48rem;
     --container-base: 81.5rem;
     --container-wide: 100vw;
@@ -366,6 +365,9 @@
       max-width: 96rem;
     }
   }
+  .-mx-\[\.25em\] {
+    margin-inline: calc(.25em * -1);
+  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -421,6 +423,9 @@
     width: calc(var(--spacing) * 1.5);
     height: calc(var(--spacing) * 1.5);
   }
+  .h-\(--icon-size\) {
+    height: var(--icon-size);
+  }
   .h-10 {
     height: calc(var(--spacing) * 10);
   }
@@ -468,6 +473,9 @@
   }
   .min-h-tube {
     min-height: var(--space-tube);
+  }
+  .w-\(--icon-size\) {
+    width: var(--icon-size);
   }
   .w-1\/3 {
     width: calc(1/3 * 100%);
@@ -568,6 +576,23 @@
   .basis-1\/2 {
     flex-basis: calc(1/2 * 100%);
   }
+  .text-icon {
+    transform-origin: top;
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
+    font-family: "Material Symbols Sharp";
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    text-decoration: none !important;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: "liga";
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0;
+  }
   .translate-0\! {
     --tw-translate-x: calc(var(--spacing) * 0) !important;
     --tw-translate-y: calc(var(--spacing) * 0) !important;
@@ -646,9 +671,6 @@
   .flex-col-reverse {
     flex-direction: column-reverse;
   }
-  .flex-row-reverse {
-    flex-direction: row-reverse;
-  }
   .flex-nowrap {
     flex-wrap: nowrap;
   }
@@ -708,9 +730,6 @@
   }
   .gap-dialog-block {
     gap: var(--space-dialog-block);
-  }
-  .gap-inherit {
-    gap: inherit;
   }
   .gap-item {
     gap: calc(var(--space-section-title) / 1.5);
@@ -891,6 +910,9 @@
     --tw-gradient-to: transparent;
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
+  .fill-current {
+    fill: currentcolor;
+  }
   .object-cover {
     object-fit: cover;
   }
@@ -1010,10 +1032,6 @@
   .text-base {
     font-size: var(--text-base);
     line-height: var(--tw-leading, var(--text-base--line-height));
-  }
-  .text-icon {
-    font-size: var(--text-icon);
-    line-height: var(--tw-leading, 1);
   }
   .text-lg {
     font-size: var(--text-lg);
@@ -1622,6 +1640,9 @@
       opacity: 100%;
     }
   }
+}
+:root {
+  --icon-size: 1.45em;
 }
 [x-cloak] {
   display: none !important;

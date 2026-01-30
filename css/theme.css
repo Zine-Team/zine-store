@@ -1,3 +1,7 @@
+:root {
+  --icon-size: 1.45em;
+}
+
 @theme inline {
   --breakpoint-xs: 28rem; /* 448px */
   --breakpoint-sm: 36rem; /* 576px */
@@ -5,8 +9,6 @@
   --breakpoint-lg: 56rem; /* 896px */
   --breakpoint-xl: 70rem; /* 1120px */
 
-  --text-icon: var(--text-icon);
-  --text-icon--line-height: 1;
   --text-3xl: var(--text-3xl);
   --text-3xl--line-height: 1;
   --text-2xl: var(--text-2xl);
@@ -92,4 +94,25 @@
 
 @utility animate-duration-* {
   --animate-duration: calc(--value(integer) * 1s);
+}
+
+@utility text-icon {
+  transform-origin: top;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+  font-family: "Material Symbols Sharp";
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  text-decoration: none !important;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0;
 }

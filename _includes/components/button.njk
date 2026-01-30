@@ -1,6 +1,7 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
+{% from "components/icon.njk" import icon %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -56,8 +57,10 @@
     {% if props.toggleValue %}
         <span class="flex items-center justify-center pointer-events-none">
             {% if props.icon %}
-                <span x-show="!{{ props.toggleValue }}" class="px-[calc(var(--button-space)*1/3)] text-icon">{{ props.icon.off }}</span>
-                <span x-show="{{ props.toggleValue }}" class="px-[calc(var(--button-space)*1/3)] text-icon">{{ props.icon.on }}</span>
+                {% set show %}{{ props.toggleValue }} == false {% endset %}
+                {{ icon({icon:props.icon.off}, {"x-show":show}) }}
+                {% set show %}{{ props.toggleValue }} == true {% endset %}
+                {{ icon({icon:props.icon.on}, {"x-show":show}) }}
             {% endif %}
             {% if props.label %}
                 <span x-show="!{{ props.toggleValue }}" class="px-[calc(var(--button-space)*2/3)]">{{ props.label.off }}</span>
@@ -68,7 +71,7 @@
         {% if props.icon or props.label %}
             <span class="flex items-center justify-center pointer-events-none">
                 {% if props.icon %}
-                    <span class="px-[calc(var(--button-space)*1/3)] text-icon">{{ props.icon }}</span>
+                    {{ icon({icon:props.icon}) }}
                 {% endif %}
                 {% if props.label %}
                     <span class="px-[calc(var(--button-space)*2/3)]">{{ props.label }}</span>

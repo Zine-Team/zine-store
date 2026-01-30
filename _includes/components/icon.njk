@@ -1,0 +1,13 @@
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro icon(props={},attrs={}) %}
+
+    <svg class="{{ attrs.class }} text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current" {{ loopAttrs(attrs) }} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">{{ props.icon }}</text>
+    </svg>
+
+{% endmacro %}
