@@ -41,6 +41,7 @@
   --color-neutral: Black;
   --color-neutral-light: color-mix(in oklab, var(--color-neutral), white 50%);
   --color-neutral-lighter: color-mix(in oklab, var(--color-neutral), white 66%);
+  --color-neutral-lightest: color-mix(in oklab, var(--color-neutral), white 85%);
   --color-surface: Gainsboro;
   --color-surface-light: color-mix(in oklab, var(--color-surface), white 70%);
   --color-surface-lighter: color-mix(in oklab, var(--color-surface), white 86%);

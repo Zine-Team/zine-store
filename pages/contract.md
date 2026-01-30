@@ -11,6 +11,10 @@ No page builders or WordPress. We offer 100% hand-coded websites with superior r
 
 **Get started**
 
+```
+Testing some code
+```
+
 ---
 
 ## Never Worry About Your Website Ever Again

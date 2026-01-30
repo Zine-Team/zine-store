@@ -8,9 +8,13 @@
     fontSize: "text-base",
     textColor: "color-neutral",
     linkColor: "color-link",
+    borderColor: "neutral-lighter",
+    borderWidth: "1px",
+    backgroundColor: "neutral-lightest",
     radius: "radius",
     headingFont: "font-sans",
     headingFontWeight: "500",
+    headingColor: "color-neutral",
     scale: "1.35"
 } %}
 
@@ -24,11 +28,14 @@
     {% set mdLineHeight %}--md-line-height: var(--{% if props.overrides.fontSize %}{{ props.overrides.fontSize }}{% else %}{{ themeDefaults.fontSize }}{% endif %}--line-height);{% endset %}
     {% set mdTextColor %}--md-text-color: var(--{% if props.overrides.textColor %}{{ props.overrides.textColor }}{% else %}{{ themeDefaults.textColor }}{% endif %});{% endset %}
     {% set mdLinkColor %}--md-link-color: var(--{% if props.overrides.linkColor %}{{ props.overrides.linkColor }}{% else %}{{ themeDefaults.linkColor }}{% endif %});{% endset %}
-    {% set mdRadius %}--md-radius: var(--{% if props.overrides.radius %}{{ props.overrides.radius }}{% else %}{{ themeDefaults.radius }}{% endif %});{% endset %}
+    {% set mdHeadingColor %}--md-heading-color: var(--{% if props.overrides.headingColor %}{{ props.overrides.headingColor }}{% else %}{{ themeDefaults.headingColor }}{% endif %});{% endset %}
     {% set mdHeadingFont %}--md-heading-font: var(--{% if props.overrides.headingFont %}{{ props.overrides.headingFont }}{% else %}{{ themeDefaults.headingFont }}{% endif %});{% endset %}
     {% set mdHeadingFontWeight %}--md-heading-font-weight: {% if props.overrides.headingFontWeight %}{{ props.overrides.headingFontWeight }}{% else %}{{ themeDefaults.headingFontWeight }}{% endif %};{% endset %}
     {% set mdScale %}--md-scale: {% if props.overrides.scale %}{{ props.overrides.scale }}{% else %}{{ themeDefaults.scale }}{% endif %};{% endset %}
-
+    {% set mdRadius %}--md-radius: var(--{% if props.overrides.radius %}{{ props.overrides.radius }}{% else %}{{ themeDefaults.radius }}{% endif %});{% endset %}
+    {% set mdBorderColor %}--md-border-color: var(--color-{% if props.overrides.borderColor %}{{ props.overrides.borderColor }}{% else %}{{ themeDefaults.borderColor }}{% endif %});{% endset %}
+    {% set mdBorderWidth %}--md-border-width: {% if props.overrides.borderWidth %}{{ props.overrides.borderWidth }}{% else %}{{ themeDefaults.borderWidth }}{% endif %};{% endset %}
+    {% set mdBackgroundColor %}--md-background-color: var(--color-{% if props.overrides.backgroundColor %}{{ props.overrides.backgroundColor }}{% else %}{{ themeDefaults.backgroundColor }}{% endif %});{% endset %}
     {% if props.customStyles %}
         <style>
             {{ attrs.id }} {
@@ -44,11 +51,16 @@
         {{ loopAttrs(attrs) }}
         style="
             {{ mdFontSize }}
+            {{ mdLineHeight }}
             {{ mdTextColor }}
             {{ mdLinkColor }}
             {{ mdRadius }}
             {{ mdHeadingFont }}
             {{ mdHeadingFontWeight }}
+            {{ mdHeadingColor }}
+            {{ mdBorderColor }}
+            {{ mdBorderWidth }}
+            {{ mdBackgroundColor }}
             {{ mdScale }}
         "
         class="markdown @container {{ attrs.class }}">
@@ -79,11 +91,15 @@
         transform: true | false,
         overrides: {
             fontSize: "",
-            primaryColor: "",
+            textColor: "",
             linkColor: "",
+            borderColor: "",
+            borderWidth: "",
+            backgroundColor: "",
             radius: "",
             headingFont: "",
             headingFontWeight: "",
+            headingColor: "",
             scale: ""
         },
         customStyles: ""
