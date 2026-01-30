@@ -23,7 +23,7 @@
                 const value = this.params.get('embed')
                 return value ? value : false
             }
-        }" class="flex flex-col w-full grow"><nav x-ref="navbar" x-data="{
+        }" class="flex flex-col w-full grow overflow-x-hidden"><nav x-ref="navbar" x-data="{
         setNavbarHidden() {
             const currentScrollY = window.scrollY;
             if (currentScrollY > lastScrollY && hasScrolled) {

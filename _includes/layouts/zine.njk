@@ -54,7 +54,7 @@
                 return value ? value : false
             }
         }"
-        class="flex flex-col w-full grow">
+        class="flex flex-col w-full grow overflow-x-hidden">
 
         {{ navbar({sticky: false, rightSide: navRight}, {"x-show": "!isEmbed()"}) }}
 
@@ -63,7 +63,6 @@
                 <h1>{{ title }}</h1>
             </div>
             {# zine #}
-            {# <div class="flex flex-col items-center w-full grow"> #}
             {% call section({}, {class:"grow flex"}) %}
                 {% call container({},{class:"grow"}) %}
                 <div data-zine-part="navigator" class="flex flex-col lg:flex-row lg:justify-center lg:gap-10 xl:gap-20 grow {% if aspect !== "5.5 / 4.25" %} pb-section-title{% endif %}">
