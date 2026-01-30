@@ -2,28 +2,15 @@
 
     {% from "components/toaster.njk" import toaster %}
     {% from "components/announcementBanner.njk" import announcementBanner with context %}
+    {% from "components/container.njk" import container %}
+    {% from "components/section.njk" import section %}
+    {% from "components/navbar.njk" import navbar with context %}
+    {% from "components/button.njk" import button %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set pageTitle %}
-    {%- if seoTitle -%}
-        {{ seoTitle }} –
-    {% elseif title %}
-        {{ title }} –
-    {% endif %}
-    {{- global.siteTitle -}}
-{% endset %}
-
-{% set pageDescription %}
-    {% if description %}{{- description -}}{% endif %} {{global.siteDescription -}}
-{% endset %}
-
-{% set ogImage %}
-    {{- global.siteDomain -}}{{- global.imagesFolder -}}/{% if ogImage %}{{- page.fileSlug -}}{{- ogImage -}}
-    {% else %}
-        {{- global.siteImage -}}
-    {% endif %}
-{% endset %}
+{% set htmlStyles = "scroll-smooth scroll-p-site-block" %}
+{% set bodyStyles = "font-sans text-base antialiased flex flex-col min-h-dvh items-center bg-surface pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]" %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -46,41 +33,30 @@
             if (this.navbarHidden) {
                 navbarHeight = 0;
             }
-            return {'--navbar-height': navbarHeight+'px'}
+            return {'--space-navbar-height': navbarHeight+'px'}
         }
     }"
     @scroll.window="setHasScrolled"
     lang="en"
-    :class="!scrollable && 'h-dvh overflow-hidden'"
+    :class="!scrollable && 'overflow-hidden'"
     :style="getNavbarHeight"
-    class="scroll-smooth scroll-p-section-title">
+    class="relative {{ htmlStyles }}">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{ pageTitle | safe }}</title>
-        <meta property="og:title" content="{{ pageTitle | safe }}"/>
-        <meta name="description" content="{{ pageDescription }}">
-        <meta property="og:description" content="{{ pageDescription }}"/>
-        <meta property="og:url" content="{{ global.siteDomain }}{{ page.url }}"/>
-        <meta property="og:image" content="{{ ogImage }}"/>
-        <meta property="og:type" content="{% if ogType %}{{ ogType }}{% else %}website{% endif %}"/>
-        <meta name="generator" content="{{ eleventy.generator }}">
-        <link rel="icon" type="image/x-icon" href="{{ global.siteDomain }}{{ global.imagesFolder }}/{{ global.favicon }}">
-        <link rel="stylesheet" href="/styles.css">
-
-        {% set comma = joiner() %}
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names={% for icon in icons | sort() %}{{ comma() }}{{ icon }}{% endfor %}" />
-
-
-
+        {% include "snippets/htmlHead.njk" %}
     </head>
-    <body class="font-sans text-base antialiased flex flex-col min-h-dvh items-center bg-surface pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
+    <body
+        :class="!scrollable && 'overflow-y-hidden'"
+        class="{{ bodyStyles }}">
+
+        {# Skip to content link #}
+        <a class="absolute top-0 left-0 opacity-0 z-[-1111111]" href="#main" aria-label="skip to main content">Click to skip to main content</a>
+
         {% if global.bannerContent %}
             {{ announcementBanner({content: global.bannerContent }) }}
         {% endif %}
 
-
-        {{ content | safe }}
+        {# {{ content | safe }} #}
+        {% block content %}{% endblock %}
 
         {{ toaster() }}
 
@@ -88,10 +64,6 @@
             {% include "components/_developmentWidget.njk" %}
         {% endif %}
 
-        <script defer src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
-        <script defer src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script>
-        <script defer src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+        {% include "snippets/scripts.njk" %}
     </body>
 </html>

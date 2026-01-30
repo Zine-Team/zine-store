@@ -1,6 +1,7 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/button.njk" import button %}
+{% from "components/section.njk" import section %}
 {% from "components/container.njk" import container %}
 {% from "components/markdown.njk" import markdown %}
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
@@ -11,15 +12,19 @@
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
+{# Theme styles ----------- #}
+
 {% set bannerStyles = "bg-neutral-lighter py-2 border-y border-dotted border-neutral-light" %}
 
-{% set position %}
+{# Other ------------------ #}
+
+{# {% set position %}
     {% if props.position === "bottom" %}
         fixed bottom-0
     {% else %}
         sticky top-0
     {% endif %}
-{% endset %}
+{% endset %} #}
 
 {% if props.position === "bottom" %}
     <style>
@@ -37,17 +42,19 @@
     <div
         data-announcement-banner
         {{ loopAttrs(attrs) }}
-        class="w-full {{ position }} z-(--z-sticky) {{ bannerStyles }} {{ attrs.class }}">
-        {% call container({size:"wide"}) %}
-            <div class="flex items-center justify-between">
-                {% if caller %}
-                    {{ caller() | safe }}
-                {% else %}
-                    {{ markdown({content: props.content, transform: true, fontSize:"text-sm"},{class:"grow text-center line-clamp-1"}) }}
-                {% endif %}
-                {{ button({icon:"close_small", type:"button", size:"sm", variant:"hue"},{@click:"showBanner = !showBanner", title:"Close announcement banner"}) }}
-            </div>
-        {% endcall %}
+        class="w-full {{ position }} {{ bannerStyles }} {{ attrs.class }}">
+        {% call section() %}
+            {% call container({size:"full"}) %}
+                <div class="flex items-center justify-between">
+                    {% if caller %}
+                        {{ caller() | safe }}
+                    {% else %}
+                        {{ markdown({content: props.content, transform: true, fontSize:"text-sm"},{class:"grow text-center line-clamp-1"}) }}
+                    {% endif %}
+                    {{ button({icon:"close_small", type:"button", size:"sm", variant:"hue"},{@click:"showBanner = !showBanner", title:"Close announcement banner"}) }}
+                </div>
+            {% endcall %}
+    {% endcall %}
     </div>
 </template>
 

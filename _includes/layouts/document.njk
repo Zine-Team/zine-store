@@ -1,0 +1,34 @@
+{% extends "layouts/base.njk" %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/navbar.njk" import navbar with context %}
+{% from "components/toTopFab.njk" import toTopFab %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set right %}{% include "components/local/submissionDialog.njk" %}{% endset %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% block content %}
+
+{{ navbar({sticky: true},{class:"print:hidden"}) }}
+
+<main class="relative flex flex-col w-full pt-section">
+    {% call section() %}
+        {% call container({},{class:"border-b border-neutral-lighter border-dotted pb-section-title"}) %}
+            <h1 class="text-2xl print:text-lg wrap-anywhere text-balance">{{ title }}</h1>
+        {% endcall %}
+    {% endcall %}
+
+    {% call section() %}
+        {% block pageContent %}
+            {{ content | safe }}
+        {% endblock %}
+    {% endcall %}
+
+    {{ toTopFab() }}
+</main>
+
+{% endblock %}

@@ -1,6 +1,8 @@
 ---
 title: Components
 ---
+{% extends "layouts/document.njk" %}
+
 {% from "components/_componentDocumentation.njk" import componentDocumentation %}
 {% from "components/container.njk" import container, containerMeta %}
 {% from "components/sidebar.njk" import sidebar %}
@@ -55,6 +57,7 @@ title: Components
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
+{% block pageContent %}
 {% call container({type:"sidebar", size:"base"},{
     "x-data":"{allComponents: ''}",
     "x-init":"$watch('allComponents', selected => document.getElementById(selected.value).scrollIntoView())",
@@ -536,3 +539,4 @@ preformatted code
     </div>
 
 {% endcall %}
+{% endblock %}

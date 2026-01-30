@@ -1,6 +1,7 @@
 {% from "components/copyToClipboard.njk" import copyToClipboard %}
 {% from "components/dialog.njk" import dialog %}
 {% from "components/toaster.njk" import toaster %}
+{% from "components/button.njk" import button %}
 
 {% set email %}
     {% call copyToClipboard({input: "zinestorefree@proton.me", toastMessage: "Email copied to clipboard!", toasterId: "toaster-top-layer"}) %}

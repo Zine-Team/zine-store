@@ -1,11 +1,12 @@
----
-title: Testing
----
+{% extends "layouts/document.njk" %}
+
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
-{% from "components/container.njk" import container %}
 {% from "components/carousel.njk" import carousel, carouselSlide %}
-{% from "components/button.njk" import button %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set title = "Testing" %}
 
 {% set slides = [
     {
@@ -24,8 +25,7 @@ title: Testing
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+{% block pageContent %}
 
 {% call container({},{class:"py-dialog-block @container"}) %}
 
@@ -43,3 +43,5 @@ title: Testing
         {% endfor %}
     {% endcall %}
 {% endcall %}
+
+{% endblock %}

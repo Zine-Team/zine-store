@@ -23,8 +23,6 @@
             {% if props.description %}{{ fieldDescription(props) }}{% endif %}
 
             {% for option in props.options %}
-                {# {% set inputData = { index: loop.index, value: option.value } %}
-                {{ inputData | dump }} #}
                 <div
                     x-data="{
                         data: {index: {{ loop.index}}, value: '{{ option.value }}' },

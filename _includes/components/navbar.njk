@@ -50,49 +50,50 @@
     class="w-full transition-transform duration-300 flex flex-col relative {{ attrs.class }} {{ navbarStyles }}
     {% if props.sticky %}{{ stickyStyles }}{% endif %}">
 
-    <div class="{%if drawerOnNarrow %}hidden lg:block{% endif %}">
-        {% call container({size: "base", type:"flex"},{class:"items-center justify-between py-nav flex"}) %}
+    {% call section({padding: "site"}) %}
+        <div class="{%if drawerOnNarrow %}hidden lg:block{% endif %}">
+            {% call container({size: "base", type:"flex"},{class:"items-center justify-between py-nav flex"}) %}
 
-            <div data-slot="left"
-            class="grow flex items-center justify-start flex-wrap {{ itemGap }}
-            {% if alignment === "left" %}{% elseif alignment === "center" %}basis-1/2 shrink{% endif %}">
+                <div data-slot="left"
+                class="grow flex items-center justify-start flex-wrap {{ itemGap }}
+                {% if alignment === "left" %}{% elseif alignment === "center" %}basis-1/2 shrink{% endif %}">
 
-                {{ logo | safe }}
-                {{ props.leftSide | safe }}
-
-            </div>
-
-            {% if alignment === "center" %}
-                <div data-slot="center" class="grow flex items-center justify-center flex-wrap shrink-0 {{ itemGap }}">
-
-                    {# Center content #}
+                    {{ logo | safe }}
+                    {{ props.leftSide | safe }}
 
                 </div>
-            {% endif %}
 
-            <div data-slot="right"
-            class="grow flex items-center justify-end flex-wrap {{ itemGap }}
-            {% if alignment === "left" %}shrink-0{% endif %}">
-                {{ props.rightSide | safe }}
-            </div>
+                {% if alignment === "center" %}
+                    <div data-slot="center" class="grow flex items-center justify-center flex-wrap shrink-0 {{ itemGap }}">
 
-        {% endcall %}
-    </div>
+                        {# Center content #}
 
-    {% if drawerOnNarrow %}
-        <div class="lg:hidden">
-            {% call container({size: "base", type:"flex"},{class:"items-center justify-between py-nav flex"}) %}
-                {{ logo | safe }}
-                {% if props.leftSide or props.rightSide %}
-                    {% call drawer({ alignment:"top", triggerProps:{ icon:{off:"menu", on:"close"}, type:"button", size:"base"} }) %}
-                        {{ props.leftSide | safe }}
-                        {{ props.rightSide | safe }}
-                    {% endcall %}
+                    </div>
                 {% endif %}
+
+                <div data-slot="right"
+                class="grow flex items-center justify-end flex-wrap {{ itemGap }}
+                {% if alignment === "left" %}shrink-0{% endif %}">
+                    {{ props.rightSide | safe }}
+                </div>
+
             {% endcall %}
         </div>
-    {% endif %}
 
+        {% if drawerOnNarrow %}
+            <div class="lg:hidden">
+                {% call container({size: "base", type:"flex"},{class:"items-center justify-between py-nav flex"}) %}
+                    {{ logo | safe }}
+                    {% if props.leftSide or props.rightSide %}
+                        {% call drawer({ alignment:"top", triggerProps:{ icon:{off:"menu", on:"close"}, type:"button", size:"base"} }) %}
+                            {{ props.leftSide | safe }}
+                            {{ props.rightSide | safe }}
+                        {% endcall %}
+                    {% endif %}
+                {% endcall %}
+            </div>
+        {% endif %}
+    {% endcall %}
 </nav>
 
 {% endmacro %}

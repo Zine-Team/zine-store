@@ -1,6 +1,5 @@
 {
-  "layout": "page",
   "tags": "pages",
-  "permalink": "/{{ page.fileSlug }}/",
+  "permalink": "{{ page.fileSlug }}/",
   "eleventyExcludeFromCollections": true
 }

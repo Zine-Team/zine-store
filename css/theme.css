@@ -58,7 +58,10 @@
   --spacing-dialog-block: var(--space-dialog-block);
   --spacing-tube: var(--space-tube);
   --spacing-indent: 1.5ch;
-  --spacing-navbar-height: var(--navbar-height);
+  --spacing-navbar-height: var(--space-navbar-height);
+  --spacing-dvh--navbar: calc(100dvh - var(--space-navbar-height));
+  --spacing-cqi: 100cqi;
+  --spacing-inherit: inherit;
 
   --spacing-block-size-nav: var(--block-size-nav);
 

@@ -5,32 +5,42 @@
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
-{% macro _componentTemplate(props={}, attrs={}) %}
+{% macro section(props={}, attrs={}) %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {# Theme styles ----------- #}
 
-{% set _componentTemplateStyles = "" %}
+{% set sectionStyles = "w-full @container" %}
+{% set paddingStyles =
+    {
+        "site": "px-site-inline",
+        "lines": "px-lines",
+        "none": ""
+    }
+ %}
 
 {# Other ------------------ #}
 
+{% set tag %}{% if props.tag %}{{ props.tag }}{% else %}section{% endif %}{% endset %}
+
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-<div data-_componentTemplate
+<{{ tag }} data-section
     {{ loopAttrs(attrs) }}
-    class="{{ attrs.class }} {{ _componentTemplateStyles }}">
-    {# content #}
-</div>
+    class="{{ attrs.class }} {{ sectionStyles }} {% if props.padding %}{{paddingStyles[props.padding]}}{% else %}{{ paddingStyles.site }}{% endif %}">
+    {{ caller() | safe }}
+</{{ tag }}>
 
 {% endmacro %}
 
 {# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
 
-{% set _componentTemplateMeta = {
-    args: '{% call _componentTemplate(
+{% set sectionMeta = {
+    args: '{% call section(
     props={
-        input: "",
+        tag: "",
+        padding: boolean,
     },
     attrs={}
 ) %}

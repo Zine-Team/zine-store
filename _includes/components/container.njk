@@ -8,10 +8,10 @@
 
 {% set sizeStyles =
     {
-        "narrow": "w-[var(--container-narrow)] max-w-[calc(100cqi-2*var(--spacing-site-inline))]",
-        "base": "w-[var(--container-base)] max-w-[calc(100cqi-2*var(--spacing-site-inline))]",
-        "wide": "w-[var(--container-wide)] max-w-[calc(100cqi-2*var(--spacing-site-inline))]",
-        "full": "w-[var(--container-wide)]"
+        "content": "w-[var(--container-content)] max-w-[calc(100cqi-2*var(--spacing-site-inline))]",
+        "narrow": "w-[var(--container-narrow)] max-w-cqi",
+        "base": "w-[var(--container-base)] max-w-cqi",
+        "full": "max-w-vw"
     }
  %}
 
@@ -34,7 +34,6 @@
         class="mx-auto
         {% if props.size %}{{sizeStyles[props.size]}}{% else %}{{ sizeStyles.base }}{% endif %}
         {% if props.type %}{{typeStyles[props.type]}}{% else %}{{ typeStyles["cols-1"] }}{% endif %}
-        {# {% if props.type %}{{ typeStyles[props.type] }}{% endif %} #}
         {{ themeStyles }}
         {{ attrs.class }}
     ">
@@ -48,7 +47,7 @@
 {% set containerMeta = {
     args: '{% call container(
     props={
-        size: "narrow | base | wide | full",
+        size: "narrow | base | full",
         type: "flex | cols-1 | cols-2 | sidebar"
     },
     attrs={}

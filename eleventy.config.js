@@ -8,7 +8,6 @@ const md = markdownIt();
 
 export default async function (eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
-  eleventyConfig.addLayoutAlias("page", "layouts/page.njk");
   eleventyConfig.addLayoutAlias("zine", "layouts/zine.njk");
   eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
   eleventyConfig.addPassthroughCopy("images");
