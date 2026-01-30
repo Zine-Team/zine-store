@@ -6,5 +6,5 @@
   "favicon": "/images/uploads/favicon.png",
   "submissionHref": "mailto:zinestorefree@proton.me?subject=Zine%20Store%20submission&body=(Attach%20a%20print-ready%20PDF%20of%20your%20zine.%20If%20you'd%20like%20to%20be%20extra%20awesome%2C%20please%20also%20include%20any%20alt-text%20you'd%20like%20to%20have%20for%20each%20page%20of%20the%20zine.%20Thank%20you!)",
   "imagesFolder": "/images/uploads",
-  "bannerContent": "testing"
+  "bannerContent": ""
 }
