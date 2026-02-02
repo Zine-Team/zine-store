@@ -11,7 +11,7 @@
         "content": "w-[var(--container-content)] max-w-[calc(100cqi-2*var(--spacing-site-inline))]",
         "narrow": "w-[var(--container-narrow)] max-w-cqi",
         "base": "w-[var(--container-base)] max-w-cqi",
-        "full": "max-w-vw"
+        "full": "w-full max-w-vw"
     }
  %}
 
@@ -31,12 +31,13 @@
     <div
         data-container
         {{ loopAttrs(attrs) }}
-        class="mx-auto
-        {% if props.size %}{{sizeStyles[props.size]}}{% else %}{{ sizeStyles.base }}{% endif %}
-        {% if props.type %}{{typeStyles[props.type]}}{% else %}{{ typeStyles["cols-1"] }}{% endif %}
-        {{ themeStyles }}
-        {{ attrs.class }}
-    ">
+        class="
+            {% if props.size %}{{sizeStyles[props.size]}}{% else %}{{ sizeStyles.base }}{% endif %}
+            {% if props.type %}{{typeStyles[props.type]}}{% else %}{{ typeStyles["cols-1"] }}{% endif %}
+            {% if props.alignment %}justify-self-{{ props.alignment }}{% else %}justify-self-center{% endif %}
+            {{ themeStyles }}
+            {{ attrs.class }}
+        ">
         {{ caller() | safe }}
     </div>
 
@@ -48,7 +49,8 @@
     args: '{% call container(
     props={
         size: "narrow | base | full",
-        type: "flex | cols-1 | cols-2 | sidebar"
+        type: "flex | cols-1 | cols-2 | sidebar",
+        alignment: "start | center | end"
     },
     attrs={}
 ) %}

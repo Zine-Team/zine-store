@@ -665,6 +665,9 @@
   .grid-cols-\[auto_1fr_auto\] {
     grid-template-columns: auto 1fr auto;
   }
+  .grid-cols-\[minmax\(1px\,var\(--container-base\)\)\] {
+    grid-template-columns: minmax(1px,var(--container-base));
+  }
   .flex-col {
     flex-direction: column;
   }

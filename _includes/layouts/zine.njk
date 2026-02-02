@@ -63,7 +63,7 @@
                 <h1>{{ title }}</h1>
             </div>
             {# zine #}
-            {% call section({}, {class:"grow flex"}) %}
+            {% call section({}, {class:"grow"}) %}
                 {% call container({},{class:"grow"}) %}
                 <div data-zine-part="navigator" class="flex flex-col lg:flex-row lg:justify-center lg:gap-10 xl:gap-20 grow {% if aspect !== "5.5 / 4.25" %} pb-section-title{% endif %}">
                     {{ button(props={icon:"arrow_back", type: "button", size:"base"}, attrs={class:"h-[max(25dvh,_72px)] max-lg:hidden! self-center", "data-action": "prev-wide"}) }}
