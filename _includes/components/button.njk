@@ -9,14 +9,16 @@
 
 {# Values ----------- #}
 
+{% set buttonStyles = "active:scale-[.98]" %}
+
 {% set types = {
     button: {
         styles: "text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded",
         on: "",
         sizes: {
-            base: "text-base min-w-15 min-h-tube px-[var(--button-space)]",
-            sm: "text-sm h-10 px-[var(--button-space)]",
-            fab: "text-sm rounded-full h-14 min-w-14 shadow-zine px-[var(--button-space)]"
+            base: "text-base min-w-15 min-h-tube px-3.5 gap-3.5",
+            sm: "text-sm h-10 px-2 gap-2",
+            fab: "text-sm rounded-full h-14 min-w-14 shadow-zine px-2 gap-2"
         },
         variants: {}
     },
@@ -33,29 +35,30 @@
     }
 } %}
 
-{% set buttonSpace %}
-    {% if props.size === "sm" %}4px
-    {% elseif props.size === "base" %}8px
-    {% elseif props.size === "fab" %}8px
-    {% endif %}
-{% endset %}
-
-{# ------------------ #}
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <{% if attrs.href %}a{% else %}button{% endif %} data-button
+    {% if props.tooltip %}
+        aria-label="{{ props.tooltip }}"
+        title="{{ props.tooltip }}"
+    {% endif %}
     {{ loopAttrs(attrs) }}
-    style="--button-space: {{ buttonSpace }}"
     {% if props.toggleValue %}
-
          {% if types[props.type].on %}
             :class="{{ props.toggleValue }} && '{{ types[props.type].on }}'"
         {% endif %}
     {% endif %}
-    class="shrink-0 disabled:opacity-60 active:scale-[.98] inline-flex justify-center items-center cursor-pointer {{ attrs.class }} {% if attrs.disabled %}pointer-events-none{% endif %}
-    {{ types[props.type].styles }} {{ types[props.type].sizes[props.size] }} {{ types[props.type].variants[props.variant] }}"
->
+    class="
+        shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer
+        {{ attrs.class }}
+        {{ buttonStyles }}
+        {% if attrs.disabled %}pointer-events-none{% endif %}
+        {{ types[props.type].styles }}
+        {{ types[props.type].sizes[props.size] }}
+        {{ types[props.type].variants[props.variant] }}"
+    >
     {% if props.toggleValue %}
-        <span class="flex items-center justify-center pointer-events-none">
+        <span class="flex items-center justify-center pointer-events-none gap-inherit {% if props.iconPosition === "end" %}flex-row-reverse{% endif %}">
             {% if props.icon %}
                 {% set show %}{{ props.toggleValue }} == false {% endset %}
                 {{ icon({icon:props.icon.off}, {"x-show":show}) }}
@@ -63,25 +66,22 @@
                 {{ icon({icon:props.icon.on}, {"x-show":show}) }}
             {% endif %}
             {% if props.label %}
-                <span x-show="!{{ props.toggleValue }}" class="px-[calc(var(--button-space)*2/3)]">{{ props.label.off }}</span>
-                <span x-show="{{ props.toggleValue }}" class="px-[calc(var(--button-space)*2/3)]">{{ props.label.on }}</span>
+                <span x-show="!{{ props.toggleValue }}" class="">{{ props.label.off }}</span>
+                <span x-show="{{ props.toggleValue }}" class="">{{ props.label.on }}</span>
             {% endif %}
         </span>
     {% else %}
         {% if props.icon or props.label %}
-            <span class="flex items-center justify-center pointer-events-none">
+            <span class="flex items-center justify-center pointer-events-none gap-inherit {% if props.iconPosition === "end" %}flex-row-reverse{% endif %}">
                 {% if props.icon %}
                     {{ icon({icon:props.icon}) }}
                 {% endif %}
                 {% if props.label %}
-                    <span class="px-[calc(var(--button-space)*2/3)]">{{ props.label }}</span>
+                    <span class="">{{ props.label }}</span>
                 {%- endif -%}
             </span>
         {% endif %}
     {% endif %}
-
-
-
 
     {%- if not props.label and not props.icon -%}
         {% if caller %}
@@ -98,18 +98,20 @@
 {% set buttonMeta = {
     args: '{{ button(
     props={
-        type: "button | link",
-        size: "base | lg | sm | inherit",
-        variant: "",
         label: "",
         icon: "",
-        toggleValue: ""
+        tooltip: ""
+        type: "button | link",
+        size: "base | lg | sm | inherit",
+        toggleValue: "",
+        iconPosition: "start | end"
     },
     attrs={}
 ) }}',
 description: "
-- Tag defaults to `button` unless you provide a `href`, then it'll be an `a` tag.
+- Tag defaults to `button` unless you provide an `attrs.href`, then it'll be an `a` tag.
 - Optionally you can use `{% call %}` to give custom inner HTML.
+- If you only use an icon, make sure to add the `props.tooltip` string to make the button accessible to screen readers and mouse users on hover.
 - `props.toggleValue` is the `x-data` value that the button looks for to determine its on/off state. If you use this property, the `button` expects the `props.icon` and `props.label` values to be objects with `on` and `off` keys.
 "
 } %}

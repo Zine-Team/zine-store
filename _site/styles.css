@@ -674,6 +674,9 @@
   .flex-col-reverse {
     flex-direction: column-reverse;
   }
+  .flex-row-reverse {
+    flex-direction: row-reverse;
+  }
   .flex-nowrap {
     flex-wrap: nowrap;
   }
@@ -728,11 +731,23 @@
   .gap-2 {
     gap: calc(var(--spacing) * 2);
   }
+  .gap-3 {
+    gap: calc(var(--spacing) * 3);
+  }
+  .gap-3\.5 {
+    gap: calc(var(--spacing) * 3.5);
+  }
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
+  }
   .gap-10 {
     gap: calc(var(--spacing) * 10);
   }
   .gap-dialog-block {
     gap: var(--space-dialog-block);
+  }
+  .gap-inherit {
+    gap: inherit;
   }
   .gap-item {
     gap: calc(var(--space-section-title) / 1.5);
@@ -934,8 +949,23 @@
   .p-site-inline {
     padding: var(--space-site-inline);
   }
+  .px-1 {
+    padding-inline: calc(var(--spacing) * 1);
+  }
   .px-1\.5 {
     padding-inline: calc(var(--spacing) * 1.5);
+  }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
+  .px-3 {
+    padding-inline: calc(var(--spacing) * 3);
+  }
+  .px-3\.5 {
+    padding-inline: calc(var(--spacing) * 3.5);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
   }
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
