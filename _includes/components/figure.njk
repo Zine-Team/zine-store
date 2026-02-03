@@ -1,0 +1,84 @@
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+{% from "components/button.njk" import button %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro figure(props={}, attrs={}) %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{# Theme styles ----------- #}
+
+{% set figureStyles = "gap-4" %}
+{% set figureImageStyles = "border border-neutral-lighter bg-neutral" %}
+{% set figureCaptionStyles = "text-center text-sm" %}
+
+{# Other ------------------ #}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<figure data-figure
+    {{ loopAttrs(attrs) }}
+    class="flex flex-col overflow-hidden {{ attrs.class }} {{ figureStyles }}">
+    <div
+        class="grow overflow-hidden
+            {{ figureImageStyles }}
+             {% if props.aspect %}
+                {{ props.aspect }}
+             {% else %}
+                {% if props.iframe %}aspect-video{% endif %}
+                {% if props.image %}aspect-auto{% endif %}
+            {% endif %}
+        ">
+
+        {% if props.image %}
+            <img
+                {% if props.lazy == false %}
+                    fetchpriority="high"
+                {% else %}
+                    loading="lazy"
+                {% endif %}
+                class="w-full h-full object-cover {{ props.focus }}" src="{{ props.image }}" alt="{{ props.alt }}">
+        {% endif %}
+
+        {% if props.iframe %}
+            <iframe
+                loading="lazy"
+                class="h-full w-full object-cover aspect-video"
+                src="{{ props.iframe }}"
+                title="{{ props.caption }}"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+        {% endif %}
+
+    </div>
+    {% if props.caption %}<figcaption class="{{ figureCaptionStyles }}">{{ props.caption }}</figcaption>{% endif %}
+</figure>
+
+{% endmacro %}
+
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set figureMeta = {
+    args: '{{ figure(
+    props={
+        image: "/assets/uploads/",
+        iframe: "https://www.youtube.com/embed/",
+        alt: "",
+        caption: "",
+        focus: "object-",
+        aspect: "aspect-"
+    },
+    attrs={}
+) }}',
+description: "
+-
+-
+-
+"
+} %}
