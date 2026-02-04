@@ -26,6 +26,7 @@
   --container-wide: 100vw;
   --container-content: 32ch;
 
+  --z-lowered: -10;
   --z-elevated: 20;
   --z-sticky: 30;
   --z-top: 40;
@@ -59,7 +60,8 @@
   --spacing-item-sm: calc(var(--space-section-title) / 3);
   --spacing-dialog-inline: var(--space-dialog-inline);
   --spacing-dialog-block: var(--space-dialog-block);
-  --spacing-tube: var(--space-tube);
+  --spacing-tube-base: var(--space-tube-base);
+  --spacing-tube-sm: var(--space-tube-sm);
   --spacing-indent: 1.5ch;
   --spacing-navbar-height: var(--space-navbar-height);
   --spacing-dvh--navbar: calc(100dvh - var(--space-navbar-height));

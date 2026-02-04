@@ -39,7 +39,8 @@
     --space-section-title: 1.25rem;
     --space-dialog-inline: 1.25rem;
     --space-dialog-block: 2.5rem;
-    --space-tube: 3rem;
+    --space-tube-base: 3rem;
+    --space-tube-sm: 2.5rem;
 
     /* > md */
     @media screen and (min-width: 576px) {
@@ -69,7 +70,7 @@
       --space-section-title: 1.75rem;
       --space-dialog-inline: 3.5rem;
       --space-dialog-block: 3.5rem;
-      --space-tube: 3.5rem;
+      --space-tube-base: 3.5rem;
     }
 
     /* > xl */
@@ -91,7 +92,11 @@
     direction: ltr;
     -webkit-font-feature-settings: "liga";
     -webkit-font-smoothing: antialiased;
-    font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 32;
+    font-variation-settings:
+      "FILL" 0,
+      "wght" 500,
+      "GRAD" 0,
+      "opsz" 32;
   }
 
   [data-button-card]::before {

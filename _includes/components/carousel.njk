@@ -2,75 +2,104 @@
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
 {% from "components/button.njk" import button %}
-
-{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% macro carousel(props={}, attrs={}) %}
+{% from "components/figure.njk" import figure %}
+{% from "components/icon.njk" import icon %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {# Theme styles ----------- #}
 
-{% set carouselStyles = "border border-neutral-lighter bg-neutral" %}
-{% set controlsStyles = "opacity-30 p-3 lg:py-4 lg:px-5" %}
-{% set indicatorRowStyles = "rounded-full bg-surface-light border-neutral-lighter border px-1.5 py-1.5 @md:px-2 @md:py-2 gap-1 @md:gap-1.5" %}
-{% set indicatorStyles = "size-1.5 @md:size-2 checked:bg-neutral bg-neutral/50 rounded-full" %}
+{% set carouselStyles = "gap-4" %}
+
+{% set slideImageStyles = "border border-neutral-lighter bg-neutral rounded-lg overflow-hidden" %}
+{% set slideCaptionStyles = "text-center text-body-base" %}
+
+{% set controlsStyles = "gap-3 justify-between items-center" %}
+
+{% set indicatorRowStyles = "min-h-tube-sm rounded gap-1.5 px-2.5 bg-surface-light border-neutral-lighter border" %}
+{% set indicatorStyles = "size-2.5 checked:bg-neutral border border-neutral hover:not-checked:bg-neutral-lighter rounded-full" %}
+
 {% set buttonProps = {
     type: "button",
-    size: "sm"
+    size: "sm",
+    variant: "neutral"
 } %}
-{% set buttonStyles = "min-h-[max(15cqi,_64px)]" %}
+{% set buttonStyles = "grow" %}
 
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro carousel(props={}, attrs={}) %}
 
 <div
     data-carousel
     x-data="{
         currentSlideIndex: 1,
+        stopVideos() {
+            document.querySelectorAll('iframe').forEach(v => { v.src = v.src });
+            document.querySelectorAll('video').forEach(v => { v.pause() });
+        },
         previous() {
             if (this.currentSlideIndex > 1) {
                 this.currentSlideIndex = this.currentSlideIndex - 1
             } else {
                 // If it's the first slide, go to the last slide
-                this.currentSlideIndex = {{ props.slides | length }}
+                this.currentSlideIndex = {{ props.figures | length }}
             }
+            this.stopVideos()
         },
         next() {
-            if (this.currentSlideIndex < {{ props.slides | length }}) {
+            if (this.currentSlideIndex < {{ props.figures | length }}) {
                 this.currentSlideIndex = this.currentSlideIndex + 1
             } else {
                 // If it's the last slide, go to the first slide
                 this.currentSlideIndex = 1
             }
+            this.stopVideos()
         },
     }"
     {{ loopAttrs(attrs) }}
-    class="@container group relative w-full overflow-hidden {{ attrs.class }} {{ carouselStyles }}">
+    class="@container relative w-full flex flex-col grow {{ attrs.class }} {{ carouselStyles }}">
 
-    <div class="grid grid-cols-[auto_1fr_auto] justify-between items-center pointer-coarse:opacity-100 group-hover:opacity-100 absolute inset-0 z-(--z-elevated) pointer-events-none transition-opacity group-hover:duration-150 duration-300 {{ controlsStyles }}">
+    <div class="relative grid grid-overlap overflow-hidden grow"> {# figures #}
+        <div data-loader class="animate-spin text-neutral text-body-lg place-self-center z-(--z-lowered)">{{ icon({icon:"progress_activity"}) }}</div>
+        {% for item in props.figures %}
+            <div
+                class="flex w-full"
+                x-show="currentSlideIndex == {{ loop.index }}"
+                x-transition.opacity.duration.600ms
+                {{ loopAttrs(attrs) }}>
+                {{ figure(item,{class:"w-full"}) }}
+            </div>
+        {% endfor %}
+    </div>
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+    <div class="flex {{ controlsStyles }}"> {# controls bar #}
         {{ button(
             props={
                 type: buttonProps.type,
                 size: buttonProps.size,
-                icon: "arrow_back"
+                variant: buttonProps.variant,
+                icon: "arrow_back",
+                tooltip:"Previous slide"
             },
             attrs={
-                "aria-label":"Previous slide",
-                "title":"Previous slide",
                 "@click": "previous()",
-                "class": buttonStyles + " col-start-1 pointer-events-auto"
+                "class": buttonStyles
             }
         ) }}
         {% if props.indicators %}
-            <div class="flex justify-self-center self-end justify-center {{ indicatorRowStyles }}" role="group" aria-label="slides" >
-                {% for slide in props.slides %}
+            <div class="flex self-center justify-self-center justify-center items-center overflow-x-auto {{ indicatorRowStyles }}" role="group" aria-label="slides" >
+                {% for slide in props.figures %}
                     <div x-data="{ id: $id('carousel-radio')}" class="flex">
+                        <label class="sr-only" :for="id">View slide {{ loop.index }}</label>
                         <input
                             :checked="currentSlideIndex === {{ loop.index }}"
                             x-on:change="currentSlideIndex = {{ loop.index }}"
                             :id="id"
                             type="radio"
-                            name="id"
+                            :name="id"
                             value="View slide {{ loop.index }}"
                             class="{{ indicatorStyles }} appearance-none pointer-events-auto"/>
                     </div>
@@ -81,37 +110,18 @@
             props={
                 type: buttonProps.type,
                 size: buttonProps.size,
-                icon: "arrow_forward"
+                variant: buttonProps.variant,
+                icon: "arrow_forward",
+                tooltip: "Next slide"
             },
             attrs={
-                "aria-label":"Next slide",
-                "title":"Next slide",
                 "@click": "next()",
-                "class": buttonStyles + " col-start-3 pointer-events-auto"
+                "class": buttonStyles
             }
         ) }}
 
     </div>
-
-    <div class="relative grid grid-overlap">
-        {{ caller() }}
-    </div>
-
 </div>
-
-{% endmacro %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% macro carouselSlide(props={}, attrs={}) %}
-
-    <div
-        x-show="currentSlideIndex == {{ props.loop.index }}"
-        x-transition.opacity.duration.600ms
-        {{ loopAttrs(attrs) }}
-        class="{{ attrs.class }}">
-        {{ caller() }}
-    </div>
 
 {% endmacro %}
 

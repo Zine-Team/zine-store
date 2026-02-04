@@ -168,33 +168,26 @@ All components have a `props` argument and a `attrs` argument, both of which are
 
     {% set slides = [
         {
-            imgSrc: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-1.webp',
-            imgAlt: 'Vibrant abstract painting with swirling blue and light pink hues on a canvas.'
+            image: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-1.webp',
+            alt: 'Vibrant abstract painting with swirling blue and light pink hues on a canvas.'
         },
         {
-            imgSrc: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-2.webp',
-            imgAlt: 'Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas.'
+            image: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-2.webp',
+            alt: 'Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas.'
         },
         {
-            imgSrc: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-3.webp',
-            imgAlt: 'Vibrant abstract painting with swirling blue and purple hues on a canvas.'
+            image: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-3.webp',
+            alt: 'Vibrant abstract painting with swirling blue and purple hues on a canvas.'
         }
     ] %}
 
-    {% call carousel({
-        slides: slides,
-        indicators: true
-    }) %}
-        {% from "components/carousel.njk" import carouselSlide %}
-        {% for slide in slides %}
-            {% call carouselSlide({loop:loop}) %}
-                <img
-                src="{{ slide.imgSrc }}"
-                alt="{{ slide.imgAlt }}"
-                class="w-full h-full object-cover"/>
-            {% endcall %}
-        {% endfor %}
-    {% endcall %}
+    {{ carousel(
+        props={
+            figures: slides,
+            indicators: true
+        },
+        attrs={}
+    ) }}
 
 {% endcall %}
 
