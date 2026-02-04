@@ -7,6 +7,7 @@ permalink: /index.html
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/button.njk" import button %}
+{% from "components/figure.njk" import figure %}
 {% from "components/slider.njk" import slider %}
 {% from "components/local/sectionHeader.njk" import sectionHeader %}
 
@@ -33,6 +34,7 @@ permalink: /index.html
     {% endcall %}
 
     <main class="flex flex-col w-full gap-section py-section grow">
+
         {% call section({tag:"header"}, {id:"hero"}) %}
             {% call container({size:"base"}, {class:"text-pretty flex flex-col gap-10"}) %}
                 <h1 class="flex flex-col items-baseline justify-between gap-1 text-3xl lg:-ml-2 sm:flex-row sm:gap-2">
@@ -43,6 +45,8 @@ permalink: /index.html
                 <p class="max-w-content text-lg">{{ global.siteDescription }}</p>
             {% endcall %}
         {% endcall %}
+
+        {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
         {% call section({}, {id:"recentZines"}) %}
             {% call container({}, {class:"flex flex-col gap-section-title"}) %}
@@ -56,11 +60,20 @@ permalink: /index.html
                 {% call slider({},{class:"gap-item py-2"}) %}
                     {% for zine in collections.zine | reverse | slice(4) %}
                         <a data-zine-shading class="relative hover:scale-[1.01] shadow-zine w-[70cqi] max-w-[312px]" href="{{ zine.url }}">
-                            <img class="w-full border shadow-page border-neutral-lighter" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}"></a>
+                            {{ figure(
+                                props={
+                                    image: global.imagesFolder + "/" + zine.fileSlug + "/" + zine.data.pages[0].image + ".jpg",
+                                    alt: zine.data.title
+                                },
+                                attrs={class:"shadow-page"}
+                            ) }}
+                        </a>
                     {% endfor %}
                 {% endcall %}
             {% endcall %}
         {% endcall %}
+
+        {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
         {% call section({}, {id:"allZines"}) %}
             {% set data %}
@@ -80,7 +93,13 @@ permalink: /index.html
                     {% for zine in collections.zine | sort(false, false, "data.title") %}
                         <li class="xs:flex flex-col gap-item-sm relative items-start max-w-max max-xs:ml-[1.25ch]">
                             <div data-zine-shading class="relative max-xs:hidden shadow-zine">
-                                <img class="w-full border shadow-page border-neutral-lighter" src="{{ global.imagesFolder }}/{{ zine.fileSlug }}/{{ zine.data.pages[0].image }}.jpg" alt="{{ zine.data.title }}">
+                            {{ figure(
+                                props={
+                                    image: global.imagesFolder + "/" + zine.fileSlug + "/" + zine.data.pages[0].image + ".jpg",
+                                    alt: zine.data.title
+                                },
+                                attrs={class:"shadow-page"}
+                            ) }}
                             </div>
                             {% call button({type:"link", size:"sm"},{href:zine.url, class: "text-left scale-none! max-xs:hidden"}) %}
                                 <span class="absolute inset-0"></span>
@@ -93,6 +112,8 @@ permalink: /index.html
                 {{ button({label: "Read random zine", type: "button", size:"base"}, {"@click": "chooseRandom", class:"xs:hidden"}) }}
             {% endcall %}
         {% endcall %}
+
+        {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
     </main>
 
