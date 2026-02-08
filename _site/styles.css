@@ -452,6 +452,10 @@
     width: calc(var(--spacing) * 3);
     height: calc(var(--spacing) * 3);
   }
+  .size-\[1\.1em\] {
+    width: 1.1em;
+    height: 1.1em;
+  }
   .h-\(--icon-size\) {
     height: var(--icon-size);
   }
@@ -463,6 +467,9 @@
   }
   .h-40 {
     height: calc(var(--spacing) * 40);
+  }
+  .h-\[1\.1em\] {
+    height: 1.1em;
   }
   .h-\[100dvh\] {
     height: 100dvh;
@@ -487,6 +494,9 @@
   }
   .max-h-dvh {
     max-height: 100dvh;
+  }
+  .\!min-h-tube-base {
+    min-height: var(--space-tube-base) !important;
   }
   .min-h-14 {
     min-height: calc(var(--spacing) * 14);

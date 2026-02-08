@@ -51,7 +51,7 @@
                     {% else %}
                         {{ markdown({content: props.content, transform: true, fontSize:"text-sm"},{class:"grow text-center line-clamp-1"}) }}
                     {% endif %}
-                    {{ button({icon:"close_small", type:"button", size:"sm", variant:"hue"},{@click:"showBanner = !showBanner", title:"Close announcement banner"}) }}
+                    {{ button({icon:"close", type:"button", size:"sm", variant:"hue"},{@click:"showBanner = !showBanner", title:"Close announcement banner"}) }}
                 </div>
             {% endcall %}
     {% endcall %}

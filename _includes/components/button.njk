@@ -61,9 +61,9 @@
         <span class="flex items-center justify-center pointer-events-none gap-inherit {% if props.iconPosition === "end" %}flex-row-reverse{% endif %}">
             {% if props.icon %}
                 {% set show %}{{ props.toggleValue }} == false {% endset %}
-                {{ icon({icon:props.icon.off}, {"x-show":show}) }}
+                {{ icon({glyph:props.icon.off}, {"x-show":show}) }}
                 {% set show %}{{ props.toggleValue }} == true {% endset %}
-                {{ icon({icon:props.icon.on}, {"x-show":show}) }}
+                {{ icon({glyph:props.icon.on}, {"x-show":show}) }}
             {% endif %}
             {% if props.label %}
                 <span x-show="!{{ props.toggleValue }}" class="">{{ props.label.off }}</span>
@@ -74,7 +74,7 @@
         {% if props.icon or props.label %}
             <span class="flex items-center justify-center pointer-events-none gap-inherit {% if props.iconPosition === "end" %}flex-row-reverse{% endif %}">
                 {% if props.icon %}
-                    {{ icon({icon:props.icon}) }}
+                    {{ icon({glyph:props.icon}) }}
                 {% endif %}
                 {% if props.label %}
                     <span class="">{{ props.label }}</span>

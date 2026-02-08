@@ -24,7 +24,7 @@
     class="flex flex-col overflow-hidden {{ attrs.class }} {{ figureStyles }}">
     <div
         class="grow overflow-hidden
-            {{ figureImageStyles }}
+            {% if not props.unstyled %}{{ figureImageStyles }}{% endif %}
              {% if props.aspect %}
                 {{ props.aspect }}
              {% else %}
@@ -67,8 +67,8 @@
 {% set figureMeta = {
     args: '{{ figure(
     props={
-        image: "/assets/uploads/",
-        iframe: "https://www.youtube.com/embed/",
+        image: "/assets/uploads/" | iframe: "https://www.youtube.com/embed/",
+        unstyled: boolean,
         alt: "",
         lazy: boolean,
         caption: "",

@@ -74,53 +74,54 @@
     </div>
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
+    {% if props.figures.length > 1 %} {# controls bar #}
+        <div class="flex {{ controlsStyles }}">
+            {{ button(
+                props={
+                    type: buttonProps.type,
+                    size: buttonProps.size,
+                    variant: buttonProps.variant,
+                    icon: "arrow_back",
+                    tooltip:"Previous slide"
+                },
+                attrs={
+                    "@click": "previous()",
+                    "class": buttonStyles
+                }
+            ) }}
+            {% if props.indicators %}
+                <div class="flex self-center justify-self-center justify-center items-center overflow-x-auto {{ indicatorRowStyles }}" role="group" aria-label="slides" >
+                    {% for slide in props.figures %}
+                        <div x-data="{ id: $id('carousel-radio')}" class="flex">
+                            <label class="sr-only" :for="id">View slide {{ loop.index }}</label>
+                            <input
+                                :checked="currentSlideIndex === {{ loop.index }}"
+                                x-on:change="currentSlideIndex = {{ loop.index }}"
+                                :id="id"
+                                type="radio"
+                                :name="id"
+                                value="View slide {{ loop.index }}"
+                                class="{{ indicatorStyles }} appearance-none pointer-events-auto"/>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {{ button(
+                props={
+                    type: buttonProps.type,
+                    size: buttonProps.size,
+                    variant: buttonProps.variant,
+                    icon: "arrow_forward",
+                    tooltip: "Next slide"
+                },
+                attrs={
+                    "@click": "next()",
+                    "class": buttonStyles
+                }
+            ) }}
 
-    <div class="flex {{ controlsStyles }}"> {# controls bar #}
-        {{ button(
-            props={
-                type: buttonProps.type,
-                size: buttonProps.size,
-                variant: buttonProps.variant,
-                icon: "arrow_back",
-                tooltip:"Previous slide"
-            },
-            attrs={
-                "@click": "previous()",
-                "class": buttonStyles
-            }
-        ) }}
-        {% if props.indicators %}
-            <div class="flex self-center justify-self-center justify-center items-center overflow-x-auto {{ indicatorRowStyles }}" role="group" aria-label="slides" >
-                {% for slide in props.figures %}
-                    <div x-data="{ id: $id('carousel-radio')}" class="flex">
-                        <label class="sr-only" :for="id">View slide {{ loop.index }}</label>
-                        <input
-                            :checked="currentSlideIndex === {{ loop.index }}"
-                            x-on:change="currentSlideIndex = {{ loop.index }}"
-                            :id="id"
-                            type="radio"
-                            :name="id"
-                            value="View slide {{ loop.index }}"
-                            class="{{ indicatorStyles }} appearance-none pointer-events-auto"/>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-        {{ button(
-            props={
-                type: buttonProps.type,
-                size: buttonProps.size,
-                variant: buttonProps.variant,
-                icon: "arrow_forward",
-                tooltip: "Next slide"
-            },
-            attrs={
-                "@click": "next()",
-                "class": buttonStyles
-            }
-        ) }}
-
-    </div>
+        </div>
+    {% endif %}
 </div>
 
 {% endmacro %}
@@ -128,19 +129,25 @@
 {# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
 
 {% set carouselMeta = {
-    args: '{% call carousel(
+    args: '{{ carousel(
     props={
-        slides: [],
-        indicators: true | false
+        figures: [
+            {
+                image: "/assets/uploads/" | iframe: "https://www.youtube.com/embed/",
+                unstyled: boolean,
+                alt: "",
+                lazy: boolean,
+                caption: "",
+                focus: "object-",
+                aspect: "aspect-"
+            }
+        ],
+        indicators: true
     },
     attrs={}
-) %}
-    {% from "components/carousel.njk" import carouselSlide %}
-    {% for slide in slides %}
-        {% call carouselSlide({loop:loop}) %}
-            {# slide content #}
-        {% endcall %}
-    {% endfor %}
-{% endcall %}',
-description: ""
+) }}',
+description: "
+- Expects `props.figures` to be an array of objects that match the properties of the `figure` component.
+- `props.indicators` shows or hides the indicator dots.
+"
 } %}

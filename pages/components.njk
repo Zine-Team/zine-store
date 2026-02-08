@@ -24,7 +24,7 @@ title: Components
 {% from "components/incrementer.njk" import incrementer, incrementerMeta %}
 {% from "components/drawer.njk" import drawer, drawerMeta %}
 {% from "components/carousel.njk" import carousel, carouselMeta %}
-{% from "components/icon.njk" import icon %}
+{% from "components/icon.njk" import icon, iconMeta %}
 {% from "components/figure.njk" import figure, figureMeta %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
@@ -49,7 +49,8 @@ title: Components
     "incrementer",
     "drawer",
     "carousel",
-    "figure"
+    "figure",
+    "icon"
 ] %}
 
 {% set componentSelect = [] %}
@@ -166,27 +167,25 @@ All components have a `props` argument and a `attrs` argument, both of which are
     meta: carouselMeta
 }) %}
 
-    {% set slides = [
-        {
-            image: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-1.webp',
-            alt: 'Vibrant abstract painting with swirling blue and light pink hues on a canvas.',
-            caption: 'Vibrant abstract painting with swirling blue and light pink hues on a canvas.'
-        },
-        {
-            image: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-2.webp',
-            alt: 'Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas.',
-            caption: 'Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas.'
-        },
-        {
-            image: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-3.webp',
-            alt: 'Vibrant abstract painting with swirling blue and purple hues on a canvas.',
-            caption: 'Vibrant abstract painting with swirling blue and purple hues on a canvas.'
-        }
-    ] %}
-
     {{ carousel(
         props={
-            figures: slides,
+            figures: [
+                {
+                    image: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-1.webp',
+                    alt: 'Vibrant abstract painting with swirling blue and light pink hues on a canvas.',
+                    caption: 'Vibrant abstract painting with swirling blue and light pink hues on a canvas.'
+                },
+                {
+                    image: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-2.webp',
+                    alt: 'Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas.',
+                    caption: 'Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas.'
+                },
+                {
+                    image: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-3.webp',
+                    alt: 'Vibrant abstract painting with swirling blue and purple hues on a canvas.',
+                    caption: 'Vibrant abstract painting with swirling blue and purple hues on a canvas.'
+                }
+            ],
             indicators: true
         },
         attrs={}
@@ -327,6 +326,16 @@ All components have a `props` argument and a `attrs` argument, both of which are
         },
         attrs={}
     ) }}
+{% endcall %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call componentDocumentation({
+    title: "icon",
+    meta: iconMeta
+}) %}
+    {{ icon({glyph:"bug_report"}) }}
+    {{ icon({glyph:"close"}) }}
 {% endcall %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
