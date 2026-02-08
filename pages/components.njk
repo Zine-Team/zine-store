@@ -26,6 +26,7 @@ title: Components
 {% from "components/carousel.njk" import carousel, carouselMeta %}
 {% from "components/icon.njk" import icon, iconMeta %}
 {% from "components/figure.njk" import figure, figureMeta %}
+{% from "components/section.njk" import section, sectionMeta %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -50,7 +51,8 @@ title: Components
     "drawer",
     "carousel",
     "figure",
-    "icon"
+    "icon",
+    "section"
 ] %}
 
 {% set componentSelect = [] %}
@@ -318,9 +320,9 @@ All components have a `props` argument and a `attrs` argument, both of which are
 }) %}
     {{ figure(
         props={
-            image: "https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-1.webp",
-            alt: "Vibrant abstract painting with swirling blue and light pink hues on a canvas.",
-            caption: "Vibrant abstract painting with swirling blue and light pink hues on a canvas.",
+            image: "https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-2.webp",
+            alt: "Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas.",
+            caption: "Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas.",
             focus: "",
             aspect: ""
         },
@@ -467,6 +469,13 @@ preformatted code
         {% endcall %}
     </div>
 {% endcall %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{{ componentDocumentation({
+    title: "section",
+    meta: sectionMeta
+}) }}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 

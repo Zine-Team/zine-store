@@ -79,6 +79,9 @@
 ) }}',
 description: "
 - `props.lazy` must be set to false if you want the loading to not be lazy.
+- The component is designed to be flexible so the image is set to `object-cover`.
+- `props.focus` designates the area to prioritize keeping in view as the image resizes. Default is center.
+- `props.aspect` designates the preferred aspect ratio for the image. Default is auto.
 - `props.aspect` and `props.focus` take the TailwindCSS class name for that property.
 "
 } %}

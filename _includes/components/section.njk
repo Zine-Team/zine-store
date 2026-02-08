@@ -27,7 +27,12 @@
 
 <{{ tag }} data-section
     {{ loopAttrs(attrs) }}
-    class="grid {{ attrs.class }} {{ sectionStyles }} {% if props.padding %}{{paddingStyles[props.padding]}}{% else %}{{ paddingStyles.site }}{% endif %}">
+    class="
+        grid
+        {{ attrs.class }}
+        {{ sectionStyles }}
+        {% if props.padding %}{{paddingStyles[props.padding]}}{% else %}{{ paddingStyles.site }}{% endif %}
+    ">
     {{ caller() | safe }}
 </{{ tag }}>
 
@@ -39,14 +44,16 @@
     args: '{% call section(
     props={
         tag: "",
-        padding: boolean,
+        padding: "site | none",
     },
     attrs={}
 ) %}
+    {% call container(props={size: "", type: "", alignment: ""}, attrs={}) %}
+    {% endcall %}
 {% endcall %}',
 description: "
--
--
--
+- `props.tag` sets the HTML tag you want. Defaults to `section`
+- `props.padding` sets whether the component's children should be full width or have some padding. The standard options are 'site' or 'none', but each website might have more options depending on its design.
+- Direct children should probably only be the `container` component.
 "
 } %}
