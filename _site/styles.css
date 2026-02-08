@@ -710,6 +710,9 @@
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
   .grid-cols-\[auto_1fr_auto\] {
     grid-template-columns: auto 1fr auto;
   }
@@ -734,8 +737,14 @@
   .place-content-center {
     place-content: center;
   }
+  .place-content-start {
+    place-content: start;
+  }
   .place-items-center {
     place-items: center;
+  }
+  .place-items-start {
+    place-items: start;
   }
   .content-center {
     align-content: center;
@@ -939,6 +948,24 @@
   }
   .border-transparent {
     border-color: transparent;
+  }
+  .\!bg-link {
+    background-color: #0000ee !important;
+  }
+  .\!bg-link-visited {
+    background-color: #551a8b !important;
+  }
+  .\!bg-neutral {
+    background-color: Black !important;
+  }
+  .\!bg-neutral-light {
+    background-color: color-mix(in srgb, Black, white 50%) !important;
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-neutral), white 50%) !important;
+    }
+  }
+  .bg-link {
+    background-color: #0000ee;
   }
   .bg-neutral {
     background-color: Black;
@@ -1169,6 +1196,18 @@
   .wrap-anywhere {
     overflow-wrap: anywhere;
   }
+  .\!text-link {
+    color: #0000ee !important;
+  }
+  .\!text-surface {
+    color: Gainsboro !important;
+  }
+  .\!text-surface-lighter {
+    color: color-mix(in srgb, Gainsboro, white 86%) !important;
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-surface), white 86%) !important;
+    }
+  }
   .text-link {
     color: #0000ee;
   }
@@ -1231,6 +1270,9 @@
   .outline {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
+  }
+  .outline-link {
+    outline-color: #0000ee;
   }
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);

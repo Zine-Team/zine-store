@@ -152,13 +152,16 @@ All components have a `props` argument and a `attrs` argument, both of which are
     title: "button",
     meta: buttonMeta
 }) %}
-    <div class="flex flex-wrap gap-item justify-around w-full items-center">
+    <div
+        x-data="{toggleValue: false}"
+        class="flex flex-wrap gap-item justify-around w-full items-center">
         {{ button({label: "Button", type: "button", size: "base"}) }}
         {{ button({label: "With icon", type: "button", size: "base", icon:"keyboard_arrow_down", iconPosition:"end"}) }}
-        {{ button({label: "Small", type: "button", size:"sm"}) }}
+        {{ button({type: "button", size: "base", icon:"content_copy", tooltip: "Copy"}) }}
+        {{ button({toggleValue:"toggleValue", label: {on:"Toggleable", off:"Toggleable"}, type: "button", size: "base", icon: {on:"check", off:"close"} }, {"@click": "toggleValue = !toggleValue"}) }}
+        {{ button({label: "Small button", type: "button", size:"sm"}) }}
         {{ button({label: "Link", type: "link", size: "base"}) }}
-        {{ button({label: "Large", type: "link", size:"lg"}) }}
-        {{ button({type: "button", size: "base", icon:"downloading", tooltip: "Downloading"}) }}
+        {{ button({label: "Large link", type: "link", size:"lg"}) }}
     </div>
 {% endcall %}
 
