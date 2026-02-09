@@ -1,32 +1,32 @@
-<section id="dialog" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-xl truncate xl:list-disc xl:list-item">dialog.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div data-dialog="" x-data="{close() {$refs.dialog.close()}}" class=""><button data-button="" @click="$refs.dialog.showModal()" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer w-full active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-base min-w-15 min-h-tube-base px-3.5 gap-3.5"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Click me to open dialog!</span></span></button><template x-teleport="body"><dialog closedby="any" x-ref="dialog" class="backdrop:bg-neutral/35 bg-transparent mt-section mb-auto flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center mx-auto inset-0 p-0"><section data-section="" class="grid grid-cols-[minmax(1px,var(--container-base))] justify-center pointer-events-none w-full @container px-site-inline"><div data-container="" class="w-[var(--container-narrow)] max-w-cqi grid justify-self-center bg-surface shadow-zine border border-neutral-light pointer-events-auto"><main class="w-full px-dialog-inline py-dialog-block grow flex flex-col justify-center gap-section-title"><h2 class="text-lg w-full text-pretty">Hey, it's a Dialog!</h2><p class="w-full text-pretty">The design can be whatever you want!</p></main><footer class="w-full flex gap-nav sticky bottom-0 bg-surface justify-end py-nav px-nav border-neutral-lighter border-t border-dotted"><button data-button="" @click="close()" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-base min-w-15 min-h-tube-base px-3.5 gap-3.5"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Close</span></span></button></footer></div></section></dialog></template></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
+<section id="dialog" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">dialog.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div data-dialog="" x-data="{close() {$refs.dialog.close()}}" class=""><button data-button="" @click="$refs.dialog.showModal()" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer w-full active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-base min-w-15 min-h-tube-base px-3.5 gap-3.5"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Click me to open dialog!</span></span></button><template x-teleport="body"><dialog closedby="any" x-ref="dialog" class="backdrop:bg-neutral/35 bg-transparent mt-section mb-auto flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center mx-auto inset-0 p-0"><section data-section="" class="grid grid-cols-[minmax(1px,var(--container-base))] justify-center pointer-events-none w-full @container px-site-inline"><div data-container="" class="w-[var(--container-narrow)] max-w-cqi grid justify-self-center bg-surface shadow-zine border border-neutral-light pointer-events-auto"><main class="w-full px-dialog-inline py-dialog-block grow flex flex-col justify-center gap-section-title"><h2 class="text-lg w-full text-pretty">Hey, it's a Dialog!</h2><p class="w-full text-pretty">The design can be whatever you want!</p></main><footer class="w-full flex gap-nav sticky bottom-0 bg-surface justify-end py-nav px-nav border-neutral-lighter border-t border-dotted"><button data-button="" @click="close()" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-base min-w-15 min-h-tube-base px-3.5 gap-3.5"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Close</span></span></button></footer></div></section></dialog></template></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
             $dispatch('notify', { content:'Copied import code to clipboard!', toasterId:'toaster' })
         }
-    }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-base);
-            --md-line-height: var(--text-base--line-height);
+    }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
+            --md-line-height: var(--text-body-base--line-height);
             --md-text-color: var(--color-neutral);
             --md-link-color: var(--color-link);
             --md-radius: var(--radius);
-            --md-heading-font: var(--font-sans);
+            --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
             --md-border-color: var(--color-neutral-lighter);
             --md-border-width: 1px;
             --md-background-color: var(--color-neutral-lightest);
-            --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/dialog.njk" import dialog %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
+            --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/dialog.njk" import dialog %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
             $dispatch('notify', { content:'Copied instance to clipboard!', toasterId:'toaster' })
         }
-    }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-base);
-            --md-line-height: var(--text-base--line-height);
+    }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
+            --md-line-height: var(--text-body-base--line-height);
             --md-text-color: var(--color-neutral);
             --md-link-color: var(--color-link);
             --md-radius: var(--radius);
-            --md-heading-font: var(--font-sans);
+            --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
             --md-border-color: var(--color-neutral-lighter);
@@ -39,12 +39,12 @@
     },
     attrs={}
 ) %}
-{% endcall %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-base);
-            --md-line-height: var(--text-base--line-height);
+{% endcall %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
+            --md-line-height: var(--text-body-base--line-height);
             --md-text-color: var(--color-neutral);
             --md-link-color: var(--color-link);
             --md-radius: var(--radius);
-            --md-heading-font: var(--font-sans);
+            --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
             --md-border-color: var(--color-neutral-lighter);

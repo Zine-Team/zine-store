@@ -55,14 +55,14 @@ title: Components
 {# Sidebar -------------------------------------------------------------------------------------------------------------------------- #}
     {% call sidebar() %}
         <section class="flex flex-col items-start gap-item-sm w-full">
-            <h2 class="font-semibold">Guide</h2>
+            <h2 class="text-heading-sm font-semibold">Guide</h2>
             <ul class="grid items-start list-disc gap-item-sm ml-indent">
                 <li class="w-min">{{ button({label:"Intro", type: "link"},{href:"#intro"}) }}</li>
             </ul>
         </section>
         <section class="flex flex-col items-start gap-item-sm w-full">
             {% call markdown({transform: false}, {class:"w-full"}) %}
-                <h4 class="font-semibold">All components</h4>
+                <h4 class="text-heading-sm font-semibold">All components</h4>
                 <ul>
                     {% for component in components | sort() %}
                         <li><a href="#{{ component }}">{{ component }}</li>
@@ -92,7 +92,7 @@ title: Components
 {# Intro -------------------------------------------------------------------------------------------------------------------------- #}
 
 <section id="guide" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section">
-    <h3 class="text-xl truncate xl:list-disc xl:list-item">Intro</h3>
+    <h3 class="text-heading-lg truncate xl:list-disc xl:list-item">Intro</h3>
     <div class="flex flex-col gap-item-sm">
         {# <h3 class="text-base font-semibold">Intro</h3> #}
         {% call markdown({transform: true}, {class:"w-full max-w-[var(--container-sm)]"}) %}

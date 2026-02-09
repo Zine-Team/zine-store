@@ -1,9 +1,9 @@
-<section id="select" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-xl truncate xl:list-disc xl:list-item">select.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div x-data="{select: ''}" class="w-full flex flex-col items-center"><div class="flex flex-col gap-1.5 w-full"><label for="select" class="text-neutral font-bold text-pretty">Select <sup class="text-validation">*</sup></label> <select name="select" id="select" required="true" placeholder="Placeholder" class="leading-none grow bg-surface-light min-w-px not-disabled:hover:bg-surface-lighter border-1 border-neutral-lighter disabled:opacity-60 not-disabled:hover:border-neutral-light min-h-tube-base rounded p-2.5" x-on:change="select = {index: [&quot;You selected option 1!&quot;,&quot;You selected option 2!&quot;,&quot;You selected option 3!&quot;].indexOf($event.target.value) + 1, value: $event.target.value}"><option value="" selected="" disabled="">Placeholder</option><option value="You selected option 1!">Option 1</option><option value="You selected option 2!">Option 2</option><option value="You selected option 3!">Option 3</option></select> <small class="text-neutral/70 text-sm text-pretty">This area describes the field above!</small></div><div data-markdown="" style="--md-font-size: var(--text-base);
-            --md-line-height: var(--text-base--line-height);
+<section id="select" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">select.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div x-data="{select: ''}" class="w-full flex flex-col items-center"><div class="flex flex-col gap-1.5 w-full"><label for="select" class="text-neutral font-bold text-pretty">Select <sup class="text-validation">*</sup></label> <select name="select" id="select" required="true" placeholder="Placeholder" class="leading-none grow bg-surface-light min-w-px not-disabled:hover:bg-surface-lighter border-1 border-neutral-lighter disabled:opacity-60 not-disabled:hover:border-neutral-light min-h-tube-base rounded p-2.5" x-on:change="select = {index: [&quot;You selected option 1!&quot;,&quot;You selected option 2!&quot;,&quot;You selected option 3!&quot;].indexOf($event.target.value) + 1, value: $event.target.value}"><option value="" selected="" disabled="">Placeholder</option><option value="You selected option 1!">Option 1</option><option value="You selected option 2!">Option 2</option><option value="You selected option 3!">Option 3</option></select> <small class="text-neutral/70 text-body-sm text-pretty">This area describes the field above!</small></div><div data-markdown="" style="--md-font-size: var(--text-body-base);
+            --md-line-height: var(--text-body-base--line-height);
             --md-text-color: var(--color-neutral);
             --md-link-color: var(--color-link);
             --md-radius: var(--radius);
-            --md-heading-font: var(--font-sans);
+            --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
             --md-border-color: var(--color-neutral-lighter);
@@ -12,35 +12,35 @@
             --md-scale: 1.35;" class="markdown @container relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"><pre>
 
 <code>output: <span x-show="!select">{}</span><span x-show="select"><span x-text="JSON.stringify(select)"></span></span>
-</code></pre></div></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
+</code></pre></div></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
             $dispatch('notify', { content:'Copied import code to clipboard!', toasterId:'toaster' })
         }
-    }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-base);
-            --md-line-height: var(--text-base--line-height);
+    }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
+            --md-line-height: var(--text-body-base--line-height);
             --md-text-color: var(--color-neutral);
             --md-link-color: var(--color-link);
             --md-radius: var(--radius);
-            --md-heading-font: var(--font-sans);
+            --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
             --md-border-color: var(--color-neutral-lighter);
             --md-border-width: 1px;
             --md-background-color: var(--color-neutral-lightest);
-            --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/select.njk" import select %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
+            --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/select.njk" import select %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
             $dispatch('notify', { content:'Copied instance to clipboard!', toasterId:'toaster' })
         }
-    }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-base);
-            --md-line-height: var(--text-base--line-height);
+    }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
+            --md-line-height: var(--text-body-base--line-height);
             --md-text-color: var(--color-neutral);
             --md-link-color: var(--color-link);
             --md-radius: var(--radius);
-            --md-heading-font: var(--font-sans);
+            --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
             --md-border-color: var(--color-neutral-lighter);
@@ -59,12 +59,12 @@
         }
     },
     attrs={}
-) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-base);
-            --md-line-height: var(--text-base--line-height);
+) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
+            --md-line-height: var(--text-body-base--line-height);
             --md-text-color: var(--color-neutral);
             --md-link-color: var(--color-link);
             --md-radius: var(--radius);
-            --md-heading-font: var(--font-sans);
+            --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
             --md-border-color: var(--color-neutral-lighter);

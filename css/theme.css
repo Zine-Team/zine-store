@@ -1,24 +1,91 @@
 :root {
+  color-scheme: light;
   --icon-size: 1.45em;
+
+  --body-sm: 17px;
+  --body-base: 20px;
+
+  --heading-sm: 20px;
+  --heading-base: 27px;
+  --heading-lg: 42px;
+  --heading-xl: 56px;
+  --heading-2xl: clamp(75px, 11vw, 10rem);
+
+  --space-site-inline: 1rem;
+  --space-nav: 0.75rem;
+  --space-section: 4.5rem;
+  --space-section-title: 1.25rem;
+  --space-dialog-inline: 1.25rem;
+  --space-dialog-block: 2.5rem;
+  --space-tube-base: 3rem;
+  --space-tube-sm: 2.5rem;
+
+  /* > md */
+  @media screen and (min-width: 36rem) {
+    --space-tube: 3.25rem;
+    --block-size-nav: 5.5rem;
+  }
+
+  /* > md */
+  @media screen and (min-width: 44rem) {
+    --body-sm: 18px;
+    --body-base: 22px;
+
+    --heading-sm: 22px;
+    --heading-base: 32px;
+    --heading-xl: 72px;
+
+    --space-site-inline: 2rem;
+    --space-section: 6.5rem;
+    --space-dialog-inline: 2rem;
+    --space-dialog-block: 3rem;
+  }
+
+  /* > lg */
+  @media screen and (min-width: 56rem) {
+    --space-site-inline: 3rem;
+    --space-nav: 1rem;
+    --space-section: 8rem;
+    --space-section-title: 1.75rem;
+    --space-dialog-inline: 3.5rem;
+    --space-dialog-block: 3.5rem;
+    --space-tube-base: 3.5rem;
+  }
+
+  /* > xl */
+  @media screen and (min-width: 70rem) {
+  }
 }
 
 @theme inline {
+  /* Breakpoints ----------------------------------------------------------------------------------------------------------------------- */
+
   --breakpoint-xs: 28rem; /* 448px */
   --breakpoint-sm: 36rem; /* 576px */
   --breakpoint-md: 44rem; /* 704px */
   --breakpoint-lg: 56rem; /* 896px */
   --breakpoint-xl: 70rem; /* 1120px */
 
-  --text-3xl: var(--text-3xl);
-  --text-3xl--line-height: 1;
-  --text-2xl: var(--text-2xl);
-  --text-2xl--line-height: 1.15;
-  --text-xl: var(--text-xl);
-  --text-xl--line-height: 1.3;
-  --text-lg: var(--text-lg);
-  --text-lg--line-height: 1.3;
-  --text-base: var(--text-base);
-  --text-sm: var(--text-sm);
+  /* Typography ------------------------------------------------------------------------------------------------------------------------ */
+
+  --font-display: sans-serif;
+  --font-body: sans-serif;
+
+  --text-body-sm: var(--body-sm);
+  --text-body-sm--line-height: 1.5;
+  --text-body-base: var(--body-base);
+  --text-body-base--line-height: 1.45;
+
+  --text-heading-sm: var(--heading-sm);
+  --text-heading-sm--line-height: 1.3;
+  --text-heading-base: var(--heading-base);
+  --text-heading-base--line-height: 1.3;
+  --text-heading-lg: var(--heading-lg);
+  --text-heading-lg--line-height: 1.3;
+  --text-heading-xl: var(--heading-xl);
+  --text-heading-xl--line-height: 1.15;
+  --text-heading-2xl: var(--heading-2xl);
+  --text-heading-2xl--line-height: 1;
 
   --container-*: initial;
   --container-narrow: 48rem;
@@ -117,4 +184,29 @@
     "FILL" 0,
     "wght" 400,
     "GRAD" 0;
+}
+@utility animate-duration-* {
+  --animate-duration: calc(--value(integer) * 1s);
+}
+
+@utility grid-overlap {
+  & > * {
+    grid-column: 1 / 1;
+    grid-row: 1 / 1;
+  }
+}
+
+@utility gap-inherit {
+  gap: inherit;
+}
+
+@utility bg-* {
+  background-color: --value(--color-bg-*);
+}
+@utility border-* {
+  border-color: --value(--color-border-*);
+}
+@utility text-* {
+  color: --value(--color-t-*);
+  line-height: --value(--text-* --line-height);
 }

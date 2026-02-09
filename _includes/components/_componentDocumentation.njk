@@ -11,7 +11,7 @@
 {% macro componentDocumentation(props={}) %}
 
     <section id="{{ props.title }}" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section">
-        <h3 class="text-xl truncate xl:list-disc xl:list-item">{{ props.title }}.njk</h3>
+        <h3 class="text-heading-lg truncate xl:list-disc xl:list-item">{{ props.title }}.njk</h3>
 
         <div class="flex flex-col overflow-hidden gap-dialog-block">
         {% if caller %}
@@ -24,7 +24,7 @@
             {{ example | safe }}
         {% endif %}
             <div class="flex flex-col gap-item-sm">
-                <h4 class="text-base font-semibold">Import code</h4>
+                <h4 class="text-heading-sm font-semibold">Import code</h4>
                 {% call copyToClipboard({copyRef: "copyMe", toastMessage: "Copied import code to clipboard!"}, {class:"relative"}) %}
                     {% call markdown() %}
                         <pre><code x-ref="copyMe">{% raw %}{%{% endraw %} from "components/{{ props.title }}.njk" import {{ props.title}} {% raw %}%}{% endraw %}</code></pre>
@@ -34,7 +34,7 @@
             </div>
 
             <div class="flex flex-col gap-item-sm">
-                <h4 class="text-base font-semibold">Arguments</h4>
+                <h4 class="text-heading-sm font-semibold">Arguments</h4>
                 {% call copyToClipboard({copyRef: "copyMe", toastMessage: "Copied instance to clipboard!"}, {class:"relative"}) %}
                     {% call markdown() %}
                         <pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ props.meta.args }}</code></pre>
@@ -52,7 +52,7 @@
 
             {% if props.meta.description %}
                 <div class="flex flex-col gap-item-sm">
-                    <h4 class="text-base font-semibold">Implementation notes</h4>
+                    <h4 class="text-heading-sm font-semibold">Implementation notes</h4>
                     {% call markdown() %}
                         {{ props.meta.description | trim | markdownify | safe }}
                     {% endcall %}
