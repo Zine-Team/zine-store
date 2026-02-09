@@ -14,7 +14,7 @@
 {% set dialogStyles = "backdrop:bg-neutral/35 bg-transparent mt-section mb-auto" %}
 {% set panelStyles = "bg-surface shadow-zine border border-neutral-light" %}
 
-{# ------------------ #}
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <div
     data-dialog
@@ -26,11 +26,9 @@
         <dialog
         closedby={% if props.closedBy %}{{ props.closedBy }}{% else %}"any"{% endif %}
         x-ref="dialog"
-        class="{{ attrs.class }} {{ dialogStyles }} flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center mx-auto inset-0 p-0">
-            {% call section({padding:"site"},{class:"pointer-events-none"}) %}
-                {% call container({size: "narrow"},{class:panelStyles + " pointer-events-auto"}) %}
-                    {{ caller() | safe }}
-                {% endcall %}
+        class="{{ attrs.class }} {{ dialogStyles }} @container w-full flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center mx-auto inset-0 p-0">
+            {% call container({size: "narrow"},{class:panelStyles + " pointer-events-auto"}) %}
+                {{ caller() | safe }}
             {% endcall %}
         </dialog>
     </template>
