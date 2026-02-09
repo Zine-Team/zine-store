@@ -9,7 +9,14 @@
     title: "marquee",
     meta: marqueeMeta
 }) %}
-    {% call marquee({speed: "10s", pauseOnHover: true, fadeEdges: true}, {class:"w-full"}) %}
-        <div class="text-lg">This is a repeating message!</div>
+    {% call marquee({
+        duration: "5s",
+        itemGap: "gap-6",
+        mask: true,
+        pauseOnHover: true
+    },{
+        class:"w-full"
+    }) %}
+        <li class="text-heading-base">This is a repeating message!</li>
     {% endcall %}
 {% endcall %}

@@ -1,21 +1,4 @@
-<section id="marquee" class="grid w-full gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">marquee.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><style>@property --100cqi {
-        syntax: "<length>";
-        initial-value: 0px;
-        inherits: true;
-    }
-
-    [data-marquee] > * {
-        --100cqi: 100cqi;
-        --px-width: tan(atan2(var(--100cqi), 1px));
-        --marquee-duration: calc(var(--px-width) / 1500 * 10s)
-    }</style><div data-marquee="" x-data="{
-        pauseOnHover: true,
-        init() {
-            this.$nextTick(() => {
-                this.$refs.marqueeTrack.appendChild(this.$refs.marqueeList.cloneNode(true));
-            });
-        }
-    }" class="relative @container overflow-hidden w-full"><div aria-hidden="true" class="absolute inset-y-0 z-(--z-elevated) w-[5%] start-0 bg-linear-to-r from-surface to-transparent"></div><div aria-hidden="true" class="absolute inset-y-0 z-(--z-elevated) w-[5%] end-0 bg-linear-to-l from-surface to-transparent"></div><div x-ref="marqueeTrack" style="--animate-duration: var(--marquee-duration)" class="relative flex w-full animate-marquee" x-bind:class="{ 'hover:[animation-play-state:paused]': pauseOnHover }"><div x-ref="marqueeList" class="flex items-center justify-around min-w-full shrink-0 flex-nowrap"><div class="text-lg">This is a repeating message!</div></div></div></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
+<section id="marquee" class="grid w-full gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">marquee.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div data-marquee="" style="--gap: 24px" class="flex w-full gap-6 w-full overflow-hidden select-none mask-x-from-80% mask-x-to-100%"><ul class="shrink-0 flex gap-6 justify-around min-w-full animate-marquee hover:[animation-play-state:paused]" style="--animate-duration: 5s"><li class="text-heading-base">This is a repeating message!</li></ul><ul aria-hidden="true" class="shrink-0 flex gap-6 justify-around min-w-full animate-marquee hover:[animation-play-state:paused]" style="--animate-duration: 5s"><li class="text-heading-base">This is a repeating message!</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -51,9 +34,10 @@
             --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code tabindex="-1" x-ref="copyMe" class="max-h-62 overflow-y-auto">{% call marquee(
     props={
-        speed: &quot;25s&quot;,
+        duration: &quot;45s&quot;,
+        itemGap: &quot;gap-6&quot;,
+        mask: boolean,
         pauseOnHover: boolean,
-        fadeEdges: boolean
     },
     attrs={}
 ) %}
@@ -68,4 +52,4 @@
             --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
             --md-background-color: var(--color-bg-neutral-lightest);
-            --md-scale: 1.35;" class="markdown @container"><ul><li>Put elements you want repeated inside the <code>{{ caller() }}</code></li></ul></div></div></div></section>
+            --md-scale: 1.35;" class="markdown @container"><ul><li>Put elements you want repeated inside the <code>{{ caller() }}</code>, semantically as an <code>&lt;li&gt;</code></li></ul></div></div></div></section>
