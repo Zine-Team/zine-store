@@ -87,11 +87,14 @@
   --text-heading-2xl: var(--heading-2xl);
   --text-heading-2xl--line-height: 1;
 
+  /* Container ------------------------------------------------------------------------------------------------------------------------- */
+
   --container-*: initial;
   --container-narrow: 48rem;
   --container-base: 81.5rem;
-  --container-wide: 100vw;
   --container-content: 32ch;
+
+  /* Elevation --------------------------------------------------------------------------------------------------------------------------*/
 
   --z-lowered: -10;
   --z-elevated: 20;
@@ -99,26 +102,17 @@
   --z-top: 40;
   --z-top-elevated: 50;
 
+  /* Effects --------------------------------------------------------------------------------------------------------------------------- */
+
   --shadow-*: initial;
   --shadow-zine: 0.5px 0.5px 1px lch(0% 0 0 / 0.1), 1px 1px 12px -4px lch(0% 0 0 / 0.2);
   --shadow-page: 0.33px 0.33px 1px lch(0% 0 0 / 0.1), 0.75px 0.75px 0.75px lch(0% 0 0 / 0.1);
   --shadow-button: 0 1px rgb(0 0 0 / 0.05);
 
-  --color-*: initial;
-  --color-inherit: inherit;
-  --color-transparent: transparent;
+  /* Spacing --------------------------------------------------------------------------------------------------------------------------- */
 
-  --color-neutral: Black;
-  --color-neutral-light: color-mix(in oklab, var(--color-neutral), white 50%);
-  --color-neutral-lighter: color-mix(in oklab, var(--color-neutral), white 66%);
-  --color-neutral-lightest: color-mix(in oklab, var(--color-neutral), white 85%);
-  --color-surface: Gainsboro;
-  --color-surface-light: color-mix(in oklab, var(--color-surface), white 70%);
-  --color-surface-lighter: color-mix(in oklab, var(--color-surface), white 86%);
-  --color-link: #0000ee;
-  --color-link-visited: #551a8b;
-  --color-validation: FireBrick;
-
+  --spacing-inherit: inherit;
+  --spacing-cqi: 100cqi;
   --spacing-site-inline: var(--space-site-inline);
   --spacing-nav: var(--space-nav);
   --spacing-section: var(--space-section);
@@ -132,24 +126,75 @@
   --spacing-indent: 1.5ch;
   --spacing-navbar-height: var(--space-navbar-height);
   --spacing-dvh--navbar: calc(100dvh - var(--space-navbar-height));
-  --spacing-cqi: 100cqi;
-  --spacing-inherit: inherit;
-
   --spacing-block-size-nav: var(--block-size-nav);
 
+  /* Color ----------------------------------------------------------------------------------------------------------------------------- */
+
+  /* Raw --------------------------------------- */
+
+  --color-*: initial;
+  --color-inherit: inherit;
+  --color-transparent: transparent;
+  --color-neutral: Black;
+  --color-surface: Gainsboro;
+  --color-blue: #0000ee;
+  --color-red: FireBrick;
+
+  /* Text ------------------------------------ */
+
+  --color-t-neutral: var(--color-neutral);
+  --color-t-neutral-light: color-mix(in oklab, var(--color-neutral), white 50%);
+  --color-t-neutral-lighter: color-mix(in oklab, var(--color-neutral), white 66%);
+  --color-t-neutral-lightest: color-mix(in oklab, var(--color-neutral), white 85%);
+  --color-t-surface-light: color-mix(in oklab, var(--color-surface), white 70%);
+  --color-t-surface-lighter: color-mix(in oklab, var(--color-surface), white 86%);
+  --color-t-link: var(--color-blue);
+  --color-t-validation: var(--color-red);
+
+  /* Border ------------------------------------ */
+
+  --color-border-neutral: var(--color-neutral);
+  --color-border-neutral-light: color-mix(in oklab, var(--color-neutral), white 50%);
+  --color-border-neutral-lighter: color-mix(in oklab, var(--color-neutral), white 66%);
+  --color-border-neutral-lightest: color-mix(in oklab, var(--color-neutral), white 85%);
+  --color-border-surface-light: color-mix(in oklab, var(--color-surface), white 70%);
+  --color-border-surface-lighter: color-mix(in oklab, var(--color-surface), white 86%);
+
+  /* Background ------------------------------------ */
+
+  --color-bg-neutral: var(--color-neutral);
+  --color-bg-neutral-light: color-mix(in oklab, var(--color-neutral), white 50%);
+  --color-bg-neutral-lighter: color-mix(in oklab, var(--color-neutral), white 66%);
+  --color-bg-neutral-lightest: color-mix(in oklab, var(--color-neutral), white 85%);
+  --color-bg-surface-light: color-mix(in oklab, var(--color-surface), white 70%);
+  --color-bg-surface-lighter: color-mix(in oklab, var(--color-surface), white 86%);
+
+  /* Perspective ---------------------------------------------------------------------------------------------------------------------- */
+
   --perspective-zine: 2000px;
-  --aspect-zine: 5.5 / 4.25;
-  --aspect-square: 1;
 
-  --duration-*: initial;
-  --duration-zine: 1000ms;
-
-  --ease-*: initial;
-  --ease-zine: cubic-bezier(0, 0, 0.2, 1);
+  /* Radii ---------------------------------------------------------------------------------------------------------------------- */
 
   --radius-*: initial;
   --radius: 3px;
+
+  /* Aspect ratio ---------------------------------------------------------------------------------------------------------------------- */
+
+  --aspect-zine: 5.5 / 4.25;
+  --aspect-square: 1;
+
+  /* Animations ------------------------------------------------------------------------------------------------------------------------ */
+
+  --duration-*: initial;
+  --default-transition-duration: 100ms;
+  --duration-zine: 1000ms;
+
+  --ease-*: initial;
+  --default-transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  --ease-zine: cubic-bezier(0, 0, 0.2, 1);
+
   --animate-marquee: marquee var(--animate-duration, 1s) infinite linear;
+  --animate-spin: spin var(--animate-duration, 1s) infinite linear;
 
   @keyframes marquee {
     0% {
@@ -159,10 +204,28 @@
       transform: translateX(-100%);
     }
   }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(359deg);
+    }
+  }
 }
 
-@utility animate-duration-* {
-  --animate-duration: calc(--value(integer) * 1s);
+/* Utility classes ---------------------------------------------------------------------------------------------------------------------- */
+
+@utility bg-* {
+  background-color: --value(--color-bg-*);
+}
+@utility border-* {
+  border-color: --value(--color-border-*);
+}
+@utility text-* {
+  color: --value(--color-t-*);
+  line-height: --value(--text-* --line-height);
 }
 
 @utility text-icon {
@@ -185,6 +248,7 @@
     "wght" 400,
     "GRAD" 0;
 }
+
 @utility animate-duration-* {
   --animate-duration: calc(--value(integer) * 1s);
 }
@@ -198,15 +262,4 @@
 
 @utility gap-inherit {
   gap: inherit;
-}
-
-@utility bg-* {
-  background-color: --value(--color-bg-*);
-}
-@utility border-* {
-  border-color: --value(--color-border-*);
-}
-@utility text-* {
-  color: --value(--color-t-*);
-  line-height: --value(--text-* --line-height);
 }

@@ -1,15 +1,6 @@
 @import "tailwindcss";
 @import "./theme.css";
 
-@layer utilities {
-  .grid-overlap {
-    & > * {
-      grid-column: 1 / 1;
-      grid-row: 1 / 1;
-    }
-  }
-}
-
 @layer components {
   @import "./zine.css";
   @import "./markdown.css";

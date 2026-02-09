@@ -21,15 +21,15 @@
                         }
                     }" class="flex gap-2 text-body-base"><input :checked="checkboxes.includes(data)" x-on:change="setChecked" :id="id" type="checkbox" name="checkboxes" value="You selected option 3!" class="accent-current w-[1.1em] h-[calc(var(--text-body-base)*var(--text-body-base--line-height))] shrink-0"> <label class="text-neutral" :for="id">Option 3</label></div></div></fieldset><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"><pre>
 <code>output: <span x-show="!checkboxes">[]</span><span x-show="checkboxes"><span x-text="JSON.stringify(checkboxes)"></span></span>
 </code></pre></div></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
@@ -40,15 +40,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/checkbox.njk" import checkbox %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -57,15 +57,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ checkbox(
     props={
         name: &quot;&quot;,
@@ -77,13 +77,13 @@
     attrs={}
 ) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li>If you want access to an array of the selected checkboxes, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.</li></ul></div></div></div></section>

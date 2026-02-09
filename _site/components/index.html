@@ -30,70 +30,70 @@
         }
     }" :class="{'-translate-y-full' : navbarHidden, 'border-neutral-lighter! border-dotted' : hasScrolled | !scrollable }" @scroll.window="setNavbarHidden()" class="w-full transition-transform duration-300 flex flex-col relative print:hidden z-(--z-sticky) border-b border-transparent sticky top-0 bg-surface"><section data-section="" class="grid grid-cols-[minmax(1px,var(--container-base))] justify-center w-full @container px-site-inline"><div class=""><div data-container="" class="w-[var(--container-base)] max-w-cqi flex justify-self-center items-center justify-between py-nav flex"><div data-slot="left" class="grow flex items-center justify-start flex-wrap gap-x-16 gap-y-2"><a data-button="" href="/" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer active:scale-[.98] text-link underline hover:no-underline underline-offset-3 decoration-1 text-body-base font-bold decoration-from-font"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Home</span></span></a></div><div data-slot="right" class="grow flex items-center justify-end flex-wrap gap-x-16 gap-y-2 shrink-0"></div></div></div></section></nav><main class="relative flex flex-col w-full pt-section"><header data-section="" class="grid grid-cols-[minmax(1px,var(--container-base))] justify-center w-full @container px-site-inline"><div data-container="" class="w-[var(--container-base)] max-w-cqi grid justify-self-center border-b border-neutral-lighter border-dotted pb-section-title"><h1 class="text-heading-xl print:text-lg wrap-anywhere text-balance">Components</h1></div></header><section data-section="" class="grid grid-cols-[minmax(1px,var(--container-base))] justify-center w-full @container px-site-inline"><div data-container="" x-data="{allComponents: &#39;&#39;}" x-init="$watch(&#39;allComponents&#39;, selected =&gt; document.getElementById(selected.value).scrollIntoView())" class="w-[var(--container-base)] max-w-cqi grid lg:grid-cols-[300px_1fr] justify-self-center @container"><aside data-sidebar="" class="sticky top-0 flex-col items-start hidden overflow-y-auto lg:flex max-h-dvh h-fit py-dialog-block pr-site-inline gap-section-title"><section class="flex flex-col items-start gap-item-sm w-full"><h2 class="text-heading-sm font-semibold">Guide</h2><ul class="grid items-start list-disc gap-item-sm ml-indent"><li class="w-min"><a data-button="" href="#intro" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer active:scale-[.98] text-link underline hover:no-underline underline-offset-3 decoration-1"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Intro</span></span></a></li></ul></section><section class="flex flex-col items-start gap-item-sm w-full"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container w-full"><h4 class="text-heading-sm font-semibold">All components</h4><ul><li><a href="#accordion">accordion</a></li><li><a href="#announcementBanner">announcementBanner</a></li><li><a href="#button">button</a></li><li><a href="#carousel">carousel</a></li><li><a href="#checkbox">checkbox</a></li><li><a href="#container">container</a></li><li><a href="#copyToClipboard">copyToClipboard</a></li><li><a href="#dialog">dialog</a></li><li><a href="#drawer">drawer</a></li><li><a href="#dropdown">dropdown</a></li><li><a href="#figure">figure</a></li><li><a href="#icon">icon</a></li><li><a href="#incrementer">incrementer</a></li><li><a href="#input">input</a></li><li><a href="#markdown">markdown</a></li><li><a href="#marquee">marquee</a></li><li><a href="#radio">radio</a></li><li><a href="#section">section</a></li><li><a href="#select">select</a></li><li><a href="#slider">slider</a></li><li><a href="#textarea">textarea</a></li><li><a href="#toaster">toaster</a></li></ul></div></section></aside><div class="flex flex-col gap-1.5 lg:hidden py-nav border-b border-dotted border-neutral-lighter sticky top-[var(--navbar-height)] transition-all duration-300 z-(--z-sticky) bg-surface"><select name="allComponents" id="allComponents" placeholder="Scroll to a component..." class="leading-none grow bg-surface-light min-w-px not-disabled:hover:bg-surface-lighter border-1 border-neutral-lighter disabled:opacity-60 not-disabled:hover:border-neutral-light min-h-tube-base rounded p-2.5" x-on:change="allComponents = {index: [&quot;accordion&quot;,&quot;announcementBanner&quot;,&quot;button&quot;,&quot;carousel&quot;,&quot;checkbox&quot;,&quot;container&quot;,&quot;copyToClipboard&quot;,&quot;dialog&quot;,&quot;drawer&quot;,&quot;dropdown&quot;,&quot;figure&quot;,&quot;icon&quot;,&quot;incrementer&quot;,&quot;input&quot;,&quot;markdown&quot;,&quot;marquee&quot;,&quot;radio&quot;,&quot;section&quot;,&quot;select&quot;,&quot;slider&quot;,&quot;textarea&quot;,&quot;toaster&quot;].indexOf($event.target.value) + 1, value: $event.target.value}"><option value="" selected="" disabled="">Scroll to a component...</option><option value="accordion">accordion</option><option value="announcementBanner">announcementBanner</option><option value="button">button</option><option value="carousel">carousel</option><option value="checkbox">checkbox</option><option value="container">container</option><option value="copyToClipboard">copyToClipboard</option><option value="dialog">dialog</option><option value="drawer">drawer</option><option value="dropdown">dropdown</option><option value="figure">figure</option><option value="icon">icon</option><option value="incrementer">incrementer</option><option value="input">input</option><option value="markdown">markdown</option><option value="marquee">marquee</option><option value="radio">radio</option><option value="section">section</option><option value="select">select</option><option value="slider">slider</option><option value="textarea">textarea</option><option value="toaster">toaster</option></select></div><div class="border-dotted justify-items-center lg:pl-site-inline lg:border-l border-neutral-lighter"><div class="w-full max-w-narrow"><section id="guide" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">Intro</h3><div class="flex flex-col gap-item-sm"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container w-full max-w-[var(--container-sm)]"><p>Welcome to the design system!</p><p>This component system is made with macros from <a href="https://mozilla.github.io/nunjucks/templating.html">Nunjucks</a>.</p><p>All components have a <code>props</code> argument and a <code>attrs</code> argument, both of which are objects.</p><ul><li><code>props</code> contains all the values needed to make the component function, like the label and style of a button.</li><li><code>attrs</code> is for any HTML attributes that the instance of the component requires.</li></ul></div></div></section><section><section id="accordion" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">accordion.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><style>summary::-webkit-details-marker { display: none }</style><div data-accordion="" class="flex flex-col w-full"><details class="w-full flex flex-col group py-item border-b border-neutral-lighter first:-mt-item"><summary class="flex items-center justify-start appearance-none cursor-pointer font-semibold underline-offset-3 decoration-from-font gap-3 hover:underline"><svg data-icon="" alt="arrow right icon" class="group-open:hidden text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">arrow_right</text></svg> <svg data-icon="" alt="arrow drop down icon" class="hidden group-open:block text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">arrow_drop_down</text></svg><h2>Armed State</h2></summary><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container pt-item text-body-sm"><p>Violent force used by The State to maintainits power. Under Racial Capitalism, The State is the sole entity justified in using violence, violence it uses to dispossess The People of their land, resources, and labor to protectand serve the interests of the Capitalists. The Armed State promotes and relies on racist ideology to demonize and criminalize people of color in order to enforce a racial division of labor. Such divisions allow forthe extreme exploitation of selected groups’ labor and keep The People turned againstone another.</p></div></details><details class="w-full flex flex-col group py-item border-b border-neutral-lighter first:-mt-item"><summary class="flex items-center justify-start appearance-none cursor-pointer font-semibold underline-offset-3 decoration-from-font gap-3 hover:underline"><svg data-icon="" alt="arrow right icon" class="group-open:hidden text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">arrow_right</text></svg> <svg data-icon="" alt="arrow drop down icon" class="hidden group-open:block text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">arrow_drop_down</text></svg><h2>Concessions State</h2></summary><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container pt-item text-body-sm"><p>Reforms to the system made by The State in response to the demands of The People. While crucial to improving the lives and conditions of the The People, reforms that don’t challenge the nature of the system are often co-opted to make Racial Capitalismfeel more acceptable and friendly without fundamentally changing its power dynamics. The Concessions State also prescribes theonly legitimate avenues to express dissent (voting and emailing your representatives) and suppresses and vilifies all others (organized labor strikes or squatting).</p></div></details><details class="w-full flex flex-col group py-item border-b border-neutral-lighter first:-mt-item"><summary class="flex items-center justify-start appearance-none cursor-pointer font-semibold underline-offset-3 decoration-from-font gap-3 hover:underline"><svg data-icon="" alt="arrow right icon" class="group-open:hidden text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">arrow_right</text></svg> <svg data-icon="" alt="arrow drop down icon" class="hidden group-open:block text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">arrow_drop_down</text></svg><h2>Civil Society</h2></summary><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container pt-item text-body-sm"><p>Ideas, beliefs, values, and culture that shape how we see ourselves, each other, and the wealthy. Although Civil Society is not controlled by The State, the institutions that constitute it are heavily influenced by the ideologies and forces of Racial Capitalism.</p></div></details><details class="w-full flex flex-col group py-item border-b border-neutral-lighter first:-mt-item"><summary class="flex items-center justify-start appearance-none cursor-pointer font-semibold underline-offset-3 decoration-from-font gap-3 hover:underline"><svg data-icon="" alt="arrow right icon" class="group-open:hidden text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">arrow_right</text></svg> <svg data-icon="" alt="arrow drop down icon" class="hidden group-open:block text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">arrow_drop_down</text></svg><h2>The People</h2></summary><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container pt-item text-body-sm"><p>The humans whose labor Racial Capitalism exploits. When The People come together with a shared understanding of their conditions, they can build the power needed to transform the systems they live under.</p></div></details></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -102,15 +102,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/accordion.njk" import accordion %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -119,15 +119,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ accordion(
     props={
         accordionItems: [{
@@ -139,15 +139,15 @@
     attrs={}
 ) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div></div></section><section id="announcementBanner" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">announcementBanner.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><template x-data="{ showBanner: $persist(true).as('ab-this-is-the-banner-content-markdown') }" x-if="showBanner"><div data-announcement-banner="" class="w-full bg-neutral-lightest py-2 border-y border-dotted border-neutral-light z-10!"><section data-section="" class="grid grid-cols-[minmax(1px,var(--container-base))] justify-center w-full @container px-site-inline"><div data-container="" class="w-full max-w-vw grid justify-self-center"><div class="flex items-center justify-between"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container grow text-center line-clamp-1"><p>This is the banner content. <a href="/">markdown!</a></p></div><button data-button="" @click="showBanner = !showBanner" title="Close announcement banner" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><svg data-icon="" alt="close icon" class="text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">close</text></svg></span></button></div></div></section></div></template></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -156,15 +156,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/announcementBanner.njk" import announcementBanner %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -173,15 +173,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ announcementBanner(
     props={
         content: &quot;&quot;,
@@ -190,15 +190,15 @@
     attrs={}
 ) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li>Default to using <code>content</code> prop for markdownified text, but you can use <code>{% call %}</code> to insert custom content.</li><li>The banner's dismissed state resets when the <code>global.bannerContent</code> property is updated.</li></ul></div></div></div></section><section id="button" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">button.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div x-data="{toggleValue: false}" class="flex flex-wrap gap-item justify-around w-full items-center"><button data-button="" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-base min-w-15 min-h-tube-base px-3.5 gap-3.5"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Button</span></span></button> <button data-button="" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-base min-w-15 min-h-tube-base px-3.5 gap-3.5"><span class="flex items-center justify-center pointer-events-none gap-inherit flex-row-reverse"><svg data-icon="" alt="keyboard arrow down icon" class="text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">keyboard_arrow_down</text></svg> <span class="">With icon</span></span></button> <button data-button="" aria-label="Copy" title="Copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-base min-w-15 min-h-tube-base px-3.5 gap-3.5"><span class="flex items-center justify-center pointer-events-none gap-inherit"><svg data-icon="" alt="content copy icon" class="text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">content_copy</text></svg></span></button> <button data-button="" @click="toggleValue = !toggleValue" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-base min-w-15 min-h-tube-base px-3.5 gap-3.5"><span class="flex items-center justify-center pointer-events-none gap-inherit"><svg data-icon="" alt="circle icon" x-show="toggleValue == false " class="text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">circle</text></svg> <svg data-icon="" alt="check circle icon" x-show="toggleValue == true " class="text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">check_circle</text></svg> <span x-show="!toggleValue" class="">Toggleable</span> <span x-show="toggleValue" class="">Toggleable</span></span></button> <button data-button="" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Small button</span></span></button> <button data-button="" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer active:scale-[.98] text-link underline hover:no-underline underline-offset-3 decoration-1 text-body-base"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Link</span></span></button> <button data-button="" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer active:scale-[.98] text-link underline hover:no-underline underline-offset-3 decoration-1 text-body-base font-bold decoration-from-font"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Large link</span></span></button></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -207,15 +207,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/button.njk" import button %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -224,15 +224,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ button(
     props={
         label: &quot;&quot;,
@@ -246,15 +246,15 @@
     attrs={}
 ) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li>Tag defaults to <code>button</code> unless you provide an <code>attrs.href</code>, then it'll be an <code>a</code> tag.</li><li>Optionally you can use <code>{% call %}</code> to give custom inner HTML.</li><li>If you only use an icon, make sure to add the <code>props.tooltip</code> string to make the button accessible to screen readers and mouse users on hover.</li><li><code>props.toggleValue</code> is the <code>x-data</code> value that the button looks for to determine its on/off state. If you use this property, the <code>button</code> expects the <code>props.icon</code> and <code>props.label</code> values to be objects with <code>on</code> and <code>off</code> keys.</li></ul></div></div></div></section><section id="carousel" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">carousel.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div data-carousel="" role="group" aria-roledescription="carousel" x-data="{
         currentSlideIndex: 1,
         stopVideos() {
@@ -287,15 +287,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/carousel.njk" import carousel %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -304,15 +304,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ carousel(
     props={
         figures: [
@@ -333,15 +333,15 @@
     }
 ) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li>Expects <code>props.figures</code> to be an array of objects that match the properties of the <code>figure</code> component.</li><li><code>props.indicators</code> shows or hides the indicator dots.</li></ul></div></div></div></section><section id="checkbox" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">checkbox.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div x-data="{checkboxes: []}" class="w-full flex flex-col items-center"><fieldset name="checkboxes" class="w-max"><div class="flex flex-col gap-1.5"><legend class="text-neutral font-bold text-pretty">Checkboxes</legend><small class="text-neutral/70 text-body-sm text-pretty">Optional description</small><div x-data="{
                         data: {index: 1, value: 'You selected option 1!' },
                         id: $id('You selected option 1!'),
@@ -365,15 +365,15 @@
                         }
                     }" class="flex gap-2 text-body-base"><input :checked="checkboxes.includes(data)" x-on:change="setChecked" :id="id" type="checkbox" name="checkboxes" value="You selected option 3!" class="accent-current w-[1.1em] h-[calc(var(--text-body-base)*var(--text-body-base--line-height))] shrink-0"> <label class="text-neutral" :for="id">Option 3</label></div></div></fieldset><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"><pre>
 <code>output: <span x-show="!checkboxes">[]</span><span x-show="checkboxes"><span x-text="JSON.stringify(checkboxes)"></span></span>
 </code></pre></div></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
@@ -384,15 +384,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/checkbox.njk" import checkbox %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -401,15 +401,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ checkbox(
     props={
         name: &quot;&quot;,
@@ -421,15 +421,15 @@
     attrs={}
 ) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li>If you want access to an array of the selected checkboxes, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.</li></ul></div></div></div></section><section id="container" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">container.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -438,15 +438,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/container.njk" import container %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -455,15 +455,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{% call container(
     props={
         size: &quot;narrow | base | full&quot;,
@@ -474,15 +474,15 @@
 ) %}
 {% endcall %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li>Wrapper for most page content sections.</li><li><code>props.size</code> to set max-width</li><li><code>props.type</code> to define columns or sidebar layouts.</li></ul></div></div></div></section><section id="copyToClipboard" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">copyToClipboard.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><span x-data="{
         input: 'hey!',
         copy () {
@@ -497,15 +497,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/copyToClipboard.njk" import copyToClipboard %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -514,15 +514,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ copyToClipboard(
     props={
         input: &quot;&quot; | copyRef: &quot;&quot;,
@@ -533,15 +533,15 @@
     attrs={}
 ) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li>Use <code>input</code> or <code>copyRef</code>, not both. <code>copyRef</code> is the <code>x-ref</code> value of an element inside the caller() that you want to copy the <code>innerText</code> value of.</li><li>Use <code>props.trigger</code> to define the trigger element, or give an element inside the caller() the attribute <code>@click: 'copy'</code> to trigger the copy event.</li><li>Must have the <code>toaster</code> component somewhere on the page for this component to work.</li></ul></div></div></div></section><section id="dialog" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">dialog.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div data-dialog="" x-data="{close() {$refs.dialog.close()}}" class=""><button data-button="" @click="$refs.dialog.showModal()" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer w-full active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-base min-w-15 min-h-tube-base px-3.5 gap-3.5"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Click me to open dialog!</span></span></button><template x-teleport="body"><dialog closedby="any" x-ref="dialog" class="backdrop:bg-neutral/35 bg-transparent mt-section mb-auto flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center mx-auto inset-0 p-0"><section data-section="" class="grid grid-cols-[minmax(1px,var(--container-base))] justify-center pointer-events-none w-full @container px-site-inline"><div data-container="" class="w-[var(--container-narrow)] max-w-cqi grid justify-self-center bg-surface shadow-zine border border-neutral-light pointer-events-auto"><main class="w-full px-dialog-inline py-dialog-block grow flex flex-col justify-center gap-section-title"><h2 class="text-lg w-full text-pretty">Hey, it's a Dialog!</h2><p class="w-full text-pretty">The design can be whatever you want!</p></main><footer class="w-full flex gap-nav sticky bottom-0 bg-surface justify-end py-nav px-nav border-neutral-lighter border-t border-dotted"><button data-button="" @click="close()" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-base min-w-15 min-h-tube-base px-3.5 gap-3.5"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Close</span></span></button></footer></div></section></dialog></template></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -550,15 +550,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/dialog.njk" import dialog %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -567,15 +567,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{% call dialog(
     props={
         closedBy: &quot;any&quot; | &quot;none&quot;,
@@ -585,15 +585,15 @@
 ) %}
 {% endcall %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li><code>props.triggerProps</code> is the props object for the <code>button</code> component that opens the <code>dialog</code>.</li><li>Give an element inside the <code>dialog</code> the <code>close()</code> event to make it close the <code>dialog</code>.</li><li><code>props.closedBy: 'none'</code> makes it so the escape key won't close the <code>dialog</code>.</li></ul></div></div></div></section><section id="drawer" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">drawer.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div data-drawer="" x-data="{
         drawerOpen: false,
         toggleDrawer() {
@@ -618,15 +618,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/drawer.njk" import drawer %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -635,15 +635,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{% call drawer(
     props={
         alignment: &quot;top | bottom&quot;,
@@ -654,15 +654,15 @@
 ) %}
 {% endcall %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li><code>props.drawerItems</code> is optional, if you want to use the <code>caller()</code> instead.</li></ul></div></div></div></section><section id="dropdown" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">dropdown.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div class="flex flex-col justify-end min-h-[200px]"><div data-dropdown="" x-data="{
         open: false,
         toggle() {
@@ -685,15 +685,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/dropdown.njk" import dropdown %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -702,15 +702,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ dropdown(
     props={
         position: [&quot;top&quot;, &quot;bottom&quot;, &quot;left&quot;, &quot;right&quot;],
@@ -722,15 +722,15 @@
     attrs={}
 ) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li>Defaults to displaying buttons in a list</li><li>Can use `{% caller() %} instead for more complex inner components</li><li><code>position</code> is an array where you can set the relative positions to the trigger element.</li></ul></div></div></div></section><section id="figure" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">figure.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><figure data-figure="" class="flex flex-col overflow-hidden gap-4"><div class="grow overflow-hidden bg-neutral border border-neutral-lighter aspect-auto"><picture><source type="image/webp" srcset="/.11ty/image/?src=https%3A%2F%2Fpenguinui.s3.amazonaws.com%2Fcomponent-assets%2Fcarousel%2Fdefault-slide-2.webp&width=2400&format=webp&via=transform 2400w"><img loading="lazy" class="w-full h-full object-cover" src="/.11ty/image/?src=https%3A%2F%2Fpenguinui.s3.amazonaws.com%2Fcomponent-assets%2Fcarousel%2Fdefault-slide-2.webp&width=2400&format=jpeg&via=transform" alt="Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas." width="2400" height="1350"></picture></div><figcaption class="text-center text-body-sm">Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas.</figcaption></figure></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -739,15 +739,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/figure.njk" import figure %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -756,15 +756,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ figure(
     props={
         image: &quot;/assets/uploads/&quot; | iframe: &quot;https://www.youtube.com/embed/&quot;,
@@ -778,15 +778,15 @@
     attrs={}
 ) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li><code>props.lazy</code> must be set to false if you want the loading to not be lazy.</li><li>The component is designed to be flexible so the image is set to <code>object-cover</code>.</li><li><code>props.focus</code> designates the area to prioritize keeping in view as the image resizes. Default is center.</li><li><code>props.aspect</code> designates the preferred aspect ratio for the image. Default is auto.</li><li><code>props.aspect</code> and <code>props.focus</code> take the TailwindCSS class name for that property.</li></ul></div></div></div></section><section id="icon" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">icon.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><svg data-icon="" alt="bug report icon" class="text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">bug_report</text></svg> <svg data-icon="" alt="close icon" class="text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">close</text></svg></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -795,15 +795,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/icon.njk" import icon %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -812,26 +812,26 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ icon(props={glyph: &quot;&quot;} ,attrs={}) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li><code>props.glyph</code> should be the name of a glyph from the <a href="https://fonts.google.com/icons">Material Symbols library</a></li><li>Must include the glyph name in the <code>_data/icons.json</code> file array so the font is loaded properly.</li></ul></div></div></div></section><section id="incrementer" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">incrementer.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div x-data="{incrementer: 0}" class="w-full flex flex-col items-center"><div if="" x-data="{
         decrement() {
             
@@ -845,15 +845,15 @@
         }
     }" class="flex flex-col gap-1.5 w-full"><label for="incrementer" class="text-neutral font-bold text-pretty">Incrementer <sup class="text-validation">*</sup></label> <span class="grow flex gap-1"><button data-button="" @click="decrement" type="button" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer !min-h-tube-base active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><svg data-icon="" alt="remove icon" class="text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">remove</text></svg></span></button> <input x-model.number="incrementer" name="incrementer" id="incrementer" required="true" type="number" class="leading-none grow bg-surface-light min-w-px not-disabled:hover:bg-surface-lighter border-1 border-neutral-lighter disabled:opacity-60 not-disabled:hover:border-neutral-light min-h-tube-base rounded p-2.5 text-center"> <button data-button="" @click="increment" type="button" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer !min-h-tube-base active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><svg data-icon="" alt="add icon" class="text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">add</text></svg></span></button> </span><small class="text-neutral/70 text-body-sm text-pretty">Optional description</small></div><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"><pre>
 <code>output: <span x-text="JSON.stringify(incrementer)"></span>
 </code></pre></div></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
@@ -864,15 +864,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/incrementer.njk" import incrementer %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -881,15 +881,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ incrementer(
     props={
         name: &quot;&quot;,
@@ -906,26 +906,26 @@
     attrs={}
 ) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li><code>props.fieldAttrs.type</code> can be most of the types listed <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/incrementer#incrementer_types">here</a>.</li><li>If you want access to the value, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.</li></ul></div></div></div></section><section id="input" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">input.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div x-data="{input: ''}" class="w-full flex flex-col items-center"><div class="flex flex-col gap-1.5 w-full"><label for="input" class="text-neutral font-bold text-pretty">Input <sup class="text-validation">*</sup></label> <span class="grow flex"><input x-model="input" name="input" id="input" type="text" placeholder="Placeholder" required="true" class="leading-none grow bg-surface-light min-w-px not-disabled:hover:bg-surface-lighter border-1 border-neutral-lighter disabled:opacity-60 not-disabled:hover:border-neutral-light min-h-tube-base rounded p-2.5"> </span><small class="text-neutral/70 text-body-sm text-pretty">Optional description</small></div><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"><pre>
 <code>output: <span x-show="!input">""</span><span x-show="input"><span x-text="JSON.stringify(input)"></span></span>
 </code></pre></div></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
@@ -936,15 +936,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/input.njk" import input %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -953,15 +953,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ input(
     props={
         name: &quot;&quot;,
@@ -980,26 +980,26 @@
     attrs={}
 ) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li><code>props.fieldAttrs.type</code> can be most of the types listed <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#input_types">here</a>.</li><li>If you want access to the value, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.</li></ul></div></div></div></section><section id="markdown" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">markdown.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container w-full"><h2>Heading</h2><p>Body paragraph with a <a href="#">link</a> and <em>italics</em> and <strong>bold</strong>.</p><pre><code>preformatted code
 </code></pre><ul><li>an</li><li>unordered</li><li>list</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
@@ -1009,15 +1009,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/markdown.njk" import markdown %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -1026,15 +1026,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ markdown(
     props={
         content: &quot;&quot;,
@@ -1057,15 +1057,15 @@
     attrs={}
 ) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li>Use <code>props.content</code> to inject markdown from a data source. Use <code>{{ caller() }}</code> when you want to write the content directly inside the component.</li><li><code>props.transform</code> can be turned off when the content will already be transformed by Eleventy, as is the case with .md file <code>content</code>, or when the content you're injecting is already written in HTML.</li><li><code>props.overrides</code> can set instance-specific overrides to the styles, such as using a smaller base font size or a different color.</li><li><code>customStyles</code> takes in CSS to set instance-specific styles, such as making bolded text appear as a different color instead of bold, but note that you'll need to give the instance an <code>id</code> for it to work.</li></ul></div></div></div></section><section id="marquee" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">marquee.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><style>@property --100cqi {
         syntax: "<length>";
         initial-value: 0px;
@@ -1091,15 +1091,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/marquee.njk" import marquee %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -1108,15 +1108,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{% call marquee(
     props={
         speed: &quot;25s&quot;,
@@ -1127,26 +1127,26 @@
 ) %}
 {% endcall %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li>Put elements you want repeated inside the <code>{{ caller() }}</code></li></ul></div></div></div></section><section id="radio" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">radio.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div x-data="{radio: ''}" class="w-full flex flex-col items-center"><fieldset name="radio" class=""><div class="flex flex-col gap-1.5"><legend class="text-neutral font-bold text-pretty">Radio</legend><small class="text-neutral/70 text-body-sm text-pretty">Optional description</small><div x-data="{ id: $id('You selected option 1!')}" class="flex gap-2 text-body-base"><input :checked="radio.index === 1" x-on:change="radio = {index: 1, value: 'You selected option 1!'}" :id="id" type="radio" name="radio" value="You selected option 1!" class="accent-current w-[1.1em] h-[calc(var(--text-body-base)*var(--text-body-base--line-height))] shrink-0"> <label class="text-neutral" :for="id">Option 1</label></div><div x-data="{ id: $id('You selected option 2!')}" class="flex gap-2 text-body-base"><input :checked="radio.index === 2" x-on:change="radio = {index: 2, value: 'You selected option 2!'}" :id="id" type="radio" name="radio" value="You selected option 2!" class="accent-current w-[1.1em] h-[calc(var(--text-body-base)*var(--text-body-base--line-height))] shrink-0"> <label class="text-neutral" :for="id">Option 2</label></div><div x-data="{ id: $id('You selected option 3!')}" class="flex gap-2 text-body-base"><input :checked="radio.index === 3" x-on:change="radio = {index: 3, value: 'You selected option 3!'}" :id="id" type="radio" name="radio" value="You selected option 3!" class="accent-current w-[1.1em] h-[calc(var(--text-body-base)*var(--text-body-base--line-height))] shrink-0"> <label class="text-neutral" :for="id">Option 3</label></div></div></fieldset><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"><pre>
 <code>output: <span x-show="!radio">{}</span><span x-show="radio"><span x-text="JSON.stringify(radio)"></span></span>
 </code></pre></div></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
@@ -1157,15 +1157,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/radio.njk" import radio %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -1174,15 +1174,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ radio(
     props={
         name: &quot;&quot;,
@@ -1194,15 +1194,15 @@
     attrs={}
 ) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li>If you want access to the selected radio, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.<ul><li><code>{{ props.name }}.index</code> will give you the index of the selected radio</li><li><code>{{ props.name }}.value</code> will give you the value of the selected radio (what will show up in the form submission.)</li></ul></li></ul></div></div></div></section><section id="section" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">section.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -1211,15 +1211,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/section.njk" import section %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -1228,15 +1228,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{% call section(
     props={
         tag: &quot;&quot;,
@@ -1248,26 +1248,26 @@
     {% endcall %}
 {% endcall %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li><code>props.tag</code> sets the HTML tag you want. Defaults to <code>section</code></li><li><code>props.padding</code> sets whether the component's children should be full width or have some padding. The standard options are 'site' or 'none', but each website might have more options depending on its design.</li><li>Direct children should probably only be the <code>container</code> component.</li></ul></div></div></div></section><section id="select" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">select.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div x-data="{select: ''}" class="w-full flex flex-col items-center"><div class="flex flex-col gap-1.5 w-full"><label for="select" class="text-neutral font-bold text-pretty">Select <sup class="text-validation">*</sup></label> <select name="select" id="select" required="true" placeholder="Placeholder" class="leading-none grow bg-surface-light min-w-px not-disabled:hover:bg-surface-lighter border-1 border-neutral-lighter disabled:opacity-60 not-disabled:hover:border-neutral-light min-h-tube-base rounded p-2.5" x-on:change="select = {index: [&quot;You selected option 1!&quot;,&quot;You selected option 2!&quot;,&quot;You selected option 3!&quot;].indexOf($event.target.value) + 1, value: $event.target.value}"><option value="" selected="" disabled="">Placeholder</option><option value="You selected option 1!">Option 1</option><option value="You selected option 2!">Option 2</option><option value="You selected option 3!">Option 3</option></select> <small class="text-neutral/70 text-body-sm text-pretty">This area describes the field above!</small></div><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"><pre>
 
 <code>output: <span x-show="!select">{}</span><span x-show="select"><span x-text="JSON.stringify(select)"></span></span>
@@ -1279,15 +1279,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/select.njk" import select %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -1296,15 +1296,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ select(
     props={
         name: &quot;&quot;,
@@ -1320,15 +1320,15 @@
     attrs={}
 ) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li>If you want access to the selected option, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.</li></ul></div></div></div></section><section id="slider" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">slider.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><style>[data-slider] {
         anchor-name: --slider;
 
@@ -1398,15 +1398,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/slider.njk" import slider %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -1415,40 +1415,40 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{% call slider(
     attrs={}
 ) %}
 {% endcall %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li>Use <code>{% caller() %}</code> to insert the content.</li><li>Use <code>width</code> properties and <code>cqi</code> units on the content items to determine how many are shown at a time. i.e. <code>100cqi</code> would show one item at a time.</li></ul></div></div></div></section><section id="textarea" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">textarea.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div x-data="{textarea: ''}" class="w-full flex flex-col items-center"><div class="flex flex-col gap-1.5 w-full"><label for="textarea" class="text-neutral font-bold text-pretty">Textarea <sup class="text-validation">*</sup></label> <span class=""><textarea x-model="textarea" name="textarea" id="textarea" rows="5" required="true" placeholder="Type something here..." class="w-full leading-none grow bg-surface-light min-w-px not-disabled:hover:bg-surface-lighter border-1 border-neutral-lighter disabled:opacity-60 not-disabled:hover:border-neutral-light min-h-tube-base rounded p-2.5"></textarea> </span><small class="text-neutral/70 text-body-sm text-pretty">Optional description</small></div><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"><pre>
 <code>output: <span x-show="!textarea">""</span><span x-show="textarea"><span x-text="JSON.stringify(textarea)"></span></span>
 </code></pre></div></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
@@ -1459,15 +1459,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/textarea.njk" import textarea %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -1476,15 +1476,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ textarea(
     props={
         name: &quot;&quot;,
@@ -1501,15 +1501,15 @@
     attrs={}
 ) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li>If you want access to the value, define a <code>x-data</code> value in a parent element with the key as the <code>props.name</code> of this component.</li></ul></div></div></div></section><section id="toaster" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">toaster.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><button data-button="" @click="$dispatch(&#39;notify&#39;, { content:`Hello! I am Toast!`, toasterId:&#39;toaster&#39; })" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-base min-w-15 min-h-tube-base px-3.5 gap-3.5"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Click to trigger a toast</span></span></button></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -1518,15 +1518,15 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/toaster.njk" import toaster %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Arguments</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
@@ -1535,28 +1535,28 @@
         }
     }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ toaster(
     props={id:&quot;&quot;}
 ) }}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-body-base);
             --md-line-height: var(--text-body-base--line-height);
-            --md-text-color: var(--color-neutral);
-            --md-link-color: var(--color-link);
+            --md-text-color: var(--color-t-neutral);
+            --md-link-color: var(--color-t-link);
             --md-radius: var(--radius);
             --md-heading-font: var(--font-display);
             --md-heading-font-weight: 500;
             --md-heading-color: var(--color-neutral);
-            --md-border-color: var(--color-neutral-lighter);
+            --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
-            --md-background-color: var(--color-neutral-lightest);
+            --md-background-color: var(--color-bg-neutral-lightest);
             --md-scale: 1.35;" class="markdown @container"><ul><li>Put this component somewhere in your base layout.</li><li>Trigger a new toast with the <code>$dispatch('notify', { content:'{{ message }}' })</code> function on an element.</li></ul></div></div></div></section></section></div></div></div></section><div x-cloak="" x-show="hasScrolled" x-transition:enter-start="translate-y-4 opacity-0" x-transition:leave-end="-translate-y-2 opacity-0" class="fixed z-(--z-elevated) bottom-[calc(env(safe-area-inset-bottom)+var(--spacing-site-inline)/2)] right-1/2 max-md:translate-x-1/2 md:right-[calc(var(--spacing-site-inline)/2)] transition duration-300 print:hidden"><button data-button="" aria-label="Scroll to top" title="Scroll to top" @click="window.scrollTo({top: 0})" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-body-sm rounded-full h-14 min-w-14 shadow-zine px-2 gap-2"><span class="flex items-center justify-center pointer-events-none gap-inherit"><svg data-icon="" alt="vertical align top icon" class="text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">vertical_align_top</text></svg></span></button></div></main><div x-data="{
         toasts: [],
         add(e) {
