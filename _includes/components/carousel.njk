@@ -30,8 +30,9 @@
 
 {% macro carousel(props={}, attrs={}) %}
 
-<div
-    data-carousel
+<div data-carousel
+    role="group"
+    aria-roledescription="carousel"
     x-data="{
         currentSlideIndex: 1,
         stopVideos() {
@@ -60,20 +61,44 @@
     {{ loopAttrs(attrs) }}
     class="@container relative w-full flex flex-col grow {{ attrs.class }} {{ carouselStyles }}">
 
-    <div class="relative grid grid-overlap overflow-hidden grow"> {# figures #}
+    {# slides #}
+    <div
+        aria-atomic="false"
+        aria-live="polite"
+        tabindex="0"
+        {% if props.indicators %}
+            role="tablist"
+            aria-label="slides"
+        {% endif %}
+        class="relative grid grid-overlap overflow-hidden grow">
         <div data-loader class="animate-spin text-neutral text-body-lg place-self-center z-(--z-lowered)">{{ icon({icon:"progress_activity"}) }}</div>
+
+        {# slide #}
         {% for item in props.figures %}
             <div
-                class="flex w-full"
+                x-data="{ id: $id('carousel-slide')}"
+                aria-label="{{ loop.index }} of {{ loop.length }}"
+                {% if props.indicators %}
+                    :aria-selected="currentSlideIndex == {{ loop.index }}"
+                    aria-labelledby="carousel-tab-{{ loop.index }}"
+                    role="tabpanel"
+                {% else %}
+                    role="group"
+                    aria-roledescription="slide"
+                {% endif %}
                 x-show="currentSlideIndex == {{ loop.index }}"
                 x-transition.opacity.duration.600ms
+                :id="id"
+                class="flex w-full"
                 {{ loopAttrs(attrs) }}>
                 {{ figure(item,{class:"w-full"}) }}
             </div>
         {% endfor %}
+
     </div>
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
     {% if props.figures.length > 1 %} {# controls bar #}
         <div class="flex {{ controlsStyles }}">
             {{ button(
@@ -89,12 +114,18 @@
                     "class": buttonStyles
                 }
             ) }}
+
+            {# tablist #}
             {% if props.indicators %}
-                <div class="flex self-center justify-self-center justify-center items-center overflow-x-auto {{ indicatorRowStyles }}" role="group" aria-label="slides" >
+                <div
+                    role="tablist"
+                    aria-label="Choose slide to display"
+                    class="flex self-center justify-self-center justify-center items-center overflow-x-auto {{ indicatorRowStyles }}">
                     {% for slide in props.figures %}
-                        <div x-data="{ id: $id('carousel-radio')}" class="flex">
+                        <div x-data="{ id: $id('carousel-tab')}" class="flex">
                             <label class="sr-only" :for="id">View slide {{ loop.index }}</label>
                             <input
+                                aria-controls="carousel-slide-{{ loop.index }}"
                                 :checked="currentSlideIndex === {{ loop.index }}"
                                 x-on:change="currentSlideIndex = {{ loop.index }}"
                                 :id="id"
@@ -144,7 +175,9 @@
         ],
         indicators: true
     },
-    attrs={}
+    attrs={
+        "aria-label": "",
+    }
 ) }}',
 description: "
 - Expects `props.figures` to be an array of objects that match the properties of the `figure` component.
