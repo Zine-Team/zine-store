@@ -1,4 +1,4 @@
-<section id="container" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">container.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
+<section id="container" class="grid w-full gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">container.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -32,7 +32,7 @@
             --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
             --md-background-color: var(--color-bg-neutral-lightest);
-            --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{% call container(
+            --md-scale: 1.35;" class="markdown @container"><pre><code tabindex="-1" x-ref="copyMe" class="max-h-62 overflow-y-auto">{% call container(
     props={
         size: &quot;narrow | base | full&quot;,
         type: &quot;flex | cols-1 | cols-2 | sidebar&quot;,

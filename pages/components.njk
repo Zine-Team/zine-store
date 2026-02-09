@@ -8,6 +8,7 @@ title: Components
 {% from "components/sidebar.njk" import sidebar %}
 {% from "components/markdown.njk" import markdown %}
 {% from "components/select.njk" import select %}
+{% from "components/divider.njk" import divider %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -73,29 +74,31 @@ title: Components
     {% endcall %}
 
 {# Mobile Select ------------------ #}
-    {{ select(
-        props={
-            "name": "allComponents",
-            "options": componentSelect,
-            fieldAttrs:{
-                placeholder: "Scroll to a component..."
-            }
-        },
-        attrs={
-            "class": "lg:hidden py-nav border-b border-dotted border-neutral-lighter sticky top-[var(--navbar-height)] transition-all duration-300 z-(--z-sticky) bg-surface"
-        })
-    }}
 
-    <div class="border-dotted justify-items-center lg:pl-site-inline lg:border-l border-neutral-lighter">
-        <div class="w-full max-w-narrow">
+{{ select(
+    props={
+        "name": "allComponents",
+        "options": componentSelect,
+        fieldAttrs:{
+            placeholder: "Scroll to a component..."
+        }
+    },
+    attrs={
+        "class": "lg:hidden py-nav border-b border-dotted border-neutral-lighter sticky top-[var(--navbar-height)] transition-all duration-300 z-(--z-sticky) bg-surface"
+    })
+}}
 
-{# Intro -------------------------------------------------------------------------------------------------------------------------- #}
+{# Content -------------------------------------------------------------------------------------------------------------------------- #}
 
-<section id="guide" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section">
-    <h3 class="text-heading-lg truncate xl:list-disc xl:list-item">Intro</h3>
-    <div class="flex flex-col gap-item-sm">
-        {# <h3 class="text-base font-semibold">Intro</h3> #}
-        {% call markdown({transform: true}, {class:"w-full max-w-[var(--container-sm)]"}) %}
+<div class="border-dotted justify-items-center lg:pl-site-inline lg:border-l border-neutral-lighter">
+    <div class="w-full max-w-narrow flex flex-col gap-dialog-block pb-dialog-block">
+
+        {# Intro ------------------ #}
+
+        <section id="guide" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section">
+            <h3 class="text-heading-lg truncate xl:list-disc xl:list-item">Intro</h3>
+            <div class="flex flex-col gap-item-sm">
+                {% call markdown({transform: true}, {class:"w-full max-w-[var(--container-sm)]"}) %}
 Welcome to the design system!
 
 This component system is made with macros from [Nunjucks](https://mozilla.github.io/nunjucks/templating.html).
@@ -104,17 +107,19 @@ All components have a `props` argument and a `attrs` argument, both of which are
 
 * `props` contains all the values needed to make the component function, like the label and style of a button.
 * `attrs` is for any HTML attributes that the instance of the component requires.
-        {% endcall %}
-    </div>
-</section>
+                {% endcall %}
+            </div>
+        </section>
 
-{# Component Visualizations -------------------------------------------------------------------------------------------------------------------------- #}
+        {# Component Documentations ------------------ #}
 
-<section>
-    {% for component in components | sort() %}
-        {% include "./documentation/" + component + ".njk" %}
-    {% endfor %}
-</section>
+        <section class="flex flex-col gap-dialog-block">
+            {% set separator = joiner(divider({direction:"horizontal"})) %}
+            {% for component in components | sort() %}
+                {{ separator() }}
+                {% include "./documentation/" + component + ".njk" %}
+            {% endfor %}
+        </section>
 
-{% endcall %}
+    {% endcall %}
 {% endblock %}

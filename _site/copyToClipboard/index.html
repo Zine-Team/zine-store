@@ -1,4 +1,4 @@
-<section id="copyToClipboard" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">copyToClipboard.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><span x-data="{
+<section id="copyToClipboard" class="grid w-full gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">copyToClipboard.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><span x-data="{
         input: 'hey!',
         copy () {
             $clipboard(this.input)
@@ -38,7 +38,7 @@
             --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
             --md-background-color: var(--color-bg-neutral-lightest);
-            --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ copyToClipboard(
+            --md-scale: 1.35;" class="markdown @container"><pre><code tabindex="-1" x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ copyToClipboard(
     props={
         input: &quot;&quot; | copyRef: &quot;&quot;,
         trigger: { macro:button, props:{}, attrs:{&quot;@click&quot;:&quot;copy&quot;} },

@@ -30,6 +30,7 @@
     --font-display: sans-serif;
     --text-body-base: var(--body-base);
     --text-body-base--line-height: 1.45;
+    --text-heading-base: var(--heading-base);
     --container-narrow: 48rem;
     --container-base: 81.5rem;
     --container-content: 32ch;
@@ -38,6 +39,7 @@
     --z-sticky: 30;
     --z-top: 40;
     --z-top-elevated: 50;
+    --shadow-button: 0 1px rgb(0 0 0 / 0.05);
     --spacing-site-inline: var(--space-site-inline);
     --spacing-section-title: var(--space-section-title);
     --spacing-indent: 1.5ch;
@@ -54,6 +56,10 @@
     --color-bg-neutral-lightest: color-mix(in srgb, Black, white 85%);
     @supports (color: color-mix(in lab, red, red)) {
       --color-bg-neutral-lightest: color-mix(in oklab, var(--color-neutral), white 85%);
+    }
+    --color-bg-surface-light: color-mix(in srgb, Gainsboro, white 70%);
+    @supports (color: color-mix(in lab, red, red)) {
+      --color-bg-surface-light: color-mix(in oklab, var(--color-surface), white 70%);
     }
     --radius: 3px;
     --aspect-zine: 5.5 / 4.25;

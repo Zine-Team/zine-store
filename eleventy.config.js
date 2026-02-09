@@ -30,6 +30,10 @@ export default async function (eleventyConfig) {
     return md.render(String(content));
   });
 
+  eleventyConfig.addFilter("assign", function (object, pair) {
+    return Object.assign(object, pair);
+  });
+
   eleventyConfig.addFilter("attachId", (html) => toc.attachId(html, "h2"));
   eleventyConfig.addFilter("attachAnchor", (html) => toc.attachIdAnchor(html, "h2", ""));
   eleventyConfig.addFilter("toc", (html) => toc.createToc(html, "h2"));

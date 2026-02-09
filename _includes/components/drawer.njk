@@ -48,7 +48,15 @@
     x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
     class="flex {{ attrs.class }}">
 
-    {% set newProps = {toggleValue:"drawerOpen", label:props.triggerProps.label, icon:props.triggerProps.icon, size:props.triggerProps.size, type:props.triggerProps.type, variant:props.triggerProps.variant}  %}
+    {# {% set newProps = {
+        toggleValue:"drawerOpen",
+        label:props.triggerProps.label,
+        icon:props.triggerProps.icon,
+        size:props.triggerProps.size,
+        type:props.triggerProps.type,
+        variant:props.triggerProps.variant
+    } %} #}
+    {% set newProps = props.triggerProps | assign({toggleValue: "drawerOpen"}) %}
     {{ button(props=newProps, attrs={class:"grow", "@click": "toggleDrawer()", "x-ref":"trigger"}) }}
     <div
         x-cloak

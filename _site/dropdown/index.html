@@ -1,4 +1,4 @@
-<section id="dropdown" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">dropdown.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div class="flex flex-col justify-end min-h-[200px]"><div data-dropdown="" x-data="{
+<section id="dropdown" class="grid w-full gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">dropdown.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div class="flex flex-col justify-end min-h-[200px]"><div data-dropdown="" x-data="{
         open: false,
         toggle() {
             if (this.open) {
@@ -46,7 +46,7 @@
             --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
             --md-background-color: var(--color-bg-neutral-lightest);
-            --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ dropdown(
+            --md-scale: 1.35;" class="markdown @container"><pre><code tabindex="-1" x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ dropdown(
     props={
         position: [&quot;top&quot;, &quot;bottom&quot;, &quot;left&quot;, &quot;right&quot;],
         dropdownItems:[

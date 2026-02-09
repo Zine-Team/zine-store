@@ -1,4 +1,4 @@
-<section id="checkbox" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">checkbox.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div x-data="{checkboxes: []}" class="w-full flex flex-col items-center"><fieldset name="checkboxes" class="w-max"><div class="flex flex-col gap-1.5"><legend class="text-neutral font-bold text-pretty">Checkboxes</legend><small class="text-neutral/70 text-body-sm text-pretty">Optional description</small><div x-data="{
+<section id="checkbox" class="grid w-full gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">checkbox.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div x-data="{checkboxes: []}" class="w-full flex flex-col items-center"><fieldset name="checkboxes" class="w-max"><div class="flex flex-col gap-1.5"><legend class="text-neutral font-bold text-pretty">Checkboxes</legend><small class="text-neutral/70 text-body-sm text-pretty">Optional description</small><div x-data="{
                         data: {index: 1, value: 'You selected option 1!' },
                         id: $id('You selected option 1!'),
                         setChecked () {
@@ -66,7 +66,7 @@
             --md-border-color: var(--color-border-neutral-lighter);
             --md-border-width: 1px;
             --md-background-color: var(--color-bg-neutral-lightest);
-            --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ checkbox(
+            --md-scale: 1.35;" class="markdown @container"><pre><code tabindex="-1" x-ref="copyMe" class="max-h-62 overflow-y-auto">{{ checkbox(
     props={
         name: &quot;&quot;,
         label: &quot;&quot;,
