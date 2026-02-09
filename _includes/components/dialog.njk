@@ -1,7 +1,8 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
-{% from "components/button.njk" import button %}
+{% from "components/section.njk" import section %}
 {% from "components/container.njk" import container %}
+{% from "components/button.njk" import button %}
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
@@ -10,7 +11,8 @@
 
 {# Values ----------- #}
 
-{% set dialogStyles = "bg-surface mt-section mb-auto backdrop:bg-neutral/35 shadow-zine border border-neutral-light" %}
+{% set dialogStyles = "backdrop:bg-neutral/35 bg-transparent mt-section mb-auto" %}
+{% set panelStyles = "bg-surface shadow-zine border border-neutral-light" %}
 
 {# ------------------ #}
 
@@ -24,9 +26,11 @@
         <dialog
         closedby={% if props.closedBy %}{{ props.closedBy }}{% else %}"any"{% endif %}
         x-ref="dialog"
-        class="{{ attrs.class }} {{ dialogStyles }} flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center p-0 mb-auto mx-auto inset-0 max-w-none">
-            {% call container({size: "narrow"}) %}
-                {{ caller() | safe }}
+        class="{{ attrs.class }} {{ dialogStyles }} flex overflow-x-hidden overflow-y-auto open:visible invisible flex-col items-center mx-auto inset-0 p-0">
+            {% call section({padding:"site"},{class:"pointer-events-none"}) %}
+                {% call container({size: "narrow"},{class:panelStyles + " pointer-events-auto"}) %}
+                    {{ caller() | safe }}
+                {% endcall %}
             {% endcall %}
         </dialog>
     </template>
