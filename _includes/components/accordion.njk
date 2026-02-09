@@ -2,6 +2,7 @@
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
 {% from "components/markdown.njk" import markdown %}
+{% from "components/icon.njk" import icon %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -10,13 +11,10 @@
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set accordionStyles = "py-item border-b border-neutral-lighter first:-mt-item" %}
-{% set summaryStyles = "font-semibold underline-offset-3 decoration-from-font" %}
+{% set summaryStyles = "font-semibold underline-offset-3 decoration-from-font gap-3 hover:underline" %}
 {% set contentStyles = "pt-item text-sm" %}
 
 <style>
-    summary:hover > h2 {
-        text-decoration: underline;
-    }
     summary::-webkit-details-marker { display: none }
 </style>
 
@@ -28,10 +26,10 @@
             {% if item.isOpen %}open{% endif %}
             {{ loopAttrs(item.attrs) }}
             class="w-full flex flex-col group {{ accordionStyles }} {{ item.attrs.class }}">
-            <summary class="flex items-center justify-between appearance-none cursor-pointer">
-                    <h2 class="{{ summaryStyles }}">{{ item.title }}</h2>
-                    <span class="block text-icon group-open:hidden">add</span>
-                    <span class="hidden text-icon group-open:block">remove</span>
+            <summary class="flex items-center justify-start appearance-none cursor-pointer {{ summaryStyles }}">
+                {{ icon(props={glyph: "arrow_right"} ,attrs={class:"group-open:hidden"}) }}
+                {{ icon(props={glyph: "arrow_drop_down"} ,attrs={class:"hidden group-open:block"}) }}
+                <h2>{{ item.title }}</h2>
             </summary>
 
             {{ markdown({content: item.description, transform: true },{class: contentStyles }) }}

@@ -1,0 +1,38 @@
+{# Nested Components -------------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/_componentDocumentation.njk" import componentDocumentation %}
+{% from "components/incrementer.njk" import incrementer, incrementerMeta %}
+{% from "components/markdown.njk" import markdown %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call componentDocumentation({
+    title: "incrementer",
+    meta: incrementerMeta
+}) %}
+    <div
+        x-data="{incrementer: 0}"
+        class="w-full flex flex-col items-center">
+
+        {{ incrementer(props={
+            name: "incrementer",
+            label: "Incrementer",
+            description: "Optional description",
+            fieldAttrs:{
+                required: true
+            }
+        },
+        attrs={
+            class:"w-full"
+        }) }}
+
+        {% call markdown(
+            props={transform: false},
+            attrs={class:"relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"}
+        ) %}
+        <pre>
+<code>output: <span x-text="JSON.stringify(incrementer)"></span>
+</code></pre>
+        {% endcall %}
+    </div>
+{% endcall %}

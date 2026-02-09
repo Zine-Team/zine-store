@@ -7,8 +7,9 @@
 {% macro icon(props={},attrs={}) %}
 
     <svg data-icon
+        alt="{{ props.glyph | replace("_", " ") }} icon"
         {{ loopAttrs(attrs) }}
-        class="{{ attrs.class }} text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current"
+        class="{{ attrs.class }} text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em] fill-current select-none"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg">
         <text x="0%" y="50%" font-size="24" dominant-baseline="central" text-anchor="start">{{ props.glyph }}</text>

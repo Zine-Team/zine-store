@@ -1,0 +1,17 @@
+{# Nested Components -------------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/_componentDocumentation.njk" import componentDocumentation %}
+{% from "components/slider.njk" import slider, sliderMeta %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call componentDocumentation({
+    title: "slider",
+    meta: sliderMeta
+}) %}
+    {% call slider({},{class:"w-full h-40 gap-2"}) %}
+        <div class="w-[40cqi] grid place-items-center text-lg bg-neutral-lighter">Hehe</div>
+        <div class="w-[40cqi] grid place-items-center text-lg bg-neutral-lighter">Haha</div>
+        <div class="w-[40cqi] grid place-items-center text-lg bg-neutral-lighter">Hoohoo</div>
+    {% endcall %}
+{% endcall %}

@@ -61,7 +61,8 @@
     {{ loopAttrs(attrs) }}
     class="@container relative w-full flex flex-col grow {{ attrs.class }} {{ carouselStyles }}">
 
-    {# slides #}
+{# slides ------------------ #}
+
     <div
         aria-atomic="false"
         aria-live="polite"
@@ -97,9 +98,9 @@
 
     </div>
 
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+{# controls bar ------------------ #}
 
-    {% if props.figures.length > 1 %} {# controls bar #}
+    {% if props.figures.length > 1 %}
         <div class="flex {{ controlsStyles }}">
             {{ button(
                 props={

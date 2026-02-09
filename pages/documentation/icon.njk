@@ -1,0 +1,14 @@
+{# Nested Components -------------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/_componentDocumentation.njk" import componentDocumentation %}
+{% from "components/icon.njk" import icon, iconMeta %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call componentDocumentation({
+    title: "icon",
+    meta: iconMeta
+}) %}
+    {{ icon({glyph:"bug_report"}) }}
+    {{ icon({glyph:"close"}) }}
+{% endcall %}

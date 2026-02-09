@@ -1,0 +1,24 @@
+{# Nested Components -------------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/_componentDocumentation.njk" import componentDocumentation %}
+{% from "components/drawer.njk" import drawer, drawerMeta %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call componentDocumentation({
+    title: "drawer",
+    meta: drawerMeta
+}) %}
+    {% call drawer(
+    props={
+        alignment: "bottom",
+        triggerProps: {label:{off:"Open drawer", on:"Close drawer"}, type:"button", size:"base"}
+    },
+    attrs={}
+    ) %}
+    <div>Some</div>
+    <div>content</div>
+    <div>inside</div>
+    <div>the drawer</div>
+    {% endcall %}
+{% endcall %}

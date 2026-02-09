@@ -424,12 +424,6 @@
   .aspect-auto {
     aspect-ratio: auto;
   }
-  .aspect-square {
-    aspect-ratio: 1 / 1;
-  }
-  .aspect-square {
-    aspect-ratio: 1;
-  }
   .aspect-video {
     aspect-ratio: var(--aspect-video);
   }
@@ -440,21 +434,9 @@
     width: calc(var(--spacing) * 1.5);
     height: calc(var(--spacing) * 1.5);
   }
-  .size-2 {
-    width: calc(var(--spacing) * 2);
-    height: calc(var(--spacing) * 2);
-  }
   .size-2\.5 {
     width: calc(var(--spacing) * 2.5);
     height: calc(var(--spacing) * 2.5);
-  }
-  .size-3 {
-    width: calc(var(--spacing) * 3);
-    height: calc(var(--spacing) * 3);
-  }
-  .size-\[1\.1em\] {
-    width: 1.1em;
-    height: 1.1em;
   }
   .h-\(--icon-size\) {
     height: var(--icon-size);
@@ -467,9 +449,6 @@
   }
   .h-40 {
     height: calc(var(--spacing) * 40);
-  }
-  .h-\[1\.1em\] {
-    height: 1.1em;
   }
   .h-\[100dvh\] {
     height: 100dvh;
@@ -549,9 +528,6 @@
   .w-\[var\(--container-wide\)\] {
     width: var(--container-wide);
   }
-  .w-fit {
-    width: fit-content;
-  }
   .w-full {
     width: 100%;
   }
@@ -605,9 +581,6 @@
   }
   .min-w-px {
     min-width: 1px;
-  }
-  .min-w-tube-sm {
-    min-width: var(--space-tube-sm);
   }
   .shrink {
     flex-shrink: 1;
@@ -713,9 +686,6 @@
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
   .grid-cols-\[auto_1fr_auto\] {
     grid-template-columns: auto 1fr auto;
   }
@@ -740,14 +710,8 @@
   .place-content-center {
     place-content: center;
   }
-  .place-content-start {
-    place-content: start;
-  }
   .place-items-center {
     place-items: center;
-  }
-  .place-items-start {
-    place-items: start;
   }
   .content-center {
     align-content: center;
@@ -799,12 +763,6 @@
   }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
-  }
-  .gap-6 {
-    gap: calc(var(--spacing) * 6);
-  }
-  .gap-8 {
-    gap: calc(var(--spacing) * 8);
   }
   .gap-10 {
     gap: calc(var(--spacing) * 10);
@@ -952,24 +910,6 @@
   .border-transparent {
     border-color: transparent;
   }
-  .\!bg-link {
-    background-color: #0000ee !important;
-  }
-  .\!bg-link-visited {
-    background-color: #551a8b !important;
-  }
-  .\!bg-neutral {
-    background-color: Black !important;
-  }
-  .\!bg-neutral-light {
-    background-color: color-mix(in srgb, Black, white 50%) !important;
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-neutral), white 50%) !important;
-    }
-  }
-  .bg-link {
-    background-color: #0000ee;
-  }
   .bg-neutral {
     background-color: Black;
   }
@@ -998,12 +938,6 @@
     background-color: color-mix(in srgb, Gainsboro, white 70%);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-surface), white 70%);
-    }
-  }
-  .bg-surface-lighter {
-    background-color: color-mix(in srgb, Gainsboro, white 86%);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-surface), white 86%);
     }
   }
   .bg-transparent {
@@ -1061,14 +995,8 @@
   .px-2\.5 {
     padding-inline: calc(var(--spacing) * 2.5);
   }
-  .px-3 {
-    padding-inline: calc(var(--spacing) * 3);
-  }
   .px-3\.5 {
     padding-inline: calc(var(--spacing) * 3.5);
-  }
-  .px-4 {
-    padding-inline: calc(var(--spacing) * 4);
   }
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
@@ -1202,18 +1130,6 @@
   .wrap-anywhere {
     overflow-wrap: anywhere;
   }
-  .\!text-link {
-    color: #0000ee !important;
-  }
-  .\!text-surface {
-    color: Gainsboro !important;
-  }
-  .\!text-surface-lighter {
-    color: color-mix(in srgb, Gainsboro, white 86%) !important;
-    @supports (color: color-mix(in lab, red, red)) {
-      color: color-mix(in oklab, var(--color-surface), white 86%) !important;
-    }
-  }
   .text-link {
     color: #0000ee;
   }
@@ -1277,9 +1193,6 @@
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
   }
-  .outline-link {
-    outline-color: #0000ee;
-  }
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
@@ -1321,6 +1234,10 @@
   .outline-none {
     --tw-outline-style: none;
     outline-style: none;
+  }
+  .select-none {
+    -webkit-user-select: none;
+    user-select: none;
   }
   .backface-hidden {
     backface-visibility: hidden;
@@ -1461,40 +1378,6 @@
       }
     }
   }
-  .hover\:bg-\(--color-neutral\) {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-neutral);
-      }
-    }
-  }
-  .hover\:bg-neutral {
-    &:hover {
-      @media (hover: hover) {
-        background-color: Black;
-      }
-    }
-  }
-  .hover\:bg-neutral-light {
-    &:hover {
-      @media (hover: hover) {
-        background-color: color-mix(in srgb, Black, white 50%);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-neutral), white 50%);
-        }
-      }
-    }
-  }
-  .hover\:bg-neutral-lighter {
-    &:hover {
-      @media (hover: hover) {
-        background-color: color-mix(in srgb, Black, white 66%);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-neutral), white 66%);
-        }
-      }
-    }
-  }
   .hover\:bg-surface-lighter {
     &:hover {
       @media (hover: hover) {
@@ -1509,6 +1392,13 @@
     &:hover {
       @media (hover: hover) {
         text-decoration-line: none;
+      }
+    }
+  }
+  .hover\:underline {
+    &:hover {
+      @media (hover: hover) {
+        text-decoration-line: underline;
       }
     }
   }
@@ -1573,11 +1463,6 @@
   .max-lg\:hidden\! {
     @media (width < 56rem) {
       display: none !important;
-    }
-  }
-  .max-lg\:grow {
-    @media (width < 56rem) {
-      flex-grow: 1;
     }
   }
   .max-lg\:scroll-m-section {
@@ -1649,16 +1534,6 @@
   .xs\:list-disc {
     @media (width >= 28rem) {
       list-style-type: disc;
-    }
-  }
-  .xs\:gap-3 {
-    @media (width >= 28rem) {
-      gap: calc(var(--spacing) * 3);
-    }
-  }
-  .xs\:px-6 {
-    @media (width >= 28rem) {
-      padding-inline: calc(var(--spacing) * 6);
     }
   }
   .xs\:max-sm\:block {
@@ -1761,11 +1636,6 @@
   .lg\:hidden {
     @media (width >= 56rem) {
       display: none;
-    }
-  }
-  .lg\:aspect-video {
-    @media (width >= 56rem) {
-      aspect-ratio: var(--aspect-video);
     }
   }
   .lg\:grow-0 {

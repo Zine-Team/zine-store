@@ -1,0 +1,29 @@
+{# Nested Components -------------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/_componentDocumentation.njk" import componentDocumentation %}
+{% from "components/dialog.njk" import dialog, dialogMeta %}
+{% from "components/button.njk" import button %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call componentDocumentation({
+    title: "dialog",
+    meta: dialogMeta
+}) %}
+    {% call dialog({
+        triggerProps: {
+            label: "Click me to open dialog!",
+            type: "button",
+            size: "base"
+        }
+    },attrs={class:""}) %}
+    <main class="w-full px-dialog-inline py-dialog-block grow flex flex-col justify-center gap-section-title">
+        <h2 class="text-lg w-full text-pretty">Hey, it's a Dialog!</h2>
+        <p class="w-full text-pretty">The design can be whatever you want!</p>
+    </main>
+    <footer class="w-full flex gap-nav sticky bottom-0 bg-surface justify-end py-nav px-nav border-neutral-lighter border-t border-dotted">
+        {{ button(props={label:"Close", type: "button", size:"base"}, attrs={"@click": "close()"}) }}
+    </footer>
+
+    {% endcall %}
+{% endcall %}

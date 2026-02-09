@@ -1,0 +1,55 @@
+<section id="section" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-xl truncate xl:list-disc xl:list-item">section.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Import code</h4><span x-data="{
+        input: $refs.copyMe.innerText,
+        copy () {
+            $clipboard(this.input)
+            $dispatch('notify', { content:'Copied import code to clipboard!', toasterId:'toaster' })
+        }
+    }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-base);
+            --md-line-height: var(--text-base--line-height);
+            --md-text-color: var(--color-neutral);
+            --md-link-color: var(--color-link);
+            --md-radius: var(--radius);
+            --md-heading-font: var(--font-sans);
+            --md-heading-font-weight: 500;
+            --md-heading-color: var(--color-neutral);
+            --md-border-color: var(--color-neutral-lighter);
+            --md-border-width: 1px;
+            --md-background-color: var(--color-neutral-lightest);
+            --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe">{% from "components/section.njk" import section %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Arguments</h4><span x-data="{
+        input: $refs.copyMe.innerText,
+        copy () {
+            $clipboard(this.input)
+            $dispatch('notify', { content:'Copied instance to clipboard!', toasterId:'toaster' })
+        }
+    }" class="inline-block relative"><div data-markdown="" style="--md-font-size: var(--text-base);
+            --md-line-height: var(--text-base--line-height);
+            --md-text-color: var(--color-neutral);
+            --md-link-color: var(--color-link);
+            --md-radius: var(--radius);
+            --md-heading-font: var(--font-sans);
+            --md-heading-font-weight: 500;
+            --md-heading-color: var(--color-neutral);
+            --md-border-color: var(--color-neutral-lighter);
+            --md-border-width: 1px;
+            --md-background-color: var(--color-neutral-lightest);
+            --md-scale: 1.35;" class="markdown @container"><pre><code x-ref="copyMe" class="max-h-62 overflow-y-auto">{% call section(
+    props={
+        tag: &quot;&quot;,
+        padding: &quot;site | none&quot;,
+    },
+    attrs={}
+) %}
+    {% call container(props={size: &quot;&quot;, type: &quot;&quot;, alignment: &quot;&quot;}, attrs={}) %}
+    {% endcall %}
+{% endcall %}</code></pre></div><button data-button="" @click="copy" class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer absolute top-2 right-2 active:scale-[.98] text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm h-10 px-2 gap-2 min-h-tube-sm"><span class="flex items-center justify-center pointer-events-none gap-inherit"><span class="">Copy</span></span></button></span></div><div class="flex flex-col gap-item-sm"><h4 class="text-base font-semibold">Implementation notes</h4><div data-markdown="" style="--md-font-size: var(--text-base);
+            --md-line-height: var(--text-base--line-height);
+            --md-text-color: var(--color-neutral);
+            --md-link-color: var(--color-link);
+            --md-radius: var(--radius);
+            --md-heading-font: var(--font-sans);
+            --md-heading-font-weight: 500;
+            --md-heading-color: var(--color-neutral);
+            --md-border-color: var(--color-neutral-lighter);
+            --md-border-width: 1px;
+            --md-background-color: var(--color-neutral-lightest);
+            --md-scale: 1.35;" class="markdown @container"><ul><li><code>props.tag</code> sets the HTML tag you want. Defaults to <code>section</code></li><li><code>props.padding</code> sets whether the component's children should be full width or have some padding. The standard options are 'site' or 'none', but each website might have more options depending on its design.</li><li>Direct children should probably only be the <code>container</code> component.</li></ul></div></div></div></section>

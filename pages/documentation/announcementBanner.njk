@@ -1,0 +1,13 @@
+{# Nested Components -------------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/_componentDocumentation.njk" import componentDocumentation %}
+{% from "components/announcementBanner.njk" import announcementBanner, announcementBannerMeta %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call componentDocumentation({
+    title: "announcementBanner",
+    meta: announcementBannerMeta
+}) %}
+    {{ announcementBanner({content:"This is the banner content. [markdown!](/)"},{class:"z-10!"}) }}
+{% endcall %}

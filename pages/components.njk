@@ -6,27 +6,8 @@ title: Components
 {% from "components/_componentDocumentation.njk" import componentDocumentation %}
 {% from "components/container.njk" import container, containerMeta %}
 {% from "components/sidebar.njk" import sidebar %}
-{% from "components/accordion.njk" import accordion, accordionMeta %}
-{% from "components/announcementBanner.njk" import announcementBanner, announcementBannerMeta %}
-{% from "components/button.njk" import button, buttonMeta %}
-{% from "components/slider.njk" import slider, sliderMeta %}
-{% from "components/copyToClipboard.njk" import copyToClipboard, copyToClipboardMeta %}
-{% from "components/toaster.njk" import toaster, toasterMeta %}
-{% from "components/input.njk" import input, inputMeta %}
-{% from "components/select.njk" import select, selectMeta %}
-{% from "components/textarea.njk" import textarea, textareaMeta %}
-{% from "components/markdown.njk" import markdown, markdownMeta %}
-{% from "components/marquee.njk" import marquee, marqueeMeta %}
-{% from "components/dropdown.njk" import dropdown, dropdownMeta %}
-{% from "components/radio.njk" import radio, radioMeta %}
-{% from "components/checkbox.njk" import checkbox, checkboxMeta %}
-{% from "components/dialog.njk" import dialog, dialogMeta %}
-{% from "components/incrementer.njk" import incrementer, incrementerMeta %}
-{% from "components/drawer.njk" import drawer, drawerMeta %}
-{% from "components/carousel.njk" import carousel, carouselMeta %}
-{% from "components/icon.njk" import icon, iconMeta %}
-{% from "components/figure.njk" import figure, figureMeta %}
-{% from "components/section.njk" import section, sectionMeta %}
+{% from "components/markdown.njk" import markdown %}
+{% from "components/select.njk" import select %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -64,11 +45,14 @@ title: Components
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block pageContent %}
+
 {% call container({type:"sidebar", size:"base"},{
     "x-data":"{allComponents: ''}",
     "x-init":"$watch('allComponents', selected => document.getElementById(selected.value).scrollIntoView())",
     "class":"@container"
 }) %}
+
+{# Sidebar -------------------------------------------------------------------------------------------------------------------------- #}
     {% call sidebar() %}
         <section class="flex flex-col items-start gap-item-sm w-full">
             <h2 class="font-semibold">Guide</h2>
@@ -88,6 +72,7 @@ title: Components
         </section>
     {% endcall %}
 
+{# Mobile Select ------------------ #}
     {{ select(
         props={
             "name": "allComponents",
@@ -104,9 +89,9 @@ title: Components
     <div class="border-dotted justify-items-center lg:pl-site-inline lg:border-l border-neutral-lighter">
         <div class="w-full max-w-narrow">
 
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+{# Intro -------------------------------------------------------------------------------------------------------------------------- #}
 
-<section id="intro" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section">
+<section id="guide" class="grid w-full border-b border-dotted border-neutral-lighter mt-dialog-block pb-dialog-block gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section">
     <h3 class="text-xl truncate xl:list-disc xl:list-item">Intro</h3>
     <div class="flex flex-col gap-item-sm">
         {# <h3 class="text-base font-semibold">Intro</h3> #}
@@ -123,458 +108,13 @@ All components have a `props` argument and a `attrs` argument, both of which are
     </div>
 </section>
 
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+{# Component Visualizations -------------------------------------------------------------------------------------------------------------------------- #}
 
-{% call componentDocumentation({
-    title: "accordion",
-    meta: accordionMeta
-}) %}
-    {{ accordion({accordionItems:[
-        {title: "Armed State", description: "Violent force used by The State to maintainits power. Under Racial Capitalism, The State is the sole entity justified in using violence, violence it uses to dispossess The People of their land, resources, and labor to protectand serve the interests of the Capitalists. The Armed State promotes and relies on racist ideology to demonize and criminalize people of color in order to enforce a racial division of labor. Such divisions allow forthe extreme exploitation of selected groups’ labor and keep The People turned againstone another."},
-        {title: "Concessions State", description: "Reforms to the system made by The State in response to the demands of The People. While crucial to improving the lives and conditions of the The People, reforms that don’t challenge the nature of the system are often co-opted to make Racial Capitalismfeel more acceptable and friendly without fundamentally changing its power dynamics. The Concessions State also prescribes theonly legitimate avenues to express dissent (voting and emailing your representatives) and suppresses and vilifies all others (organized labor strikes or squatting)."},
-        {title: "Civil Society", description: "Ideas, beliefs, values, and culture that shape how we see ourselves, each other, and the wealthy. Although Civil Society is not controlled by The State, the institutions that constitute it are heavily influenced by the ideologies and forces of Racial Capitalism."},
-        {title: "The People", description: "The humans whose labor Racial Capitalism exploits. When The People come together with a shared understanding of their conditions, they can build the power needed to transform the systems they live under."}
-    ]},{class:"w-full"}) }}
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "announcementBanner",
-    meta: announcementBannerMeta
-}) %}
-    {{ announcementBanner({content:"This is the banner contents. [markdown!](/)", storageKey:"example-announcement-banner"},{class:"z-10!"}) }}
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "button",
-    meta: buttonMeta
-}) %}
-    <div
-        x-data="{toggleValue: false}"
-        class="flex flex-wrap gap-item justify-around w-full items-center">
-        {{ button({label: "Button", type: "button", size: "base"}) }}
-        {{ button({label: "With icon", type: "button", size: "base", icon:"keyboard_arrow_down", iconPosition:"end"}) }}
-        {{ button({type: "button", size: "base", icon:"content_copy", tooltip: "Copy"}) }}
-        {{ button({toggleValue:"toggleValue", label: {on:"Toggleable", off:"Toggleable"}, type: "button", size: "base", icon: {on:"check", off:"close"} }, {"@click": "toggleValue = !toggleValue"}) }}
-        {{ button({label: "Small button", type: "button", size:"sm"}) }}
-        {{ button({label: "Link", type: "link", size: "base"}) }}
-        {{ button({label: "Large link", type: "link", size:"lg"}) }}
-    </div>
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "carousel",
-    meta: carouselMeta
-}) %}
-
-    {{ carousel(
-        props={
-            figures: [
-                {
-                    image: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-1.webp',
-                    alt: 'Vibrant abstract painting with swirling blue and light pink hues on a canvas.',
-                    caption: 'Vibrant abstract painting with swirling blue and light pink hues on a canvas.'
-                },
-                {
-                    image: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-2.webp',
-                    alt: 'Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas.',
-                    caption: 'Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas.'
-                },
-                {
-                    image: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-3.webp',
-                    alt: 'Vibrant abstract painting with swirling blue and purple hues on a canvas.',
-                    caption: 'Vibrant abstract painting with swirling blue and purple hues on a canvas.'
-                }
-            ],
-            indicators: true
-        },
-        attrs={}
-    ) }}
-
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "checkbox",
-    meta: checkboxMeta
-}) %}
-    <div
-        x-data="{checkboxes: []}"
-        class="w-full flex flex-col items-center">
-        {{ checkbox(
-            props={
-                name: "checkboxes",
-                label: "Checkboxes",
-                description: "Optional description",
-                options: [{label: "Option 1", value: "You selected option 1!"},{label: "Option 2", value: "You selected option 2!"},{label: "Option 3", value: "You selected option 3!"}],
-                fieldAttrs: {}
-            },
-            attrs={class:"w-max"}
-        ) }}
-        {% call markdown(
-            props={transform: false},
-            attrs={class:"relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"}
-        ) %}
-        <pre>
-<code>output: <span x-show="!checkboxes">[]</span><span x-show="checkboxes"><span x-text="JSON.stringify(checkboxes)"></span></span>
-</code></pre>
-        {% endcall %}
-    </div>
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{{ componentDocumentation({
-    title: "container",
-    meta: containerMeta
-}) }}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "copyToClipboard",
-    meta: copyToClipboardMeta
-}) %}
-    {{ copyToClipboard({
-        input: 'hey!',
-        trigger: {macro:button, props:{label: "Click to copy 'hey!'", type: "button", size:"base"}, attrs:{@click: "copy"} },
-        toastMessage: "Paste to see that it worked :)"
-    }) }}
-
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "dialog",
-    meta: dialogMeta
-}) %}
-    {% call dialog({
-        triggerProps: {
-            label: "Click me to open dialog!",
-            type: "button",
-            size: "base"
-        }
-    },attrs={class:""}) %}
-    <main class="w-full px-dialog-inline py-dialog-block grow flex flex-col justify-center gap-section-title">
-        <h2 class="text-lg w-full text-pretty">Hey, it's a Dialog!</h2>
-        <p class="w-full text-pretty">The design can be whatever you want!</p>
-    </main>
-    <footer class="w-full flex gap-nav sticky bottom-0 bg-surface justify-end py-nav px-nav border-neutral-lighter border-t border-dotted">
-        {{ button(props={label:"Close", type: "button", size:"base"}, attrs={"@click": "close()"}) }}
-    </footer>
-
-    {% endcall %}
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "drawer",
-    meta: drawerMeta
-}) %}
-    {% call drawer(
-    props={
-        alignment: "bottom",
-        triggerProps: {label:{off:"Open drawer", on:"Close drawer"}, type:"button", size:"base"}
-    },
-    attrs={}
-    ) %}
-    <div>Some</div>
-    <div>content</div>
-    <div>inside</div>
-    <div>the drawer</div>
-    {% endcall %}
-{% endcall %}
-
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "dropdown",
-    meta: dropdownMeta
-}) %}
-<div class="flex flex-col justify-end min-h-[200px]">
-    {{ dropdown(
-        props={
-            position:["top", "left"],
-            triggerProps:{label: "Dropdown", type: "button", size:"base"},
-            dropdownItems:[
-                { macro: button, props:{label:"Some", type:"link", size:"base"} },
-                { macro: button, props:{label:"Buttons", type:"link", size:"base"} },
-                { macro: button, props:{label:"Inside", type:"link", size:"base"} }
-            ]
-        }
-    )}}
-    </div>
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "figure",
-    meta: figureMeta
-}) %}
-    {{ figure(
-        props={
-            image: "https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-2.webp",
-            alt: "Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas.",
-            caption: "Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas.",
-            focus: "",
-            aspect: ""
-        },
-        attrs={}
-    ) }}
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "icon",
-    meta: iconMeta
-}) %}
-    {{ icon({glyph:"bug_report"}) }}
-    {{ icon({glyph:"close"}) }}
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "incrementer",
-    meta: incrementerMeta
-}) %}
-    <div
-        x-data="{incrementer: 0}"
-        class="w-full flex flex-col items-center">
-
-        {{ incrementer(props={
-            name: "incrementer",
-            label: "Incrementer",
-            description: "Optional description",
-            fieldAttrs:{
-                required: true
-            }
-        },
-        attrs={
-            class:"w-full"
-        }) }}
-
-        {% call markdown(
-            props={transform: false},
-            attrs={class:"relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"}
-        ) %}
-        <pre>
-<code>output: <span x-text="JSON.stringify(incrementer)"></span>
-</code></pre>
-        {% endcall %}
-    </div>
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "input",
-    meta: inputMeta
-}) %}
-    <div
-        x-data="{input: ''}"
-        class="w-full flex flex-col items-center">
-
-        {{ input(props={
-            name: "input",
-            label: "Input",
-            description: "Optional description",
-            fieldAttrs:{
-                type: "text",
-                placeholder: "Placeholder",
-                required: true
-            }
-        },
-        attrs={
-            class:"w-full"
-        }) }}
-
-        {% call markdown(
-            props={transform: false},
-            attrs={class:"relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"}
-        ) %}
-        <pre>
-<code>output: <span x-show="!input">""</span><span x-show="input"><span x-text="JSON.stringify(input)"></span></span>
-</code></pre>
-        {% endcall %}
-    </div>
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "markdown",
-    meta: markdownMeta
-}) %}
-    {% call markdown({transform: true},{class:"w-full"}) %}
-## Heading
-
-Body paragraph with a [link](#) and _italics_ and **bold**.
-
-```
-preformatted code
-```
-* an
-* unordered
-* list
-
-    {% endcall %}
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "marquee",
-    meta: marqueeMeta
-}) %}
-    {% call marquee({speed: "10s", pauseOnHover: true, fadeEdges: true}, {class:"w-full"}) %}
-        <div class="text-lg">This is a repeating message!</div>
-    {% endcall %}
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "radio",
-    meta: radioMeta
-}) %}
-    <div
-        x-data="{radio: ''}"
-        class="w-full flex flex-col items-center">
-        {{ radio(
-            props={
-                name: "radio",
-                label: "Radio",
-                description: "Optional description",
-                options: [{label: "Option 1", value: "You selected option 1!"},{label: "Option 2", value: "You selected option 2!"},{label: "Option 3", value: "You selected option 3!"}],
-                fieldAttrs: {}
-            },
-            attrs={}
-        ) }}
-        {% call markdown(
-            props={transform: false},
-            attrs={class:"relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"}
-        ) %}
-        <pre>
-<code>output: <span x-show="!radio">{}</span><span x-show="radio"><span x-text="JSON.stringify(radio)"></span></span>
-</code></pre>
-        {% endcall %}
-    </div>
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{{ componentDocumentation({
-    title: "section",
-    meta: sectionMeta
-}) }}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "select",
-    meta: selectMeta
-}) %}
-    <div
-        x-data="{select: ''}"
-        class="w-full flex flex-col items-center">
-        {{ select(
-            {
-            "name": "select",
-            "label": "Select",
-            "options": [
-                {label: 'Option 1', value: 'You selected option 1!'},
-                {label: 'Option 2', value: 'You selected option 2!'},
-                {label: 'Option 3', value: 'You selected option 3!'}
-            ],
-            fieldAttrs: {
-                "required": true,
-                "placeholder": "Placeholder"
-            },
-            "description": "This area describes the field above!"
-            },{class:"w-full"})
-        }}
-        {% call markdown(
-                props={transform: false},
-                attrs={class:"relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"}
-            ) %}
-            <pre>
-{# <code>output: {<span x-show="select">index: <span x-text="select.index"></span>, value: <span x-text="select.value"></span></span>} #}
-<code>output: <span x-show="!select">{}</span><span x-show="select"><span x-text="JSON.stringify(select)"></span></span>
-</code></pre>
-        {% endcall %}
-    </div>
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "slider",
-    meta: sliderMeta
-}) %}
-    {% call slider({},{class:"w-full h-40 gap-2"}) %}
-        <div class="w-[40cqi] grid place-items-center text-lg bg-neutral-lighter">Hehe</div>
-        <div class="w-[40cqi] grid place-items-center text-lg bg-neutral-lighter">Haha</div>
-        <div class="w-[40cqi] grid place-items-center text-lg bg-neutral-lighter">Hoohoo</div>
-    {% endcall %}
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "textarea",
-    meta: textareaMeta
-}) %}
-    <div
-        x-data="{textarea: ''}"
-        class="w-full flex flex-col items-center">
-        {{ textarea(
-            {
-                name: "textarea",
-                label: "Textarea",
-                description: "Optional description",
-                fieldAttrs: {
-                    rows: "5",
-                    required: true,
-                    placeholder: "Type something here..."
-                }
-            }, {class:"w-full"}
-        ) }}
-        {% call markdown(
-            props={transform: false},
-            attrs={class:"relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"}
-        ) %}
-        <pre>
-<code>output: <span x-show="!textarea">""</span><span x-show="textarea"><span x-text="JSON.stringify(textarea)"></span></span>
-</code></pre>
-        {% endcall %}
-    </div>
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% call componentDocumentation({
-    title: "toaster",
-    meta: toasterMeta
-}) %}
-    {{ button({label: "Click to trigger a toast", type: "button", size:"base"}, {"@click": "$dispatch('notify', { content:`Hello! I am Toast!`, toasterId:'toaster' })"}) }}
-{% endcall %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-        </div>
-    </div>
+<section>
+    {% for component in components | sort() %}
+        {% include "./documentation/" + component + ".njk" %}
+    {% endfor %}
+</section>
 
 {% endcall %}
 {% endblock %}

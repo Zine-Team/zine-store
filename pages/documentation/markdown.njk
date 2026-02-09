@@ -1,0 +1,25 @@
+{# Nested Components -------------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/_componentDocumentation.njk" import componentDocumentation %}
+{% from "components/markdown.njk" import markdown, markdownMeta %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call componentDocumentation({
+    title: "markdown",
+    meta: markdownMeta
+}) %}
+    {% call markdown({transform: true},{class:"w-full"}) %}
+## Heading
+
+Body paragraph with a [link](#) and _italics_ and **bold**.
+
+```
+preformatted code
+```
+* an
+* unordered
+* list
+
+    {% endcall %}
+{% endcall %}

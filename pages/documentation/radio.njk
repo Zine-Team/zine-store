@@ -1,0 +1,35 @@
+{# Nested Components -------------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/_componentDocumentation.njk" import componentDocumentation %}
+{% from "components/radio.njk" import radio, radioMeta %}
+{% from "components/markdown.njk" import markdown %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call componentDocumentation({
+    title: "radio",
+    meta: radioMeta
+}) %}
+    <div
+        x-data="{radio: ''}"
+        class="w-full flex flex-col items-center">
+        {{ radio(
+            props={
+                name: "radio",
+                label: "Radio",
+                description: "Optional description",
+                options: [{label: "Option 1", value: "You selected option 1!"},{label: "Option 2", value: "You selected option 2!"},{label: "Option 3", value: "You selected option 3!"}],
+                fieldAttrs: {}
+            },
+            attrs={}
+        ) }}
+        {% call markdown(
+            props={transform: false},
+            attrs={class:"relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"}
+        ) %}
+        <pre>
+<code>output: <span x-show="!radio">{}</span><span x-show="radio"><span x-text="JSON.stringify(radio)"></span></span>
+</code></pre>
+        {% endcall %}
+    </div>
+{% endcall %}
