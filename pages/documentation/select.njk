@@ -11,11 +11,11 @@
     meta: selectMeta
 }) %}
     <div
-        x-data="{select: ''}"
+        x-data="{documentationSelect: ''}"
         class="w-full flex flex-col items-center">
         {{ select(
             {
-            "name": "select",
+            "name": "documentationSelect",
             "label": "Select",
             "options": [
                 {label: 'Option 1', value: 'You selected option 1!'},
@@ -34,8 +34,7 @@
                 attrs={class:"relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"}
             ) %}
             <pre>
-{# <code>output: {<span x-show="select">index: <span x-text="select.index"></span>, value: <span x-text="select.value"></span></span>} #}
-<code>output: <span x-show="!select">{}</span><span x-show="select"><span x-text="JSON.stringify(select)"></span></span>
+<code>output: <span x-show="!documentationSelect">{}</span><span x-show="documentationSelect"><span x-text="JSON.stringify(documentationSelect)"></span></span>
 </code></pre>
         {% endcall %}
     </div>

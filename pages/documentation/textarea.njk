@@ -11,11 +11,11 @@
     meta: textareaMeta
 }) %}
     <div
-        x-data="{textarea: ''}"
+        x-data="{documentationTextarea: ''}"
         class="w-full flex flex-col items-center">
         {{ textarea(
             {
-                name: "textarea",
+                name: "documentationTextarea",
                 label: "Textarea",
                 description: "Optional description",
                 fieldAttrs: {
@@ -30,7 +30,7 @@
             attrs={class:"relative w-[calc(100%+2*var(--space-site-inline))] -bottom-[var(--space-site-inline)] left-0 -right-[var(--space-site-inline)]"}
         ) %}
         <pre>
-<code>output: <span x-show="!textarea">""</span><span x-show="textarea"><span x-text="JSON.stringify(textarea)"></span></span>
+<code>output: <span x-show="!documentationTextarea">""</span><span x-show="documentationTextarea"><span x-text="JSON.stringify(documentationTextarea)"></span></span>
 </code></pre>
         {% endcall %}
     </div>
