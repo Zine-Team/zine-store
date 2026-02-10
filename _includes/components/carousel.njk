@@ -2,7 +2,7 @@
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
 {% from "components/button.njk" import button %}
-{% from "components/figure.njk" import figure %}
+{# {% from "components/figure.njk" import figure %} #}
 {% from "components/icon.njk" import icon %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
@@ -44,12 +44,12 @@
                 this.currentSlideIndex = this.currentSlideIndex - 1
             } else {
                 // If it's the first slide, go to the last slide
-                this.currentSlideIndex = {{ props.figures | length }}
+                this.currentSlideIndex = {{ props.slides | length }}
             }
             this.stopVideos()
         },
         next() {
-            if (this.currentSlideIndex < {{ props.figures | length }}) {
+            if (this.currentSlideIndex < {{ props.slides | length }}) {
                 this.currentSlideIndex = this.currentSlideIndex + 1
             } else {
                 // If it's the last slide, go to the first slide
@@ -72,10 +72,12 @@
             aria-label="slides"
         {% endif %}
         class="relative grid grid-overlap overflow-hidden grow">
+
+        {# loading svg #}
         <div data-loader class="animate-spin text-neutral text-body-lg place-self-center z-(--z-lowered)">{{ icon({icon:"progress_activity"}) }}</div>
 
         {# slide #}
-        {% for item in props.figures %}
+        {% for item in props.slides %}
             <div
                 x-data="{ id: $id('carousel-slide')}"
                 aria-label="{{ loop.index }} of {{ loop.length }}"
@@ -87,12 +89,13 @@
                     role="group"
                     aria-roledescription="slide"
                 {% endif %}
-                x-show="currentSlideIndex == {{ loop.index }}"
-                x-transition.opacity.duration.600ms
                 :id="id"
-                class="flex w-full"
+                :class="currentSlideIndex !== {{ loop.index }} && 'invisible opacity-0'"
+                class="flex w-full transition transition-discrete duration-500"
                 {{ loopAttrs(attrs) }}>
-                {{ figure(item,{class:"w-full"}) }}
+
+                {# slide macro #}
+                {{ props.macro(item,{class:"w-full"}) }}
             </div>
         {% endfor %}
 
@@ -100,8 +103,10 @@
 
 {# controls bar ------------------ #}
 
-    {% if props.figures.length > 1 %}
+    {% if props.slides.length > 1 %}
         <div class="flex {{ controlsStyles }}">
+
+            {# previous button #}
             {{ button(
                 props={
                     type: buttonProps.type,
@@ -122,7 +127,7 @@
                     role="tablist"
                     aria-label="Choose slide to display"
                     class="flex self-center justify-self-center justify-center items-center overflow-x-auto {{ indicatorRowStyles }}">
-                    {% for slide in props.figures %}
+                    {% for slide in props.slides %}
                         <div x-data="{ id: $id('carousel-tab')}" class="flex">
                             <label class="sr-only" :for="id">View slide {{ loop.index }}</label>
                             <input
@@ -138,6 +143,8 @@
                     {% endfor %}
                 </div>
             {% endif %}
+
+            {# next button #}
             {{ button(
                 props={
                     type: buttonProps.type,
@@ -163,17 +170,8 @@
 {% set carouselMeta = {
     args: '{{ carousel(
     props={
-        figures: [
-            {
-                image: "/assets/uploads/" | iframe: "https://www.youtube.com/embed/",
-                unstyled: boolean,
-                alt: "",
-                lazy: boolean,
-                caption: "",
-                focus: "object-",
-                aspect: "aspect-"
-            }
-        ],
+        macro: figure,
+        slides: [],
         indicators: true
     },
     attrs={
@@ -181,7 +179,8 @@
     }
 ) }}',
 description: "
-- Expects `props.figures` to be an array of objects that match the properties of the `figure` component.
+- `props.macro` should be the template each slide uses. In a basic carousel it will be `figure`.
+- Expects `props.slides` is an array of the `props` objects for the macro defined in `props.macro`.
 - `props.indicators` shows or hides the indicator dots.
 "
 } %}
