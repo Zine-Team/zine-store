@@ -2,6 +2,7 @@
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
 {% from "components/button.njk" import button %}
+{% from "components/container.njk" import container %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -11,17 +12,37 @@
 
 {# Theme styles ----------- #}
 
-{% set panelStyles %} bg-surface px-site-inline py-[max(var(--spacing-section-title),var(--spacing-site-inline))] border-neutral-lighter border-dotted gap-section-title {% if props.alignment === "bottom" %}border-t{% else %}border-b{% endif %}{% endset %}
-{% set panelAlignmentStyles %}
-    {% if props.alignment === "bottom" %}bottom-0 flex-col-reverse
-    {% elseif props.alignment === "top" %}top-navbar-height
-    {% elseif props.alignment === "right" %}top-0 right-0
-    {% endif %}
-{% endset %}
+{% set drawerStyles = "w-full h-dvh--navbar overflow-hidden bg-neutral/35" %} {# applied to the wrapper for the panel #}
+{% set panelStyles = "@container content-center bg-surface border-neutral-light py-site-inline px-site-inline" %}
+{% set duration = "duration-150" %}
+
+{% if props.alignment === "top" %}
+
+    {% set drawerAlignmentStyles = "flex-col top-navbar-height" %}
+    {% set panelAlignmentStyles = "border-b min-h-[25dvh]" %}
+    {% set transitionStyles = "-translate-y-full" %}
+
+{% elseif props.alignment === "bottom" %}
+
+    {% set drawerAlignmentStyles = "flex-col bottom-0 justify-end" %}
+    {% set panelAlignmentStyles = "border-t min-h-[25dvh]" %}
+    {% set transitionStyles = "translate-y-full" %}
+
+{% elseif props.alignment === "right" %}
+
+    {% set drawerAlignmentStyles = "flex top-navbar-height justify-end" %}
+    {% set panelAlignmentStyles = "grow border-l max-w-[50%]" %}
+    {% set transitionStyles = "translate-x-full" %}
+
+{% elseif props.alignment === "left" %}
+
+    {% set drawerAlignmentStyles = "flex top-navbar-height justify-start" %}
+    {% set panelAlignmentStyles = "grow border-r max-w-[50%]" %}
+    {% set transitionStyles = "-translate-x-full" %}
+
+{% endif %}
 
 {# Other ------------------ #}
-
-
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -48,43 +69,41 @@
     x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
     class="flex {{ attrs.class }}">
 
+    {# Trigger Button #}
     {% set newProps = props.triggerProps | assign({toggleValue: "drawerOpen"}) %}
-    {{ button(props=newProps, attrs={class:"grow", "@click": "toggleDrawer()", "x-ref":"trigger"}) }}
+    {{ button(newProps, {class:"grow", "@click": "toggleDrawer()", "x-ref":"trigger"}) }}
 
-    <div
-        x-cloak
-        x-show="drawerOpen"
-        {% if props.alignment === "top" %}
-            x-transition:enter-start="opacity-0 -translate-y-4"
-            x-transition:leave-end="opacity-0 -translate-y-4"
-        {% elseif props.alignment === "bottom" %}
-            x-transition:enter-start="opacity-0 translate-y-4"
-            x-transition:leave-end="opacity-0 translate-y-4"
-        {% elseif props.alignment === "right" %}
-            x-transition:enter-start="opacity-0 translate-x-4"
-            x-transition:leave-end="opacity-0 translate-x-4"
-        {% endif %}
-        class="flex z-(--z-top) flex-col grow fixed {{ panelAlignmentStyles }} left-0 h-[200dvh] w-full transition">
-        <nav
-            x-ref="panel"
-            @click="if($event.target !== $refs.panel && $event.target.tagName.toLowerCase() === 'a') { close($refs.button) }"
-            @click.outside="close($refs.trigger)"
-            class="grid content-center items-stretch {{ panelStyles }}">
-            {% if caller %}
-                {{ caller() | safe }}
-            {% else %}
-                <ul>
-                    {% for item in props.drawerItems %}
-                        <li>{{ item.macro(item.props, item.attrs) }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        </nav>
-        <div class="bg-neutral/35 grow"></div>
-    </div>
+    <template x-teleport="body">
+
+        <div {# wrapper for panel, teleported to the body #}
+            x-cloak
+            x-show="drawerOpen"
+            x-transition:enter-start="opacity-0"
+            x-transition:leave-end="opacity-0"
+            class="flex z-(--z-top) grow fixed overflow-y-auto transition {{ duration }} {{ drawerStyles }} {{ drawerAlignmentStyles }}">
+
+            {# Panel – thing that transitions #}
+            <div
+                x-ref="panel"
+                x-show="drawerOpen",
+                x-transition:enter-start="{{ transitionStyles }}"
+                x-transition:leave-end="{{ transitionStyles }}"
+                @click="if($event.target !== $refs.panel && $event.target.tagName.toLowerCase() === 'a') { close($refs.button) }"
+                @click.outside="close($refs.trigger)"
+                class="transition {{ duration }} {{ panelStyles }} {{ panelAlignmentStyles }}"
+            >
+                {% if caller %}
+                    {{ caller() | safe }}
+                {% endif %}
+            </div>
+
+        </div>
+
+    </template>
 </div>
 
 {% endmacro %}
+
 
 {# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
 

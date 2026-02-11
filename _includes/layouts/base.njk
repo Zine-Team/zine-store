@@ -16,30 +16,49 @@
 
 <!DOCTYPE html>
 <html
-    x-data="{
-        navbarHidden: false,
-        scrollable: true,
-        hasScrolled: false,
-        lastScrollY: window.scrollY,
-        setHasScrolled() {
-            if (this.lastScrollY > 100) {
-                this.hasScrolled = true
-            } else {
-                this.hasScrolled = false
+    {% if showNavbar %} {# checks if the layout template includes the navbar or not #}
+        x-data="{
+            scrollable: true,
+            navbarHidden: false,
+            navbarHeight: 0,
+            lastScrollY: window.scrollY,
+            hasScrolled: false,
+            setHasScrolled() {
+                if (this.lastScrollY > this.navbarHeight) {
+                    this.hasScrolled = true
+                } else {
+                    this.hasScrolled = false
+                }
+            },
+            setNavbarHeight() {
+                setTimeout(() => {
+                    if (this.navbarHidden) {
+                        this.navbarHeight = 0;
+                    } else {
+                        this.navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
+                    }
+                }, 100);
+            },
+            setNavbarHidden() {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > this.lastScrollY && this.hasScrolled) {
+                    this.navbarHidden = true
+                } else if (currentScrollY < this.lastScrollY + 100  && this.hasScrolled) {
+                    this.navbarHidden = false
+                }
+                this.setNavbarHeight()
+                this.lastScrollY = currentScrollY
+            },
+            init() { {# sets navbar height on js load #}
+                this.setNavbarHeight()
             }
-        },
-        getNavbarHeight() {
-            let navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
-            if (this.navbarHidden) {
-                navbarHeight = 0;
-            }
-            return {'--space-navbar-height': navbarHeight+'px'}
-        }
-    }"
-    @scroll.window="setHasScrolled"
+        }"
+        x-effect="setNavbarHeight()"
+        @resize.window="setNavbarHeight()"
+        @scroll.window="setHasScrolled"
+        :style="{'--space-navbar-height': navbarHeight + 'px'}"
+    {% endif %}
     lang="en"
-    :class="!scrollable && 'overflow-hidden'"
-    :style="getNavbarHeight"
     class="relative {{ htmlStyles }}">
     <head>
         {% include "snippets/htmlHead.njk" %}

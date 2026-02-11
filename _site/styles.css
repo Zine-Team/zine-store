@@ -475,6 +475,9 @@
   .h-\[max\(25dvh\,_72px\)\] {
     height: max(25dvh, 72px);
   }
+  .h-dvh--navbar {
+    height: calc(100dvh - var(--space-navbar-height));
+  }
   .h-fit {
     height: fit-content;
   }
@@ -492,6 +495,12 @@
   }
   .min-h-14 {
     min-height: calc(var(--spacing) * 14);
+  }
+  .min-h-\[25dvh\] {
+    min-height: 25dvh;
+  }
+  .min-h-\[50dvh\] {
+    min-height: 50dvh;
   }
   .min-h-\[200px\] {
     min-height: 200px;
@@ -541,6 +550,9 @@
   .w-\[var\(--container-wide\)\] {
     width: var(--container-wide);
   }
+  .w-fit {
+    width: fit-content;
+  }
   .w-full {
     width: 100%;
   }
@@ -552,6 +564,15 @@
   }
   .w-narrow {
     width: 48rem;
+  }
+  .max-w-\[50\%\] {
+    max-width: 50%;
+  }
+  .max-w-\[80\%\] {
+    max-width: 80%;
+  }
+  .max-w-\[80cqi\] {
+    max-width: 80cqi;
   }
   .max-w-\[312px\] {
     max-width: 312px;
@@ -636,8 +657,16 @@
     --tw-translate-x: calc(80% * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
+  .-translate-x-full {
+    --tw-translate-x: -100%;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
   .translate-x-4 {
     --tw-translate-x: calc(var(--spacing) * 4);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-x-full {
+    --tw-translate-x: 100%;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .-translate-y-1\/2 {
@@ -658,6 +687,10 @@
   }
   .translate-y-4 {
     --tw-translate-y: calc(var(--spacing) * 4);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-full {
+    --tw-translate-y: 100%;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .scale-none\! {
@@ -889,6 +922,10 @@
     border-top-style: var(--tw-border-style);
     border-top-width: 1px;
   }
+  .border-r {
+    border-right-style: var(--tw-border-style);
+    border-right-width: 1px;
+  }
   .border-b {
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 1px;
@@ -904,6 +941,12 @@
   .border-dotted {
     --tw-border-style: dotted;
     border-style: dotted;
+  }
+  .\!border-neutral-lighter {
+    border-color: color-mix(in srgb, Black, white 66%) !important;
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-neutral), white 66%) !important;
+    }
   }
   .border-neutral {
     border-color: Black;
@@ -938,6 +981,12 @@
   .bg-neutral {
     background-color: var(--color-neutral);
   }
+  .bg-neutral-light {
+    background-color: color-mix(in srgb, Black, white 50%);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-neutral), white 50%);
+    }
+  }
   .bg-neutral-lighter {
     background-color: color-mix(in srgb, Black, white 66%);
     @supports (color: color-mix(in lab, red, red)) {
@@ -955,6 +1004,9 @@
   }
   .bg-neutral\/50 {
     background-color: color-mix(in oklab, Black 50%, transparent);
+  }
+  .bg-neutral\/75 {
+    background-color: color-mix(in oklab, Black 75%, transparent);
   }
   .bg-surface {
     background-color: Gainsboro;
@@ -1091,6 +1143,9 @@
   }
   .py-section {
     padding-block: var(--space-section);
+  }
+  .py-site-inline {
+    padding-block: var(--space-site-inline);
   }
   .pt-item {
     padding-top: calc(var(--space-section-title) / 1.5);
@@ -1338,6 +1393,10 @@
   .delay-100 {
     transition-delay: 100ms;
   }
+  .duration-150 {
+    --tw-duration: 150ms;
+    transition-duration: 150ms;
+  }
   .duration-200 {
     --tw-duration: 200ms;
     transition-duration: 200ms;
@@ -1349,6 +1408,10 @@
   .duration-500 {
     --tw-duration: 500ms;
     transition-duration: 500ms;
+  }
+  .duration-600 {
+    --tw-duration: 600ms;
+    transition-duration: 600ms;
   }
   .duration-700 {
     --tw-duration: 700ms;
@@ -1848,6 +1911,11 @@
   .xl\:block {
     @media (width >= 70rem) {
       display: block;
+    }
+  }
+  .xl\:hidden {
+    @media (width >= 70rem) {
+      display: none;
     }
   }
   .xl\:list-item {

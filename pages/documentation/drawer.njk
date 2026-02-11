@@ -2,6 +2,7 @@
 
 {% from "components/_componentDocumentation.njk" import componentDocumentation %}
 {% from "components/drawer.njk" import drawer, drawerMeta %}
+{% from "components/container.njk" import container %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -10,15 +11,57 @@
     meta: drawerMeta
 }) %}
     {% call drawer(
-    props={
-        alignment: "bottom",
-        triggerProps: {label:{off:"Open drawer", on:"Close drawer"}, type:"button", size:"base"}
-    },
-    attrs={}
-    ) %}
-    <div>Some</div>
-    <div>content</div>
-    <div>inside</div>
-    <div>the drawer</div>
+        props={
+            alignment: "top",
+            triggerProps: {label:{off:"Open top drawer", on:"Close drawer"}, type:"button", size:"sm"}
+        },
+        attrs={}
+        ) %}
+        <div>Some</div>
+        <div>content</div>
+        <div>inside</div>
+        <div>the drawer</div>
+    {% endcall %}
+    {% call drawer(
+        props={
+            alignment: "bottom",
+            triggerProps: {label:{off:"Open bottom drawer", on:"Close drawer"}, type:"button", size:"sm"}
+        },
+        attrs={}
+        ) %}
+        {% call container({size:"base", type:"cols-1"},{class:"gap-4"}) %}
+            <div>Some</div>
+            <div>content</div>
+            <div>inside</div>
+            <div>the drawer</div>
+        {% endcall %}
+    {% endcall %}
+    {% call drawer(
+        props={
+            alignment: "left",
+            triggerProps: {label:{off:"Open left drawer", on:"Close drawer"}, type:"button", size:"sm"}
+        },
+        attrs={}
+        ) %}
+        {% call container({size:"base", type:"cols-1"},{class:"gap-4"}) %}
+            <div>Some</div>
+            <div>content</div>
+            <div>inside</div>
+            <div>the drawer</div>
+        {% endcall %}
+    {% endcall %}
+    {% call drawer(
+        props={
+            alignment: "right",
+            triggerProps: {label:{off:"Open right drawer", on:"Close drawer"}, type:"button", size:"sm"}
+        },
+        attrs={}
+        ) %}
+        {% call container({size:"base", type:"cols-1"},{class:"gap-4"}) %}
+            <div>Some</div>
+            <div>content</div>
+            <div>inside</div>
+            <div>the drawer</div>
+        {% endcall %}
     {% endcall %}
 {% endcall %}

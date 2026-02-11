@@ -13,6 +13,8 @@ permalink: /index.html
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
+{% set showNavbar = true %}
+
 {% set navLeft %}
     {{ button({ label: "Most recent zines", size:"lg", type:"link"}, {href:"#recentZines", class:"max-lg:hidden"}) }}
     {{ button({ label:"All zines", size:"lg", type:"link"}, {href:"#allZines", class:"max-lg:hidden"}) }}

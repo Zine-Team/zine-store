@@ -2,6 +2,7 @@
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
 {% from "components/button.njk" import button %}
+{% from "components/section.njk" import section %}
 {% from "components/container.njk" import container %}
 {% from "components/drawer.njk" import drawer %}
 
@@ -13,16 +14,28 @@
 
 {# Theme styles ----------- #}
 
-{% set navbarStyles = " z-(--z-sticky) border-b border-transparent" %}
-{% set stickyStyles = "sticky top-0 bg-surface" %}
-{% set onScrollStyles = "border-neutral-lighter! border-dotted" %}
-{% set itemGap = "gap-x-16 gap-y-2" %}
 {% set themeAlignment = "left" %}
 {% set drawerOnNarrow = false %}
 
-{% set logo %}
+{% set navbarStyles = "@container z-(--z-top) border-b border-transparent py-nav" %}
+{% set stickyStyles = "sticky top-0 bg-surface transition duration-300" %}
+{% set onScrollStyles = "!border-neutral-lighter border-dotted" %}
+{% set itemGap = "gap-x-16 gap-y-2" %}
+
+{# Nav content defaults ------------ #}
+
+{# Logo #}
+{% set navbarLogo %}
     {{ button({label:"Home", size:"lg", type:"link"},{href:"/"}) }}
 {% endset %}
+
+{# Wide screen left side content  #}
+{% set leftSide %}
+{% endset%}
+
+{# Wide screen right side content  #}
+{% set rightSide %}
+{% endset%}
 
 {# Other ------------------ #}
 
@@ -30,35 +43,24 @@
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-<nav
+<nav data-navbar
+    {{ loopAttrs(attrs) }}
     x-ref="navbar"
-    x-data="{
-        setNavbarHidden() {
-            const currentScrollY = window.scrollY;
-            if (currentScrollY > lastScrollY && hasScrolled) {
-                navbarHidden = true
-            } else if (currentScrollY < lastScrollY + 100  && hasScrolled) {
-                navbarHidden = false
-            }
-
-            lastScrollY = currentScrollY
-        }
-    }"
     :class="{'-translate-y-full' : navbarHidden, '{{ onScrollStyles }}' : hasScrolled | !scrollable }"
     @scroll.window="setNavbarHidden()"
-    {{ loopAttrs(attrs) }}
-    class="w-full transition-transform duration-300 flex flex-col relative {{ attrs.class }} {{ navbarStyles }}
-    {% if props.sticky %}{{ stickyStyles }}{% endif %}">
+    class="w-full flex flex-col relative {{ attrs.class }} {{ navbarStyles }} {% if props.sticky %}{{ stickyStyles }}{% endif %}">
 
-    {% call section({padding: "site"}) %}
-        <div class="{%if drawerOnNarrow %}hidden lg:block{% endif %}">
-            {% call container({size: "base", type:"flex"},{class:"items-center justify-between py-nav flex"}) %}
+    {% call section({padding: "site", tag:"div"},{}) %}
+
+        {# wide screen container #}
+        <div {% if drawerOnNarrow %}class="hidden xl:block"{% endif %}>
+            {% call container({size: "base", type:"flex"},{class:"items-center justify-between"}) %}
 
                 <div data-slot="left"
                 class="grow flex items-center justify-start flex-wrap {{ itemGap }}
                 {% if alignment === "left" %}{% elseif alignment === "center" %}basis-1/2 shrink{% endif %}">
 
-                    {{ logo | safe }}
+                    {{ navbarLogo | safe }}
                     {{ props.leftSide | safe }}
 
                 </div>
@@ -72,22 +74,32 @@
                 {% endif %}
 
                 <div data-slot="right"
-                class="grow flex items-center justify-end flex-wrap {{ itemGap }}
+                class="grow flex items-stretch justify-end flex-wrap {{ itemGap }}
                 {% if alignment === "left" %}shrink-0{% endif %}">
-                    {{ props.rightSide | safe }}
+                    {% if props.rightSide %}{{ props.rightSide | safe }}{% else %}{{ rightSide | safe }}{% endif %}
                 </div>
 
             {% endcall %}
         </div>
 
+        {# the narrow screen container that has the drawer #}
         {% if drawerOnNarrow %}
-            <div class="lg:hidden">
-                {% call container({size: "base", type:"flex"},{class:"items-center justify-between py-nav flex"}) %}
-                    {{ logo | safe }}
-                    {% if props.leftSide or props.rightSide %}
-                        {% call drawer({ alignment:"top", triggerProps:{ icon:{off:"menu", on:"close"}, type:"button", size:"base", tooltip:"Menu"} }) %}
-                            {{ props.leftSide | safe }}
-                            {{ props.rightSide | safe }}
+            <div class="xl:hidden">
+                {% call container({size: "base", type:"flex"},{class:"items-center justify-between"}) %}
+                    {{ navbarLogo | safe }}
+
+                    {% if leftSide or rightSide or props.leftSide or props.rightSide %}
+                        {% call drawer({
+                            alignment:"top",
+                            triggerProps:{ icon:{off:"menu", on:"close"}, tooltip:"Navigation menu", type:"button", variant:"neutral", size:"base"}
+                        }) %}
+                            {# Displays the drawerContents variable if it exists, otherwise duplicates the wide screen navbar content #}
+                            {% if drawerContents %}
+                                {{ drawerContents | safe }}
+                            {% else %}
+                                {% if props.leftSide %}{{ props.leftSide | safe }}{% else %}{{ leftSide | safe }}{% endif %}
+                                {% if props.rightSide %}{{ props.rightSide | safe }}{% else %}{{ rightSide | safe }}{% endif %}
+                            {% endif %}
                         {% endcall %}
                     {% endif %}
                 {% endcall %}
