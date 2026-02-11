@@ -499,9 +499,6 @@
   .min-h-\[25dvh\] {
     min-height: 25dvh;
   }
-  .min-h-\[50dvh\] {
-    min-height: 50dvh;
-  }
   .min-h-\[200px\] {
     min-height: 200px;
   }
@@ -550,9 +547,6 @@
   .w-\[var\(--container-wide\)\] {
     width: var(--container-wide);
   }
-  .w-fit {
-    width: fit-content;
-  }
   .w-full {
     width: 100%;
   }
@@ -567,12 +561,6 @@
   }
   .max-w-\[50\%\] {
     max-width: 50%;
-  }
-  .max-w-\[80\%\] {
-    max-width: 80%;
-  }
-  .max-w-\[80cqi\] {
-    max-width: 80cqi;
   }
   .max-w-\[312px\] {
     max-width: 312px;
@@ -661,10 +649,6 @@
     --tw-translate-x: -100%;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
-  .translate-x-4 {
-    --tw-translate-x: calc(var(--spacing) * 4);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
   .translate-x-full {
     --tw-translate-x: 100%;
     translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -675,10 +659,6 @@
   }
   .-translate-y-2 {
     --tw-translate-y: calc(var(--spacing) * -2);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-  .-translate-y-4 {
-    --tw-translate-y: calc(var(--spacing) * -4);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .-translate-y-full {
@@ -717,17 +697,8 @@
   .snap-mandatory {
     --tw-scroll-snap-strictness: mandatory;
   }
-  .scroll-m-dialog-block {
-    scroll-margin: var(--space-dialog-block);
-  }
-  .scroll-m-section {
-    scroll-margin: var(--space-section);
-  }
   .scroll-p-dialog-block {
     scroll-padding: var(--space-dialog-block);
-  }
-  .scroll-p-section {
-    scroll-padding: var(--space-section);
   }
   .list-disc {
     list-style-type: disc;
@@ -993,12 +964,6 @@
   .bg-neutral {
     background-color: var(--color-neutral);
   }
-  .bg-neutral-light {
-    background-color: color-mix(in srgb, Black, white 50%);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-neutral), white 50%);
-    }
-  }
   .bg-neutral-lighter {
     background-color: color-mix(in srgb, Black, white 66%);
     @supports (color: color-mix(in lab, red, red)) {
@@ -1016,9 +981,6 @@
   }
   .bg-neutral\/50 {
     background-color: color-mix(in oklab, Black 50%, transparent);
-  }
-  .bg-neutral\/75 {
-    background-color: color-mix(in oklab, Black 75%, transparent);
   }
   .bg-surface {
     background-color: Gainsboro;
@@ -1420,14 +1382,6 @@
   .duration-500 {
     --tw-duration: 500ms;
     transition-duration: 500ms;
-  }
-  .duration-600 {
-    --tw-duration: 600ms;
-    transition-duration: 600ms;
-  }
-  .duration-700 {
-    --tw-duration: 700ms;
-    transition-duration: 700ms;
   }
   .outline-none {
     --tw-outline-style: none;
@@ -1861,11 +1815,6 @@
   .lg\:-ml-2 {
     @media (width >= 56rem) {
       margin-left: calc(var(--spacing) * -2);
-    }
-  }
-  .lg\:block {
-    @media (width >= 56rem) {
-      display: block;
     }
   }
   .lg\:flex {
