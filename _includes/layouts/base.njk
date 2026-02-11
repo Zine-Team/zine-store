@@ -9,7 +9,7 @@
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set htmlStyles = "scroll-smooth scroll-p-site-block" %}
+{% set htmlStyles = "scroll-smooth scroll-p-dialog-block" %}
 {% set bodyStyles = "font-sans text-body-base antialiased flex flex-col min-h-dvh items-center bg-surface pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]" %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -21,10 +21,10 @@
             scrollable: true,
             navbarHidden: false,
             navbarHeight: 0,
-            lastScrollY: window.scrollY,
+            lastScrollY: 0,
             hasScrolled: false,
             setHasScrolled() {
-                if (this.lastScrollY > this.navbarHeight) {
+                if (window.scrollY > this.navbarHeight) {
                     this.hasScrolled = true
                 } else {
                     this.hasScrolled = false
@@ -39,15 +39,17 @@
                     }
                 }, 100);
             },
-            setNavbarHidden() {
-                const currentScrollY = window.scrollY;
-                if (currentScrollY > this.lastScrollY && this.hasScrolled) {
+            setNavbarVisibility() {
+                if (window.scrollY === 0) {
+                    this.navbarHidden = false
+                } else if (window.scrollY > this.lastScrollY && this.hasScrolled) { //scrolling down
                     this.navbarHidden = true
-                } else if (currentScrollY < this.lastScrollY + 100  && this.hasScrolled) {
+                } else if (window.scrollY < this.lastScrollY  && this.hasScrolled) { //scrolling up
                     this.navbarHidden = false
                 }
                 this.setNavbarHeight()
-                this.lastScrollY = currentScrollY
+                this.setHasScrolled()
+                this.lastScrollY = window.scrollY
             },
             init() { {# sets navbar height on js load #}
                 this.setNavbarHeight()
@@ -55,14 +57,16 @@
         }"
         x-effect="setNavbarHeight()"
         @resize.window="setNavbarHeight()"
-        @scroll.window="setHasScrolled"
+        @scroll.window="setNavbarVisibility()"
         :style="{'--space-navbar-height': navbarHeight + 'px'}"
     {% endif %}
     lang="en"
     class="relative {{ htmlStyles }}">
+
     <head>
         {% include "snippets/htmlHead.njk" %}
     </head>
+
     <body
         :class="!scrollable && 'overflow-y-hidden'"
         class="{{ bodyStyles }}">

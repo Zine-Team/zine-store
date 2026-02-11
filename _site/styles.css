@@ -717,6 +717,18 @@
   .snap-mandatory {
     --tw-scroll-snap-strictness: mandatory;
   }
+  .scroll-m-dialog-block {
+    scroll-margin: var(--space-dialog-block);
+  }
+  .scroll-m-section {
+    scroll-margin: var(--space-section);
+  }
+  .scroll-p-dialog-block {
+    scroll-padding: var(--space-dialog-block);
+  }
+  .scroll-p-section {
+    scroll-padding: var(--space-section);
+  }
   .list-disc {
     list-style-type: disc;
   }
@@ -1639,6 +1651,27 @@
   .active\:scale-\[\.98\] {
     &:active {
       scale: .98;
+    }
+  }
+  .active\:border-neutral-light {
+    &:active {
+      border-color: color-mix(in srgb, Black, white 50%);
+      @supports (color: color-mix(in lab, red, red)) {
+        border-color: color-mix(in oklab, var(--color-neutral), white 50%);
+      }
+    }
+  }
+  .active\:bg-surface-lighter {
+    &:active {
+      background-color: color-mix(in srgb, Gainsboro, white 86%);
+      @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, var(--color-surface), white 86%);
+      }
+    }
+  }
+  .active\:no-underline {
+    &:active {
+      text-decoration-line: none;
     }
   }
   .disabled\:opacity-60 {

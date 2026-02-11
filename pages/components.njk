@@ -36,23 +36,44 @@ title: Components
     "section"
 ] %}
 
-{% set componentSelect = [] %}
+{% set componentSelectOptions = [] %}
 {% for component in components | sort() %}
-    {% set componentSelect = (componentSelect.push({value: component, label: component}), componentSelect) %}
+    {% set componentSelect = (componentSelectOptions.push({value: component, label: component}), componentSelectOptions) %}
 {% endfor %}
+
+{% set rightSide %}
+<div
+    x-data="{allComponents: ''}"
+    x-init="$watch('allComponents', (selected) => {
+        const el = document.getElementById(selected.value)
+        el.scrollIntoView()
+        el.focus()
+    })"
+>
+    {{ select(
+        props={
+            "name": "allComponents",
+            "options": componentSelectOptions,
+            fieldAttrs:{
+                placeholder: "Scroll to a component..."
+            }
+        },
+        attrs={
+            "class": "lg:hidden"
+        })
+    }}
+</div>
+{% endset %}
 
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block pageContent %}
 
-{% call container({type:"sidebar", size:"base"},{
-    "x-data":"{allComponents: ''}",
-    "x-init":"$watch('allComponents', selected => document.getElementById(selected.value).scrollIntoView())",
-    "class":"@container"
-}) %}
+{% call container({type:"sidebar", size:"base"}) %}
 
 {# Sidebar -------------------------------------------------------------------------------------------------------------------------- #}
+
     {% call sidebar() %}
         <section class="flex flex-col items-start gap-item-sm w-full">
             <h2 class="text-heading-sm font-semibold">Guide</h2>
@@ -71,21 +92,6 @@ title: Components
             {% endcall %}
         </section>
     {% endcall %}
-
-{# Mobile Select ------------------ #}
-
-{{ select(
-    props={
-        "name": "allComponents",
-        "options": componentSelect,
-        fieldAttrs:{
-            placeholder: "Scroll to a component..."
-        }
-    },
-    attrs={
-        "class": "lg:hidden py-nav border-b border-dotted border-neutral-lighter sticky top-[var(--navbar-height)] transition-all duration-300 z-(--z-sticky) bg-surface"
-    })
-}}
 
 {# Content -------------------------------------------------------------------------------------------------------------------------- #}
 

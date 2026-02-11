@@ -47,7 +47,6 @@
     {{ loopAttrs(attrs) }}
     x-ref="navbar"
     :class="{'-translate-y-full' : navbarHidden, '{{ onScrollStyles }}' : hasScrolled | !scrollable }"
-    @scroll.window="setNavbarHidden()"
     class="w-full flex flex-col relative {{ attrs.class }} {{ navbarStyles }} {% if props.sticky %}{{ stickyStyles }}{% endif %}">
 
     {% call section({padding: "site", tag:"div"},{}) %}

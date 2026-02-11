@@ -13,7 +13,7 @@
 
 {% set types = {
     button: {
-        styles: "text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded",
+        styles: "text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter active:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light active:border-neutral-light shadow-button rounded",
         on: "",
         sizes: {
             base: "text-body-base min-w-15 min-h-tube-base px-3.5 gap-3.5",
@@ -23,7 +23,7 @@
         variants: {}
     },
     link: {
-        styles: "text-link underline hover:no-underline underline-offset-3 decoration-1",
+        styles: "text-link underline active:no-underline hover:no-underline underline-offset-3 decoration-1",
         on: "",
         sizes: {
             inherit: "",
