@@ -1,8 +1,8 @@
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set pageDescription %}{{ global.siteDescription }}{% endset %}
-{% set pageTitle %}{% if data.seoTitle %}{{ data.seoTitle }} • {% elseif title %}{{ title }} • {% endif %}{{ global.siteTitle }} – {{ pageDescription }}{% endset %}
+{% if data.seoDescription %}{% set pageDescription %}{{ data.seoDescription }}{% endset %}{% elseif global.siteDescription %}{% set pageDescription %}{{ global.siteDescription }}{% endset %}{% endif %}
+{% set pageTitle %}{% if data.seoTitle %}{{ data.seoTitle }} – {% elseif title %}{{ title }} – {% endif %} {% if pageDescription %}{{ pageDescription }} • {% endif %}{{ global.siteTitle }}{% endset %}
 {% set ogImage %}{{- global.siteDomain -}}{% if seo.ogImage %}{{- page.fileSlug -}}{{- seo.ogImage -}}{% else %}{{- global.siteImage -}}{% endif %}{% endset %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}

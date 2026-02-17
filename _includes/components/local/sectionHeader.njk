@@ -5,7 +5,7 @@
 {% macro sectionHeader(props={}, attrs={}) %}
     <header
         {{ loopAttrs(attrs) }}
-        class="flex justify-between border-neutral-lighter border-b border-dotted items-center sm:items-end gap-item pb-item {{ attrs.class }}">
+        class="flex justify-between border-neutral-lighter border-b border-dotted items-center md:items-end gap-item pb-item {{ attrs.class }}">
     {% if props.label %}
         <h2 class="text-heading-base xs:list-item xs:list-disc xs:ml-indent">{{ props.label }}</h2>
     {% endif %}

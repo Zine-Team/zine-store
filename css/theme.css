@@ -1,5 +1,8 @@
 :root {
   color-scheme: light;
+
+  /* Font Size -------------------------------------------------------------------------------------------------------------------------- */
+
   --icon-size: 1.45em;
 
   --body-sm: 17px;
@@ -11,22 +14,6 @@
   --heading-xl: 56px;
   --heading-2xl: clamp(75px, 11vw, 10rem);
 
-  --space-site-inline: 1rem;
-  --space-nav: 0.75rem;
-  --space-section: 4.5rem;
-  --space-section-title: 1.25rem;
-  --space-dialog-inline: 1.25rem;
-  --space-dialog-block: 2.5rem;
-  --space-tube-base: 3rem;
-  --space-tube-sm: 2.5rem;
-
-  /* > md */
-  @media screen and (min-width: 36rem) {
-    --space-tube: 3.25rem;
-    --block-size-nav: 5.5rem;
-  }
-
-  /* > md */
   @media screen and (min-width: 44rem) {
     --body-sm: 18px;
     --body-base: 22px;
@@ -34,14 +21,24 @@
     --heading-sm: 22px;
     --heading-base: 32px;
     --heading-xl: 72px;
+  }
 
+  /* Spacing -------------------------------------------------------------------------------------------------------------------------- */
+
+  --space-site-inline: 1rem;
+  --space-nav: 0.75rem;
+  --space-section: 4.5rem;
+  --space-section-title: 1.25rem;
+  --space-dialog-inline: 1.25rem;
+  --space-dialog-block: 2.5rem;
+
+  @media screen and (min-width: 44rem) {
     --space-site-inline: 2rem;
     --space-section: 6.5rem;
     --space-dialog-inline: 2rem;
     --space-dialog-block: 3rem;
   }
 
-  /* > lg */
   @media screen and (min-width: 56rem) {
     --space-site-inline: 3rem;
     --space-nav: 1rem;
@@ -52,16 +49,24 @@
     --space-tube-base: 3.5rem;
   }
 
-  /* > xl */
-  @media screen and (min-width: 70rem) {
+  /* Size -------------------------------------------------------------------------------------------------------------------------- */
+
+  --size-tube-base: 3rem;
+  --size-tube-sm: 2.5rem;
+
+  @media screen and (min-width: 44rem) {
+    --size-tube-base: 3.25rem;
+  }
+
+  @media screen and (min-width: 56rem) {
+    --size-tube-base: 3.5rem;
   }
 }
 
 @theme inline {
   /* Breakpoints ----------------------------------------------------------------------------------------------------------------------- */
 
-  --breakpoint-xs: 28rem; /* 448px */
-  --breakpoint-sm: 36rem; /* 576px */
+  --breakpoint-sm: 28rem; /* 448px */
   --breakpoint-md: 44rem; /* 704px */
   --breakpoint-lg: 56rem; /* 896px */
   --breakpoint-xl: 70rem; /* 1120px */
@@ -121,12 +126,11 @@
   --spacing-item-sm: calc(var(--space-section-title) / 3);
   --spacing-dialog-inline: var(--space-dialog-inline);
   --spacing-dialog-block: var(--space-dialog-block);
-  --spacing-tube-base: var(--space-tube-base);
-  --spacing-tube-sm: var(--space-tube-sm);
+  --spacing-tube-base: var(--size-tube-base);
+  --spacing-tube-sm: var(--size-tube-sm);
   --spacing-indent: 1.5ch;
   --spacing-navbar-height: var(--space-navbar-height);
   --spacing-dvh--navbar: calc(100dvh - var(--space-navbar-height));
-  --spacing-block-size-nav: var(--block-size-nav);
 
   /* Color ----------------------------------------------------------------------------------------------------------------------------- */
 
