@@ -959,7 +959,10 @@
     background-color: Black;
   }
   .bg-neutral {
-    background-color: var(--color-neutral);
+    background-color: color-mix(in srgb, Black, white 0%);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-neutral), white 0%);
+    }
   }
   .bg-neutral-lighter {
     background-color: color-mix(in srgb, Black, white 66%);
@@ -981,6 +984,12 @@
   }
   .bg-surface {
     background-color: Gainsboro;
+  }
+  .bg-surface {
+    background-color: color-mix(in srgb, Gainsboro, white 0%);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-surface), white 0%);
+    }
   }
   .bg-surface-light {
     background-color: color-mix(in srgb, Gainsboro, white 70%);
@@ -1512,7 +1521,10 @@
   }
   .checked\:bg-neutral {
     &:checked {
-      background-color: var(--color-neutral);
+      background-color: color-mix(in srgb, Black, white 0%);
+      @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, var(--color-neutral), white 0%);
+      }
     }
   }
   .hover\:scale-\[1\.01\] {
@@ -1702,20 +1714,9 @@
       line-height: var(--tw-leading, var(--text-3xl--line-height));
     }
   }
-  .sm\:text-heading-2xl {
-    @media (width >= 28rem) {
-      font-size: var(--heading-2xl);
-      line-height: var(--tw-leading, 1);
-    }
-  }
   .sm\:text-3xl {
     @media (width >= 28rem) {
       line-height: var(--text-3xl--line-height);
-    }
-  }
-  .sm\:text-heading-2xl {
-    @media (width >= 28rem) {
-      line-height: 1;
     }
   }
   .sm\:max-md\:block {

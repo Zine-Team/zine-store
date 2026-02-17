@@ -166,10 +166,11 @@
 
   /* Background ------------------------------------ */
 
-  --color-bg-neutral: var(--color-neutral);
+  --color-bg-neutral: color-mix(in oklab, var(--color-neutral), white 0%);
   --color-bg-neutral-light: color-mix(in oklab, var(--color-neutral), white 50%);
   --color-bg-neutral-lighter: color-mix(in oklab, var(--color-neutral), white 66%);
   --color-bg-neutral-lightest: color-mix(in oklab, var(--color-neutral), white 85%);
+  --color-bg-surface: color-mix(in oklab, var(--color-surface), white 0%);
   --color-bg-surface-light: color-mix(in oklab, var(--color-surface), white 70%);
   --color-bg-surface-lighter: color-mix(in oklab, var(--color-surface), white 86%);
 
