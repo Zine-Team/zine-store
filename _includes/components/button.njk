@@ -38,9 +38,14 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <{% if attrs.href %}a{% else %}button{% endif %} data-button
-    {% if props.tooltip %}
-        {% if not props.label %}aria-label="{{ props.tooltip }}"{% endif %}
-        title="{{ props.tooltip }}"
+    {% if props.toggleValue %}
+        {% if not props.label %}:aria-label="{{ props.toggleValue}} ? '{{ props.tooltip.on }}' : '{{ props.tooltip.off }}'"{% endif %}
+        :title="{{ props.toggleValue }} ? '{{ props.tooltip.on }}' : '{{ props.tooltip.off }}'"
+    {% else %}
+        {% if props.tooltip %}
+            {% if not props.label %}aria-label="{{ props.tooltip }}"{% endif %}
+            title="{{ props.tooltip }}"
+        {% endif %}
     {% endif %}
     {{ loopAttrs(attrs) }}
     {% if props.toggleValue %}

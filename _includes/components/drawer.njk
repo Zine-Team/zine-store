@@ -14,7 +14,8 @@
 
 {% set drawerStyles = "w-full h-dvh--navbar overflow-hidden bg-neutral/35" %} {# applied to the wrapper for the panel #}
 {% set panelStyles = "@container content-center bg-surface border-neutral-light py-site-inline px-site-inline" %}
-{% set duration = "duration-150" %}
+{% set durationEnter = "duration-300" %}
+{% set durationLeave = "duration-150" %}
 
 {% if props.alignment === "top" %}
 
@@ -78,15 +79,19 @@
         <div {# wrapper for panel, teleported to the body #}
             x-cloak
             x-show="drawerOpen"
+            x-transition:enter="{{ durationEnter }}"
             x-transition:enter-start="opacity-0"
+            x-transition:enter="{{ durationLeave }}"
             x-transition:leave-end="opacity-0"
-            class="flex z-(--z-top) grow fixed overflow-y-auto transition {{ duration }} {{ drawerStyles }} {{ drawerAlignmentStyles }}">
+            class="flex z-(--z-top) grow fixed overflow-y-auto transition {{ drawerStyles }} {{ drawerAlignmentStyles }}">
 
             {# Panel – thing that transitions #}
             <div
                 x-ref="panel"
                 x-show="drawerOpen",
                 x-transition:enter-start="{{ transitionStyles }}"
+                x-transition:enter="{{ durationEnter }}"
+                x-transition:enter="{{ durationLeave }}"
                 x-transition:leave-end="{{ transitionStyles }}"
                 @click="if($event.target !== $refs.panel && $event.target.tagName.toLowerCase() === 'a') { close($refs.button) }"
                 @click.outside="close($refs.trigger)"
