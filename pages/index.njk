@@ -89,12 +89,12 @@ permalink: /index.html
             {% endset %}
             {% call container({}, {class:"flex flex-col gap-section-title", "x-data": data }) %}
                 {% call sectionHeader({label: "All zines (A-Z)"}) %}
-                    <div class="hidden xs:block">{{ button({label: "Read random zine", type: "button", size:"base"}, {"@click": "chooseRandom"}) }}</div>
+                    <div class="hidden sm:block">{{ button({label: "Read random zine", type: "button", size:"base"}, {"@click": "chooseRandom"}) }}</div>
                 {% endcall %}
-                <ul class="grid gap-x-item gap-y-section-title max-xs:list-disc" style="grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );">
+                <ul class="grid gap-x-item gap-y-section-title max-sm:list-disc" style="grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );">
                     {% for zine in collections.zine | sort(false, false, "data.title") %}
-                        <li class="xs:flex flex-col gap-item-sm relative items-start max-w-max max-xs:ml-[1.25ch]">
-                            <div data-zine-shading class="relative max-xs:hidden shadow-zine">
+                        <li class="sm:flex flex-col gap-item-sm relative items-start max-w-max max-sm:ml-[1.25ch]">
+                            <div data-zine-shading class="relative max-sm:hidden shadow-zine">
                             {{ figure(
                                 props={
                                     image: global.imagesFolder + "/" + zine.fileSlug + "/" + zine.data.pages[0].image + ".jpg",
@@ -103,15 +103,15 @@ permalink: /index.html
                                 attrs={class:"shadow-page"}
                             ) }}
                             </div>
-                            {% call button({type:"link", size:"sm"},{href:zine.url, class: "text-left scale-none! max-xs:hidden"}) %}
+                            {% call button({type:"link", size:"sm"},{href:zine.url, class: "text-left scale-none! max-sm:hidden"}) %}
                                 <span class="absolute inset-0"></span>
                                 <span>{{ zine.data.title }}</span>
                             {% endcall %}
-                            {{ button({label:zine.data.title, type:"link"}, {href:zine.url, class: "text-left xs:hidden"}) }}
+                            {{ button({label:zine.data.title, type:"link"}, {href:zine.url, class: "text-left sm:hidden"}) }}
                         </li>
                     {% endfor %}
                 </ul>
-                {{ button({label: "Read random zine", type: "button", size:"base"}, {"@click": "chooseRandom", class:"xs:hidden"}) }}
+                {{ button({label: "Read random zine", type: "button", size:"base"}, {"@click": "chooseRandom", class:"sm:hidden"}) }}
             {% endcall %}
         {% endcall %}
 

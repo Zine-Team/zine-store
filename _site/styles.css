@@ -28,6 +28,7 @@
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --font-display: sans-serif;
+    --font-icon: "Material Symbols Sharp";
     --text-body-base: var(--body-base);
     --text-body-base--line-height: 1.45;
     --text-heading-base: var(--heading-base);
@@ -620,7 +621,7 @@
     transform-origin: top;
     text-box-trim: trim-both;
     text-box-edge: cap alphabetic;
-    font-family: "Material Symbols Sharp";
+    font-family: var(--font-icon);
     font-style: normal;
     line-height: 1;
     letter-spacing: normal;
@@ -699,6 +700,9 @@
   }
   .list-disc {
     list-style-type: disc;
+  }
+  .\[appearance\:base-select\] {
+    appearance: base-select;
   }
   .appearance-none {
     appearance: none;
@@ -1678,14 +1682,29 @@
       translate: var(--tw-translate-x) var(--tw-translate-y);
     }
   }
+  .max-sm\:ml-\[1\.25ch\] {
+    @media (width < 28rem) {
+      margin-left: 1.25ch;
+    }
+  }
   .max-sm\:hidden {
     @media (width < 28rem) {
       display: none;
     }
   }
+  .max-sm\:list-disc {
+    @media (width < 28rem) {
+      list-style-type: disc;
+    }
+  }
   .sm\:block {
     @media (width >= 28rem) {
       display: block;
+    }
+  }
+  .sm\:flex {
+    @media (width >= 28rem) {
+      display: flex;
     }
   }
   .sm\:hidden {

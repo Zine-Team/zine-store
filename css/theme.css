@@ -75,6 +75,7 @@
 
   --font-display: sans-serif;
   --font-body: sans-serif;
+  --font-icon: "Material Symbols Sharp";
 
   --text-body-sm: var(--body-sm);
   --text-body-sm--line-height: 1.5;
@@ -237,7 +238,7 @@
   transform-origin: top;
   text-box-trim: trim-both;
   text-box-edge: cap alphabetic;
-  font-family: "Material Symbols Sharp";
+  font-family: var(--font-icon);
   font-style: normal;
   line-height: 1;
   letter-spacing: normal;
