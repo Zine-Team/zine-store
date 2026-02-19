@@ -482,14 +482,14 @@
   .h-full {
     height: 100%;
   }
+  .h-stretch {
+    height: stretch;
+  }
   .max-h-62 {
     max-height: calc(var(--spacing) * 62);
   }
   .max-h-dvh {
     max-height: 100dvh;
-  }
-  .\!min-h-tube-base {
-    min-height: var(--size-tube-base) !important;
   }
   .min-h-14 {
     min-height: calc(var(--spacing) * 14);

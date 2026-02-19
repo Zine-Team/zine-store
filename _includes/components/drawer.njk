@@ -12,8 +12,9 @@
 
 {# Theme styles ----------- #}
 
-{% set drawerStyles = "w-full h-dvh--navbar overflow-hidden bg-neutral/35" %} {# applied to the wrapper for the panel #}
+{% set drawerStyles = "w-full h-dvh--navbar overflow-hidden" %} {# applied to the wrapper for the panel #}
 {% set panelStyles = "@container content-center bg-surface border-neutral-light py-site-inline px-site-inline" %}
+{% set backdropStyles = "bg-neutral/35" %}
 {% set durationEnter = "duration-300" %}
 {% set durationLeave = "duration-150" %}
 
@@ -79,16 +80,12 @@
         <div {# wrapper for panel, teleported to the body #}
             x-cloak
             x-show="drawerOpen"
-            x-transition:enter="{{ durationEnter }}"
-            x-transition:enter-start="opacity-0"
-            x-transition:enter="{{ durationLeave }}"
-            x-transition:leave-end="opacity-0"
             class="flex z-(--z-top) grow fixed overflow-y-auto transition {{ drawerStyles }} {{ drawerAlignmentStyles }}">
 
             {# Panel – thing that transitions #}
             <div
                 x-ref="panel"
-                x-show="drawerOpen",
+                x-show="drawerOpen"
                 x-transition:enter-start="{{ transitionStyles }}"
                 x-transition:enter="{{ durationEnter }}"
                 x-transition:enter="{{ durationLeave }}"
@@ -102,6 +99,15 @@
                 {% endif %}
             </div>
 
+            {# Backdrop – overlay #}
+            <div
+                x-show="drawerOpen"
+                x-transition:enter="{{ durationEnter }}"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter="{{ durationLeave }}"
+                x-transition:leave-end="opacity-0"
+                class="absolute inset-0 z-(--z-lowered) {{ backdropStyles }}">
+            </div>
         </div>
 
     </template>

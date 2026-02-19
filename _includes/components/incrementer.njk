@@ -8,9 +8,21 @@
 
 {% macro incrementer(props={}, attrs={}) %}
 
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{# Theme styles ----------- #}
+
+{% set buttonProps = {
+    type: "button",
+    variant: "outline",
+    size: "sm"
+} %}
+
+{# Other ------------------ #}
+
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
 <div
-if
     x-data="{
         decrement() {
             {% if props.fieldAttrs.min != null %}
@@ -37,18 +49,18 @@ if
 
     {% if props.label %}{{ fieldLabel({tag: "label", fieldProps:props}) }}{% endif %}
 
-    <span class="{{ fieldWrapperStyles }} gap-1">
+    <span class="{{ fieldWrapperStyles }} gap-1 items-center">
         {{ button(
             props={
-                type: "button",
-                variant: "outline",
-                size: "sm",
+                type: buttonProps.type,
+                variant: buttonProps.variant,
+                size: buttonProps.size,
                 icon: "remove"
             },
             attrs={
                 "@click": "decrement",
                 "type": "button",
-                "class": "!min-h-tube-base"
+                "class": "h-stretch"
             }
         ) }}
         <input
@@ -61,15 +73,15 @@ if
         >
         {{ button(
             props={
-                type: "button",
-                variant: "outline",
-                size: "sm",
+                type: buttonProps.type,
+                variant: buttonProps.variant,
+                size: buttonProps.size,
                 icon: "add"
             },
             attrs={
                 "@click": "increment",
                 "type": "button",
-                "class": "!min-h-tube-base"
+                "class": "h-stretch"
             }
         ) }}
     </span>

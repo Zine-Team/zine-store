@@ -119,6 +119,7 @@
 
   --spacing-inherit: inherit;
   --spacing-cqi: 100cqi;
+  --spacing-stretch: stretch;
   --spacing-site-inline: var(--space-site-inline);
   --spacing-nav: var(--space-nav);
   --spacing-section: var(--space-section);

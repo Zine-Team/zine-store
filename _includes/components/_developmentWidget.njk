@@ -12,6 +12,11 @@
 ] %}
 
 {% set themeStyles = "gap-1 py-1 pl-2 pr-1 text-sm border-1 border-neutral-lighter bg-surface rounded shadow-zine" %}
+{% set expandedStyles = "translate-0!" %}
+{% set buttonProps = {
+    size: "sm",
+    variant: ""
+} %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 <div x-data="{
@@ -41,24 +46,21 @@
         props={
             position:["top", "left"],
             dropdownItems: developmentLinks,
-            triggerProps:{label: "Dev", icon:"bug_report", type: "button", size:"sm", variant:"hue"}
+            triggerProps:{label: "Dev", icon:"bug_report", type: "button", size:buttonProps.size, variant:buttonProps.variant}
         }
     )}}
     {% endif %}
     {{ button(
         props={
             type: "button",
-            size: "sm",
+            size: buttonProps.size,
+            variant: buttonProps.variant,
             icon: {off:"chevron_forward", on:"chevron_backward"},
-            toggleValue: "expanded"
+            toggleValue: "expanded",
+            tooltip:{off: "Expand widget", on:"Retract widget"}
         },
         attrs={
-            @click:"expanded = !expanded",
-            ":title":"expanded ? 'Minimize widget' : 'Expand widget'"
+            @click:"expanded = !expanded"
         }
     ) }}
-    {# {% call button({type:"button", size:"sm"}, {@click:"expanded = !expanded", ":title":"expanded ? 'Minimize widget' : 'Expand widget'"}) %}
-        <span x-show="!expanded" class="text-icon">chevron_forward</span>
-        <span x-show="expanded" class="text-icon">chevron_backward</span>
-    {% endcall%} #}
 </div>
