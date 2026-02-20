@@ -15,12 +15,17 @@
 {# Theme styles ----------- #}
 
 {% set themeAlignment = "left" %}
-{% set drawerOnNarrow = false %}
+{% set drawerOnNarrow = true %}
 
 {% set navbarStyles = "@container z-(--z-top) border-b border-transparent py-nav" %}
 {% set stickyStyles = "sticky top-0 bg-surface transition duration-300" %}
 {% set onScrollStyles = "!border-neutral-lighter border-dotted" %}
 {% set itemGap = "gap-x-16 gap-y-2" %}
+
+{% set drawerTriggerProps = {
+    type: "button",
+    size: "base"
+} %}
 
 {# Nav content defaults ------------ #}
 
@@ -90,7 +95,7 @@
                     {% if leftSide or rightSide or props.leftSide or props.rightSide %}
                         {% call drawer({
                             alignment:"top",
-                            triggerProps:{ icon:{off:"menu", on:"close"}, tooltip:"Navigation menu", type:"button", variant:"neutral", size:"base"}
+                            triggerProps:{ icon:{off:"menu", on:"close"}, tooltip:"Navigation menu", type:drawerTriggerProps.type, variant:drawerTriggerProps.variant, size:drawerTriggerProps.size}
                         }) %}
                             {# Displays the drawerContents variable if it exists, otherwise duplicates the wide screen navbar content #}
                             {% if drawerContents %}
