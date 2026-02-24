@@ -1,4 +1,4 @@
-<section id="marquee" tabindex="0" class="grid w-full gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">marquee.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div data-marquee="" style="--gap: 24px" class="flex w-full gap-6 w-full overflow-hidden select-none mask-x-from-80% mask-x-to-100%"><ul class="shrink-0 flex gap-6 justify-around min-w-full animate-marquee hover:[animation-play-state:paused]" style="--animate-duration: 5s"><li class="text-heading-base">This is a repeating message!</li></ul><ul aria-hidden="true" class="shrink-0 flex gap-6 justify-around min-w-full animate-marquee hover:[animation-play-state:paused]" style="--animate-duration: 5s"><li class="text-heading-base">This is a repeating message!</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
+<section id="marquee" tabindex="0" class="grid w-full gap-section-title max-w-[var(--container-sm)] max-lg:scroll-m-section"><h3 class="text-heading-lg truncate xl:list-disc xl:list-item">marquee.njk</h3><div class="flex flex-col overflow-hidden gap-dialog-block"><div class="grid grid-cols-1 @container border rounded place-items-center place-content-center gap-item border-neutral-lighter p-site-inline grow"><div data-marquee="" style="--gap: var(--spacing-site-inline)" class="flex w-full overflow-hidden select-none gap-site-inline w-full overflow-hidden select-none mask-x-from-80% mask-x-to-100%"><ul class="shrink-0 flex gap-site-inline basis-full w-fit grow justify-between animate-marquee hover:[animation-play-state:paused]" style="--animate-duration: 5s"><li class="text-heading-base">This is a repeating message!</li></ul><ul aria-hidden="true" class="shrink-0 flex gap-site-inline basis-full w-fit grow justify-between animate-marquee hover:[animation-play-state:paused]" style="--animate-duration: 5s"><li class="text-heading-base">This is a repeating message!</li></ul></div></div><div class="flex flex-col gap-item-sm"><h4 class="text-heading-sm font-semibold">Import code</h4><span x-data="{
         input: $refs.copyMe.innerText,
         copy () {
             $clipboard(this.input)
@@ -37,7 +37,7 @@
         duration: &quot;45s&quot;,
         itemGap: &quot;gap-6&quot;,
         mask: boolean,
-        pauseOnHover: boolean,
+        pauseOnHover: boolean
     },
     attrs={}
 ) %}

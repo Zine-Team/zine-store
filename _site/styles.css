@@ -545,6 +545,9 @@
   .w-\[var\(--container-wide\)\] {
     width: var(--container-wide);
   }
+  .w-fit {
+    width: fit-content;
+  }
   .w-full {
     width: 100%;
   }
@@ -616,6 +619,9 @@
   }
   .basis-1\/2 {
     flex-basis: calc(1/2 * 100%);
+  }
+  .basis-full {
+    flex-basis: 100%;
   }
   .text-icon {
     transform-origin: top;
@@ -1417,6 +1423,11 @@
       display: inline-block;
     }
   }
+  .\*\:max-w-content {
+    :is(& > *) {
+      max-width: 32ch;
+    }
+  }
   .\*\:not-last-of-type\:translate-y-2 {
     :is(& > *) {
       &:not(*:last-of-type) {
@@ -1659,6 +1670,11 @@
   .max-lg\:scroll-m-section {
     @media (width < 56rem) {
       scroll-margin: var(--space-section);
+    }
+  }
+  .max-lg\:justify-center {
+    @media (width < 56rem) {
+      justify-content: center;
     }
   }
   .max-md\:hidden {

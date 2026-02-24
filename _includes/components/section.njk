@@ -14,7 +14,7 @@
 {% set sectionStyles = "w-full @container" %}
 {% set paddingStyles =
     {
-        "site": "px-site-inline",
+        "site": "px-site-inline grid-cols-[minmax(1px,var(--container-base))] justify-center",
         "none": ""
     }
  %}
@@ -27,8 +27,7 @@
 
 <{{ tag }} data-section
     {{ loopAttrs(attrs) }}
-    class="
-        grid grid-cols-[minmax(1px,var(--container-base))] justify-center
+    class="grid
         {{ attrs.class }}
         {{ sectionStyles }}
         {% if props.padding %}{{paddingStyles[props.padding]}}{% else %}{{ paddingStyles.site }}{% endif %}

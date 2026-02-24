@@ -32,7 +32,7 @@
                 <h2>{{ item.title }}</h2>
             </summary>
 
-            {{ markdown({content: item.description, transform: true },{class: contentStyles }) }}
+            {{ markdown({content: item.elaboration, transform: true },{class: contentStyles }) }}
 
         </details>
     {% endfor %}
@@ -47,7 +47,7 @@ args: '{{ accordion(
     props={
         accordionItems: [{
             title: "",
-            description: "",
+            elaboration: "",
             isOpen: false
         }]
     },
