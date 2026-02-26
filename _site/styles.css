@@ -713,6 +713,9 @@
   .appearance-none {
     appearance: none;
   }
+  .auto-cols-max {
+    grid-auto-columns: max-content;
+  }
   .grid-flow-col {
     grid-auto-flow: column;
   }

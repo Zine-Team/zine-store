@@ -88,7 +88,7 @@
                 x-show="drawerOpen"
                 x-transition:enter-start="{{ transitionStyles }}"
                 x-transition:enter="{{ durationEnter }}"
-                x-transition:enter="{{ durationLeave }}"
+                x-transition:leave="{{ durationLeave }}"
                 x-transition:leave-end="{{ transitionStyles }}"
                 @click="if($event.target !== $refs.panel && $event.target.tagName.toLowerCase() === 'a') { close($refs.button) }"
                 @click.outside="close($refs.trigger)"
