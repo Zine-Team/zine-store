@@ -34,7 +34,7 @@
     --text-heading-base: var(--heading-base);
     --container-narrow: 48rem;
     --container-base: 81.5rem;
-    --container-content: 32ch;
+    --container-content: 53ch;
     --z-lowered: -10;
     --z-elevated: 20;
     --z-sticky: 30;
@@ -573,7 +573,7 @@
     max-width: var(--container-sm);
   }
   .max-w-content {
-    max-width: 32ch;
+    max-width: 53ch;
   }
   .max-w-cqi {
     max-width: 100cqi;
@@ -1428,7 +1428,7 @@
   }
   .\*\:max-w-content {
     :is(& > *) {
-      max-width: 32ch;
+      max-width: 53ch;
     }
   }
   .\*\:not-last-of-type\:translate-y-2 {
@@ -1935,6 +1935,11 @@
       list-style-type: disc;
     }
   }
+  .xl\:grid-cols-\[400px_1fr\] {
+    @media (width >= 70rem) {
+      grid-template-columns: 400px 1fr;
+    }
+  }
   .xl\:gap-20 {
     @media (width >= 70rem) {
       gap: calc(var(--spacing) * 20);
@@ -2230,7 +2235,7 @@
     color: var(--md-heading-color);
     font-family: var(--md-heading-font);
     font-weight: var(--md-heading-font-weight);
-    text-wrap: balance;
+    text-wrap: pretty;
   }
   .markdown h2 {
     font-size: calc(1em * var(--md-scale));

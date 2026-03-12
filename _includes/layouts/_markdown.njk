@@ -23,26 +23,9 @@
             </section>
         {% endcall %}
         <div class="border-dotted overflow-hidden justify-items-center lg:pl-site-inline py-dialog-block lg:border-l border-neutral-lighter">
-            <form
-                x-data="{
-                    hiringPartyName:'',
-                    hiringPartyDate:'',
-                    cooperativeWorkerName: 'Steph Barkan',
-                    cooperativeWorkerDate: new Date().toISOString().slice(0, 10),
-                    printContract() {
-                        if (this.hiringPartyName && this.hiringPartyDate && this.cooperativeWorkerName && this.cooperativeWorkerDate) {
-                            print()
-                        } else {
-                            console.log('complete!')
-                        }
-                    }
-                }"
-                class="max-w-full w-narrow"
-                >
-                {% call markdown({transform: false}) %}
+                {% call markdown({transform: false},{class:"w-full max-w-content"}) %}
                     {{ anchoredContent | safe }}
                 {% endcall %}
-            </form>
         </div>
     {% endcall %}
 

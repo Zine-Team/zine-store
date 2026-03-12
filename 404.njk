@@ -1,12 +1,15 @@
 ---
-layout: base
 eleventyExcludeFromCollections: true
 permalink: /404.html
 ---
 
+{% extends "layouts/base.njk" %}
+
 
 {% from "components/button.njk" import button %}
 {% from "components/container.njk" import container %}
+
+{% block content %}
 <main class="flex flex-col items-center gap-section py-section grow w-full">
     {% call container({}, {class:"text-pretty flex flex-col gap-10"}) %}
             <h1 class="lg:-ml-1.5 text-2xl flex md:flex-row justify-between flex-col gap-1 md:gap-2 items-baseline">
@@ -15,3 +18,4 @@ permalink: /404.html
             <p class="text-lg max-w-content">Page not found. Return to the {{ button({label:"homepage", type:"link", size:"inherit"},{href:"/", class:"inline-block"}) }}?</p>
     {% endcall %}
 </main>
+{% endblock %}
