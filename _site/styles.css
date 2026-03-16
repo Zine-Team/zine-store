@@ -883,6 +883,9 @@
   .overflow-y-hidden {
     overflow-y: hidden;
   }
+  .overscroll-contain {
+    overscroll-behavior: contain;
+  }
   .overscroll-x-contain {
     overscroll-behavior-x: contain;
   }
