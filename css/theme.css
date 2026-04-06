@@ -1,3 +1,7 @@
+/* @import "./color-tokens.css"; */
+@import "./responsive-type.css";
+@import "./responsive-space.css";
+
 :root {
   color-scheme: light;
 
@@ -23,7 +27,33 @@
     --heading-xl: 72px;
   }
 
-  /* Spacing -------------------------------------------------------------------------------------------------------------------------- */
+  /* Spacings -------------------------------------------------------------------------------------------------------------------------- */
+
+  --space-3xs-min: 0.25rem;
+  --space-3xs-max: 0.375rem;
+
+  --space-2xs-min: 0.45rem;
+  --space-2xs-max: 0.6rem;
+
+  --space-xs-min: 0.75rem;
+  --space-xs-max: 1rem;
+
+  --space-sm-min: 1rem;
+  --space-sm-max: 2rem;
+
+  --space-base-x-min: 1rem;
+  --space-base-x-max: 2rem;
+
+  --space-base-y-min: 2rem;
+  --space-base-y-max: 3rem;
+
+  --space-lg-min: 3rem;
+  --space-lg-max: 4rem;
+
+  --space-xl-min: 4rem;
+  --space-xl-max: 6rem;
+
+  /* old ------------------ */
 
   --space-site-inline: 1rem;
   --space-nav: 0.75rem;
@@ -100,6 +130,11 @@
   --container-base: 81.5rem;
   --container-content: 53ch;
 
+  --grid-column-content: content;
+  --grid-column-full: full-width;
+  --grid-column-pl: full-width-start / content-start;
+  --grid-column-pr: content-end / full-width-end;
+
   /* Elevation --------------------------------------------------------------------------------------------------------------------------*/
 
   --z-lowered: -10;
@@ -117,9 +152,31 @@
 
   /* Spacing --------------------------------------------------------------------------------------------------------------------------- */
 
+  /* System ------------------ */
   --spacing-inherit: inherit;
+  --spacing-unset: unset;
   --spacing-cqi: 100cqi;
-  --spacing-stretch: stretch;
+  --spacing-navbar: var(--space-navbar);
+  --spacing-dvh-nav: calc(100dvh - var(--space-navbar));
+  --spacing-indent: 1.5ch;
+  --spacing-lh: 1lh;
+  --spacing-safe-area-bottom: env(safe-area-inset-bottom);
+
+  /* Scale ------------------ */
+
+  --spacing-none: 0;
+  --spacing-px: var(--default-border-width);
+  --spacing-3xs: var(--space-3xs);
+  --spacing-2xs: var(--space-2xs);
+  --spacing-xs: var(--space-xs);
+  --spacing-sm: var(--space-sm);
+  --spacing-base-x: var(--space-base-x);
+  --spacing-base-y: var(--space-base-y);
+  --spacing-lg: var(--space-lg);
+  --spacing-xl: var(--space-xl);
+
+  /* Old ------------------ */
+
   --spacing-site-inline: var(--space-site-inline);
   --spacing-nav: var(--space-nav);
   --spacing-section: var(--space-section);
@@ -267,6 +324,27 @@
   }
 }
 
+@utility grid-col-* {
+  grid-column: --value(--grid-column-*);
+}
+
+@utility col-start-* {
+  grid-column-start: --value(--grid-column-*);
+}
+@utility col-end-* {
+  grid-column-end: --value(--grid-column-*);
+}
+
 @utility gap-inherit {
   gap: inherit;
+}
+
+@layer utilities {
+  [x-cloak] {
+    display: none !important;
+  }
+
+  .\@container-scroll {
+    container-type: inline-size scroll-state;
+  }
 }

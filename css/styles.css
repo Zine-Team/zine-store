@@ -3,6 +3,7 @@
 
 @layer components {
   @import "./zine.css";
+  @import "./components.css";
   @import "./markdown.css";
 
   [data-button-card]::before {

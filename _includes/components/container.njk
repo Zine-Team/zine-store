@@ -8,10 +8,10 @@
 
 {% set sizeStyles =
     {
-        "content": "w-[var(--container-content)] max-w-[calc(100cqi-2*var(--spacing-site-inline))]",
-        "narrow": "w-[var(--container-narrow)] max-w-cqi",
-        "base": "w-[var(--container-base)] max-w-cqi",
-        "full": "w-full max-w-vw"
+        "content": "w-[var(--container-content)] max-w-full",
+        "narrow": "w-[var(--container-narrow)] max-w-full",
+        "base": "w-[var(--container-base)] max-w-full",
+        "full": "w-full grid-col-full"
     }
  %}
 
@@ -19,8 +19,8 @@
     {
         "flex": "flex",
         "cols-1": "grid",
-        "cols-2": "grid lg:grid-cols-2 max-lg:justify-center *:max-w-content",
-        "sidebar": "grid xl:grid-cols-[400px_1fr]"
+        "cols-2": "grid xl:grid-cols-2",
+        "sidebar": "grid lg:grid-cols-[3fr_8fr]"
     }
  %}
 
@@ -32,6 +32,7 @@
         data-container
         {{ loopAttrs(attrs) }}
         class="
+
             {% if props.size %}{{sizeStyles[props.size]}}{% else %}{{ sizeStyles.base }}{% endif %}
             {% if props.type %}{{typeStyles[props.type]}}{% else %}{{ typeStyles["cols-1"] }}{% endif %}
             {% if props.alignment %}justify-self-{{ props.alignment }}{% else %}justify-self-center{% endif %}
@@ -48,11 +49,11 @@
 {% set containerMeta = {
     args: '{% call container(
     props={
-        size: "narrow | base | full",
+        size: "narrow | base | content | full",
         type: "flex | cols-1 | cols-2 | sidebar",
-        alignment: "start | center | end"
+        alignment: "center | start | end"
     },
-    attrs={}
+    attrs={class:""}
 ) %}
 {% endcall %}',
 description: "
