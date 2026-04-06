@@ -8,7 +8,6 @@ permalink: /index.html
 
 {% from "components/button.njk" import button %}
 {% from "components/figure.njk" import figure %}
-{% from "components/slider.njk" import slider %}
 {% from "components/scroller.njk" import scroller %}
 {% from "components/local/sectionHeader.njk" import sectionHeader %}
 
@@ -80,19 +79,6 @@ permalink: /index.html
                     </div>
                 {% endcall %}
             {% endcall %}
-                {# {% call slider({},{class:"gap-item py-2"}) %}
-                    {% for zine in collections.zine | reverse | slice(4) %}
-                        <a data-zine-shading class="relative hover:scale-[1.01] shadow-zine w-[70cqi] max-w-[312px]" href="{{ zine.url }}">
-                            {{ figure(
-                                props={
-                                    image: global.imagesFolder + "/" + zine.fileSlug + "/" + zine.data.pages[0].image + ".jpg",
-                                    alt: zine.data.title
-                                },
-                                attrs={class:"shadow-page"}
-                            ) }}
-                        </a>
-                    {% endfor %}
-                {% endcall %} #}
         {% endcall %}
 
         {# ------------------------------------------------------------------------------------------------------------------------------------- #}
