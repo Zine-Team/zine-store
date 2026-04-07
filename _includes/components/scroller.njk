@@ -1,0 +1,55 @@
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+{% from "components/button.njk" import button %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro scroller(props={}, attrs={}) %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{# Theme styles ----------- #}
+
+{% set scrollerStyles = "" %}
+
+{# Defaults ------------------ #}
+
+{% set value = "" if props.value else props.value %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<div
+    data-scroller
+    {{ loopAttrs(attrs) }}
+    class="relative
+    {{ scrollerStyles }}
+     {{ attrs.class }}
+    ">
+    <div data-scroller-inner class="@container-scroll overflow-x-auto p-px">
+        <div data-scroller-mask-l class="opacity-0 absolute grid z-10 left-0 top-0 bottom-0 w-[10%] transition-opacity duration-600 bg-gradient-to-l to-(--color-bg-surface) from-(--color-bg-surface)/0"></div>
+        <div data-scroller-track class="grid min-w-fit grid-flow-col auto-cols-max">
+            {{ caller() | safe }}
+        </div>
+        <div data-scroller-mask-r class="opacity-0 absolute grid z-10 right-0 top-0 bottom-0 w-[10%] transition-opacity duration-600 bg-gradient-to-r to-(--color-bg-surface) from-(--color-bg-surface)/0"></div>
+    </div>
+</div>
+
+{% endmacro %}
+
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set scrollerMeta = {
+    args: '{% call scroller(
+    props={
+        input: "",
+    },
+    attrs={}
+) %}
+{% endcall %}',
+description: "
+-
+-
+-
+"
+} %}

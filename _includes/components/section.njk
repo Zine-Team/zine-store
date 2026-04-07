@@ -12,16 +12,10 @@
 {# Theme styles ----------- #}
 
 {% set sectionStyles = "w-full @container" %}
-{% set paddingStyles =
-    {
-        "site": "px-site-inline grid-cols-[minmax(1px,var(--container-base))] justify-center",
-        "none": ""
-    }
- %}
 
 {# Other ------------------ #}
 
-{% set tag %}{% if props.tag %}{{ props.tag }}{% else %}section{% endif %}{% endset %}
+{% set tag %}{{ props.tag if props.tag else "section" }}{% endset %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -30,7 +24,6 @@
     class="grid
         {{ attrs.class }}
         {{ sectionStyles }}
-        {% if props.padding %}{{paddingStyles[props.padding]}}{% else %}{{ paddingStyles.site }}{% endif %}
     ">
     {{ caller() | safe }}
 </{{ tag }}>
@@ -41,18 +34,12 @@
 
 {% set sectionMeta = {
     args: '{% call section(
-    props={
-        tag: "",
-        padding: "site | none",
-    },
-    attrs={}
+    props={tag:"",},
+    attrs={class:""}
 ) %}
-    {% call container(props={size: "", type: "", alignment: ""}, attrs={}) %}
-    {% endcall %}
 {% endcall %}',
 description: "
-- `props.tag` sets the HTML tag you want. Defaults to `section`
-- `props.padding` sets whether the component's children should be full width or have some padding. The standard options are 'site' or 'none', but each website might have more options depending on its design.
-- Direct children should probably only be the `container` component.
+- Children just most likely by `container` or `divider`
+- `props.tag` sets what the HTML tag should be. Defaults to `section`.
 "
 } %}

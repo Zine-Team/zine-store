@@ -8,7 +8,7 @@ permalink: /index.html
 
 {% from "components/button.njk" import button %}
 {% from "components/figure.njk" import figure %}
-{% from "components/slider.njk" import slider %}
+{% from "components/scroller.njk" import scroller %}
 {% from "components/local/sectionHeader.njk" import sectionHeader %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
@@ -52,8 +52,8 @@ permalink: /index.html
 
         {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-        {% call section({}, {id:"recentZines"}) %}
-            {% call container({}, {class:"flex flex-col gap-section-title"}) %}
+        {% call section({}, {id:"recentZines", class:"gap-section-title"}) %}
+            {% call container({size:"base", type: "cols-1", alignment: "center"}, {class:""}) %}
                 {% call sectionHeader({label: "Most recent zines"}) %}
                     <div class="hidden md:block">
                         {% for zine in collections.zine | reverse | slice(1) %}
@@ -61,18 +61,22 @@ permalink: /index.html
                         {% endfor %}
                     </div>
                 {% endcall %}
-                {% call slider({},{class:"gap-item py-2"}) %}
-                    {% for zine in collections.zine | reverse | slice(4) %}
-                        <a data-zine-shading class="relative hover:scale-[1.01] shadow-zine w-[70cqi] max-w-[312px]" href="{{ zine.url }}">
-                            {{ figure(
-                                props={
-                                    image: global.imagesFolder + "/" + zine.fileSlug + "/" + zine.data.pages[0].image + ".jpg",
-                                    alt: zine.data.title
-                                },
-                                attrs={class:"shadow-page"}
-                            ) }}
-                        </a>
-                    {% endfor %}
+            {% endcall %}
+            {% call container({size:"full", type: "cols-1", alignment: "center"},{class:"col-start-full col-end-full px-base-x"}) %}
+                {% call scroller({},{class:"max-w-base w-full justify-self-center"}) %}
+                    <div class="py-3xs grid grid-cols-4 gap-xs">
+                        {% for zine in collections.zine | reverse | slice(4) %}
+                            <a data-zine-shading class="relative hover:scale-[1.01] shadow-zine w-[70cqi] max-w-[312px]" href="{{ zine.url }}">
+                                {{ figure(
+                                    props={
+                                        image: global.imagesFolder + "/" + zine.fileSlug + "/" + zine.data.pages[0].image + ".jpg",
+                                        alt: zine.data.title
+                                    },
+                                    attrs={class:"shadow-page"}
+                                ) }}
+                            </a>
+                        {% endfor %}
+                    </div>
                 {% endcall %}
             {% endcall %}
         {% endcall %}
@@ -89,7 +93,7 @@ permalink: /index.html
                     }
                 }
             {% endset %}
-            {% call container({}, {class:"flex flex-col gap-section-title", "x-data": data }) %}
+            {% call container({size:"base", type: "cols-1", alignment: "center"},{class:"gap-section-title", "x-data": data }) %}
                 {% call sectionHeader({label: "All zines (A-Z)"}) %}
                     <div class="hidden sm:block">{{ button({label: "Read random zine", type: "button", size:"base"}, {"@click": "chooseRandom"}) }}</div>
                 {% endcall %}
