@@ -1,0 +1,7 @@
+
+User-agent: *
+Allow: /
+
+Host: https://zinestorefree.com
+
+Sitemap: https://zinestorefree.com/sitemap.xml
