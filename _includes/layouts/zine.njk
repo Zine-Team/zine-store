@@ -20,8 +20,9 @@
 
 {% set navRight %}
     {% call dropdown(
-        props={position:["bottom", "right"],
-        triggerProps:{label: "Share", type: "button", size:"base"}
+        props={
+            position:["bottom", "right"],
+            triggerProps:{label: "Share", type: "button", size:"base"}
         })
     %}
         <li>{{ button({label:"Print", type:"link", size:"base"}, {"@click":printPdf, download: null}) }}</li>

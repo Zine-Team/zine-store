@@ -10,7 +10,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
   eleventyConfig.addLayoutAlias("zine", "layouts/zine.njk");
   eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
-  eleventyConfig.addPassthroughCopy("images");
+  eleventyConfig.addPassthroughCopy("assets");
 
   eleventyConfig.addPlugin(eleventyImageTransformPlugin);
 

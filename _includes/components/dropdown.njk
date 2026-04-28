@@ -5,30 +5,30 @@
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
-{% macro dropdown(props={}, attrs={}, triggerProps={}) %}
+{% macro dropdown(props={}, attrs={}) %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {# Theme styles ----------- #}
 
-{% set panelStyleClasses = "bg-surface-light border border-neutral-lighter px-5 py-3 shadow-zine" %}
+{% set popoverStyleClasses = "bg-surface-light border border-neutral-lighter px-5 py-3 shadow-zine" %}
 {% set dropdownOpenStyleClasses = "" %}
-{% set listStyleClasses = "list-disc gap-item-sm *:ml-[1.25ch]" %}
+{% set listStyles = "list-disc gap-item-sm *:ml-[1.25ch]" %}
 
 {# Other ------------------ #}
 
 {% set position %}
     {% if props.position.includes("top") %}
-        bottom-full mb-2
+        bottom-[anchor(top)] mb-3xs top-unset
     {% endif %}
     {% if props.position.includes("bottom") %}
-        mt-2
+        mt-3xs top-[anchor(bottom)]
     {% endif %}
     {% if props.position.includes("right") %}
-        right-0
+        right-[anchor(end)] left-unset
     {% endif %}
     {% if props.position.includes("left") %}
-        left-0
+        left-[anchor(left)]
     {% endif %}
 {% endset %}
 
@@ -37,50 +37,46 @@
 <div
     data-dropdown
     x-data="{
-        open: false,
-        toggle() {
-            if (this.open) {
-                return this.close()
-            }
-            this.$refs.button.focus()
-            this.open = true
-        },
-        close(focusAfter) {
-            if (! this.open) return
-            this.open = false
-            focusAfter && focusAfter.focus()
+        dropdownOpen: false,
+        close() {
+            if (! this.dropdownOpen) return
+            this.$refs.popover.hidePopover()
+            this.dropdownOpen = false
         },
     }"
     x-id="['dropdown']"
-    x-on:keydown.escape.prevent.stop="close($refs.button)"
-    x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
     {{ loopAttrs(attrs) }}
-    :class="open && '{{ dropdownOpenStyleClasses }}'"
-    class="relative max-w-full {{ attrs.class }}"
+    :class="dropdownOpen && '{{ dropdownOpenStyleClasses }}'"
+    class="relative max-w-full rounded-inherit {{ attrs.class }}"
+    :style="{ 'anchor-name': '--' + $id('dropdown')}"
 >
     {{ button(
         props=props.triggerProps,
         attrs={
             "x-ref": "button",
-            "@click": "toggle()",
-            ":aria-expanded": "open",
+            ":aria-expanded": "dropdownOpen",
             ":aria-controls":"$id('dropdown')",
-            "class": "w-full"
+            "class": "w-full",
+            ":popovertarget": "$id('dropdown')"
         })
     }}
     <div
-        x-ref="panel"
-        x-show="open"
-        x-on:click.outside="close($refs.button)"
         x-cloak
+        x-ref="popover"
+        x-on:focusin.window="! $refs.popover.contains($event.target) ? close() : null"
+        @click.stop = "$event.target.tagName.toLowerCase() === 'a' && toggleDropdown"
+        @beforetoggle="dropdownOpen = !dropdownOpen"
+        popover
+        role="menu"
         :id="$id('dropdown')"
-        class="absolute min-w-max max-w-full z-(--z-elevated) outline-none {{ panelStyleClasses }} {{ position }}">
-        <ul class="flex flex-col items-start {{ listStyleClasses }}">
+        :style="{ 'position-anchor': '--' + $id('dropdown')}"
+        class="absolute min-w-max max-w-full z-(--z-elevated) outline-none [position-try:flip-block,flip-inline] {{ popoverStyleClasses }} {{ position }}">
+        <ul class="flex flex-col items-start {{ props.listStyles if props.listStyles else listStyles }}">
             {% if caller %}
                 {{ caller() | safe }}
             {% else %}
                 {% for item in props.dropdownItems %}
-                    <li class="*:inline-block">{{ item.macro(item.props, item.attrs) }}</li>
+                    <li class="*:inline-block w-full">{{ item.macro(item.props, item.attrs | assign({"role": "menuitem"}) ) }}</li>
                 {% endfor %}
             {% endif %}
         </ul>
