@@ -62,9 +62,9 @@ permalink: /index.html
                     </div>
                 {% endcall %}
             {% endcall %}
-            {% call container({size:"full", type: "cols-1", alignment: "center"},{class:"col-start-full col-end-full px-base-x"}) %}
-                {% call scroller({},{class:"max-w-base w-full justify-self-center"}) %}
-                    <div class="py-3xs grid grid-cols-4 gap-xs">
+            {% call container({size:"full", type: "cols-1", alignment: "center"},{class:"col-start-full col-end-full px-base-x grid-cols-subgrid"}) %}
+                {% call scroller({},{class:"w-full justify-self-center"}) %}
+                    <div class="flex gap-xs">
                         {% for zine in collections.zine | reverse | slice(4) %}
                             <a data-zine-shading class="relative hover:scale-[1.01] shadow-zine w-[70cqi] max-w-[312px]" href="{{ zine.url }}">
                                 {{ figure(

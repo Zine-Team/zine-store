@@ -99,7 +99,7 @@
   --breakpoint-sm: 28rem; /* 448px */
   --breakpoint-md: 44rem; /* 704px */
   --breakpoint-lg: 56rem; /* 896px */
-  --breakpoint-xl: 70rem; /* 1120px */
+  --breakpoint-xl: 84rem; /* 1120px */
 
   /* Typography ------------------------------------------------------------------------------------------------------------------------ */
 
@@ -134,6 +134,7 @@
   --grid-column-full: full-width;
   --grid-column-pl: full-width-start / content-start;
   --grid-column-pr: content-end / full-width-end;
+  --grid-column-scroller: content-start / full-width-end;
 
   /* Elevation --------------------------------------------------------------------------------------------------------------------------*/
 

@@ -22,16 +22,19 @@
 <div
     data-scroller
     {{ loopAttrs(attrs) }}
-    class="relative
+    class="relative grid grid-cols-subgrid w-stretch col-span-full
     {{ scrollerStyles }}
      {{ attrs.class }}
-    ">
-    <div data-scroller-inner class="@container-scroll overflow-x-auto p-px">
-        <div data-scroller-mask-l class="opacity-0 absolute grid z-10 left-0 top-0 bottom-0 w-[10%] transition-opacity duration-600 bg-gradient-to-l to-(--color-bg-surface) from-(--color-bg-surface)/0"></div>
-        <div data-scroller-track class="grid min-w-fit grid-flow-col auto-cols-max">
+">
+    <div data-scroller-mask-l class="grid-col-pl justify-self-start z-10 w-full max-w-[100px] bg-gradient-to-l to-(--color-bg-surface) from-(--color-bg-surface)/0 row-start-1 row-end-1"></div>
+    <div data-scroller-mask-r class="grid-col-pr justify-self-end z-10 w-full max-w-[100px] bg-gradient-to-r to-(--color-bg-surface) from-(--color-bg-surface)/0 row-start-1 row-end-1"></div>
+    <div data-scroller-inner class="overflow-x-auto grid grid-cols-subgrid col-span-full row-start-1 row-end-1 max-w-base justify-self-center w-full">
+
+        <div class="grid-col-scroller w-fit pr-base-x max-w-[calc(var(--container-base)+var(--space-base-x))]">
+
             {{ caller() | safe }}
+
         </div>
-        <div data-scroller-mask-r class="opacity-0 absolute grid z-10 right-0 top-0 bottom-0 w-[10%] transition-opacity duration-600 bg-gradient-to-r to-(--color-bg-surface) from-(--color-bg-surface)/0"></div>
     </div>
 </div>
 
